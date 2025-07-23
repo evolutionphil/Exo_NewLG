@@ -1,0 +1,375 @@
+#vod-series-player-page .player-container {
+    left: 0;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    background-size: 100% 100%;
+}
+#vod-series-video-controls-container {
+    position: absolute;
+    bottom: 0;
+    left:0;
+    width: 100%;
+    color: #fff;
+}
+#vod-series-video-controls-subcontainer {
+    background: rgba(8, 8, 8, 0.8);
+    padding: 20px 30px;
+    position: relative;
+    padding-right: 200px;
+    margin-left: 3%;
+    width: 94%;
+    border: 2px solid #a76a6a;
+}
+#vod-series-progress-container{
+    position: relative;
+    padding:0 85px;
+}
+#vod-series-video-progressbar-container{
+    padding: 0;
+    margin: 0 20px;
+    position: relative;
+}
+#vod-series-player-page .progress-amount {
+    background: #dd0000;
+    height: 100%;
+    display: block;
+    width: 30%;
+}
+#vod-series-resolution-container {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    bottom: 0;
+    border-left: 2px solid #815b72;
+    padding-left: 20px;
+    width: 170px;
+}
+#vod-series-resolution-wrapper {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+#vod-series-video-info-controls-container {
+    font-size: 0;
+    white-space: nowrap;
+    margin-top: 10px;
+}
+#vod-series-video-controls-wrapper{
+    margin: 20px auto !important;
+    margin-bottom: 0;
+    font-size:0;
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+}
+.video-info-btns-container{
+    font-size: 0;
+    width: 50%;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: right;
+}
+.video-control-icon {
+    color: #888;
+    font-size: 25px;
+    display: inline-block;
+}
+.video-control-icon i{
+    width: 60px;
+    height: 60px;
+    border: 3px solid transparent;
+    display: inline-block;
+    line-height: 55px;
+}
+/*.video-control-icon.active i{*/
+/*    color: #fff;*/
+/*    border-color: #f77b05;*/
+/*}*/
+.video-control-icon i.active{
+    color: #fff;
+    /*border-color: #f3ff00;*/
+}
+.video-info-btn {
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+}
+.video-info-icon {
+    width: 60px;
+    margin: 0 auto;
+    height: 60px;
+    padding-top: 8px;
+    transition: all 0.05s;
+    border: 3px solid transparent;
+}
+.video-info-icon i{
+    color: #fff;
+    font-size: 30px;
+}
+.video-info-icon.active{
+    /*border:3px solid #f3ff00;*/
+}
+.video-info-icon img {
+    height: 40px;
+    margin: 0 auto;
+    display: inline-block;
+}
+
+#vod-series-player-page .video-time{
+    font-size:22px;
+    padding:0 10px;
+    position: absolute;
+    top:50%;
+    transform:translateY(-50%);
+    font-weight: normal;
+    color: #ddd;
+}
+#vod-series-player-page  .video-current-time{
+    left:0;
+    text-align: left;
+}
+#vod-series-player-page  .video-total-time{
+    right:0;
+    text-align: right;
+}
+
+#vod-series-video-title {
+    text-align: left;
+    font-size: 28px;
+    color:#fff;
+    font-weight: normal;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.rangeslider--horizontal{
+    height: 7px !important;
+}
+.rangeslider .rangeslider__handle{
+    border-radius: 15px;
+    background-image: none;
+    height: 30px;
+    width: 30px;
+    top: -12px !important;
+    border: 3px solid transparent;
+    background: #fd0054 !important;
+    box-shadow: 0 0 10px rgba(12, 12, 12, 0.72);
+}
+.rangeslider.active .rangeslider__handle{
+    border-color: #fd5803;
+}
+#channel-video-progressbar-container .rangeslider .rangeslider__handle{
+    border-width: 0;
+}
+.rangeslider__handle:after{
+    background: #b9b3b3;
+    background-image:none !important;
+    display: none !important;
+}
+.rangeslider__fill {
+    background: #FF0055 !important;
+}
+
+#vod-video-info-container {
+    position: fixed;
+    top: 15vh;
+    left: 15vw;
+    width: 70vw;
+    height: 70vh;
+    font-size: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 30px #68696f;
+    background: #583D6B;
+    display: none;
+}
+#vod-video-info-img-container {
+    width: 35%;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+}
+#vod-video-info-img-container img{
+    width: 100%;
+    height: 100%;
+}
+#vod-video-info-wrapper {
+    display: inline-block;
+    width: 65%;
+    height: 100%;
+    font-size: 25px;
+    color: #fff;
+    vertical-align: top;
+    padding:20px;
+    position: relative;
+}
+#vod-video-info-title {
+    font-size: 35px;
+    font-weight: bold;
+}
+#vod-video-info-desc {
+    font-size: 25px;
+    font-weight: normal;
+}
+#vod-video-info-subwrapper2 {
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid;
+    right: 20px;
+    left: 20px;
+    padding: 10px 0;
+    font-weight: normal;
+    min-height: 58px;
+}
+
+#video-resume-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #171616e0;
+    display: none;
+}
+#video-resume-content {
+    position: fixed;
+    font-size: 20px;
+    color: #fff;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#vod-resume-title-1 {
+    font-size: 45px;
+    font-weight: bold;
+}
+#vod-resume-title-2 {
+    font-size: 25px;
+    margin: 10px auto;
+    font-weight: bold;
+}
+#vod-resume-time{
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.resume-action-btn {
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    margin: 10px auto;
+    border-radius: 35px;
+    width: 350px !important;
+    border:2px solid transparent;
+}
+.resume-action-btn.active {
+    border-color: yellow !important;
+}
+#player-episode-container{
+    margin: 0 auto;
+    transition: height 0.3s;
+    text-align: center;
+    background: rgba(8, 8, 8, 0.8);
+    margin-top: 20px;
+    border: 2px solid #a76a6a;
+    padding: 0px 50px;
+    height: 150px;
+    padding-top:10px;
+}
+#player-episode-container.expanded{
+    height: 320px;
+}
+#player-episode-items-wrapper {
+    white-space: nowrap;
+    position: relative;
+    margin: 0 auto;
+    margin-top: 10px;
+    overflow-x: scroll;
+}
+#player-current-season {
+    font-size: 30px;
+    text-align: left;
+    font-weight: normal;
+    line-height: 1;
+    color: #eee;
+    margin-bottom: 15px;
+}
+.player-episode-arrow-icon {
+    width: 40px;
+    display: none;
+}
+.player-episode-arrow-icon.up{
+    display: inline-block;
+}
+#player-episode-container.expanded .player-episode-arrow-icon.down{
+    display: inline-block;
+}
+#player-episode-container.expanded .player-episode-arrow-icon.up{
+    display: none;
+}
+
+
+.player-episode-item-container {
+    display: inline-block;
+    vertical-align: middle;
+}
+.player-episode-item {
+    height: 230px;
+    width: 355px;
+    position: relative;
+    display: inline-block;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 10px;
+    transition: all 0.1s;
+    border: 3px solid transparent;
+}
+.player-episode-item-img {
+    width: 100%;
+    height: 100%;
+}
+.player-episode-item-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 4, 4, 0.54);
+}
+
+.player-episode-item.active{
+    /*border-bottom: none;*/
+    /*border-color: #ffff00;*/
+}
+.player-episode-title-container{
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+.player-episode-title {
+    text-align: left;
+    font-size: 25px;
+    padding: 0 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    font-weight: normal;
+}
+.player-episode-item.active .player-episode-title{
+    color: #fff;
+}
+
+/*#vod-series-video-progressbar-container{*/
+/*    position: relative;*/
+/*    height: 10px;*/
+/*    background: #aaa;*/
+/*    border:3px solid transparent;*/
+/*    padding:3px 0;*/
+/*}*/
+#vod-series-video-progressbar-container.active{
+    border-color: #fde704;
+}

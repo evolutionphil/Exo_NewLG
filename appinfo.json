@@ -1,0 +1,12 @@
+{
+    "vendor": "Quzu",
+    "largeIcon": "images/app_launcher_lg.png",
+    "icon": "images/app_launcher_lg.png",
+    "main": "index.html",
+    "id": "quzuplayer.lg",
+    "title": "Quzu TV IPTV m3u player",
+    "type": "web",
+    "resolution": "1920x1080",
+    "version": "1.0.0",
+    "disableBackHistoryAPI":true
+}

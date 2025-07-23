@@ -1,0 +1,339 @@
+#vod-summary-content-container, #series-summary-contents-container {
+    font-size: 0;
+    color: white;
+    height: 100%;
+    position: relative;
+    padding-left:450px;
+}
+.vod-series-background-img {
+    position: fixed;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.vod-series-background-img-overlay{
+    position: fixed;
+    left:0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 16, 16, 0.65);
+}
+.vod-series-summary-page-contents-container{
+    position: fixed;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    bottom: 0;
+    background: rgba(35, 18, 45, 0.92);
+    padding-right: 30px;
+}
+#series-summary-page .vod-series-summary-page-contents-container{
+    top:30%;
+}
+#vod-summary-action-container {
+    margin-top:20px;
+}
+#vod-summary-image-wrapper, #series-summary-image-wrapper{
+    height: 450px;
+    width: 306px;
+    position: absolute;
+    left: 50px;
+    top: 0px;
+    box-shadow: 0 0 5px rgba(53, 53, 53, 0.76);
+}
+
+#series-summary-page .rating{
+    font-size: 28px;
+}
+#series-summary-page .rating-mark{
+    font-size: 26px;
+}
+#episodes-part {
+    padding-left: 470px;
+    white-space: nowrap;
+    position: relative;
+    padding-right: 60px;
+    background: #111111d6;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.episode-arrow-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px;
+    left: 415px;
+}
+.episode-arrow-icon.right {
+    left: unset;
+    right: 10px;
+}
+#episode-items-container{
+    overflow-x: scroll;
+    position: relative;
+    font-size: 0;
+    white-space: nowrap;
+}
+.season-summary-label {
+    font-size: 40px;
+    color: #bbb;
+    margin-top: 40px;
+    line-height: 1;
+}
+.season-summary-label *{
+    font-weight: normal;
+}
+.season-summary-label span{
+    display: inline-block;
+}
+.season-summary-label .current-season-name {
+    padding-right: 0;
+    margin-right: 0;
+    border-right: none;
+}
+.season-summary-separator {
+    margin: 0 10px;
+}
+#series-summary-contents-wrapper {
+    padding-left: 470px;
+    background: rgba(2, 1, 1, 0.95);
+    padding-top:20px;
+    padding-bottom: 20px;
+}
+#current-season-name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 15px;
+}
+#season-items-container {
+    position: relative;
+    overflow-y: scroll;
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    max-height: 800px;
+}
+.season-item-container {
+    font-size: 28px;
+    color: #fff;
+    padding: 20px 20px;
+    background: #443d3d;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    margin-right: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 5px;
+}
+.season-item-container.active{
+    /*background:  #F50261;*/
+}
+.episode-item-container {
+    display: inline-block;
+    vertical-align: middle;
+    padding-right: 15px;
+    width: 25%;
+}
+.episode-item-wrapper {
+    font-size: 25px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 10px 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-radius: 10px;
+}
+.episode-item-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+    color: #ccc;
+    font-weight: normal;
+    transition: all 0.2s;
+}
+.episode-item-img-wrapper {
+    height: 194px;
+}
+.episode-item-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    border: 3px solid transparent;
+    transition: all 0.2s;
+}
+/*.episode-item-wrapper.active .episode-item-img-wrapper img{*/
+/*    border-color: #ffff00;*/
+/*}*/
+.episode-item-wrapper.active .episode-item-title{
+    color: #fff;
+}
+
+#vod-summary-image-wrapper img, #series-summary-image-wrapper img{
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+.vod-summary-item {
+    font-size: 25px;
+    white-space: nowrap;
+    padding: 5px 0;
+    margin-bottom: 0px;
+    text-align: justify;
+    color: #ccc;
+}
+.vod-summary-item-label {
+    font-weight: normal;
+    margin-right: 25px;
+    color: #4c91a9;
+    display: inline-block;
+    vertical-align: top;
+}
+.vod-summary-item-text{
+    font-weight: normal;
+    vertical-align: top;
+    white-space: normal;
+}
+#vod-summary-name, #series-summary-name {
+    font-size: 48px;
+    font-weight: bold;
+    text-align: left;
+    color: #ccc;
+    margin-bottom: 0px;
+    margin-top: -70px;
+    background: rgba(4, 4, 4, 0.7);
+    padding: 0 20px;
+    width: 100%;
+    margin-left: -100px;
+    margin-right: -100px;
+    padding-left: 100px;
+    width: 1570px;
+    padding-right: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.max-line-2{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.max-line-4{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+#vod-summary-description, #series-summary-description {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 27px;
+    line-height: 36px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    font-weight: lighter;
+    color: #ccc;
+}
+#series-summary-description {
+    -webkit-line-clamp: 5;
+}
+#series-summary-description{
+    /*height: calc(100vh - 500px);*/
+}
+#series-summary-action-container{
+    margin-top:10px;
+}
+.vod-series-action-btn {
+    font-size: 35px;
+    padding: 10px 50px;
+    color: #ddd;
+    transition: all 0.2s;
+    border-radius: 10px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    border: 3px solid #ccc;
+}
+.vod-series-action-btn *{
+    font-weight: normal;
+}
+.vod-series-action-btn span{
+    display: inline-block;
+    vertical-align: middle;
+}
+.season-btn {
+    padding-right: 80px;
+}
+.current-season-name {
+    padding-right: 20px;
+    border-right: 2px solid #aaa;
+    margin-right: 20px;
+    line-height: 1.2;
+}
+.season-arrow-down-btn {
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.vod-series-action-btn.active {
+    border-color: transparent;
+    color: #fff;
+    /*background: #F50261;*/
+}
+/*#vod-summary-page .vod-series-action-btn.active{*/
+/*    border-color: transparent;*/
+/*}*/
+.vod-series-action-btn.favourite .fa-heart{
+    color: #ffff00;
+}
+#season-item-modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 11;
+    right: 0;
+    background: rgba(17, 17, 17, 0.83);
+    display: none;
+}
+#season-item-modal-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+}
+.vod-series-total-summary{
+    font-size: 25px;
+    color: #ddd;
+}
+.vod-series-total-summary span{
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0px 15px;
+    border-right: 2px solid #999;
+    font-weight: normal;
+    line-height: 1.2;
+}
+.vod-series-total-summary span:not(.hide):first-of-type{
+    padding-left:0;
+}
+.vod-series-total-summary span:last-of-type{
+    border-right: none;
+}
