@@ -398,9 +398,8 @@ var login_page={
         VodModel.insertMoviesToCategories([]);
         SeriesModel.insertMoviesToCategories([]);
 
-        // Hide loading and show home page
-        $('#loading-page').addClass('hide');
-        home_page.init();
+        // Hide loading
+        $('.loader-image-container').addClass('hide');
 
         // Show playlist error popup instead of redirecting
         this.showPlaylistErrorModal();
@@ -570,6 +569,8 @@ var login_page={
         this.tried_panel_indexes = []; // Reset tried panels
         this.is_loading = false;
         this.device_id_fetched = false;
+        
+        $('.loader-image-container').removeClass('hide');
 
         console.log('=== DEBUG: Retrying with user playlist ===');
         console.log('User playlist:', settings.playlist);
@@ -627,6 +628,7 @@ var login_page={
 
         console.log('=== DEBUG: Continue without playlist called ===');
         console.log('Backend demo_url:', demo_url);
+        $('.loader-image-container').removeClass('hide');
 
         // Update modal to show loading demo content
         this.showDemoContentStatus('Loading demo content...');
@@ -995,7 +997,7 @@ var login_page={
         var keys=this.keys;
         keys.focused_part='network_issue_btn';
         keys.network_issue_btn=index;
-        $(this.network_issue_btns).removeClass('active');
+        buttons_dom.removeClass('active');
         $(this.network_issue_btns[index]).addClass('active');
     },
     hoverExpiredIssueBtn:function(index){
