@@ -1070,18 +1070,19 @@ var login_page={
                 // Update button references to get current visible buttons
                 this.playlist_error_btn_doms = $('.playlist-error-btn:visible');
                 console.log('Available buttons:', this.playlist_error_btn_doms.length);
+                console.log('Button texts:', this.playlist_error_btn_doms.map(function() { return $(this).text().trim(); }).get());
                 
                 keys.playlist_error_btn += increment;
                 console.log('Index after increment:', keys.playlist_error_btn);
                 
-                // Boundary checks (same pattern as terms modal)
+                // Boundary checks with proper wrapping (like terms modal)
                 if(keys.playlist_error_btn < 0) {
-                    keys.playlist_error_btn = 0;
-                    console.log('Bounded to 0');
+                    keys.playlist_error_btn = this.playlist_error_btn_doms.length - 1;
+                    console.log('Wrapped to max:', keys.playlist_error_btn);
                 }
                 if(keys.playlist_error_btn >= this.playlist_error_btn_doms.length) {
-                    keys.playlist_error_btn = this.playlist_error_btn_doms.length - 1;
-                    console.log('Bounded to max:', keys.playlist_error_btn);
+                    keys.playlist_error_btn = 0;
+                    console.log('Wrapped to 0');
                 }
                 
                 console.log('Final index:', keys.playlist_error_btn);
