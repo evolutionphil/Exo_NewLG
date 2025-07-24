@@ -426,33 +426,31 @@ var login_page={
             $('#switch-playlist-btn').hide();
         }
 
+        // Set initial focus state
+        this.keys.focused_part = 'playlist_error_btn';
+        this.keys.playlist_error_btn = 0;
+
+        // Store visible button references
+        this.playlist_error_btn_doms = $('.playlist-error-btn:visible');
+
+        // Remove any previous modal shown handlers to prevent duplicates
+        $('#playlist-error-modal').off('shown.bs.modal');
+
         var that = this;
 
-        // Set modal as active to capture all key events (same as terms modal)
-        $('#playlist-error-modal').modal({
-            backdrop: 'static', // Prevent closing by clicking outside
-            keyboard: false     // Prevent closing with escape key (we handle it manually)
-        });
-
-        // Listen for modal shown event to ensure it's fully displayed before setting focus
+        // When modal is fully rendered, set focus properly (important for Tizen)
         $('#playlist-error-modal').on('shown.bs.modal', function() {
-            console.log('=== Modal shown event - focus ensured ===');
-            
-            // Initialize focus state after modal is fully shown
-            that.keys.focused_part = 'playlist_error_btn';
-            that.keys.playlist_error_btn = 0;
-            
-            // Store reference to playlist error buttons (refresh after modal is shown)
-            that.playlist_error_btn_doms = $('.playlist-error-btn:visible');
-            
-            console.log('=== Modal focus initialized ===');
-            console.log('Focused part:', that.keys.focused_part);
-            console.log('Button index:', that.keys.playlist_error_btn);
-            
-            // Apply initial focus
+            console.log('Playlist modal fully visible, setting focus...');
             that.hoverPlaylistErrorBtn(0);
         });
 
+        // Activate the modal and make sure background click/escape don't close it
+        $('#playlist-error-modal').modal({
+            backdrop: 'static',
+            keyboard: false
+        });
+
+        // Show the modal (this will trigger the .on('shown.bs.modal') above)
         $('#playlist-error-modal').modal('show');
     },
 
