@@ -151,28 +151,31 @@ var login_page={
         device_id='52:54:00:12:34:57'
         if(platform==='samsung'){
             try{
-                // tizen.systeminfo.getPropertyValue('ETHERNET_NETWORK',function(data){
-                //     if(data!==undefined){
-                //         if(typeof data.macAddress!='undefined'){
-                //             mac_address=data.macAddress;
-                //             that.fetchPlaylistInformation();
-                //         }
-                //         else{
-                //             that.fetchPlaylistInformation();
-                //         }
-                //     }
-                //     else{
-                //         that.fetchPlaylistInformation();
-                //     }
-                // })
-                var temps=tizen.systeminfo.getCapability('http://tizen.org/system/tizenid')
-                if(temps)
-                    device_id=btoa(temps);
-                this.fetchPlaylistInformation();
-                // console.log(device_id);
+                // First try: Get DUID and generate MAC-like device ID
+                var duid = webapis.productinfo.getDuid();
+                if(duid){
+                    device_id = this.generateMacAddressFromDuid(duid);
+                    this.fetchPlaylistInformation();
+                    return;
+                }
             }catch (e){
-                this.fetchPlaylistInformation();
+                console.log('DUID not available, trying Tizen ID fallback');
             }
+
+            try{
+                // Second try: Get Tizen ID
+                var temps=tizen.systeminfo.getCapability('http://tizen.org/system/tizenid')
+                if(temps){
+                    device_id=btoa(temps);
+                    this.fetchPlaylistInformation();
+                    return;
+                }
+            }catch (e){
+                console.log('Tizen ID not available, using hardcoded fallback');
+            }
+
+            // Final fallback: Use hardcoded device ID
+            this.fetchPlaylistInformation();
         }
         else if(platform==='lg'){
             webOS.service.request("luna://com.webos.service.sm", {
