@@ -327,6 +327,8 @@ var login_page={
     showPlaylistErrorModal:function(){
         console.log('=== Showing playlist error modal ===');
         $('#playlist-error-modal').modal('show');
+        this.keys.focused_part = 'playlist_error_btn';
+        this.keys.playlist_error_btn = 0;
         this.hoverPlaylistErrorBtn(0);
     },
     
@@ -353,6 +355,21 @@ var login_page={
         setTimeout(() => {
             this.login();
         }, 500);
+    },
+    
+    continueWithoutPlaylist:function(){
+        $('#playlist-error-modal').modal('hide');
+        this.keys.focused_part='main_area';
+        this.is_loading = false;
+        this.device_id_fetched = false;
+        
+        // Initialize with empty data and proceed to home
+        LiveModel.insertMoviesToCategories([]);
+        VodModel.insertMoviesToCategories([]);
+        SeriesModel.insertMoviesToCategories([]);
+        
+        $('#loading-page').addClass('hide');
+        home_page.init();
     },
     proceed_login:function(){
         if(this.is_loading)
@@ -522,7 +539,11 @@ var login_page={
                 $(this.expired_issue_btns[keys.expired_issue_btn]).trigger('click');
                 break;
             case "playlist_error_btn":
-                $('.playlist-error-btn').eq(keys.playlist_error_btn).trigger('click');
+                if(keys.playlist_error_btn === 0) {
+                    this.retryPlaylistLoad();
+                } else {
+                    this.continueWithoutPlaylist();
+                }
                 break;
         }
     },
