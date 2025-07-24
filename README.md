@@ -1,3 +1,0 @@
-# QuzuTVSmartTV
-
-IS a MEDIA PLAYER
