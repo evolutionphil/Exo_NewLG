@@ -470,12 +470,26 @@ var login_page={
     },
 
     closePlaylistErrorModal:function(){
+        // Force close modal completely
         $('#playlist-error-modal').modal('hide');
+        $('#playlist-error-modal').removeClass('show');
+        $('.modal-backdrop').remove();
+        $('body').removeClass('modal-open').css('padding-right', '');
+
+        // Reset focus
         this.keys.focused_part='main_area';
         this.keys.main_area = 0;
 
         // Remove modal event handlers
         $('#playlist-error-modal').off('shown.bs.modal');
+
+        // Reset demo content status display
+        $('#demo-content-status').hide();
+        $('#demo-content-message').hide();
+        $('#playlist-error-main-message').show();
+        $('#playlist-error-reasons').show();
+        $('#playlist-error-sub-message').show();
+        $('.playlist-error-btn').show();
     },
 
     retryPlaylistLoad:function(){
@@ -581,9 +595,19 @@ var login_page={
                     that.showDemoContentStatus('Demo Content', 'Using local demo content until your playlist is working');
 
                     setTimeout(function() {
+                        // Force close modal completely
                         $('#playlist-error-modal').modal('hide');
+                        $('#playlist-error-modal').removeClass('show');
+                        $('.modal-backdrop').remove();
+                        $('body').removeClass('modal-open').css('padding-right', '');
+
                         that.keys.focused_part = 'main_area';
+                        that.keys.main_area = 0;
                         that.is_loading = false;
+
+                        // Remove modal event handlers
+                        $('#playlist-error-modal').off('shown.bs.modal');
+
                         $('#loading-page').addClass('hide');
                         home_page.init();
                     }, 1500);
@@ -600,9 +624,18 @@ var login_page={
                     that.showDemoContentStatus('Error', 'No demo content available');
 
                     setTimeout(function() {
+                        // Force close modal completely
                         $('#playlist-error-modal').modal('hide');
+                        $('#playlist-error-modal').removeClass('show');
+                        $('.modal-backdrop').remove();
+                        $('body').removeClass('modal-open').css('padding-right', '');
+
                         that.keys.focused_part = 'main_area';
+                        that.keys.main_area = 0;
                         that.is_loading = false;
+
+                        // Remove modal event handlers
+                        $('#playlist-error-modal').off('shown.bs.modal');
                         // Final fallback - empty data
                         LiveModel.insertMoviesToCategories([]);
                         VodModel.insertMoviesToCategories([]);
@@ -639,7 +672,7 @@ var login_page={
                     id: demo_url.id || 'backend_demo',
                     name: demo_url.name || 'Backend Demo Content',
                     url: demo_url.url,
-                    type: demo_url.type || 'general'
+                    type: 'general'
                 };
             }
         }
@@ -673,9 +706,19 @@ var login_page={
                     that.showDemoContentStatus('Demo Content', 'Using backend demo content until your playlist is working');
 
                     setTimeout(function() {
+                        // Force close modal completely
                         $('#playlist-error-modal').modal('hide');
+                        $('#playlist-error-modal').removeClass('show');
+                        $('.modal-backdrop').remove();
+                        $('body').removeClass('modal-open').css('padding-right', '');
+
                         that.keys.focused_part = 'main_area';
+                        that.keys.main_area = 0;
                         that.is_loading = false;
+
+                        // Remove modal event handlers
+                        $('#playlist-error-modal').off('shown.bs.modal');
+
                         $('#loading-page').addClass('hide');
                         home_page.init();
                     }, 1500);
