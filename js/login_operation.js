@@ -373,6 +373,10 @@ var login_page={
         this.tried_panel_indexes = []; // Reset tried panels
         this.is_loading = false;
         this.device_id_fetched = false;
+        
+        console.log('=== DEBUG: Retrying with user playlist ===');
+        console.log('User playlist:', settings.playlist);
+        
         this.showLoadImage();
         setTimeout(() => {
             this.login();
@@ -385,13 +389,81 @@ var login_page={
         this.is_loading = false;
         this.device_id_fetched = false;
 
-        // Initialize with empty data and proceed to home
-        LiveModel.insertMoviesToCategories([]);
-        VodModel.insertMoviesToCategories([]);
-        SeriesModel.insertMoviesToCategories([]);
+        // Use demo URL from backend instead of empty data
+        if(demo_url && demo_url.trim() !== '') {
+            console.log('=== DEBUG: Loading demo content from backend ===');
+            console.log('Demo URL:', demo_url);
+            
+            // Create temporary demo playlist object without replacing user's playlist
+            var temp_demo_playlist = {
+                id: 'temp_demo',
+                name: 'Demo Content',
+                url: demo_url,
+                type: 'general'
+            };
+            
+            // Temporarily store current user playlist
+            var user_playlist = settings.playlist;
+            var user_playlist_id = settings.playlist_id;
+            
+            // Set demo playlist temporarily for loading
+            settings.playlist = temp_demo_playlist;
+            parseM3uUrl();
+            
+            // Load demo content
+            $.ajax({
+                method:'get',
+                url: demo_url,
+                timeout: 15000,
+                success: function(data) {
+                    console.log('=== DEBUG: Demo content loaded successfully ===');
+                    parseM3uResponse('type1', data);
+                    
+                    // Restore user's original playlist settings (don't replace permanently)
+                    settings.playlist = user_playlist;
+                    settings.playlist_id = user_playlist_id;
+                    
+                    $('#loading-page').addClass('hide');
+                    home_page.init();
+                    
+                    // Show notification that demo content is being used
+                    setTimeout(function() {
+                        showToast('Demo Content', 'Using demo content until your playlist is working');
+                    }, 1000);
+                },
+                error: function(error) {
+                    console.log('=== DEBUG: Demo content failed to load ===');
+                    console.log('Error:', error);
+                    
+                    // Restore user's original playlist settings
+                    settings.playlist = user_playlist;
+                    settings.playlist_id = user_playlist_id;
+                    
+                    // Fallback to empty data
+                    LiveModel.insertMoviesToCategories([]);
+                    VodModel.insertMoviesToCategories([]);
+                    SeriesModel.insertMoviesToCategories([]);
+                    
+                    $('#loading-page').addClass('hide');
+                    home_page.init();
+                    
+                    showToast('Error', 'Demo content also failed to load');
+                }
+            });
+            
+        } else {
+            console.log('=== DEBUG: No demo URL available, using empty data ===');
+            
+            // Initialize with empty data and proceed to home
+            LiveModel.insertMoviesToCategories([]);
+            VodModel.insertMoviesToCategories([]);
+            SeriesModel.insertMoviesToCategories([]);
 
-        $('#loading-page').addClass('hide');
-        home_page.init();
+            $('#loading-page').addClass('hide');
+            home_page.init();
+            
+            showToast('No Content', 'No demo content available');
+        }
     },
     proceed_login:function(){
         if(this.is_loading)
