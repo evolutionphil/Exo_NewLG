@@ -610,7 +610,7 @@ var login_page={
 
                         $('#loading-page').addClass('hide');
                         home_page.init();
-                    }, 1500);
+                    }, 1200);
                 },
                 error: function(error) {
                     console.log('=== DEBUG: Local demo content also failed ===');
@@ -721,7 +721,7 @@ var login_page={
 
                         $('#loading-page').addClass('hide');
                         home_page.init();
-                    }, 1500);
+                    }, 1200);
                 },
                 error: function(error) {
                     console.log('=== DEBUG: Backend demo content failed, trying local ===');
