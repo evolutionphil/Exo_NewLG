@@ -1,6 +1,7 @@
 "use strict";
 var login_page={
     is_loading:false,
+    device_id_fetched:false,
     keys:{
         focused_part:"main_area",
         main_area:0,
@@ -25,12 +26,14 @@ var login_page={
         $('#loading-issue-container').show();
     },
     showNetworkErrorModal:function(){
+        this.device_id_fetched = false; // Reset flag to allow retry
         this.showLoginError()
         $('#network-issue-container').removeClass('hide');
         this.hoverNetworkIssueBtn(0);
     },
     reloadApp:function(){
         var that=this;
+        this.device_id_fetched = false; // Reset flag for fresh start
         $('#loading-issue-container').hide();
         $('.loading-issue-item').addClass('hide');
         setTimeout(function () {
@@ -161,6 +164,13 @@ var login_page={
         }
     },
     getPlayListDetail:function(){
+        // Prevent multiple calls to avoid infinite loading
+        if(this.device_id_fetched) {
+            console.log('Device ID already fetched, skipping duplicate call');
+            return;
+        }
+        this.device_id_fetched = true;
+        
         var that=this;
         // mac_address='a0:d0:5b:02:d7:6a';
         // mac_address='52:54:00:12:34:59';
