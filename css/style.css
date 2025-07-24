@@ -715,6 +715,25 @@ img.info-icon {
 .modal-content.modal-color-1 {
     background: #2D0F2E;
 }
+
+#playlist-error-modal .modal-dialog {
+    max-width: 800px;
+}
+
+#playlist-error-modal .setting-modal-btn {
+    min-width: 200px;
+    padding: 15px 25px;
+    font-size: 24px;
+    margin: 0 10px;
+}
+
+#playlist-error-modal .fa {
+    color: #ddd;
+}
+
+#playlist-error-modal .setting-modal-btn.active .fa {
+    color: #fff;
+}
 #help-modal .modal-content{
     background: #36152B;
     color: #ddd;

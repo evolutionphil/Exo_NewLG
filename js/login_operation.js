@@ -7,7 +7,8 @@ var login_page={
         main_area:0,
         network_issue_btn:0,
         expired_issue_btn:0,
-        no_playlist_btn:0
+        no_playlist_btn:0,
+        playlist_error_btn:0
     },
     login_succeed:false,
     tried_panel_indexes:[],
@@ -309,15 +310,49 @@ var login_page={
         console.log('=== DEBUG goToPlaylistPageWithError ===');
         this.is_loading=false;
         this.device_id_fetched = false; // Reset flag to prevent infinite loop
+        
+        // Initialize with empty data to keep app functional
         LiveModel.insertMoviesToCategories([])
         VodModel.insertMoviesToCategories([]);
         SeriesModel.insertMoviesToCategories([]);
+        
+        // Hide loading and show home page
         $('#loading-page').addClass('hide');
         home_page.init();
-        channel_category_page.goToSettingsPage();
-        $('#playlist-error').show();
-        setting_page.hoverSettingMenu(1,2);
-        setting_page.handleMenuClick();
+        
+        // Show playlist error popup instead of redirecting
+        this.showPlaylistErrorModal();
+    },
+    
+    showPlaylistErrorModal:function(){
+        console.log('=== Showing playlist error modal ===');
+        $('#playlist-error-modal').modal('show');
+        this.hoverPlaylistErrorBtn(0);
+    },
+    
+    hoverPlaylistErrorBtn:function(index){
+        var keys=this.keys;
+        keys.focused_part='playlist_error_btn';
+        keys.playlist_error_btn=index;
+        $('.playlist-error-btn').removeClass('active');
+        $('.playlist-error-btn').eq(index).addClass('active');
+    },
+    
+    closePlaylistErrorModal:function(){
+        $('#playlist-error-modal').modal('hide');
+        this.keys.focused_part='main_area';
+    },
+    
+    retryPlaylistLoad:function(){
+        $('#playlist-error-modal').modal('hide');
+        this.keys.focused_part='main_area';
+        this.tried_panel_indexes = []; // Reset tried panels
+        this.is_loading = false;
+        this.device_id_fetched = false;
+        this.showLoadImage();
+        setTimeout(() => {
+            this.login();
+        }, 500);
     },
     proceed_login:function(){
         if(this.is_loading)
@@ -422,6 +457,7 @@ var login_page={
                     console.log('Error:', error);
                     console.log('Status:', error.status);
                     console.log('StatusText:', error.statusText);
+                    that.is_loading=false;
                     that.goToPlaylistPageWithError();
                 },
                 timeout: 15000
@@ -446,19 +482,7 @@ var login_page={
                     console.log('Status:', error.status);
                     console.log('StatusText:', error.statusText);
                     
-                    // Browser test mode - bypass playlist error for testing
-                    if(env === 'develop' && (error.status === 0 || error.statusText === 'error')) {
-                        console.log('=== BROWSER TEST MODE - Bypassing playlist error ===');
-                        // Create empty data for testing
-                        LiveModel.insertMoviesToCategories([]);
-                        VodModel.insertMoviesToCategories([]);
-                        SeriesModel.insertMoviesToCategories([]);
-                        $('#loading-page').addClass('hide');
-                        home_page.init();
-                        that.is_loading=false;
-                        return;
-                    }
-                    
+                    that.is_loading=false;
                     that.goToPlaylistPageWithError();
                 }
             })
@@ -496,6 +520,9 @@ var login_page={
                 break;
             case "expired_issue_btn":
                 $(this.expired_issue_btns[keys.expired_issue_btn]).trigger('click');
+                break;
+            case "playlist_error_btn":
+                $('.playlist-error-btn').eq(keys.playlist_error_btn).trigger('click');
                 break;
         }
     },
@@ -540,6 +567,14 @@ var login_page={
                 if(keys.no_playlist_btn>1)
                     keys.no_playlist_btn=1;
                 this.hoverNoPlaylistBtn(keys.no_playlist_btn);
+                break;
+            case "playlist_error_btn":
+                keys.playlist_error_btn+=increment;
+                if(keys.playlist_error_btn<0)
+                    keys.playlist_error_btn=0;
+                if(keys.playlist_error_btn>1)
+                    keys.playlist_error_btn=1;
+                this.hoverPlaylistErrorBtn(keys.playlist_error_btn);
                 break;
         }
     },

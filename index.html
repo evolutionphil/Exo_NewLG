@@ -122,6 +122,52 @@
             </div>
         </div>
     </div>
+    
+    <!-- Playlist Error Modal -->
+    <div class="modal" id="playlist-error-modal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content modal-color-1">
+                <div class="modal-header modal-header-bg-img-1">
+                    <h5 class="modal-title modal-title-text-2">
+                        <i class="fa fa-exclamation-triangle" style="margin-right: 15px; color: #ff4832;"></i>
+                        Playlist Connection Error
+                    </h5>
+                </div>
+                <div class="modal-body modal-body-bg-img-1">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="color: #ddd; font-size: 28px; font-weight: normal; margin-bottom: 20px;">
+                            Unable to load your playlist content. This could be due to:
+                        </div>
+                        <div style="color: #bbb; font-size: 24px; font-weight: normal; text-align: left; margin: 20px 0;">
+                            <div style="margin-bottom: 10px;">• Network connection issues</div>
+                            <div style="margin-bottom: 10px;">• Playlist server is temporarily unavailable</div>
+                            <div style="margin-bottom: 10px;">• Mixed content security restrictions</div>
+                            <div style="margin-bottom: 10px;">• Invalid playlist credentials</div>
+                        </div>
+                        <div style="color: #ddd; font-size: 26px; font-weight: normal; margin-top: 20px;">
+                            You can continue using the app with limited functionality or retry loading your playlist.
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <button class="playlist-error-btn setting-modal-btn bg-focus" 
+                                onclick="login_page.retryPlaylistLoad()" 
+                                onmouseenter="login_page.hoverPlaylistErrorBtn(0)"
+                                style="margin-right: 20px;">
+                            <i class="fa fa-refresh" style="margin-right: 10px;"></i>
+                            Retry Loading
+                        </button>
+                        <button class="playlist-error-btn setting-modal-btn bg-focus" 
+                                onclick="login_page.closePlaylistErrorModal()"
+                                onmouseenter="login_page.hoverPlaylistErrorBtn(1)">
+                            <i class="fa fa-check" style="margin-right: 10px;"></i>
+                            Continue Anyway
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <div id="app" style="display: none">
         <div id="home-page" class="page-container1 hide">
             <div id="reseller-notification"></div>
