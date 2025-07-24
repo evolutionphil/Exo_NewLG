@@ -69,16 +69,16 @@ var login_page={
             app_type:platform,
             version:version
         }
-        
+
         // Debug logging
         console.log('=== DEBUG fetchPlaylistInformation ===');
         console.log('Panel URL:', url);
         console.log('Device ID:', device_id);
         console.log('Platform:', platform);
         console.log('Data to send:', data);
-        
+
         var encrypted_data=encryptRequest(data);
-        
+
         $.ajax({
             url: url+"/device_info",
             type: "POST",
@@ -90,34 +90,34 @@ var login_page={
             success: function (data1) {
                 console.log('=== DEBUG API Success ===');
                 console.log('Raw response:', data1);
-                
+
                 try {
                     var data=decryptResponse(data1);
                     console.log('Decrypted data:', data);
-                    
+
                     // Check if response is valid
                     if(!data || typeof data !== 'object') {
                         console.error('Invalid response format:', data);
                         throw new Error('Invalid response format');
                     }
-                    
+
                     // Check if backend MAC generation failed
                     if(!data.mac_address || data.mac_address.trim() === '') {
                         console.error('Backend MAC generation failed - no MAC address returned');
                         throw new Error('No MAC address in response');
                     }
-                    
+
                     console.log('MAC Address received:', data.mac_address);
-                    
+
                     that.tried_panel_indexes=[];
                     localStorage.setItem(storage_id+'api_data',JSON.stringify(data));
                     that.loadApp(data);
-                    
+
                 } catch(decryptError) {
                     console.error('=== DEBUG Decryption/Processing Error ===');
                     console.error('Error:', decryptError);
                     console.error('Raw response that failed:', data1);
-                    
+
                     // Try next panel URL
                     if(that.tried_panel_indexes.length<panel_urls.length){
                         that.is_loading=false;
@@ -142,7 +142,7 @@ var login_page={
                 console.log('Panel URL that failed:', url);
                 console.log('Tried panel indexes:', that.tried_panel_indexes);
                 console.log('Total panel URLs:', panel_urls.length);
-                
+
                 // Specific error handling
                 if(xhr.status === 0) {
                     console.error('Network error - possible CORS, timeout, or connectivity issue');
@@ -151,7 +151,7 @@ var login_page={
                 } else if(xhr.status >= 400) {
                     console.error('Client error:', xhr.status);
                 }
-                
+
                 if(that.tried_panel_indexes.length<panel_urls.length){
                     that.is_loading=false;
                     that.tried_panel_indexes.push(url_index);
@@ -225,7 +225,7 @@ var login_page={
             return;
         }
         this.device_id_fetched = true;
-        
+
         var that=this;
         // mac_address='a0:d0:5b:02:d7:6a';
         // mac_address='52:54:00:12:34:59';
@@ -308,22 +308,22 @@ var login_page={
     },
     goToPlaylistPageWithError:function(){
         console.log('=== DEBUG goToPlaylistPageWithError ===');
-        this.is_loading=false;
+        this.is_loading = false;
         this.device_id_fetched = false; // Reset flag to prevent infinite loop
-        
+
         // Initialize with empty data to keep app functional
         LiveModel.insertMoviesToCategories([])
         VodModel.insertMoviesToCategories([]);
         SeriesModel.insertMoviesToCategories([]);
-        
+
         // Hide loading and show home page
         $('#loading-page').addClass('hide');
         home_page.init();
-        
+
         // Show playlist error popup instead of redirecting
         this.showPlaylistErrorModal();
     },
-    
+
     showPlaylistErrorModal:function(){
         console.log('=== Showing playlist error modal ===');
         $('#playlist-error-modal').modal('show');
@@ -331,7 +331,7 @@ var login_page={
         this.keys.playlist_error_btn = 0;
         this.hoverPlaylistErrorBtn(0);
     },
-    
+
     hoverPlaylistErrorBtn:function(index){
         var keys=this.keys;
         keys.focused_part='playlist_error_btn';
@@ -339,12 +339,12 @@ var login_page={
         $('.playlist-error-btn').removeClass('active');
         $('.playlist-error-btn').eq(index).addClass('active');
     },
-    
+
     closePlaylistErrorModal:function(){
         $('#playlist-error-modal').modal('hide');
         this.keys.focused_part='main_area';
     },
-    
+
     retryPlaylistLoad:function(){
         $('#playlist-error-modal').modal('hide');
         this.keys.focused_part='main_area';
@@ -356,18 +356,18 @@ var login_page={
             this.login();
         }, 500);
     },
-    
+
     continueWithoutPlaylist:function(){
         $('#playlist-error-modal').modal('hide');
         this.keys.focused_part='main_area';
         this.is_loading = false;
         this.device_id_fetched = false;
-        
+
         // Initialize with empty data and proceed to home
         LiveModel.insertMoviesToCategories([]);
         VodModel.insertMoviesToCategories([]);
         SeriesModel.insertMoviesToCategories([]);
-        
+
         $('#loading-page').addClass('hide');
         home_page.init();
     },
@@ -457,6 +457,7 @@ var login_page={
                                     VodModel.insertMoviesToCategories();
                                     SeriesModel.insertMoviesToCategories();
                                     that.is_loading=false;
+                                    that.retry_count = 0; // Reset retry count on success
                                     home_page.init();
                                 }catch (e) {
                                     console.log(e);
@@ -498,7 +499,7 @@ var login_page={
                     console.log('Error:', error);
                     console.log('Status:', error.status);
                     console.log('StatusText:', error.statusText);
-                    
+
                     that.is_loading=false;
                     that.goToPlaylistPageWithError();
                 }
