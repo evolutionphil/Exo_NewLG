@@ -444,21 +444,34 @@ var login_page={
             console.log('Active element before focus:', document.activeElement);
             console.log('Modal z-index:', $('#playlist-error-modal').css('z-index'));
             
-            // Force modal focus state
+            // CRITICAL: Force modal focus state immediately
             that.keys.focused_part = 'playlist_error_btn';
             that.keys.playlist_error_btn = 0;
             
-            // Ensure modal is properly on top and focusable
-            $('#playlist-error-modal').attr('tabindex', '-1');
+            // Ensure modal completely captures all focus
+            $('#playlist-error-modal').attr('tabindex', '0');
+            $('#playlist-error-modal').focus();
             
-            // Remove focus from background elements
-            $('body').removeClass('modal-open').addClass('modal-open');
+            // Block all background interactions completely
+            $('body').addClass('modal-open');
+            $('.modal-backdrop').css('z-index', '9998');
+            $('#playlist-error-modal').css('z-index', '9999');
+            
+            // Disable all background elements
+            $('*').not('#playlist-error-modal, #playlist-error-modal *').attr('tabindex', '-1');
             
             setTimeout(function() {
+                // Force focus state
+                that.keys.focused_part = 'playlist_error_btn';
                 that.hoverPlaylistErrorBtn(0);
+                
+                // Ensure the modal itself has focus
+                $('#playlist-error-modal').focus();
+                
                 console.log('Modal focus state set to:', that.keys.focused_part);
                 console.log('Active element after focus:', document.activeElement);
-            }, 100);
+                console.log('Modal focused_part:', that.keys.focused_part);
+            }, 150);
         });
 
         // Activate the modal and make sure background click/escape don't close it
@@ -530,6 +543,9 @@ var login_page={
         // Close modal (same as terms modal goBack method)
         $('#playlist-error-modal').modal('hide');
         
+        // CRITICAL: Restore all background element tabindex
+        $('*').removeAttr('tabindex');
+        
         // Reset focus state (same pattern as terms modal)
         this.keys.focused_part = 'main_area';
         this.keys.main_area = 0;
@@ -541,6 +557,11 @@ var login_page={
         $('#playlist-error-reasons').show();
         $('#playlist-error-sub-message').show();
         $('.playlist-error-btn').show();
+        
+        // Remove modal event handlers
+        $('#playlist-error-modal').off('shown.bs.modal');
+        
+        console.log('Modal closed, focus restored to:', this.keys.focused_part);
     },
 
     retryPlaylistLoad:function(){
@@ -1104,45 +1125,60 @@ var login_page={
         console.log('Current focused_part:', this.keys.focused_part);
         console.log('Final isModalOpen:', isModalOpen);
 
+        // Force modal state if any modal is visible
+        if($('#playlist-error-modal').is(':visible') || $('#playlist-error-modal').hasClass('show')) {
+            console.log('=== FORCING MODAL STATE - Modal is visible ===');
+            this.keys.focused_part = 'playlist_error_btn';
+            isModalOpen = true;
+        }
+
         if(isModalOpen) {
             console.log('=== Modal is open - handling key and preventing default ===');
             
-            // Prevent default behavior and stop propagation to ensure modal captures the event
+            // CRITICAL: Prevent all default behavior and stop propagation immediately
             e.preventDefault();
             e.stopPropagation();
+            e.stopImmediatePropagation();
             
             // Handle keys for playlist error modal (same pattern as terms modal)
             switch(e.keyCode) {
                 case tvKey.RIGHT:
+                case 39: // Right arrow key code
                     console.log('RIGHT key pressed in modal');
                     this.handleMenuLeftRight(1);
-                    break;
+                    return false;
                 case tvKey.LEFT:
+                case 37: // Left arrow key code
                     console.log('LEFT key pressed in modal');
                     this.handleMenuLeftRight(-1);
-                    break;
+                    return false;
                 case tvKey.DOWN:
+                case 40: // Down arrow key code
                     console.log('DOWN key pressed in modal (treating as RIGHT)');
                     // In playlist error modal, treat DOWN as RIGHT movement
                     this.handleMenuLeftRight(1);
-                    break;
+                    return false;
                 case tvKey.UP:
+                case 38: // Up arrow key code
                     console.log('UP key pressed in modal (treating as LEFT)');
                     // In playlist error modal, treat UP as LEFT movement
                     this.handleMenuLeftRight(-1);
-                    break;
+                    return false;
                 case tvKey.ENTER:
+                case 13: // Enter key code
                     console.log('ENTER key pressed in modal');
                     this.handleMenuClick();
-                    break;
+                    return false;
                 case tvKey.RETURN:
+                case 8: // Backspace key code
+                case 27: // Escape key code
                     console.log('RETURN key pressed in modal');
                     this.closePlaylistErrorModal();
-                    break;
+                    return false;
                 default:
                     console.log('Unhandled key in modal:', e.keyCode);
+                    return false; // Block all other keys when modal is open
             }
-            return false; // Prevent other keys from being processed when modal is open
         } else {
             console.log('=== Modal not open - normal key handling ===');
         }
