@@ -1065,6 +1065,9 @@ var login_page={
         console.log('Modal open:', isModalOpen);
         console.log('Current focused_part:', this.keys.focused_part);
         console.log('Current button index:', this.keys.playlist_error_btn);
+        console.log('Active element:', document.activeElement);
+        console.log('Modal z-index:', $('#playlist-error-modal').css('z-index'));
+        console.log('Body classes:', $('body').attr('class'));
 
         if(isModalOpen) {
             console.log('=== Modal is open - handling key ===');
