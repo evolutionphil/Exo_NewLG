@@ -34,9 +34,16 @@ var login_page={
     },
     reloadApp:function(){
         var that=this;
-        this.device_id_fetched = false; // Reset flag for fresh start
+        // Reset all state flags to prevent infinite loops
+        this.device_id_fetched = false;
+        this.is_loading = false;
+        this.tried_panel_indexes = [];
+        
+        // Hide all error containers and modals
         $('#loading-issue-container').hide();
         $('.loading-issue-item').addClass('hide');
+        $('#playlist-error-modal').modal('hide');
+        
         setTimeout(function () {
             that.fetchPlaylistInformation();
         },200)

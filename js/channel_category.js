@@ -304,6 +304,17 @@ var channel_category_page={
         $('#app').hide();
         $('#loading-page').removeClass('hide');
         $(this.prev_focus_dom).removeClass('active');
+        
+        // Reset login page state to prevent infinite loops
+        login_page.is_loading = false;
+        login_page.device_id_fetched = false;
+        login_page.tried_panel_indexes = [];
+        
+        // Hide any existing error modals
+        $('#playlist-error-modal').modal('hide');
+        $('.loading-issue-item').addClass('hide');
+        $('#loading-issue-container').hide();
+        
         login_page.getPlayListDetail();
     },
     goToSettingsPage:function (){
