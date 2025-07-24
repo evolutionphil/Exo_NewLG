@@ -846,10 +846,9 @@ var login_page={
                 url:api_host_url,
                 timeout:240000,
                 success:function (data) {
-                    ```text
                     console.log('=== DEBUG M3U Success ===');
                     parseM3uResponse('type1',data);
-                   $('#loading-page').addClass('hide');
+                    $('#loading-page').addClass('hide');
                     home_page.init();
                     that.is_loading=false;
                 },
