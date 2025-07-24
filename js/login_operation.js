@@ -416,15 +416,31 @@ var login_page={
             $('#switch-playlist-btn').hide();
         }
 
+        var that = this;
+        
         // Set modal as active to capture all key events
         $('#playlist-error-modal').modal('show');
+        
+        // Force focus state immediately
         this.keys.focused_part = 'playlist_error_btn';
         this.keys.playlist_error_btn = 0;
-        this.hoverPlaylistErrorBtn(0);
+        
+        // Small delay to ensure DOM is ready
+        setTimeout(function() {
+            that.hoverPlaylistErrorBtn(0);
+            console.log('=== Modal focus initialized ===');
+            console.log('Focused part:', that.keys.focused_part);
+            console.log('Button index:', that.keys.playlist_error_btn);
+        }, 100);
 
         // Ensure modal captures focus and prevents background navigation
         $('#playlist-error-modal').on('shown.bs.modal', function() {
             $(this).focus();
+            // Double-check focus state
+            that.keys.focused_part = 'playlist_error_btn';
+            that.keys.playlist_error_btn = 0;
+            that.hoverPlaylistErrorBtn(0);
+            console.log('=== Modal shown event - focus ensured ===');
         });
     },
 
@@ -432,12 +448,24 @@ var login_page={
         var keys=this.keys;
         keys.focused_part='playlist_error_btn';
         keys.playlist_error_btn=index;
+        
+        console.log('=== Hovering playlist error button ===');
+        console.log('Index:', index);
+        
         $('.playlist-error-btn').removeClass('active');
 
         // Only hover visible buttons
         var visibleButtons = $('.playlist-error-btn:visible');
-        if(index < visibleButtons.length) {
+        console.log('Visible buttons count:', visibleButtons.length);
+        
+        if(index < visibleButtons.length && index >= 0) {
             visibleButtons.eq(index).addClass('active');
+            console.log('Applied active class to button:', index);
+        } else {
+            // If index is out of bounds, reset to first button
+            keys.playlist_error_btn = 0;
+            visibleButtons.eq(0).addClass('active');
+            console.log('Index out of bounds, reset to 0');
         }
     },
 
@@ -939,37 +967,69 @@ var login_page={
                 var visibleButtons = $('.playlist-error-btn:visible');
                 var maxIndex = visibleButtons.length - 1;
 
-                keys.playlist_error_btn+=increment;
-                if(keys.playlist_error_btn<0)
-                    keys.playlist_error_btn=0;
-                if(keys.playlist_error_btn>maxIndex)
-                    keys.playlist_error_btn=maxIndex;
+                console.log('=== Left/Right navigation ===');
+                console.log('Current index:', keys.playlist_error_btn);
+                console.log('Increment:', increment);
+                console.log('Max index:', maxIndex);
+
+                keys.playlist_error_btn += increment;
+                
+                // Wrap around navigation
+                if(keys.playlist_error_btn < 0)
+                    keys.playlist_error_btn = maxIndex;
+                if(keys.playlist_error_btn > maxIndex)
+                    keys.playlist_error_btn = 0;
+                
+                console.log('New index:', keys.playlist_error_btn);
                 this.hoverPlaylistErrorBtn(keys.playlist_error_btn);
                 break;
         }
     },
     HandleKey:function(e) {
-        // If playlist error modal is open, handle only modal keys and prevent background navigation
-        if($('#playlist-error-modal').hasClass('show')) {
+        // Check if playlist error modal is visible and active
+        var isModalOpen = $('#playlist-error-modal').is(':visible') && 
+                         ($('#playlist-error-modal').hasClass('show') || $('#playlist-error-modal').css('display') !== 'none');
+        
+        if(isModalOpen) {
+            console.log('=== Modal Key Handler ===');
+            console.log('Key pressed:', e.keyCode);
+            console.log('Current focused_part:', this.keys.focused_part);
+            console.log('Current playlist_error_btn:', this.keys.playlist_error_btn);
+            
+            // Prevent all background navigation
             e.preventDefault();
             e.stopPropagation();
+            e.stopImmediatePropagation();
+            
+            // Force focus to modal buttons if not already focused
+            if(this.keys.focused_part !== 'playlist_error_btn') {
+                this.keys.focused_part = 'playlist_error_btn';
+                this.keys.playlist_error_btn = 0;
+                this.hoverPlaylistErrorBtn(0);
+            }
             
             switch(e.keyCode){
                 case tvKey.LEFT:
+                    console.log('LEFT key pressed in modal');
                     this.handleMenuLeftRight(-1);
                     break;
                 case tvKey.RIGHT:
+                    console.log('RIGHT key pressed in modal');
                     this.handleMenuLeftRight(1);
                     break;
                 case tvKey.ENTER:
+                    console.log('ENTER key pressed in modal');
                     this.handleMenuClick();
                     break;
                 case tvKey.RETURN:
-                    // Close modal on return key
+                    console.log('RETURN key pressed in modal - closing');
                     this.closePlaylistErrorModal();
                     break;
+                default:
+                    console.log('Unhandled key in modal:', e.keyCode);
+                    break;
             }
-            return;
+            return false; // Ensure no further processing
         }
 
         if(e.keyCode===tvKey.RETURN){
