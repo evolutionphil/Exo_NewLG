@@ -291,10 +291,12 @@ var login_page={
     },
     login:function(){
         console.log('=== DEBUG login() called ===');
+        console.log('=== DEBUG playlist_urls ===', playlist_urls);
+        console.log('=== DEBUG has_playlist ===', has_playlist);
         this.showLoadImage();
 
-        // Check if user has uploaded playlists
-        if(has_playlist && playlist_urls && playlist_urls.length > 0){
+        // Check if user has uploaded playlists (non-empty playlist_urls)
+        if(playlist_urls && playlist_urls.length > 0){
             var playlist_id = settings.playlist_id;
             var playlist_index = 0;
 
@@ -307,7 +309,7 @@ var login_page={
             }
 
             var user_playlist = playlist_urls[playlist_index];
-            console.log('=== DEBUG: Using user uploaded playlist ===');
+            console.log('=== DEBUG: User has uploaded playlists - using user playlist ===');
             console.log('Using playlist:', user_playlist);
             settings.saveSettings('playlist', user_playlist, 'array');
             settings.saveSettings('playlist_id', user_playlist.id, '');
@@ -315,10 +317,65 @@ var login_page={
             console.log('Parsed M3U URL - API Host:', api_host_url);
             this.proceed_login();
         } else {
-            // No uploaded playlists, use local demo playlist as fallback
-            var local_demo_playlist = {
-                id: 'local_demo',
-                name: 'Local Demo Playlist',
+            // No uploaded playlists (empty playlist_urls) - use demo content
+            console.log('=== DEBUG: No uploaded playlists found ===');
+            console.log('=== DEBUG: Checking demo_url ===', demo_url);
+            
+            this.tryDemoContent();
+        }
+    },
+
+    tryDemoContent:function(){
+        var that = this;
+        
+        // First try backend demo URL if available
+        var backend_demo_url = null;
+        var backend_demo_playlist = null;
+        
+        if(demo_url) {
+            // Handle both string and object formats
+            if(typeof demo_url === 'string' && demo_url.trim() !== '') {
+                backend_demo_url = demo_url;
+                backend_demo_playlist = {
+                    id: 'backend_demo',
+                    name: 'Backend Demo Content',
+                    url: backend_demo_url,
+                    type: 'general'
+                };
+            } else if(typeof demo_url === 'object' && demo_url.url && demo_url.url.trim() !== '') {
+                backend_demo_url = demo_url.url;
+                backend_demo_playlist = {
+                    id: demo_url.id || 'backend_demo',
+                    name: demo_url.name || 'Backend Demo Content',
+                    url: demo_url.url,
+                    type: demo_url.type || 'general'
+                };
+            }
+        }
+        
+        if(backend_demo_url && backend_demo_playlist) {
+            console.log('=== DEBUG: Trying backend demo URL ===');
+            console.log('Backend Demo URL:', backend_demo_url);
+            console.log('Backend Demo Playlist:', backend_demo_playlist);
+
+            // Set backend demo playlist
+            settings.saveSettings('playlist', backend_demo_playlist, 'array');
+            settings.saveSettings('playlist_id', backend_demo_playlist.id, '');
+            parseM3uUrl();
+            console.log('Parsed M3U URL - API Host:', api_host_url);
+            
+            // Try to load backend demo content
+            this.proceed_login();
+        } else {
+            console.log('=== DEBUG: No backend demo URL, using local demo playlist ===');
+            this.useLocalDemoPlaylist();
+        }
+    },
+
+    useLocalDemoPlaylist:function(){
+        var local_demo_playlist = {
+            id: 'local_demo',
+            name: 'Local Demo Playlist',
                 url: './tv_channels_flixdemo_plus.m3u',
                 type: 'general'
             };
@@ -726,7 +783,19 @@ var login_page={
                     console.log('Status:', error.status);
                     console.log('StatusText:', error.statusText);
                     that.is_loading=false;
-                    that.goToPlaylistPageWithError();
+                    
+                    // If this was a user playlist that failed, show error modal
+                    // If this was demo content that failed, try local demo
+                    if(settings.playlist.id === 'backend_demo') {
+                        console.log('=== DEBUG: Backend demo failed, trying local demo ===');
+                        that.useLocalDemoPlaylist();
+                    } else if(settings.playlist.id === 'local_demo') {
+                        console.log('=== DEBUG: Local demo also failed ===');
+                        that.goToPlaylistPageWithError();
+                    } else {
+                        // User playlist failed
+                        that.goToPlaylistPageWithError();
+                    }
                 },
                 timeout: 15000
             })
@@ -751,7 +820,19 @@ var login_page={
                     console.log('StatusText:', error.statusText);
 
                     that.is_loading=false;
-                    that.goToPlaylistPageWithError();
+                    
+                    // If this was a user playlist that failed, show error modal
+                    // If this was demo content that failed, try local demo
+                    if(settings.playlist.id === 'backend_demo') {
+                        console.log('=== DEBUG: Backend demo failed, trying local demo ===');
+                        that.useLocalDemoPlaylist();
+                    } else if(settings.playlist.id === 'local_demo') {
+                        console.log('=== DEBUG: Local demo also failed ===');
+                        that.goToPlaylistPageWithError();
+                    } else {
+                        // User playlist failed
+                        that.goToPlaylistPageWithError();
+                    }
                 }
             })
         }
