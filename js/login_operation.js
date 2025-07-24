@@ -285,12 +285,12 @@ var login_page={
     login:function(){
         console.log('=== DEBUG login() called ===');
         this.showLoadImage();
-        
+
         // Check if user has uploaded playlists
         if(has_playlist && playlist_urls && playlist_urls.length > 0){
             var playlist_id = settings.playlist_id;
             var playlist_index = 0;
-            
+
             // Find user's preferred playlist
             for(var i = 0; i < playlist_urls.length; i++){
                 if(playlist_urls[i].id == playlist_id){
@@ -298,7 +298,7 @@ var login_page={
                     break;
                 }
             }
-            
+
             var user_playlist = playlist_urls[playlist_index];
             console.log('=== DEBUG: Using user uploaded playlist ===');
             console.log('Using playlist:', user_playlist);
@@ -324,10 +324,10 @@ var login_page={
             this.proceed_login();
         }
     },
-    
-    
-    
-    
+
+
+
+
     goToPlaylistPageWithError:function(){
         console.log('=== DEBUG goToPlaylistPageWithError ===');
         this.is_loading = false;
@@ -373,10 +373,10 @@ var login_page={
         this.tried_panel_indexes = []; // Reset tried panels
         this.is_loading = false;
         this.device_id_fetched = false;
-        
+
         console.log('=== DEBUG: Retrying with user playlist ===');
         console.log('User playlist:', settings.playlist);
-        
+
         this.showLoadImage();
         setTimeout(() => {
             this.login();
@@ -391,13 +391,13 @@ var login_page={
 
         console.log('=== DEBUG: Continue without playlist called ===');
         console.log('Backend demo_url:', demo_url);
-        
+
         // Temporarily store current user playlist
         var user_playlist = settings.playlist;
         var user_playlist_id = settings.playlist_id;
-        
+
         var that = this;
-        
+
         // Function to try local demo playlist
         function tryLocalDemo() {
             console.log('=== DEBUG: Trying local demo playlist ===');
@@ -407,11 +407,11 @@ var login_page={
                 url: './tv_channels_flixdemo_plus.m3u',
                 type: 'general'
             };
-            
+
             // Set local demo playlist temporarily
             settings.playlist = local_demo_playlist;
             parseM3uUrl();
-            
+
             $.ajax({
                 method: 'get',
                 url: './tv_channels_flixdemo_plus.m3u',
@@ -419,14 +419,14 @@ var login_page={
                 success: function(data) {
                     console.log('=== DEBUG: Local demo content loaded successfully ===');
                     parseM3uResponse('type1', data);
-                    
+
                     // Restore user's original playlist settings
                     settings.playlist = user_playlist;
                     settings.playlist_id = user_playlist_id;
-                    
+
                     $('#loading-page').addClass('hide');
                     home_page.init();
-                    
+
                     setTimeout(function() {
                         showToast('Demo Content', 'Using local demo content until your playlist is working');
                     }, 1000);
@@ -434,55 +434,65 @@ var login_page={
                 error: function(error) {
                     console.log('=== DEBUG: Local demo content also failed ===');
                     console.log('Error:', error);
-                    
+
                     // Restore user's original playlist settings
                     settings.playlist = user_playlist;
                     settings.playlist_id = user_playlist_id;
-                    
+
                     // Final fallback - empty data
                     LiveModel.insertMoviesToCategories([]);
                     VodModel.insertMoviesToCategories([]);
                     SeriesModel.insertMoviesToCategories([]);
-                    
+
                     $('#loading-page').addClass('hide');
                     home_page.init();
-                    
+
                     showToast('Error', 'No demo content available');
                 }
             });
         }
 
         // First try backend demo URL if available
-        if(demo_url && demo_url.trim() !== '') {
+        var backend_demo_url = null;
+        if(demo_url) {
+            // Handle both string and object formats
+            if(typeof demo_url === 'string' && demo_url.trim() !== '') {
+                backend_demo_url = demo_url;
+            } else if(typeof demo_url === 'object' && demo_url.url && demo_url.url.trim() !== '') {
+                backend_demo_url = demo_url.url;
+            }
+        }
+
+        if(backend_demo_url) {
             console.log('=== DEBUG: Trying backend demo URL ===');
-            console.log('Backend Demo URL:', demo_url);
-            
+            console.log('Backend Demo URL:', backend_demo_url);
+
             var backend_demo_playlist = {
                 id: 'backend_demo',
                 name: 'Backend Demo Content',
-                url: demo_url,
+                url: backend_demo_url,
                 type: 'general'
             };
-            
+
             // Set backend demo playlist temporarily
             settings.playlist = backend_demo_playlist;
             parseM3uUrl();
-            
+
             $.ajax({
                 method: 'get',
-                url: demo_url,
+                url: backend_demo_url,
                 timeout: 15000,
                 success: function(data) {
                     console.log('=== DEBUG: Backend demo content loaded successfully ===');
                     parseM3uResponse('type1', data);
-                    
+
                     // Restore user's original playlist settings
                     settings.playlist = user_playlist;
                     settings.playlist_id = user_playlist_id;
-                    
+
                     $('#loading-page').addClass('hide');
                     home_page.init();
-                    
+
                     setTimeout(function() {
                         showToast('Demo Content', 'Using backend demo content until your playlist is working');
                     }, 1000);
@@ -490,11 +500,11 @@ var login_page={
                 error: function(error) {
                     console.log('=== DEBUG: Backend demo content failed, trying local ===');
                     console.log('Backend demo error:', error);
-                    
+
                     // Restore user's original playlist settings first
                     settings.playlist = user_playlist;
                     settings.playlist_id = user_playlist_id;
-                    
+
                     // Try local demo as fallback
                     tryLocalDemo();
                 }
