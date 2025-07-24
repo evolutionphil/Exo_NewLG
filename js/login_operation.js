@@ -570,12 +570,6 @@ var login_page={
         if(playlist_type==='xtreme'){
             var  prefix_url=api_host_url+'/player_api.php?username='+user_name+'&password='+password+'&action=';
             var login_url=prefix_url.replace("&action=","");
-            
-            // Use proxy for HTTP URLs to avoid mixed content issues
-            if(login_url.startsWith('http://')) {
-                login_url = '/proxy?url=' + encodeURIComponent(login_url);
-                prefix_url = '/proxy?url=' + encodeURIComponent(prefix_url);
-            }
             $.ajax({
                 method:'get',
                 url:login_url,
@@ -594,53 +588,45 @@ var login_page={
                             //     var exp_date_obj=moment(data.user_info.exp_date*1000);
                             //     $('.expire-date').text(exp_date_obj.format('Y-MM-DD'));
                             // }
-                            // Helper function to get proxied URL if needed
-                            var getProxiedUrl = function(url) {
-                                if(api_host_url.startsWith('http://')) {
-                                    return '/proxy?url=' + encodeURIComponent(url);
-                                }
-                                return url;
-                            };
-
                             $.when(
                                 $.ajax({
                                     method:'get',
-                                    url:getProxiedUrl(prefix_url+'get_live_streams'),
+                                    url:prefix_url+'get_live_streams',
                                     success:function (data) {
                                         LiveModel.setMovies(data);
                                     }
                                 }),
                                 $.ajax({
                                     method:'get',
-                                    url:getProxiedUrl(prefix_url+'get_live_categories'),
+                                    url:prefix_url+'get_live_categories',
                                     success:function (data) {
                                         LiveModel.setCategories(data);
                                     }
                                 }),
                                 $.ajax({
                                     method:'get',
-                                    url:getProxiedUrl(prefix_url+'get_vod_categories'),
+                                    url:prefix_url+'get_vod_categories',
                                     success:function (data) {
                                         VodModel.setCategories(data);
                                     }
                                 }),
                                 $.ajax({
                                     method:'get',
-                                    url:getProxiedUrl(prefix_url+'get_series_categories'),
+                                    url:prefix_url+'get_series_categories',
                                     success:function (data) {
                                         SeriesModel.setCategories(data);
                                     }
                                 }),
                                 $.ajax({
                                     method:'get',
-                                    url:getProxiedUrl(prefix_url+'get_vod_streams'),
+                                    url:prefix_url+'get_vod_streams',
                                     success:function (data) {
                                         VodModel.setMovies(data);
                                     }
                                 }),
                                 $.ajax({
                                     method:'get',
-                                    url:getProxiedUrl(prefix_url+'get_series'),
+                                    url:prefix_url+'get_series',
                                     success:function (data) {
                                         SeriesModel.setMovies(data);
                                     }
@@ -678,16 +664,9 @@ var login_page={
         }
         else{
             api_host_url=settings.playlist.url;
-            var playlist_url = api_host_url;
-            
-            // Use proxy for HTTP URLs to avoid mixed content issues
-            if(playlist_url.startsWith('http://')) {
-                playlist_url = '/proxy?url=' + encodeURIComponent(playlist_url);
-            }
-            
             $.ajax({
                 method:'get',
-                url:playlist_url,
+                url:api_host_url,
                 timeout:240000,
                 success:function (data) {
                     console.log('=== DEBUG M3U Success ===');
