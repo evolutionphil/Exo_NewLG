@@ -376,17 +376,16 @@ var login_page={
         var local_demo_playlist = {
             id: 'local_demo',
             name: 'Local Demo Playlist',
-                url: './tv_channels_flixdemo_plus.m3u',
-                type: 'general'
-            };
-            settings.saveSettings('playlist', local_demo_playlist, 'array');
-            settings.saveSettings('playlist_id', local_demo_playlist.id, '');
-            console.log('=== DEBUG: No user playlists found, using local demo playlist ===');
-            console.log('Local playlist:', local_demo_playlist);
-            parseM3uUrl();
-            console.log('Parsed M3U URL - API Host:', api_host_url);
-            this.proceed_login();
-        }
+            url: './tv_channels_flixdemo_plus.m3u',
+            type: 'general'
+        };
+        settings.saveSettings('playlist', local_demo_playlist, 'array');
+        settings.saveSettings('playlist_id', local_demo_playlist.id, '');
+        console.log('=== DEBUG: No user playlists found, using local demo playlist ===');
+        console.log('Local playlist:', local_demo_playlist);
+        parseM3uUrl();
+        console.log('Parsed M3U URL - API Host:', api_host_url);
+        this.proceed_login();
     },
 
     goToPlaylistPageWithError:function(){
