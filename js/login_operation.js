@@ -228,6 +228,7 @@ var login_page={
         }
     },
     login:function(){
+        console.log('=== DEBUG login() called ===');
         this.showLoadImage();
         if(has_playlist){
             var playlist_id=settings.playlist_id;
@@ -240,15 +241,20 @@ var login_page={
             }
             settings.saveSettings('playlist',playlist_urls[playlist_index],'array')
             settings.saveSettings('playlist_id',playlist_urls[playlist_index].id,'');
+            console.log('Using playlist:', playlist_urls[playlist_index]);
         }else{
             settings.saveSettings('playlist',demo_url,'array')
             settings.saveSettings('playlist_id',demo_url.id,'');
+            console.log('Using demo URL:', demo_url);
         }
         parseM3uUrl();
+        console.log('Parsed M3U URL - API Host:', api_host_url);
         this.proceed_login();
     },
     goToPlaylistPageWithError:function(){
+        console.log('=== DEBUG goToPlaylistPageWithError ===');
         this.is_loading=false;
+        this.device_id_fetched = false; // Reset flag to prevent infinite loop
         LiveModel.insertMoviesToCategories([])
         VodModel.insertMoviesToCategories([]);
         SeriesModel.insertMoviesToCategories([]);
@@ -262,6 +268,11 @@ var login_page={
     proceed_login:function(){
         if(this.is_loading)
             return;
+        console.log('=== DEBUG proceed_login ===');
+        console.log('Playlist type:', settings.playlist_type);
+        console.log('API host URL:', api_host_url);
+        console.log('Username:', user_name);
+        console.log('Password:', password);
         $('#playlist-error').hide();
         LiveModel.init();
         VodModel.init();
@@ -353,7 +364,10 @@ var login_page={
                     }
                 },
                 error:function(error){
-                    console.log(error);
+                    console.log('=== DEBUG Xtreme API Error ===');
+                    console.log('Error:', error);
+                    console.log('Status:', error.status);
+                    console.log('StatusText:', error.statusText);
                     that.goToPlaylistPageWithError();
                 },
                 timeout: 15000
@@ -366,12 +380,31 @@ var login_page={
                 url:api_host_url,
                 timeout:240000,
                 success:function (data) {
+                    console.log('=== DEBUG M3U Success ===');
                     parseM3uResponse('type1',data);
                    $('#loading-page').addClass('hide');
                     home_page.init();
                     that.is_loading=false;
                 },
                 error:function(error){
+                    console.log('=== DEBUG M3U Error ===');
+                    console.log('Error:', error);
+                    console.log('Status:', error.status);
+                    console.log('StatusText:', error.statusText);
+                    
+                    // Browser test mode - bypass playlist error for testing
+                    if(env === 'develop' && (error.status === 0 || error.statusText === 'error')) {
+                        console.log('=== BROWSER TEST MODE - Bypassing playlist error ===');
+                        // Create empty data for testing
+                        LiveModel.insertMoviesToCategories([]);
+                        VodModel.insertMoviesToCategories([]);
+                        SeriesModel.insertMoviesToCategories([]);
+                        $('#loading-page').addClass('hide');
+                        home_page.init();
+                        that.is_loading=false;
+                        return;
+                    }
+                    
                     that.goToPlaylistPageWithError();
                 }
             })
