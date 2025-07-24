@@ -426,49 +426,22 @@ var login_page={
             $('#switch-playlist-btn').hide();
         }
 
-        var that = this;
+        // Initialize focus state immediately before showing modal
+        this.keys.focused_part = 'playlist_error_btn';
+        this.keys.playlist_error_btn = 0;
 
-        // Set modal as active to capture all key events
+        // Store reference to playlist error buttons (like terms modal does)
+        this.playlist_error_btn_doms = $('.playlist-error-btn:visible');
+
+        // Set modal as active to capture all key events (same as terms modal)
         $('#playlist-error-modal').modal({
             backdrop: 'static', // Prevent closing by clicking outside
             keyboard: false     // Prevent closing with escape key (we handle it manually)
         });
         $('#playlist-error-modal').modal('show');
 
-        // Force focus state immediately
-        this.keys.focused_part = 'playlist_error_btn';
-        this.keys.playlist_error_btn = 0;
-
-        // Small delay to ensure DOM is ready
-        setTimeout(function() {
-            that.hoverPlaylistErrorBtn(0);
-            console.log('=== Modal focus initialized ===');
-            console.log('Focused part:', that.keys.focused_part);
-            console.log('Button index:', that.keys.playlist_error_btn);
-        }, 100);
-
-        // Ensure modal captures focus and prevents background navigation
-        $('#playlist-error-modal').on('shown.bs.modal', function() {
-            // Make modal focusable and focus it
-            $(this).attr('tabindex', '-1').focus();
-            
-            // Double-check focus state
-            that.keys.focused_part = 'playlist_error_btn';
-            that.keys.playlist_error_btn = 0;
-            that.hoverPlaylistErrorBtn(0);
-            console.log('=== Modal shown event - focus ensured ===');
-            console.log('Modal has focus:', document.activeElement === this);
-        });
-
-        // Handle modal hidden event to restore focus
-        $('#playlist-error-modal').on('hidden.bs.modal', function() {
-            console.log('=== Modal hidden - restoring focus ===');
-            that.keys.focused_part = 'main_area';
-            that.keys.main_area = 0;
-            
-            // Remove event handlers to prevent memory leaks
-            $(this).off('shown.bs.modal hidden.bs.modal');
-        });
+        // Apply initial focus (same pattern as terms modal)
+        this.hoverPlaylistErrorBtn(0);
     },
 
     hoverPlaylistErrorBtn:function(index){
@@ -476,63 +449,25 @@ var login_page={
         keys.focused_part='playlist_error_btn';
         keys.playlist_error_btn=index;
 
-        console.log('=== Hovering playlist error button ===');
-        console.log('Index:', index);
-
+        // Update button references (refresh in case visibility changed)
+        this.playlist_error_btn_doms = $('.playlist-error-btn:visible');
+        
+        // Remove active class from all buttons (same as terms modal)
         $('.playlist-error-btn').removeClass('active');
-
-        // Only hover visible buttons
-        var visibleButtons = $('.playlist-error-btn:visible');
-        console.log('Visible buttons count:', visibleButtons.length);
-        console.log('Available buttons:', visibleButtons.length > 0 ? visibleButtons.map(function() { return $(this).text().trim(); }).get() : 'None');
-
-        if(visibleButtons.length === 0) {
-            // If no buttons are visible, ensure default buttons are shown
-            console.log('No visible buttons found, showing default buttons');
-            $('.playlist-error-btn').show();
-            visibleButtons = $('.playlist-error-btn:visible');
-            console.log('After showing buttons, visible count:', visibleButtons.length);
-        }
-
-        if(index < visibleButtons.length && index >= 0 && visibleButtons.length > 0) {
-            visibleButtons.eq(index).addClass('active');
-            console.log('Applied active class to button:', index);
-        } else if(visibleButtons.length > 0) {
-            // If index is out of bounds, reset to first button
-            keys.playlist_error_btn = 0;
-            visibleButtons.eq(0).addClass('active');
-            console.log('Index out of bounds, reset to 0');
-        } else {
-            console.log('No buttons available to focus on');
+        
+        // Apply active class to selected button (same pattern as terms modal)
+        if(this.playlist_error_btn_doms.length > 0) {
+            $(this.playlist_error_btn_doms[index]).addClass('active');
         }
     },
 
     closePlaylistErrorModal:function(){
-        console.log('=== Closing playlist error modal ===');
-        
-        // Force close modal completely
+        // Close modal (same as terms modal goBack method)
         $('#playlist-error-modal').modal('hide');
-        $('#playlist-error-modal').removeClass('show');
-        $('.modal-backdrop').remove();
-        $('body').removeClass('modal-open').css('padding-right', '');
-
-        // Reset focus to home page if we're already there
-        if(current_route === 'home-page') {
-            this.keys.focused_part = 'main_area';
-            this.keys.main_area = 0;
-            // Give focus back to home page
-            if(typeof home_page !== 'undefined' && home_page.hoverMenuItem) {
-                setTimeout(function() {
-                    home_page.hoverMenuItem(0);
-                }, 100);
-            }
-        } else {
-            this.keys.focused_part = 'main_area';
-            this.keys.main_area = 0;
-        }
-
-        // Remove modal event handlers to prevent memory leaks
-        $('#playlist-error-modal').off('shown.bs.modal hidden.bs.modal');
+        
+        // Reset focus state (same pattern as terms modal)
+        this.keys.focused_part = 'main_area';
+        this.keys.main_area = 0;
 
         // Reset demo content status display
         $('#demo-content-status').hide();
@@ -541,8 +476,6 @@ var login_page={
         $('#playlist-error-reasons').show();
         $('#playlist-error-sub-message').show();
         $('.playlist-error-btn').show();
-
-        console.log('=== Modal closed, focus restored ===');
     },
 
     retryPlaylistLoad:function(){
@@ -1065,90 +998,50 @@ var login_page={
                 this.hoverNoPlaylistBtn(keys.no_playlist_btn);
                 break;
             case "playlist_error_btn":
-                var visibleButtons = $('.playlist-error-btn:visible');
-                var maxIndex = visibleButtons.length - 1;
-
-                console.log('=== Left/Right navigation ===');
-                console.log('Current index:', keys.playlist_error_btn);
-                console.log('Increment:', increment);
-                console.log('Max index:', maxIndex);
-
+                // Update button references to get current visible buttons
+                this.playlist_error_btn_doms = $('.playlist-error-btn:visible');
+                
                 keys.playlist_error_btn += increment;
-
-                // Wrap around navigation
+                
+                // Boundary checks (same pattern as terms modal)
                 if(keys.playlist_error_btn < 0)
-                    keys.playlist_error_btn = maxIndex;
-                if(keys.playlist_error_btn > maxIndex)
                     keys.playlist_error_btn = 0;
-
-                console.log('New index:', keys.playlist_error_btn);
+                if(keys.playlist_error_btn >= this.playlist_error_btn_doms.length)
+                    keys.playlist_error_btn = this.playlist_error_btn_doms.length - 1;
+                
                 this.hoverPlaylistErrorBtn(keys.playlist_error_btn);
                 break;
         }
     },
     HandleKey:function(e) {
-        // Check if playlist error modal is visible and active - improved detection
-        var isModalOpen = $('#playlist-error-modal').hasClass('show') || 
-                         $('#playlist-error-modal').is(':visible') || 
-                         $('#playlist-error-modal').css('display') === 'block';
+        // Check if playlist error modal is visible (same as terms modal check)
+        var isModalOpen = $('#playlist-error-modal').hasClass('show');
 
         if(isModalOpen) {
-            console.log('=== Modal Key Handler ===');
-            console.log('Key pressed:', e.keyCode);
-            console.log('Current focused_part:', this.keys.focused_part);
-            console.log('Current playlist_error_btn:', this.keys.playlist_error_btn);
-
-            // Prevent all background navigation - stronger prevention
-            e.preventDefault();
-            e.stopPropagation();
-            e.stopImmediatePropagation();
-
-            // Force focus to modal buttons if not already focused
-            if(this.keys.focused_part !== 'playlist_error_btn') {
-                this.keys.focused_part = 'playlist_error_btn';
-                this.keys.playlist_error_btn = 0;
-                this.hoverPlaylistErrorBtn(0);
-                console.log('=== Forced focus to modal buttons ===');
-            }
-
-            switch(e.keyCode){
-                case tvKey.LEFT:
-                case 37: // Fallback for standard left arrow
-                    console.log('LEFT key pressed in modal');
-                    this.handleMenuLeftRight(-1);
-                    return false;
+            // Handle keys for playlist error modal (same pattern as terms modal)
+            switch(e.keyCode) {
                 case tvKey.RIGHT:
-                case 39: // Fallback for standard right arrow
-                    console.log('RIGHT key pressed in modal');
                     this.handleMenuLeftRight(1);
-                    return false;
-                case tvKey.UP:
-                case 38: // Fallback for standard up arrow
-                    console.log('UP key pressed in modal - treating as LEFT');
+                    break;
+                case tvKey.LEFT:
                     this.handleMenuLeftRight(-1);
-                    return false;
+                    break;
                 case tvKey.DOWN:
-                case 40: // Fallback for standard down arrow
-                    console.log('DOWN key pressed in modal - treating as RIGHT');
+                    // In playlist error modal, treat DOWN as RIGHT movement
                     this.handleMenuLeftRight(1);
-                    return false;
+                    break;
+                case tvKey.UP:
+                    // In playlist error modal, treat UP as LEFT movement
+                    this.handleMenuLeftRight(-1);
+                    break;
                 case tvKey.ENTER:
-                case 13: // Fallback for standard enter
-                    console.log('ENTER key pressed in modal');
                     this.handleMenuClick();
-                    return false;
+                    break;
                 case tvKey.RETURN:
-                case 10009: // Samsung return key
-                case 461: // LG return key
-                case 27: // Fallback escape key
-                    console.log('RETURN key pressed in modal - closing');
                     this.closePlaylistErrorModal();
-                    return false;
-                default:
-                    console.log('Unhandled key in modal:', e.keyCode);
-                    // Block all other keys when modal is open
-                    return false;
+                    break;
             }
+            return; // Prevent other keys from being processed when modal is open
         }
 
         if(e.keyCode===tvKey.RETURN){
