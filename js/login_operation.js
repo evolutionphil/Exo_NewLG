@@ -417,14 +417,14 @@ var login_page={
         }
 
         var that = this;
-        
+
         // Set modal as active to capture all key events
         $('#playlist-error-modal').modal('show');
-        
+
         // Force focus state immediately
         this.keys.focused_part = 'playlist_error_btn';
         this.keys.playlist_error_btn = 0;
-        
+
         // Small delay to ensure DOM is ready
         setTimeout(function() {
             that.hoverPlaylistErrorBtn(0);
@@ -448,16 +448,16 @@ var login_page={
         var keys=this.keys;
         keys.focused_part='playlist_error_btn';
         keys.playlist_error_btn=index;
-        
+
         console.log('=== Hovering playlist error button ===');
         console.log('Index:', index);
-        
+
         $('.playlist-error-btn').removeClass('active');
 
         // Only hover visible buttons
         var visibleButtons = $('.playlist-error-btn:visible');
         console.log('Visible buttons count:', visibleButtons.length);
-        
+
         if(index < visibleButtons.length && index >= 0) {
             visibleButtons.eq(index).addClass('active');
             console.log('Applied active class to button:', index);
@@ -473,7 +473,7 @@ var login_page={
         $('#playlist-error-modal').modal('hide');
         this.keys.focused_part='main_area';
         this.keys.main_area = 0;
-        
+
         // Remove modal event handlers
         $('#playlist-error-modal').off('shown.bs.modal');
     },
@@ -490,7 +490,7 @@ var login_page={
 
         this.showLoadImage();
         setTimeout(() => {
-            this.login();
+           this.fetchPlaylistInformation();
         }, 500);
     },
 
@@ -582,9 +582,11 @@ var login_page={
 
                     setTimeout(function() {
                         $('#playlist-error-modal').modal('hide');
+                        that.keys.focused_part = 'main_area';
+                        that.is_loading = false;
                         $('#loading-page').addClass('hide');
                         home_page.init();
-                    }, 2000);
+                    }, 1500);
                 },
                 error: function(error) {
                     console.log('=== DEBUG: Local demo content also failed ===');
@@ -599,7 +601,8 @@ var login_page={
 
                     setTimeout(function() {
                         $('#playlist-error-modal').modal('hide');
-
+                        that.keys.focused_part = 'main_area';
+                        that.is_loading = false;
                         // Final fallback - empty data
                         LiveModel.insertMoviesToCategories([]);
                         VodModel.insertMoviesToCategories([]);
@@ -607,7 +610,7 @@ var login_page={
 
                         $('#loading-page').addClass('hide');
                         home_page.init();
-                    }, 2000);
+                    }, 1500);
                 }
             });
         }
@@ -671,9 +674,11 @@ var login_page={
 
                     setTimeout(function() {
                         $('#playlist-error-modal').modal('hide');
+                        that.keys.focused_part = 'main_area';
+                        that.is_loading = false;
                         $('#loading-page').addClass('hide');
                         home_page.init();
-                    }, 2000);
+                    }, 1500);
                 },
                 error: function(error) {
                     console.log('=== DEBUG: Backend demo content failed, trying local ===');
@@ -841,6 +846,7 @@ var login_page={
                 url:api_host_url,
                 timeout:240000,
                 success:function (data) {
+                    ```text
                     console.log('=== DEBUG M3U Success ===');
                     parseM3uResponse('type1',data);
                    $('#loading-page').addClass('hide');
@@ -973,13 +979,13 @@ var login_page={
                 console.log('Max index:', maxIndex);
 
                 keys.playlist_error_btn += increment;
-                
+
                 // Wrap around navigation
                 if(keys.playlist_error_btn < 0)
                     keys.playlist_error_btn = maxIndex;
                 if(keys.playlist_error_btn > maxIndex)
                     keys.playlist_error_btn = 0;
-                
+
                 console.log('New index:', keys.playlist_error_btn);
                 this.hoverPlaylistErrorBtn(keys.playlist_error_btn);
                 break;
@@ -989,25 +995,25 @@ var login_page={
         // Check if playlist error modal is visible and active
         var isModalOpen = $('#playlist-error-modal').is(':visible') && 
                          ($('#playlist-error-modal').hasClass('show') || $('#playlist-error-modal').css('display') !== 'none');
-        
+
         if(isModalOpen) {
             console.log('=== Modal Key Handler ===');
             console.log('Key pressed:', e.keyCode);
             console.log('Current focused_part:', this.keys.focused_part);
             console.log('Current playlist_error_btn:', this.keys.playlist_error_btn);
-            
+
             // Prevent all background navigation
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
-            
+
             // Force focus to modal buttons if not already focused
             if(this.keys.focused_part !== 'playlist_error_btn') {
                 this.keys.focused_part = 'playlist_error_btn';
                 this.keys.playlist_error_btn = 0;
                 this.hoverPlaylistErrorBtn(0);
             }
-            
+
             switch(e.keyCode){
                 case tvKey.LEFT:
                     console.log('LEFT key pressed in modal');
