@@ -74,6 +74,23 @@ var login_page={
             },
             success: function (data1) {
                 var data=decryptResponse(data1);
+                
+                // Check if backend MAC generation failed
+                if(!data.mac_address || data.mac_address.trim() === '') {
+                    console.log('Backend MAC generation failed - no MAC address returned');
+                    // Try next panel URL or show error
+                    if(that.tried_panel_indexes.length<panel_urls.length){
+                        that.is_loading=false;
+                        that.tried_panel_indexes.push(url_index);
+                        that.fetchPlaylistInformation();
+                        return;
+                    } else {
+                        that.is_loading=false;
+                        that.showNetworkErrorModal();
+                        return;
+                    }
+                }
+                
                 that.tried_panel_indexes=[];
                 localStorage.setItem(storage_id+'api_data',JSON.stringify(data));
                 that.loadApp(data);
