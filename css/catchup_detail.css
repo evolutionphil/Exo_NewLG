@@ -1,0 +1,65 @@
+#catchup-detail-page{
+    background-image: url("../images/settings_screen_bg_tv.jpg");
+    background-size: 100% 100%;
+}
+#catchup-detail-page .page-top-info-container{
+    margin:20px 50px;
+}
+#epg-dates-container {
+    white-space: nowrap;
+    background: rgba(17, 17, 17, 0.78);
+    position: relative;
+    margin:40px 40px 20px 40px;
+}
+.epg-date-item-container {
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 25px;
+    padding: 20px 25px;
+    border-bottom: 4px solid transparent;
+    transition: all 0.1s;
+}
+.epg-date-item-container.active{
+    border-color: #efefef;
+}
+.epg-date-item-date {
+    font-weight: normal;
+}
+#epg-programmes-container {
+    margin: 0 40px;
+    height: 910px;
+    overflow-y: scroll;
+    position: relative;
+}
+.epg-programme-item-container{
+    padding: 3px 0;
+}
+.epg-programme-item-wrapper {
+    background: #fff;
+    padding: 15px 30px;
+    transition: all 0.1s;
+    color: #ABA8A8;
+}
+.epg-programme-item-wrapper.active{
+    background: #525cd2;
+    color: #fff;
+}
+.epg-programme-title {
+    /*color: #ABA8A8;*/
+    margin-bottom: 10px;
+    font-size: 30px;
+    font-weight: bolder;
+}
+.epg-clock-icon {
+    height: 30px;
+}
+.epg-programme-time {
+    font-size: 25px;
+    margin-left: 10px;
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 1;
+    /*color: #ABA8A8;*/
+}
