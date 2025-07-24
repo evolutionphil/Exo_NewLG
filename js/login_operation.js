@@ -355,6 +355,14 @@ var login_page={
 
     showPlaylistErrorModal:function(){
         console.log('=== Showing playlist error modal ===');
+        
+        // Show/hide switch playlist button based on available playlists
+        if(playlist_urls && playlist_urls.length > 1) {
+            $('#switch-playlist-btn').show();
+        } else {
+            $('#switch-playlist-btn').hide();
+        }
+        
         $('#playlist-error-modal').modal('show');
         this.keys.focused_part = 'playlist_error_btn';
         this.keys.playlist_error_btn = 0;
@@ -366,7 +374,12 @@ var login_page={
         keys.focused_part='playlist_error_btn';
         keys.playlist_error_btn=index;
         $('.playlist-error-btn').removeClass('active');
-        $('.playlist-error-btn').eq(index).addClass('active');
+        
+        // Only hover visible buttons
+        var visibleButtons = $('.playlist-error-btn:visible');
+        if(index < visibleButtons.length) {
+            visibleButtons.eq(index).addClass('active');
+        }
     },
 
     closePlaylistErrorModal:function(){
@@ -383,6 +396,46 @@ var login_page={
 
         console.log('=== DEBUG: Retrying with user playlist ===');
         console.log('User playlist:', settings.playlist);
+
+        this.showLoadImage();
+        setTimeout(() => {
+            this.login();
+        }, 500);
+    },
+
+    switchToNextPlaylist:function(){
+        if(!playlist_urls || playlist_urls.length <= 1) {
+            console.log('=== DEBUG: No alternative playlists available ===');
+            return;
+        }
+
+        $('#playlist-error-modal').modal('hide');
+        this.keys.focused_part='main_area';
+        this.tried_panel_indexes = []; // Reset tried panels
+        this.is_loading = false;
+        this.device_id_fetched = false;
+
+        // Find current playlist index
+        var current_playlist_id = settings.playlist_id;
+        var current_index = 0;
+        for(var i = 0; i < playlist_urls.length; i++) {
+            if(playlist_urls[i].id == current_playlist_id) {
+                current_index = i;
+                break;
+            }
+        }
+
+        // Switch to next playlist (loop back to first if at end)
+        var next_index = (current_index + 1) % playlist_urls.length;
+        var next_playlist = playlist_urls[next_index];
+
+        console.log('=== DEBUG: Switching to next playlist ===');
+        console.log('Current playlist:', settings.playlist);
+        console.log('Next playlist:', next_playlist);
+
+        // Update settings with new playlist
+        settings.saveSettings('playlist', next_playlist, 'array');
+        settings.saveSettings('playlist_id', next_playlist.id, '');
 
         this.showLoadImage();
         setTimeout(() => {
@@ -721,9 +774,17 @@ var login_page={
                 $(this.expired_issue_btns[keys.expired_issue_btn]).trigger('click');
                 break;
             case "playlist_error_btn":
-                if(keys.playlist_error_btn === 0) {
+                var visibleButtons = $('.playlist-error-btn:visible');
+                var buttonIndex = keys.playlist_error_btn;
+                
+                if(buttonIndex === 0) {
+                    // First button is always "Retry Loading"
                     this.retryPlaylistLoad();
+                } else if(visibleButtons.length === 3 && buttonIndex === 1) {
+                    // If 3 buttons visible, middle is "Switch Playlist"
+                    this.switchToNextPlaylist();
                 } else {
+                    // Last button is always "Continue Anyway"
                     this.continueWithoutPlaylist();
                 }
                 break;
@@ -772,11 +833,14 @@ var login_page={
                 this.hoverNoPlaylistBtn(keys.no_playlist_btn);
                 break;
             case "playlist_error_btn":
+                var visibleButtons = $('.playlist-error-btn:visible');
+                var maxIndex = visibleButtons.length - 1;
+                
                 keys.playlist_error_btn+=increment;
                 if(keys.playlist_error_btn<0)
                     keys.playlist_error_btn=0;
-                if(keys.playlist_error_btn>1)
-                    keys.playlist_error_btn=1;
+                if(keys.playlist_error_btn>maxIndex)
+                    keys.playlist_error_btn=maxIndex;
                 this.hoverPlaylistErrorBtn(keys.playlist_error_btn);
                 break;
         }
