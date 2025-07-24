@@ -441,7 +441,16 @@ var login_page={
         // When modal is fully rendered, set focus properly (important for Tizen)
         $('#playlist-error-modal').on('shown.bs.modal', function() {
             console.log('Playlist modal fully visible, setting focus...');
-            that.hoverPlaylistErrorBtn(0);
+            console.log('Active element before focus:', document.activeElement);
+            console.log('Modal z-index:', $('#playlist-error-modal').css('z-index'));
+            
+            // Ensure modal is properly on top and focusable
+            $('#playlist-error-modal').attr('tabindex', '-1');
+            
+            setTimeout(function() {
+                that.hoverPlaylistErrorBtn(0);
+                console.log('Active element after focus:', document.activeElement);
+            }, 100);
         });
 
         // Activate the modal and make sure background click/escape don't close it
@@ -480,11 +489,20 @@ var login_page={
         keys.playlist_error_btn = index;
         
         // Remove active class from all buttons (same as terms modal)
-        $('.playlist-error-btn').removeClass('active');
+        $(this.playlist_error_btn_doms).removeClass('active');
         
-        // Apply active class to selected button (same pattern as terms modal)
+        // Apply active class to selected button and focus (same pattern as terms modal)
         if(this.playlist_error_btn_doms.length > 0 && index < this.playlist_error_btn_doms.length) {
             $(this.playlist_error_btn_doms[index]).addClass('active');
+            
+            // Actually focus the DOM element (this was missing!)
+            try {
+                this.playlist_error_btn_doms[index].focus();
+                console.log('Focused DOM element for button:', index);
+            } catch(e) {
+                console.log('Focus failed:', e);
+            }
+            
             console.log('Applied active class to button:', index);
         } else {
             console.log('No buttons available or index invalid');
