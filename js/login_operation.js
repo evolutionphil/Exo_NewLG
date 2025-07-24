@@ -68,20 +68,56 @@ var login_page={
             app_type:platform,
             version:version
         }
+        
+        // Debug logging
+        console.log('=== DEBUG fetchPlaylistInformation ===');
+        console.log('Panel URL:', url);
+        console.log('Device ID:', device_id);
+        console.log('Platform:', platform);
+        console.log('Data to send:', data);
+        
         var encrypted_data=encryptRequest(data);
+        
         $.ajax({
             url: url+"/device_info",
             type: "POST",
             data:{
                 data:encrypted_data
             },
+            timeout: 15000, // 15 second timeout
+            crossDomain: true, // Explicitly allow cross-domain
             success: function (data1) {
-                var data=decryptResponse(data1);
+                console.log('=== DEBUG API Success ===');
+                console.log('Raw response:', data1);
                 
-                // Check if backend MAC generation failed
-                if(!data.mac_address || data.mac_address.trim() === '') {
-                    console.log('Backend MAC generation failed - no MAC address returned');
-                    // Try next panel URL or show error
+                try {
+                    var data=decryptResponse(data1);
+                    console.log('Decrypted data:', data);
+                    
+                    // Check if response is valid
+                    if(!data || typeof data !== 'object') {
+                        console.error('Invalid response format:', data);
+                        throw new Error('Invalid response format');
+                    }
+                    
+                    // Check if backend MAC generation failed
+                    if(!data.mac_address || data.mac_address.trim() === '') {
+                        console.error('Backend MAC generation failed - no MAC address returned');
+                        throw new Error('No MAC address in response');
+                    }
+                    
+                    console.log('MAC Address received:', data.mac_address);
+                    
+                    that.tried_panel_indexes=[];
+                    localStorage.setItem(storage_id+'api_data',JSON.stringify(data));
+                    that.loadApp(data);
+                    
+                } catch(decryptError) {
+                    console.error('=== DEBUG Decryption/Processing Error ===');
+                    console.error('Error:', decryptError);
+                    console.error('Raw response that failed:', data1);
+                    
+                    // Try next panel URL
                     if(that.tried_panel_indexes.length<panel_urls.length){
                         that.is_loading=false;
                         that.tried_panel_indexes.push(url_index);
@@ -93,24 +129,42 @@ var login_page={
                         return;
                     }
                 }
-                
-                that.tried_panel_indexes=[];
-                localStorage.setItem(storage_id+'api_data',JSON.stringify(data));
-                that.loadApp(data);
             },
-            error: function (error) {
-                console.log(that.tried_panel_indexes,panel_urls.length)
+            error: function (xhr, textStatus, errorThrown) {
+                console.log('=== DEBUG API Request Error ===');
+                console.log('XHR Status:', xhr.status);
+                console.log('XHR StatusText:', xhr.statusText);
+                console.log('Text Status:', textStatus);
+                console.log('Error Thrown:', errorThrown);
+                console.log('Response Text:', xhr.responseText);
+                console.log('Ready State:', xhr.readyState);
+                console.log('Panel URL that failed:', url);
+                console.log('Tried panel indexes:', that.tried_panel_indexes);
+                console.log('Total panel URLs:', panel_urls.length);
+                
+                // Specific error handling
+                if(xhr.status === 0) {
+                    console.error('Network error - possible CORS, timeout, or connectivity issue');
+                } else if(xhr.status >= 500) {
+                    console.error('Server error:', xhr.status);
+                } else if(xhr.status >= 400) {
+                    console.error('Client error:', xhr.status);
+                }
+                
                 if(that.tried_panel_indexes.length<panel_urls.length){
                     that.is_loading=false;
                     that.tried_panel_indexes.push(url_index);
-                    console.log('here',that.tried_panel_indexes);
+                    console.log('Trying next panel URL, current failed indexes:', that.tried_panel_indexes);
                     that.fetchPlaylistInformation();
                 }else{
+                    console.log('All panel URLs failed, checking localStorage for cached data');
                     var api_data=localStorage.getItem(storage_id+'api_data');
                     if(api_data){
+                        console.log('Using cached API data');
                         api_data=JSON.parse(api_data);
                         that.loadApp(api_data);
                     }else{
+                        console.log('No cached data available, showing network error');
                         that.is_loading=false;
                         that.showNetworkErrorModal();
                     }
