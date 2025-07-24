@@ -203,7 +203,8 @@ var login_page={
 
         this.is_loading=false;
         $('.expire-date').text(expire_date);
-        saveData('demo_url',data.demo_url);
+        // Check if demo_url exists in response, otherwise set to null
+        saveData('demo_url', data.demo_url || null);
         if(data.expire_date<today){
             saveData('mac_valid',false);
             this.showLoginError()
@@ -453,7 +454,7 @@ var login_page={
         }
 
         // First try backend demo URL if available
-        if(demo_url && demo_url.trim() !== '') {
+        if(demo_url && typeof demo_url === 'string' && demo_url.trim() !== '') {
             console.log('=== DEBUG: Trying backend demo URL ===');
             console.log('Backend Demo URL:', demo_url);
             
