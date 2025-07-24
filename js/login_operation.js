@@ -68,16 +68,6 @@ var login_page={
             app_type:platform,
             version:version
         }
-        
-        // Debug logging
-        if(debug_mode) {
-            console.log('=== DEBUG fetchPlaylistInformation ===');
-            console.log('Panel URL:', url);
-            console.log('Device ID:', device_id);
-            console.log('Platform:', platform);
-            console.log('Data to send:', data);
-        }
-        
         var encrypted_data=encryptRequest(data);
         $.ajax({
             url: url+"/device_info",
@@ -86,17 +76,7 @@ var login_page={
                 data:encrypted_data
             },
             success: function (data1) {
-                if(debug_mode) {
-                    console.log('=== DEBUG API Success ===');
-                    console.log('Raw response:', data1);
-                }
-                
                 var data=decryptResponse(data1);
-                
-                if(debug_mode) {
-                    console.log('Decrypted data:', data);
-                    console.log('MAC Address received:', data.mac_address);
-                }
                 
                 // Check if backend MAC generation failed
                 if(!data.mac_address || data.mac_address.trim() === '') {
@@ -119,15 +99,6 @@ var login_page={
                 that.loadApp(data);
             },
             error: function (error) {
-                if(debug_mode) {
-                    console.log('=== DEBUG API Error ===');
-                    console.log('Error details:', error);
-                    console.log('Error status:', error.status);
-                    console.log('Error statusText:', error.statusText);
-                    console.log('Error responseText:', error.responseText);
-                    console.log('Panel URL that failed:', url);
-                }
-                
                 console.log(that.tried_panel_indexes,panel_urls.length)
                 if(that.tried_panel_indexes.length<panel_urls.length){
                     that.is_loading=false;
@@ -137,10 +108,6 @@ var login_page={
                 }else{
                     var api_data=localStorage.getItem(storage_id+'api_data');
                     if(api_data){
-                        if(debug_mode) {
-                            console.log('=== DEBUG Using Cached Data ===');
-                            console.log('Cached API data:', api_data);
-                        }
                         api_data=JSON.parse(api_data);
                         that.loadApp(api_data);
                     }else{
@@ -302,14 +269,6 @@ var login_page={
         var that=this;
         var playlist_type=settings.playlist_type;
         this.is_loading=true;
-        
-        if(debug_mode) {
-            console.log('=== DEBUG proceed_login ===');
-            console.log('Playlist type:', playlist_type);
-            console.log('API host URL:', api_host_url);
-            console.log('Username:', user_name);
-            console.log('Password:', password);
-        }
         if(playlist_type==='xtreme'){
             var  prefix_url=api_host_url+'/player_api.php?username='+user_name+'&password='+password+'&action=';
             var login_url=prefix_url.replace("&action=","");
@@ -394,21 +353,6 @@ var login_page={
                     }
                 },
                 error:function(error){
-                    if(debug_mode) {
-                        console.log('=== DEBUG Playlist Load Error ===');
-                        console.log('Error:', error);
-                        console.log('Status:', error.status);
-                        console.log('StatusText:', error.statusText);
-                    }
-                    
-                    // Browser test mode bypass - proceed without playlists for testing
-                    if(browser_test_mode && debug_mode) {
-                        console.log('=== BROWSER TEST MODE - Bypassing playlist error ===');
-                        that.is_loading=false;
-                        home_page.init();
-                        return;
-                    }
-                    
                     console.log(error);
                     that.goToPlaylistPageWithError();
                 },
