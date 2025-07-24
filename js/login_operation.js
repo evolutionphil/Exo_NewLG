@@ -285,6 +285,25 @@ var login_page={
     login:function(){
         console.log('=== DEBUG login() called ===');
         this.showLoadImage();
+        
+        // Use local demo playlist for debugging in development mode
+        if(env === 'develop') {
+            var local_demo_playlist = {
+                id: 'local_demo',
+                name: 'Local Demo Playlist',
+                url: './tv_channels_flixdemo_plus.m3u',
+                type: 'general'
+            };
+            settings.saveSettings('playlist', local_demo_playlist, 'array');
+            settings.saveSettings('playlist_id', local_demo_playlist.id, '');
+            console.log('=== DEBUG: Using local demo playlist for development ===');
+            console.log('Local playlist:', local_demo_playlist);
+            parseM3uUrl();
+            console.log('Parsed M3U URL - API Host:', api_host_url);
+            this.proceed_login();
+            return;
+        }
+        
         if(has_playlist){
             var playlist_id=settings.playlist_id;
             var playlist_index=0;
