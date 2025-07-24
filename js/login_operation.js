@@ -409,6 +409,16 @@ var login_page={
     showPlaylistErrorModal:function(){
         console.log('=== Showing playlist error modal ===');
 
+        // Reset modal content to default state first
+        $('#playlist-error-main-message').show();
+        $('#playlist-error-reasons').show();
+        $('#playlist-error-sub-message').show();
+        $('#demo-content-status').hide();
+        $('#demo-content-message').hide();
+
+        // Ensure all buttons are visible by default
+        $('.playlist-error-btn').show();
+
         // Show/hide switch playlist button based on available playlists
         if(playlist_urls && playlist_urls.length > 1) {
             $('#switch-playlist-btn').show();
@@ -457,15 +467,26 @@ var login_page={
         // Only hover visible buttons
         var visibleButtons = $('.playlist-error-btn:visible');
         console.log('Visible buttons count:', visibleButtons.length);
+        console.log('Available buttons:', visibleButtons.length > 0 ? visibleButtons.map(function() { return $(this).text().trim(); }).get() : 'None');
 
-        if(index < visibleButtons.length && index >= 0) {
+        if(visibleButtons.length === 0) {
+            // If no buttons are visible, ensure default buttons are shown
+            console.log('No visible buttons found, showing default buttons');
+            $('.playlist-error-btn').show();
+            visibleButtons = $('.playlist-error-btn:visible');
+            console.log('After showing buttons, visible count:', visibleButtons.length);
+        }
+
+        if(index < visibleButtons.length && index >= 0 && visibleButtons.length > 0) {
             visibleButtons.eq(index).addClass('active');
             console.log('Applied active class to button:', index);
-        } else {
+        } else if(visibleButtons.length > 0) {
             // If index is out of bounds, reset to first button
             keys.playlist_error_btn = 0;
             visibleButtons.eq(0).addClass('active');
             console.log('Index out of bounds, reset to 0');
+        } else {
+            console.log('No buttons available to focus on');
         }
     },
 
