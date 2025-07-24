@@ -149,28 +149,12 @@ var login_page={
         // mac_address='52:54:00:12:34:59';
         // mac_address='66:36:66:66:06:24';
         device_id='52:54:00:12:34:57'
-        function generateMacAddressFromDuid(duid){
-            var hash = 0;
-            for (var i = 0; i < duid.length; i++) {
-                hash = (hash << 5) - hash + duid.charCodeAt(i);
-                hash &= hash; // keep 32-bit
-            }
-
-            var mac = [];
-            for (var i = 0; i < 6; i++) {
-                var byte = (hash >> (i * 4)) & 0xFF;
-                mac.push(byte.toString(16).padStart(2, "0"));
-            }
-
-            return mac.join(":").toUpperCase(); // e.g., "B2:7D:8F:12:4E:9A"
-        }
-
         if(platform==='samsung'){
             try{
-                // First try: Get DUID and generate MAC-like device ID
+                // First try: Get DUID and send to backend for MAC generation
                 var duid = webapis.productinfo.getDuid();
-                if(duid){
-                    device_id = generateMacAddressFromDuid(duid);
+                if(duid && duid.trim() !== ''){
+                    device_id = btoa(duid); // Base64 encode DUID like Tizen ID
                     this.fetchPlaylistInformation();
                     return;
                 }
@@ -179,10 +163,10 @@ var login_page={
             }
 
             try{
-                // Second try: Get Tizen ID
+                // Second try: Get Tizen ID and send to backend for MAC generation
                 var temps=tizen.systeminfo.getCapability('http://tizen.org/system/tizenid')
-                if(temps){
-                    device_id=btoa(temps);
+                if(temps && temps.trim() !== ''){
+                    device_id=btoa(temps); // Base64 encode Tizen ID
                     this.fetchPlaylistInformation();
                     return;
                 }
