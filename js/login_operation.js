@@ -286,44 +286,139 @@ var login_page={
         console.log('=== DEBUG login() called ===');
         this.showLoadImage();
         
-        // Use local demo playlist for debugging in development mode
-        if(env === 'develop') {
-            var local_demo_playlist = {
-                id: 'local_demo',
-                name: 'Local Demo Playlist',
-                url: './tv_channels_flixdemo_plus.m3u',
-                type: 'general'
-            };
-            settings.saveSettings('playlist', local_demo_playlist, 'array');
-            settings.saveSettings('playlist_id', local_demo_playlist.id, '');
-            console.log('=== DEBUG: Using local demo playlist for development ===');
-            console.log('Local playlist:', local_demo_playlist);
-            parseM3uUrl();
-            console.log('Parsed M3U URL - API Host:', api_host_url);
-            this.proceed_login();
-            return;
-        }
-        
-        if(has_playlist){
-            var playlist_id=settings.playlist_id;
-            var playlist_index=0;
-            for(var i=0;i<playlist_urls.length;i++){
-                if(playlist_urls[i].id==playlist_id){
-                    playlist_index=i;
-                    break;
-                }
-            }
-            settings.saveSettings('playlist',playlist_urls[playlist_index],'array')
-            settings.saveSettings('playlist_id',playlist_urls[playlist_index].id,'');
-            console.log('Using playlist:', playlist_urls[playlist_index]);
-        }else{
-            settings.saveSettings('playlist',demo_url,'array')
-            settings.saveSettings('playlist_id',demo_url.id,'');
-            console.log('Using demo URL:', demo_url);
-        }
+        // Always use local demo playlist as default for fast loading
+        var local_demo_playlist = {
+            id: 'local_demo',
+            name: 'Local Demo Playlist',
+            url: './tv_channels_flixdemo_plus.m3u',
+            type: 'general'
+        };
+        settings.saveSettings('playlist', local_demo_playlist, 'array');
+        settings.saveSettings('playlist_id', local_demo_playlist.id, '');
+        console.log('=== DEBUG: Using local demo playlist as default ===');
+        console.log('Local playlist:', local_demo_playlist);
         parseM3uUrl();
         console.log('Parsed M3U URL - API Host:', api_host_url);
         this.proceed_login();
+        
+        // After app loads, try to fetch user's playlist in background
+        var that = this;
+        setTimeout(function() {
+            that.fetchUserPlaylistInBackground();
+        }, 3000); // Wait 3 seconds after main screen loads
+    },
+    
+    fetchUserPlaylistInBackground:function(){
+        console.log('=== DEBUG: Fetching user playlist in background ===');
+        
+        // Only try to fetch if we have playlist URLs from API
+        if(!playlist_urls || playlist_urls.length === 0) {
+            console.log('No user playlists available, keeping demo playlist');
+            return;
+        }
+        
+        var that = this;
+        var playlist_id = settings.playlist_id;
+        var playlist_index = 0;
+        
+        // Find user's preferred playlist
+        for(var i = 0; i < playlist_urls.length; i++){
+            if(playlist_urls[i].id == playlist_id){
+                playlist_index = i;
+                break;
+            }
+        }
+        
+        var user_playlist = playlist_urls[playlist_index];
+        console.log('Attempting to load user playlist:', user_playlist);
+        
+        // Try to load user's playlist
+        settings.saveSettings('playlist', user_playlist, 'array');
+        settings.saveSettings('playlist_id', user_playlist.id, '');
+        parseM3uUrl();
+        
+        if(settings.playlist_type === 'xtreme'){
+            var prefix_url = api_host_url + '/player_api.php?username=' + user_name + '&password=' + password + '&action=';
+            var login_url = prefix_url.replace("&action=","");
+            
+            $.ajax({
+                method: 'get',
+                url: login_url,
+                timeout: 10000,
+                success: function (data) {
+                    if(typeof data.server_info != "undefined") {
+                        calculateTimeDifference(data.server_info.time_now, data.server_info.timestamp_now);
+                    }
+                    
+                    if(typeof data.user_info != "undefined" && data.user_info.auth != 0) {
+                        console.log('=== Background: User playlist loaded successfully ===');
+                        that.loadUserPlaylistData(prefix_url);
+                    } else {
+                        console.log('=== Background: User playlist auth failed, keeping demo ===');
+                    }
+                },
+                error: function(error) {
+                    console.log('=== Background: Failed to load user playlist, keeping demo ===');
+                    console.log('Error:', error.status, error.statusText);
+                }
+            });
+        } else {
+            // Handle M3U playlists
+            $.ajax({
+                method: 'get',
+                url: api_host_url,
+                timeout: 10000,
+                success: function (data) {
+                    console.log('=== Background: M3U playlist loaded successfully ===');
+                    parseM3uResponse('type1', data);
+                    that.showPlaylistUpdateNotification('User playlist loaded successfully!');
+                },
+                error: function(error) {
+                    console.log('=== Background: Failed to load M3U playlist, keeping demo ===');
+                    console.log('Error:', error.status, error.statusText);
+                }
+            });
+        }
+    },
+    
+    loadUserPlaylistData:function(prefix_url){
+        var that = this;
+        
+        $.when(
+            $.ajax({method: 'get', url: prefix_url + 'get_live_streams', timeout: 8000}),
+            $.ajax({method: 'get', url: prefix_url + 'get_live_categories', timeout: 8000}),
+            $.ajax({method: 'get', url: prefix_url + 'get_vod_categories', timeout: 8000}),
+            $.ajax({method: 'get', url: prefix_url + 'get_series_categories', timeout: 8000}),
+            $.ajax({method: 'get', url: prefix_url + 'get_vod_streams', timeout: 8000}),
+            $.ajax({method: 'get', url: prefix_url + 'get_series', timeout: 8000})
+        ).then(function(live_streams, live_cats, vod_cats, series_cats, vod_streams, series){
+            try {
+                LiveModel.setMovies(live_streams[0]);
+                LiveModel.setCategories(live_cats[0]);
+                VodModel.setCategories(vod_cats[0]);
+                VodModel.setMovies(vod_streams[0]);
+                SeriesModel.setCategories(series_cats[0]);
+                SeriesModel.setMovies(series[0]);
+                
+                LiveModel.insertMoviesToCategories();
+                VodModel.insertMoviesToCategories();
+                SeriesModel.insertMoviesToCategories();
+                
+                console.log('=== Background: All user playlist data loaded successfully ===');
+                that.showPlaylistUpdateNotification('Your playlist has been updated!');
+            } catch(e) {
+                console.log('=== Background: Error processing user playlist data ===', e);
+            }
+        }).fail(function(e) {
+            console.log('=== Background: Failed to load complete user playlist data ===', e);
+        });
+    },
+    
+    showPlaylistUpdateNotification:function(message){
+        // Show a subtle notification that playlist was updated
+        if(typeof showToast === 'function') {
+            showToast('Playlist Updated', message);
+        }
     },
     goToPlaylistPageWithError:function(){
         console.log('=== DEBUG goToPlaylistPageWithError ===');

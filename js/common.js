@@ -32,8 +32,8 @@ var focus_colors = [],
     epg_colors = [],
     bg_focus_colors = [],
     keyboard_displayed = false;
-var env = "develop";
-// env = "production";
+var env = "production";
+// env = "develop";
 var device_id = "";
 
 function updateTimer() {
