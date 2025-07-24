@@ -391,13 +391,15 @@ var login_page={
     },
 
     continueWithoutPlaylist:function(){
-        $('#playlist-error-modal').modal('hide');
         this.keys.focused_part='main_area';
         this.is_loading = false;
         this.device_id_fetched = false;
 
         console.log('=== DEBUG: Continue without playlist called ===');
         console.log('Backend demo_url:', demo_url);
+
+        // Update modal to show loading demo content
+        this.showDemoContentStatus('Loading demo content...');
 
         // Temporarily store current user playlist
         var user_playlist = settings.playlist;
@@ -431,12 +433,14 @@ var login_page={
                     settings.playlist = user_playlist;
                     settings.playlist_id = user_playlist_id;
 
-                    $('#loading-page').addClass('hide');
-                    home_page.init();
-
+                    // Show success in modal briefly before closing
+                    that.showDemoContentStatus('Demo Content', 'Using local demo content until your playlist is working');
+                    
                     setTimeout(function() {
-                        showToast('Demo Content', 'Using local demo content until your playlist is working');
-                    }, 1000);
+                        $('#playlist-error-modal').modal('hide');
+                        $('#loading-page').addClass('hide');
+                        home_page.init();
+                    }, 2000);
                 },
                 error: function(error) {
                     console.log('=== DEBUG: Local demo content also failed ===');
@@ -446,15 +450,20 @@ var login_page={
                     settings.playlist = user_playlist;
                     settings.playlist_id = user_playlist_id;
 
-                    // Final fallback - empty data
-                    LiveModel.insertMoviesToCategories([]);
-                    VodModel.insertMoviesToCategories([]);
-                    SeriesModel.insertMoviesToCategories([]);
+                    // Show error in modal
+                    that.showDemoContentStatus('Error', 'No demo content available');
+                    
+                    setTimeout(function() {
+                        $('#playlist-error-modal').modal('hide');
+                        
+                        // Final fallback - empty data
+                        LiveModel.insertMoviesToCategories([]);
+                        VodModel.insertMoviesToCategories([]);
+                        SeriesModel.insertMoviesToCategories([]);
 
-                    $('#loading-page').addClass('hide');
-                    home_page.init();
-
-                    showToast('Error', 'No demo content available');
+                        $('#loading-page').addClass('hide');
+                        home_page.init();
+                    }, 2000);
                 }
             });
         }
@@ -497,12 +506,14 @@ var login_page={
                     settings.playlist = user_playlist;
                     settings.playlist_id = user_playlist_id;
 
-                    $('#loading-page').addClass('hide');
-                    home_page.init();
-
+                    // Show success in modal briefly before closing
+                    that.showDemoContentStatus('Demo Content', 'Using backend demo content until your playlist is working');
+                    
                     setTimeout(function() {
-                        showToast('Demo Content', 'Using backend demo content until your playlist is working');
-                    }, 1000);
+                        $('#playlist-error-modal').modal('hide');
+                        $('#loading-page').addClass('hide');
+                        home_page.init();
+                    }, 2000);
                 },
                 error: function(error) {
                     console.log('=== DEBUG: Backend demo content failed, trying local ===');
@@ -519,6 +530,26 @@ var login_page={
         } else {
             console.log('=== DEBUG: No backend demo URL, trying local demo ===');
             tryLocalDemo();
+        }
+    },
+
+    showDemoContentStatus:function(title, message) {
+        // Hide original error content
+        $('#playlist-error-main-message').hide();
+        $('#playlist-error-reasons').hide();
+        $('#playlist-error-sub-message').hide();
+        $('.playlist-error-btn').hide();
+
+        // Show demo content status
+        if(title === 'Loading demo content...') {
+            $('#demo-content-status').html('<i class="fa fa-spinner fa-spin" style="margin-right: 15px; color: #FFA500;"></i>' + title).show();
+            $('#demo-content-message').hide();
+        } else if(title === 'Demo Content') {
+            $('#demo-content-status').html('<i class="fa fa-check-circle" style="margin-right: 15px; color: #4CAF50;"></i>' + title).show();
+            $('#demo-content-message').text(message).show();
+        } else if(title === 'Error') {
+            $('#demo-content-status').html('<i class="fa fa-exclamation-triangle" style="margin-right: 15px; color: #ff4832;"></i>' + title).show();
+            $('#demo-content-message').text(message).show();
         }
     },
     proceed_login:function(){

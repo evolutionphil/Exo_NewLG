@@ -135,17 +135,26 @@
                 </div>
                 <div class="modal-body modal-body-bg-img-1">
                     <div style="text-align: center; margin-bottom: 30px;">
-                        <div style="color: #ddd; font-size: 28px; font-weight: normal; margin-bottom: 20px;">
+                        <div id="playlist-error-main-message" style="color: #ddd; font-size: 28px; font-weight: normal; margin-bottom: 20px;">
                             Unable to load your playlist content. This could be due to:
                         </div>
-                        <div style="color: #bbb; font-size: 24px; font-weight: normal; text-align: left; margin: 20px 0;">
+                        <div id="playlist-error-reasons" style="color: #bbb; font-size: 24px; font-weight: normal; text-align: left; margin: 20px 0;">
                             <div style="margin-bottom: 10px;">• Network connection issues</div>
                             <div style="margin-bottom: 10px;">• Playlist server is temporarily unavailable</div>
                             <div style="margin-bottom: 10px;">• Mixed content security restrictions</div>
                             <div style="margin-bottom: 10px;">• Invalid playlist credentials</div>
                         </div>
-                        <div style="color: #ddd; font-size: 26px; font-weight: normal; margin-top: 20px;">
+                        <div id="playlist-error-sub-message" style="color: #ddd; font-size: 26px; font-weight: normal; margin-top: 20px;">
                             You can continue using the app with limited functionality or retry loading your playlist.
+                        </div>
+                        
+                        <!-- Demo Content Status (hidden by default) -->
+                        <div id="demo-content-status" style="display: none; color: #4CAF50; font-size: 28px; font-weight: normal; margin-bottom: 20px;">
+                            <i class="fa fa-check-circle" style="margin-right: 15px; color: #4CAF50;"></i>
+                            Demo Content
+                        </div>
+                        <div id="demo-content-message" style="display: none; color: #ddd; font-size: 26px; font-weight: normal; margin-top: 20px;">
+                            Using local demo content until your playlist is working
                         </div>
                     </div>
                     <div style="text-align: center;">
