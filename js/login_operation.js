@@ -521,23 +521,43 @@ var login_page={
             });
         }
 
-        // Check if backend demo_url is available and valid
+        // First try backend demo URL if available
+        var backend_demo_url = null;
+        var backend_demo_playlist = null;
+        
         console.log('=== DEBUG: Checking demo_url ===');
         console.log('demo_url type:', typeof demo_url);
         console.log('demo_url value:', demo_url);
         
-        if(demo_url && typeof demo_url === 'object' && demo_url.url && demo_url.url.trim() !== '') {
-            console.log('=== DEBUG: Using backend demo URL ===');
-            console.log('Backend Demo URL:', demo_url.url);
-            console.log('Backend Demo Object:', demo_url);
+        if(demo_url) {
+            // Handle both string and object formats
+            if(typeof demo_url === 'string' && demo_url.trim() !== '') {
+                backend_demo_url = demo_url;
+                backend_demo_playlist = {
+                    id: 'backend_demo',
+                    name: 'Backend Demo Content',
+                    url: backend_demo_url,
+                    type: 'general'
+                };
+            } else if(typeof demo_url === 'object' && demo_url.url && demo_url.url.trim() !== '') {
+                backend_demo_url = demo_url.url;
+                backend_demo_playlist = {
+                    id: demo_url.id || 'backend_demo',
+                    name: demo_url.name || 'Backend Demo Content',
+                    url: demo_url.url,
+                    type: demo_url.type || 'general'
+                };
+            }
+        }
+        
+        console.log('=== DEBUG: Processed demo data ===');
+        console.log('backend_demo_url:', backend_demo_url);
+        console.log('backend_demo_playlist:', backend_demo_playlist);
 
-            // Create backend demo playlist
-            var backend_demo_playlist = {
-                id: demo_url.id || 'backend_demo',
-                name: demo_url.name || 'Backend Demo Content',
-                url: demo_url.url,
-                type: demo_url.type || 'general'
-            };
+        if(backend_demo_url && backend_demo_playlist) {
+            console.log('=== DEBUG: Trying backend demo URL ===');
+            console.log('Backend Demo URL:', backend_demo_url);
+            console.log('Backend Demo Playlist:', backend_demo_playlist);
 
             // Set backend demo playlist temporarily
             settings.playlist = backend_demo_playlist;
@@ -545,7 +565,7 @@ var login_page={
 
             $.ajax({
                 method: 'get',
-                url: demo_url.url,
+                url: backend_demo_url,
                 timeout: 15000,
                 success: function(data) {
                     console.log('=== DEBUG: Backend demo content loaded successfully ===');
@@ -577,7 +597,7 @@ var login_page={
                 }
             });
         } else {
-            console.log('=== DEBUG: No valid backend demo URL, trying local demo ===');
+            console.log('=== DEBUG: No backend demo URL, trying local demo ===');
             tryLocalDemo();
         }
     },
