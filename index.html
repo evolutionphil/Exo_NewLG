@@ -155,24 +155,25 @@
                             Using local demo content until your playlist is working
                         </div>
                     </div>
-                    <div style="text-align: center;">
+                    <div style="text-align: center; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
                         <button class="playlist-error-btn setting-modal-btn bg-focus" 
                                 onclick="login_page.retryPlaylistLoad()" 
                                 onmouseenter="login_page.hoverPlaylistErrorBtn(0)"
-                                style="margin-right: 20px;">
+                                style="flex: 0 0 auto;">
                             <i class="fa fa-refresh" style="margin-right: 10px;"></i>
                             Retry Loading
                         </button>
                         <button id="switch-playlist-btn" class="playlist-error-btn setting-modal-btn bg-focus" 
                                 onclick="login_page.switchToNextPlaylist()"
                                 onmouseenter="login_page.hoverPlaylistErrorBtn(1)"
-                                style="margin-right: 20px; display: none;">
+                                style="flex: 0 0 auto; display: none;">
                             <i class="fa fa-exchange-alt" style="margin-right: 10px;"></i>
                             Switch Playlist
                         </button>
                         <button class="playlist-error-btn setting-modal-btn bg-focus" 
                                 onclick="login_page.continueWithoutPlaylist()"
-                                onmouseenter="login_page.hoverPlaylistErrorBtn(2)">
+                                onmouseenter="login_page.hoverPlaylistErrorBtn(2)"
+                                style="flex: 0 0 auto;">
                             <i class="fa fa-check" style="margin-right: 10px;"></i>
                             Continue Anyway
                         </button>
