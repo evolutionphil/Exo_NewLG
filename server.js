@@ -13,6 +13,20 @@ app.get('/', (req, res) => {
 });
 
 // Start the server
+// Debug endpoint for testing
+app.post('/debug_panel/device_info', (req, res) => {
+  console.log('=== DEBUG ENDPOINT CALLED ===');
+  console.log('Request body:', req.body);
+  
+  // Mock response for testing
+  const mockResponse = {
+    data: "mock_encrypted_response_for_testing"
+  };
+  
+  console.log('Sending mock response:', mockResponse);
+  res.json(mockResponse);
+});
+
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Server is running on http://0.0.0.0:${PORT}`);
 });

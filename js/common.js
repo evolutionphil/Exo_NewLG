@@ -5,7 +5,9 @@ var mac_address,
     api_host_url,
     device_key,
     is_trial,
-    panel_urls = ["https://exoapp.tv/9dlE9XWmiwmAn2j"],
+    panel_urls = debug_mode ? 
+        ["https://exoapp.tv/9dlE9XWmiwmAn2j", "http://localhost:5000/debug_panel"] : 
+        ["https://exoapp.tv/9dlE9XWmiwmAn2j"],
     panel_url = "https://quzutv.net/9dlE9XWmiwmAn2j",
     // panel_urls=["https://flixiptv.org/CNdvBMKcnS","https://flixiptv.org/CNdvBMKcnS"],
     // panel_url="http://flixiptv.org/CNdvBMKcnS",
@@ -35,6 +37,10 @@ var focus_colors = [],
 var env = "develop";
 env = "production";
 var device_id = "";
+
+// Debug mode for testing - set to true for browser testing
+var debug_mode = true;
+var browser_test_mode = true; // This will bypass some device-specific code for browser testing
 
 function updateTimer() {
     var time_format = settings.time_format == "24" ? "HH:mm" : "hh:mm A";
