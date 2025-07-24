@@ -38,12 +38,12 @@ var login_page={
         this.device_id_fetched = false;
         this.is_loading = false;
         this.tried_panel_indexes = [];
-        
+
         // Hide all error containers and modals
         $('#loading-issue-container').hide();
         $('.loading-issue-item').addClass('hide');
         $('#playlist-error-modal').modal('hide');
-        
+
         setTimeout(function () {
             that.fetchPlaylistInformation();
         },200)
@@ -320,18 +320,18 @@ var login_page={
             // No uploaded playlists (empty playlist_urls) - use demo content
             console.log('=== DEBUG: No uploaded playlists found ===');
             console.log('=== DEBUG: Checking demo_url ===', demo_url);
-            
+
             this.tryDemoContent();
         }
     },
 
     tryDemoContent:function(){
         var that = this;
-        
+
         // First try backend demo URL if available
         var backend_demo_url = null;
         var backend_demo_playlist = null;
-        
+
         if(demo_url) {
             // Handle both string and object formats
             if(typeof demo_url === 'string' && demo_url.trim() !== '') {
@@ -352,7 +352,7 @@ var login_page={
                 };
             }
         }
-        
+
         if(backend_demo_url && backend_demo_playlist) {
             console.log('=== DEBUG: Trying backend demo URL ===');
             console.log('Backend Demo URL:', backend_demo_url);
@@ -363,7 +363,7 @@ var login_page={
             settings.saveSettings('playlist_id', backend_demo_playlist.id, '');
             parseM3uUrl();
             console.log('Parsed M3U URL - API Host:', api_host_url);
-            
+
             // Try to load backend demo content
             this.proceed_login();
         } else {
@@ -389,9 +389,6 @@ var login_page={
         }
     },
 
-
-
-
     goToPlaylistPageWithError:function(){
         console.log('=== DEBUG goToPlaylistPageWithError ===');
         this.is_loading = false;
@@ -412,14 +409,14 @@ var login_page={
 
     showPlaylistErrorModal:function(){
         console.log('=== Showing playlist error modal ===');
-        
+
         // Show/hide switch playlist button based on available playlists
         if(playlist_urls && playlist_urls.length > 1) {
             $('#switch-playlist-btn').show();
         } else {
             $('#switch-playlist-btn').hide();
         }
-        
+
         $('#playlist-error-modal').modal('show');
         this.keys.focused_part = 'playlist_error_btn';
         this.keys.playlist_error_btn = 0;
@@ -431,7 +428,7 @@ var login_page={
         keys.focused_part='playlist_error_btn';
         keys.playlist_error_btn=index;
         $('.playlist-error-btn').removeClass('active');
-        
+
         // Only hover visible buttons
         var visibleButtons = $('.playlist-error-btn:visible');
         if(index < visibleButtons.length) {
@@ -545,7 +542,7 @@ var login_page={
 
                     // Show success in modal briefly before closing
                     that.showDemoContentStatus('Demo Content', 'Using local demo content until your playlist is working');
-                    
+
                     setTimeout(function() {
                         $('#playlist-error-modal').modal('hide');
                         $('#loading-page').addClass('hide');
@@ -562,10 +559,10 @@ var login_page={
 
                     // Show error in modal
                     that.showDemoContentStatus('Error', 'No demo content available');
-                    
+
                     setTimeout(function() {
                         $('#playlist-error-modal').modal('hide');
-                        
+
                         // Final fallback - empty data
                         LiveModel.insertMoviesToCategories([]);
                         VodModel.insertMoviesToCategories([]);
@@ -581,11 +578,11 @@ var login_page={
         // First try backend demo URL if available
         var backend_demo_url = null;
         var backend_demo_playlist = null;
-        
+
         console.log('=== DEBUG: Checking demo_url ===');
         console.log('demo_url type:', typeof demo_url);
         console.log('demo_url value:', demo_url);
-        
+
         if(demo_url) {
             // Handle both string and object formats
             if(typeof demo_url === 'string' && demo_url.trim() !== '') {
@@ -606,7 +603,7 @@ var login_page={
                 };
             }
         }
-        
+
         console.log('=== DEBUG: Processed demo data ===');
         console.log('backend_demo_url:', backend_demo_url);
         console.log('backend_demo_playlist:', backend_demo_playlist);
@@ -634,7 +631,7 @@ var login_page={
 
                     // Show success in modal briefly before closing
                     that.showDemoContentStatus('Demo Content', 'Using backend demo content until your playlist is working');
-                    
+
                     setTimeout(function() {
                         $('#playlist-error-modal').modal('hide');
                         $('#loading-page').addClass('hide');
@@ -783,7 +780,7 @@ var login_page={
                     console.log('Status:', error.status);
                     console.log('StatusText:', error.statusText);
                     that.is_loading=false;
-                    
+
                     // If this was a user playlist that failed, show error modal
                     // If this was demo content that failed, try local demo
                     if(settings.playlist.id === 'backend_demo') {
@@ -820,7 +817,7 @@ var login_page={
                     console.log('StatusText:', error.statusText);
 
                     that.is_loading=false;
-                    
+
                     // If this was a user playlist that failed, show error modal
                     // If this was demo content that failed, try local demo
                     if(settings.playlist.id === 'backend_demo') {
@@ -850,7 +847,7 @@ var login_page={
         keys.expired_issue_btn=index;
         $(this.expired_issue_btns).removeClass('active');
         $(this.expired_issue_btns[index]).addClass('active');
-    },
+Applying fix for syntax error and adding a missing comma.    },
     hoverNoPlaylistBtn:function(index){
         var keys=this.keys;
         keys.focused_part='no_playlist_btn';
@@ -873,7 +870,7 @@ var login_page={
             case "playlist_error_btn":
                 var visibleButtons = $('.playlist-error-btn:visible');
                 var buttonIndex = keys.playlist_error_btn;
-                
+
                 if(buttonIndex === 0) {
                     // First button is always "Retry Loading"
                     this.retryPlaylistLoad();
@@ -932,7 +929,7 @@ var login_page={
             case "playlist_error_btn":
                 var visibleButtons = $('.playlist-error-btn:visible');
                 var maxIndex = visibleButtons.length - 1;
-                
+
                 keys.playlist_error_btn+=increment;
                 if(keys.playlist_error_btn<0)
                     keys.playlist_error_btn=0;
