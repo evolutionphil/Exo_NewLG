@@ -429,6 +429,10 @@ var login_page={
         var that = this;
 
         // Set modal as active to capture all key events
+        $('#playlist-error-modal').modal({
+            backdrop: 'static', // Prevent closing by clicking outside
+            keyboard: false     // Prevent closing with escape key (we handle it manually)
+        });
         $('#playlist-error-modal').modal('show');
 
         // Force focus state immediately
@@ -445,12 +449,25 @@ var login_page={
 
         // Ensure modal captures focus and prevents background navigation
         $('#playlist-error-modal').on('shown.bs.modal', function() {
-            $(this).focus();
+            // Make modal focusable and focus it
+            $(this).attr('tabindex', '-1').focus();
+            
             // Double-check focus state
             that.keys.focused_part = 'playlist_error_btn';
             that.keys.playlist_error_btn = 0;
             that.hoverPlaylistErrorBtn(0);
             console.log('=== Modal shown event - focus ensured ===');
+            console.log('Modal has focus:', document.activeElement === this);
+        });
+
+        // Handle modal hidden event to restore focus
+        $('#playlist-error-modal').on('hidden.bs.modal', function() {
+            console.log('=== Modal hidden - restoring focus ===');
+            that.keys.focused_part = 'main_area';
+            that.keys.main_area = 0;
+            
+            // Remove event handlers to prevent memory leaks
+            $(this).off('shown.bs.modal hidden.bs.modal');
         });
     },
 
@@ -491,18 +508,31 @@ var login_page={
     },
 
     closePlaylistErrorModal:function(){
+        console.log('=== Closing playlist error modal ===');
+        
         // Force close modal completely
         $('#playlist-error-modal').modal('hide');
         $('#playlist-error-modal').removeClass('show');
         $('.modal-backdrop').remove();
         $('body').removeClass('modal-open').css('padding-right', '');
 
-        // Reset focus
-        this.keys.focused_part='main_area';
-        this.keys.main_area = 0;
+        // Reset focus to home page if we're already there
+        if(current_route === 'home-page') {
+            this.keys.focused_part = 'main_area';
+            this.keys.main_area = 0;
+            // Give focus back to home page
+            if(typeof home_page !== 'undefined' && home_page.hoverMenuItem) {
+                setTimeout(function() {
+                    home_page.hoverMenuItem(0);
+                }, 100);
+            }
+        } else {
+            this.keys.focused_part = 'main_area';
+            this.keys.main_area = 0;
+        }
 
-        // Remove modal event handlers
-        $('#playlist-error-modal').off('shown.bs.modal');
+        // Remove modal event handlers to prevent memory leaks
+        $('#playlist-error-modal').off('shown.bs.modal hidden.bs.modal');
 
         // Reset demo content status display
         $('#demo-content-status').hide();
@@ -511,11 +541,13 @@ var login_page={
         $('#playlist-error-reasons').show();
         $('#playlist-error-sub-message').show();
         $('.playlist-error-btn').show();
+
+        console.log('=== Modal closed, focus restored ===');
     },
 
     retryPlaylistLoad:function(){
-        $('#playlist-error-modal').modal('hide');
-        this.keys.focused_part='main_area';
+        console.log('=== Retry playlist load ===');
+        this.closePlaylistErrorModal();
         this.tried_panel_indexes = []; // Reset tried panels
         this.is_loading = false;
         this.device_id_fetched = false;
@@ -535,8 +567,8 @@ var login_page={
             return;
         }
 
-        $('#playlist-error-modal').modal('hide');
-        this.keys.focused_part='main_area';
+        console.log('=== Switch to next playlist ===');
+        this.closePlaylistErrorModal();
         this.tried_panel_indexes = []; // Reset tried panels
         this.is_loading = false;
         this.device_id_fetched = false;
@@ -570,7 +602,7 @@ var login_page={
     },
 
     continueWithoutPlaylist:function(){
-        this.keys.focused_part='main_area';
+        console.log('=== Continue without playlist ===');
         this.is_loading = false;
         this.device_id_fetched = false;
 
@@ -1055,9 +1087,10 @@ var login_page={
         }
     },
     HandleKey:function(e) {
-        // Check if playlist error modal is visible and active
-        var isModalOpen = $('#playlist-error-modal').is(':visible') && 
-                         ($('#playlist-error-modal').hasClass('show') || $('#playlist-error-modal').css('display') !== 'none');
+        // Check if playlist error modal is visible and active - improved detection
+        var isModalOpen = $('#playlist-error-modal').hasClass('show') || 
+                         $('#playlist-error-modal').is(':visible') || 
+                         $('#playlist-error-modal').css('display') === 'block';
 
         if(isModalOpen) {
             console.log('=== Modal Key Handler ===');
@@ -1065,7 +1098,7 @@ var login_page={
             console.log('Current focused_part:', this.keys.focused_part);
             console.log('Current playlist_error_btn:', this.keys.playlist_error_btn);
 
-            // Prevent all background navigation
+            // Prevent all background navigation - stronger prevention
             e.preventDefault();
             e.stopPropagation();
             e.stopImmediatePropagation();
@@ -1075,30 +1108,47 @@ var login_page={
                 this.keys.focused_part = 'playlist_error_btn';
                 this.keys.playlist_error_btn = 0;
                 this.hoverPlaylistErrorBtn(0);
+                console.log('=== Forced focus to modal buttons ===');
             }
 
             switch(e.keyCode){
                 case tvKey.LEFT:
+                case 37: // Fallback for standard left arrow
                     console.log('LEFT key pressed in modal');
                     this.handleMenuLeftRight(-1);
-                    break;
+                    return false;
                 case tvKey.RIGHT:
+                case 39: // Fallback for standard right arrow
                     console.log('RIGHT key pressed in modal');
                     this.handleMenuLeftRight(1);
-                    break;
+                    return false;
+                case tvKey.UP:
+                case 38: // Fallback for standard up arrow
+                    console.log('UP key pressed in modal - treating as LEFT');
+                    this.handleMenuLeftRight(-1);
+                    return false;
+                case tvKey.DOWN:
+                case 40: // Fallback for standard down arrow
+                    console.log('DOWN key pressed in modal - treating as RIGHT');
+                    this.handleMenuLeftRight(1);
+                    return false;
                 case tvKey.ENTER:
+                case 13: // Fallback for standard enter
                     console.log('ENTER key pressed in modal');
                     this.handleMenuClick();
-                    break;
+                    return false;
                 case tvKey.RETURN:
+                case 10009: // Samsung return key
+                case 461: // LG return key
+                case 27: // Fallback escape key
                     console.log('RETURN key pressed in modal - closing');
                     this.closePlaylistErrorModal();
-                    break;
+                    return false;
                 default:
                     console.log('Unhandled key in modal:', e.keyCode);
-                    break;
+                    // Block all other keys when modal is open
+                    return false;
             }
-            return false; // Ensure no further processing
         }
 
         if(e.keyCode===tvKey.RETURN){
