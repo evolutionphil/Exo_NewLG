@@ -847,7 +847,7 @@ var login_page={
         keys.expired_issue_btn=index;
         $(this.expired_issue_btns).removeClass('active');
         $(this.expired_issue_btns[index]).addClass('active');
-Applying fix for syntax error and adding a missing comma.    },
+    },
     hoverNoPlaylistBtn:function(index){
         var keys=this.keys;
         keys.focused_part='no_playlist_btn';
