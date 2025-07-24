@@ -416,10 +416,16 @@ var login_page={
             $('#switch-playlist-btn').hide();
         }
 
+        // Set modal as active to capture all key events
         $('#playlist-error-modal').modal('show');
         this.keys.focused_part = 'playlist_error_btn';
         this.keys.playlist_error_btn = 0;
         this.hoverPlaylistErrorBtn(0);
+
+        // Ensure modal captures focus and prevents background navigation
+        $('#playlist-error-modal').on('shown.bs.modal', function() {
+            $(this).focus();
+        });
     },
 
     hoverPlaylistErrorBtn:function(index){
@@ -438,6 +444,10 @@ var login_page={
     closePlaylistErrorModal:function(){
         $('#playlist-error-modal').modal('hide');
         this.keys.focused_part='main_area';
+        this.keys.main_area = 0;
+        
+        // Remove modal event handlers
+        $('#playlist-error-modal').off('shown.bs.modal');
     },
 
     retryPlaylistLoad:function(){
@@ -939,6 +949,29 @@ var login_page={
         }
     },
     HandleKey:function(e) {
+        // If playlist error modal is open, handle only modal keys and prevent background navigation
+        if($('#playlist-error-modal').hasClass('show')) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            switch(e.keyCode){
+                case tvKey.LEFT:
+                    this.handleMenuLeftRight(-1);
+                    break;
+                case tvKey.RIGHT:
+                    this.handleMenuLeftRight(1);
+                    break;
+                case tvKey.ENTER:
+                    this.handleMenuClick();
+                    break;
+                case tvKey.RETURN:
+                    // Close modal on return key
+                    this.closePlaylistErrorModal();
+                    break;
+            }
+            return;
+        }
+
         if(e.keyCode===tvKey.RETURN){
             this.goBack();
             return;

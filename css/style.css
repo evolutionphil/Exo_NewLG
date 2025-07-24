@@ -731,6 +731,20 @@ img.info-icon {
     color: #ddd;
 }
 
+/* Ensure modal captures focus and prevents background interaction */
+#playlist-error-modal.show {
+    z-index: 9999 !important;
+}
+
+#playlist-error-modal .modal-dialog {
+    outline: none;
+}
+
+#playlist-error-modal.show .modal-content {
+    border: 2px solid #007bff;
+    box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
+}
+
 #playlist-error-modal .setting-modal-btn.active .fa {
     color: #fff;
 }
