@@ -3,3 +3,8 @@
 .sign/author-signature.xml
 .sign/signature1.xml
 .idea
+.vscode
+.gn
+Release
+Build
+.DS_Store
