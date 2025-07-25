@@ -226,11 +226,6 @@ var login_page={
         }
     },
     getPlayListDetail:function(){
-        // Prevent multiple calls to avoid infinite loading
-        if(this.device_id_fetched) {
-            console.log('Device ID already fetched, skipping duplicate call');
-            return;
-        }
         this.device_id_fetched = true;
 
         var that=this;
