@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="http://yourdomain/ExoTV" version="1.0.0" viewmodes="maximized">
     <access origin="*" subdomains="true"></access>
-    <tizen:application id="xaTMfMYr2q.ExoTV" package="xaTMfMYr2q" required_version="2.3"/>
+    <tizen:application id="exoTMjMYi1.ExoTv" package="exoTMjMYi1" required_version="2.3"/>
     <content src="index.html"/>
     <feature name="http://tizen.org/feature/screen.size.normal.1080.1920"/>
     <icon src="app_launcher.png"/>

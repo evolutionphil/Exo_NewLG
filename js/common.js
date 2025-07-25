@@ -6,7 +6,7 @@ var mac_address,
     device_key,
     is_trial,
     panel_urls = ["https://exoapp.tv/9dlE9XWmiwmAn2j"],
-    panel_url = "https://quzutv.net/9dlE9XWmiwmAn2j",
+    panel_url = "https://exoapp.tv/9dlE9XWmiwmAn2j",
     // panel_urls=["https://flixiptv.org/CNdvBMKcnS","https://flixiptv.org/CNdvBMKcnS"],
     // panel_url="http://flixiptv.org/CNdvBMKcnS",
     time_difference_with_server = 0; // time difference between user time and server time, measured by mins

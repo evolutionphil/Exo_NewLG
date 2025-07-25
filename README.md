@@ -1,3 +1,3 @@
-# QuzuTVSmartTV
+# ExoTVSmartTV
 
 IS a MEDIA PLAYER
