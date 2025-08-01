@@ -372,7 +372,7 @@ var login_page={
         var local_demo_playlist = {
             id: 'local_demo',
             name: 'Local Demo Playlist',
-            url: './tv_channels_flixdemo_plus.m3u',
+            url: './assets/tv_channels_flixdemo_plus.m3u',
             type: 'general'
         };
         settings.saveSettings('playlist', local_demo_playlist, 'array');
@@ -641,7 +641,7 @@ var login_page={
             var local_demo_playlist = {
                 id: 'local_demo',
                 name: 'Local Demo Content',
-                url: './tv_channels_flixdemo_plus.m3u',
+                url: './assets/tv_channels_flixdemo_plus.m3u',
                 type: 'general'
             };
 
@@ -651,7 +651,7 @@ var login_page={
 
             $.ajax({
                 method: 'get',
-                url: './tv_channels_flixdemo_plus.m3u',
+                url: './assets/tv_channels_flixdemo_plus.m3u',
                 timeout: 15000,
                 success: function(data) {
                     console.log('=== DEBUG: Local demo content loaded successfully ===');
