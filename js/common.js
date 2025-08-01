@@ -630,7 +630,6 @@ function encryptRequest(data) {
     var position = Math.floor(Math.random() * string_data.length);
     if (position >= 42) position = 42;
     var encrypt_key = getEncryptKey(encrypt_key_length);
-    console.clear();
     // console.log("enc_key=",encrypt_key)
     var app_type = "samsung";
     var encrypted_data;
