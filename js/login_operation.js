@@ -410,6 +410,9 @@ var login_page={
         $('#demo-content-status').hide();
         $('#demo-content-message').hide();
 
+        // Populate account information
+        this.populateAccountInfo();
+
         // Ensure all buttons are visible by default
         $('.playlist-error-btn').show();
 
@@ -556,6 +559,65 @@ var login_page={
         $('#playlist-error-modal').off('shown.bs.modal');
         
         console.log('Modal closed, focus restored to:', this.keys.focused_part);
+    },
+
+    populateAccountInfo:function(){
+        // Get stored API data
+        var api_data = localStorage.getItem(storage_id+'api_data');
+        if(api_data) {
+            try {
+                var data = JSON.parse(api_data);
+                
+                // Account Status
+                if(data.mac_registered) {
+                    $('#account-status-value').text('Registered').css('color', '#4CAF50');
+                } else {
+                    $('#account-status-value').text('Not Registered').css('color', '#ff4832');
+                }
+                
+                // Trial Days
+                if(data.trial_days) {
+                    $('#trial-days-value').text(data.trial_days + ' days').css('color', '#FFA500');
+                } else if(is_trial !== undefined) {
+                    $('#trial-days-value').text(is_trial ? 'Trial Mode' : 'Full Access').css('color', is_trial ? '#FFA500' : '#4CAF50');
+                } else {
+                    $('#trial-days-value').text('Unknown').css('color', '#999');
+                }
+                
+            } catch(e) {
+                console.error('Error parsing API data for account info:', e);
+                $('#account-status-value').text('Unknown').css('color', '#999');
+                $('#trial-days-value').text('Unknown').css('color', '#999');
+            }
+        } else {
+            $('#account-status-value').text('No Data').css('color', '#999');
+            $('#trial-days-value').text('No Data').css('color', '#999');
+        }
+        
+        // Connection Status (always failed in error modal)
+        $('#connection-status-value').text('Failed').css('color', '#ff4832');
+        
+        // Playlist URL and Xtream Credentials
+        if(settings && settings.playlist && settings.playlist.url) {
+            var url = settings.playlist.url;
+            
+            // Add Xtream credentials info if available
+            if(settings.playlist_type === 'xtreme' && user_name && password && api_host_url) {
+                var xtreamInfo = 'Server: ' + api_host_url + ' | User: ' + user_name + ' | Pass: ' + password.substring(0,3) + '***';
+                if(xtreamInfo.length > 120) {
+                    xtreamInfo = xtreamInfo.substring(0, 117) + '...';
+                }
+                $('#playlist-url-info').html(xtreamInfo + '<br><span style="font-size: 10px; color: #666;">Original URL: ' + (url.length > 60 ? url.substring(0, 57) + '...' : url) + '</span>');
+            } else {
+                // Truncate very long URLs
+                if(url.length > 80) {
+                    url = url.substring(0, 77) + '...';
+                }
+                $('#playlist-url-info').text(url);
+            }
+        } else {
+            $('#playlist-url-info').text('No playlist configured');
+        }
     },
 
     retryPlaylistLoad:function(){
