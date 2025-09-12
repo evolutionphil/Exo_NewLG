@@ -730,19 +730,31 @@ var login_page={
             // Handle both string and object formats
             if(typeof demo_url === 'string' && demo_url.trim() !== '') {
                 backend_demo_url = demo_url;
+                // Auto-detect Xtream playlist type
+                var detectedType = 'general';
+                if(backend_demo_url.includes('username=') && backend_demo_url.includes('password=')) {
+                    detectedType = 'xtreme';
+                    console.log('=== DEBUG: Auto-detected Xtream playlist type in continueWithoutPlaylist ===');
+                }
                 backend_demo_playlist = {
                     id: 'backend_demo',
                     name: 'Backend Demo Content',
                     url: backend_demo_url,
-                    type: 'general'
+                    type: detectedType
                 };
             } else if(typeof demo_url === 'object' && demo_url.url && demo_url.url.trim() !== '') {
                 backend_demo_url = demo_url.url;
+                // Auto-detect Xtream playlist type
+                var detectedType = demo_url.type || 'general';
+                if(backend_demo_url.includes('username=') && backend_demo_url.includes('password=')) {
+                    detectedType = 'xtreme';
+                    console.log('=== DEBUG: Auto-detected Xtream playlist type in continueWithoutPlaylist ===');
+                }
                 backend_demo_playlist = {
                     id: demo_url.id || 'backend_demo',
                     name: demo_url.name || 'Backend Demo Content',
                     url: demo_url.url,
-                    type: 'general'
+                    type: detectedType
                 };
             }
         }
@@ -760,51 +772,107 @@ var login_page={
             settings.playlist = backend_demo_playlist;
             parseM3uUrl();
 
-            $.ajax({
-                method: 'get',
-                url: backend_demo_url,
-                timeout: 15000,
-                success: function(data) {
-                    console.log('=== DEBUG: Backend demo content loaded successfully ===');
-                    parseM3uResponse('type1', data);
+            // Use proper method based on playlist type
+            if(backend_demo_playlist.type === 'xtreme') {
+                console.log('=== DEBUG: Using Xtream M3U URL method for backend demo ===');
+                console.log('Original URL:', backend_demo_url);
 
-                    // Restore user's original playlist settings
-                    settings.playlist = user_playlist;
-                    settings.playlist_id = user_playlist_id;
+                // For Xtream URLs, use the original M3U URL directly
+                $.ajax({
+                    method: 'get',
+                    url: backend_demo_url,
+                    timeout: 15000,
+                    success: function(data) {
+                        console.log('=== DEBUG: Xtream M3U Success for backend demo ===');
+                        
+                        // Process the M3U response
+                        parseM3uResponse('type1', data);
+                        
+                        // Restore user's original playlist settings
+                        settings.playlist = user_playlist;
+                        settings.playlist_id = user_playlist_id;
 
-                    // Show success in modal briefly before closing
-                    that.showDemoContentStatus('Demo Content', 'Using backend demo content until your playlist is working');
+                        // Show success in modal briefly before closing
+                        that.showDemoContentStatus('Demo Content', 'Using backend demo content until your playlist is working');
 
-                    setTimeout(function() {
-                        // Force close modal completely
-                        $('#playlist-error-modal').modal('hide');
-                        $('#playlist-error-modal').removeClass('show');
-                        $('.modal-backdrop').remove();
-                        $('body').removeClass('modal-open').css('padding-right', '');
+                        setTimeout(function() {
+                            // Force close modal completely
+                            $('#playlist-error-modal').modal('hide');
+                            $('#playlist-error-modal').removeClass('show');
+                            $('.modal-backdrop').remove();
+                            $('body').removeClass('modal-open').css('padding-right', '');
 
-                        that.keys.focused_part = 'main_area';
-                        that.keys.main_area = 0;
-                        that.is_loading = false;
+                            that.keys.focused_part = 'main_area';
+                            that.keys.main_area = 0;
+                            that.is_loading = false;
 
-                        // Remove modal event handlers
-                        $('#playlist-error-modal').off('shown.bs.modal');
+                            // Remove modal event handlers
+                            $('#playlist-error-modal').off('shown.bs.modal');
 
-                        $('#loading-page').addClass('hide');
-                        home_page.init();
-                    }, 1200);
-                },
-                error: function(error) {
-                    console.log('=== DEBUG: Backend demo content failed, trying local ===');
-                    console.log('Backend demo error:', error);
+                            $('#loading-page').addClass('hide');
+                            home_page.init();
+                        }, 1200);
+                    },
+                    error: function(error) {
+                        console.log('=== DEBUG: Xtream M3U failed for backend demo, trying local ===');
+                        console.log('Error:', error);
 
-                    // Restore user's original playlist settings first
-                    settings.playlist = user_playlist;
-                    settings.playlist_id = user_playlist_id;
+                        // Restore user's original playlist settings first
+                        settings.playlist = user_playlist;
+                        settings.playlist_id = user_playlist_id;
 
-                    // Try local demo as fallback
-                    tryLocalDemo();
-                }
-            });
+                        // Try local demo as fallback
+                        tryLocalDemo();
+                    }
+                });
+            } else {
+                // Use standard M3U method for non-Xtream URLs
+                $.ajax({
+                    method: 'get',
+                    url: backend_demo_url,
+                    timeout: 15000,
+                    success: function(data) {
+                        console.log('=== DEBUG: Backend demo content loaded successfully ===');
+                        parseM3uResponse('type1', data);
+
+                        // Restore user's original playlist settings
+                        settings.playlist = user_playlist;
+                        settings.playlist_id = user_playlist_id;
+
+                        // Show success in modal briefly before closing
+                        that.showDemoContentStatus('Demo Content', 'Using backend demo content until your playlist is working');
+
+                        setTimeout(function() {
+                            // Force close modal completely
+                            $('#playlist-error-modal').modal('hide');
+                            $('#playlist-error-modal').removeClass('show');
+                            $('.modal-backdrop').remove();
+                            $('body').removeClass('modal-open').css('padding-right', '');
+
+                            that.keys.focused_part = 'main_area';
+                            that.keys.main_area = 0;
+                            that.is_loading = false;
+
+                            // Remove modal event handlers
+                            $('#playlist-error-modal').off('shown.bs.modal');
+
+                            $('#loading-page').addClass('hide');
+                            home_page.init();
+                        }, 1200);
+                    },
+                    error: function(error) {
+                        console.log('=== DEBUG: Backend demo content failed, trying local ===');
+                        console.log('Backend demo error:', error);
+
+                        // Restore user's original playlist settings first
+                        settings.playlist = user_playlist;
+                        settings.playlist_id = user_playlist_id;
+
+                        // Try local demo as fallback
+                        tryLocalDemo();
+                    }
+                });
+            }
         } else {
             console.log('=== DEBUG: No backend demo URL, trying local demo ===');
             tryLocalDemo();
