@@ -3,7 +3,6 @@ run = "node app.js"
 
 [nix]
 channel = "stable-25_05"
-packages = ["open-interpreter"]
 
 [deployment]
 run = ["sh", "-c", "node server.js"]
@@ -44,10 +43,6 @@ outputType = "webview"
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[[ports]]
-localPort = 44013
-externalPort = 3000
 
 [agent]
 expertMode = true
