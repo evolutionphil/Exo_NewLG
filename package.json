@@ -1,11 +1,10 @@
 {
   "name": "workspace",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "description": "IS a MEDIA PLAYER",
   "main": "server.js",
   "scripts": {
-    "version": "node tools/sync-version.cjs",
-    "lg:package": "node tools/package-webos-app.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "keywords": [],
@@ -13,11 +12,5 @@
   "license": "ISC",
   "dependencies": {
     "express": "^5.1.0"
-  },
-  "devDependencies": {
-    "@webos-tools/cli": "^3.2.1",
-    "archiver": "^7.0.1",
-    "minimatch": "^10.0.3",
-    "rimraf": "^6.0.1"
   }
 }
