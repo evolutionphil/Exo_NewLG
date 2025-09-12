@@ -340,22 +340,11 @@ var login_page={
                 };
             } else if(typeof demo_url === 'object' && demo_url.url && demo_url.url.trim() !== '') {
                 backend_demo_url = demo_url.url;
-                
-                // Auto-detect Xtream playlist type based on URL pattern
-                var detectedType = demo_url.type || 'general';
-                if (demo_url.url.includes('get.php') && 
-                    demo_url.url.includes('username=') && 
-                    demo_url.url.includes('password=') &&
-                    demo_url.url.includes('type=m3u_plus')) {
-                    detectedType = 'xtreme';
-                    console.log('=== DEBUG: Auto-detected Xtream playlist type ===');
-                }
-                
                 backend_demo_playlist = {
                     id: demo_url.id || 'backend_demo',
                     name: demo_url.name || 'Backend Demo Content',
                     url: demo_url.url,
-                    type: detectedType
+                    type: demo_url.type || 'general'
                 };
             }
         }
@@ -749,21 +738,11 @@ var login_page={
                 };
             } else if(typeof demo_url === 'object' && demo_url.url && demo_url.url.trim() !== '') {
                 backend_demo_url = demo_url.url;
-                
-                // Auto-detect Xtream playlist type based on URL pattern
-                var detectedType = 'general';
-                if (demo_url.url.includes('get.php') && 
-                    demo_url.url.includes('username=') && 
-                    demo_url.url.includes('password=')) {
-                    detectedType = 'xtreme';
-                    console.log('=== DEBUG: Auto-detected Xtream playlist type in continueWithoutPlaylist ===');
-                }
-                
                 backend_demo_playlist = {
                     id: demo_url.id || 'backend_demo',
                     name: demo_url.name || 'Backend Demo Content',
                     url: demo_url.url,
-                    type: detectedType
+                    type: 'general'
                 };
             }
         }
@@ -787,10 +766,7 @@ var login_page={
                 timeout: 15000,
                 success: function(data) {
                     console.log('=== DEBUG: Backend demo content loaded successfully ===');
-                    // Use proper parsing type based on playlist type
-                    var parseType = (settings.playlist_type === 'xtreme') ? 'xtreme' : 'type1';
-                    console.log('=== DEBUG: Using parse type:', parseType, 'for playlist_type:', settings.playlist_type);
-                    parseM3uResponse(parseType, data);
+                    parseM3uResponse('type1', data);
 
                     // Restore user's original playlist settings
                     settings.playlist = user_playlist;
