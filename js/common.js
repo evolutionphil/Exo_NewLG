@@ -197,8 +197,26 @@ function parseM3uResponse(type, text_response) {
                                 break;
                         }
                     });
-                    if (result_item.stream_id.trim() === "")
-                        result_item.stream_id = result_item.name;
+                    if (result_item.stream_id.trim() === "") {
+                        // For Xtream playlists, extract stream_id from URL
+                        if (settings.playlist_type === 'xtreme' && url) {
+                            // Extract stream_id from Xtream URL patterns like:
+                            // http://host:port/live/user/pass/123.ts -> 123
+                            // http://host:port/movie/user/pass/456.mp4 -> 456
+                            // http://host:port/series/user/pass/789.mp4 -> 789
+                            var urlMatch = url.match(/\/(?:live|movie|series)\/[^\/]+\/[^\/]+\/(\d+)\./);
+                            if (urlMatch && urlMatch[1]) {
+                                result_item.stream_id = urlMatch[1];
+                                console.log('=== DEBUG: Extracted stream_id from Xtream URL ===');
+                                console.log('URL:', url);
+                                console.log('Extracted stream_id:', result_item.stream_id);
+                            } else {
+                                result_item.stream_id = result_item.name;
+                            }
+                        } else {
+                            result_item.stream_id = result_item.name;
+                        }
+                    }
                     result_item.url = url;
                     result_item.num = num;
 
