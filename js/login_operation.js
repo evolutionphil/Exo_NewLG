@@ -568,52 +568,69 @@ var login_page={
             try {
                 var data = JSON.parse(api_data);
                 
-                // Account Status
+                // Account Status and Trial Logic
                 if(data.mac_registered) {
-                    $('#account-status-value').text('Registered').css('color', '#4CAF50');
+                    // Account is activated - hide trial section completely
+                    $('#playlist-account-status').hide();
+                    $('#playlist-trial-info').hide();
                 } else {
-                    $('#account-status-value').text('Not Registered').css('color', '#ff4832');
-                }
-                
-                // Trial Days
-                if(data.trial_days) {
-                    $('#trial-days-value').text(data.trial_days + ' days').css('color', '#FFA500');
-                } else if(is_trial !== undefined) {
-                    $('#trial-days-value').text(is_trial ? 'Trial Mode' : 'Full Access').css('color', is_trial ? '#FFA500' : '#4CAF50');
-                } else {
-                    $('#trial-days-value').text('Unknown').css('color', '#999');
+                    // Account is not activated - show not activated status and trial days if any
+                    $('#playlist-account-status').show();
+                    $('#account-status-value').text('Not Activated').css('color', '#ff4832');
+                    
+                    if(data.trial_days && data.trial_days > 0) {
+                        $('#playlist-trial-info').show();
+                        $('#trial-days-value').text(data.trial_days + ' days left').css('color', '#FFA500');
+                    } else {
+                        $('#playlist-trial-info').hide();
+                    }
                 }
                 
             } catch(e) {
                 console.error('Error parsing API data for account info:', e);
+                $('#playlist-account-status').show();
                 $('#account-status-value').text('Unknown').css('color', '#999');
+                $('#playlist-trial-info').show();
                 $('#trial-days-value').text('Unknown').css('color', '#999');
             }
         } else {
+            $('#playlist-account-status').show();
             $('#account-status-value').text('No Data').css('color', '#999');
+            $('#playlist-trial-info').show();
             $('#trial-days-value').text('No Data').css('color', '#999');
         }
         
         // Connection Status (always failed in error modal)
         $('#connection-status-value').text('Failed').css('color', '#ff4832');
         
-        // Playlist URL and Xtream Credentials
+        // Playlist URL and Xtream Credentials (exclude demo URLs)
         if(settings && settings.playlist && settings.playlist.url) {
             var url = settings.playlist.url;
             
-            // Add Xtream credentials info if available
-            if(settings.playlist_type === 'xtreme' && user_name && password && api_host_url) {
-                var xtreamInfo = 'Server: ' + api_host_url + ' | User: ' + user_name + ' | Pass: ' + password.substring(0,3) + '***';
-                if(xtreamInfo.length > 120) {
-                    xtreamInfo = xtreamInfo.substring(0, 117) + '...';
-                }
-                $('#playlist-url-info').html(xtreamInfo + '<br><span style="font-size: 10px; color: #666;">Original URL: ' + (url.length > 60 ? url.substring(0, 57) + '...' : url) + '</span>');
+            // Check if this is a demo playlist - never show demo credentials
+            var isDemoPlaylist = settings.playlist.id === 'demo' || 
+                               settings.playlist.id === 'backend_demo' || 
+                               settings.playlist.id === 'local_demo' ||
+                               url.includes('flixdemo.com') ||
+                               url.includes('exoapdemodhfew');
+            
+            if(isDemoPlaylist) {
+                $('#playlist-url-info').text('Demo content - credentials hidden for security');
             } else {
-                // Truncate very long URLs
-                if(url.length > 80) {
-                    url = url.substring(0, 77) + '...';
+                // Add Xtream credentials info if available (only for non-demo)
+                if(settings.playlist_type === 'xtreme' && user_name && password && api_host_url) {
+                    var xtreamInfo = 'Server: ' + api_host_url + ' | User: ' + user_name + ' | Pass: ' + password.substring(0,3) + '***';
+                    if(xtreamInfo.length > 120) {
+                        xtreamInfo = xtreamInfo.substring(0, 117) + '...';
+                    }
+                    $('#playlist-url-info').html(xtreamInfo + '<br><span style="font-size: 10px; color: #666;">Original URL: ' + (url.length > 60 ? url.substring(0, 57) + '...' : url) + '</span>');
+                } else {
+                    // Truncate very long URLs
+                    if(url.length > 80) {
+                        url = url.substring(0, 77) + '...';
+                    }
+                    $('#playlist-url-info').text(url);
                 }
-                $('#playlist-url-info').text(url);
             }
         } else {
             $('#playlist-url-info').text('No playlist configured');
