@@ -404,6 +404,9 @@ var login_page={
     showPlaylistErrorModal:function(){
         console.log('=== Showing playlist error modal ===');
 
+        // Populate account info including MAC address
+        this.populateAccountInfo();
+
         // Reset modal content to default state first
         $('#playlist-error-main-message').show();
         $('#playlist-error-reasons').show();
