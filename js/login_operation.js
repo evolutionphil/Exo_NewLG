@@ -896,8 +896,10 @@ var login_page={
                         calculateTimeDifference(data.server_info.time_now,data.server_info.timestamp_now)
                     if(typeof  data.user_info!="undefined"){
                         if(data.user_info.auth==0 || (typeof data.user_info.status!='undefined' && (data.user_info.status==='Expired' || data.user_info.status==='Banned'))){
+                            console.log('=== DEBUG Xtreme API Authentication Failed - Trying Demo Fallback ===');
                             that.is_loading=false;
-                            that.goToPlaylistPageWithError();
+                            // Try demo content fallback instead of going to error modal
+                            that.continueWithoutPlaylist();
                         }
                         else{
                             // if(data.user_info.exp_date==null)
@@ -959,12 +961,18 @@ var login_page={
                                     that.retry_count = 0; // Reset retry count on success
                                     home_page.init();
                                 }catch (e) {
+                                    console.log('=== DEBUG Xtreme API Processing Failed - Trying Demo Fallback ===');
                                     console.log(e);
-                                    that.goToPlaylistPageWithError();
+                                    that.is_loading=false;
+                                    // Try demo content fallback instead of going to error modal
+                                    that.continueWithoutPlaylist();
                                 }
                             }).fail(function (e) {
+                                console.log('=== DEBUG Xtreme API Request Failed - Trying Demo Fallback ===');
                                 console.log(e);
-                                that.goToPlaylistPageWithError();
+                                that.is_loading=false;
+                                // Try demo content fallback instead of going to error modal
+                                that.continueWithoutPlaylist();
                             })
                         }
                     }
@@ -985,8 +993,9 @@ var login_page={
                         console.log('=== DEBUG: Local demo also failed ===');
                         that.goToPlaylistPageWithError();
                     } else {
-                        // User playlist failed
-                        that.goToPlaylistPageWithError();
+                        // User playlist failed - try demo fallback
+                        console.log('=== DEBUG: User playlist failed, trying demo fallback ===');
+                        that.continueWithoutPlaylist();
                     }
                 },
                 timeout: 15000
@@ -1022,8 +1031,9 @@ var login_page={
                         console.log('=== DEBUG: Local demo also failed ===');
                         that.goToPlaylistPageWithError();
                     } else {
-                        // User playlist failed
-                        that.goToPlaylistPageWithError();
+                        // User playlist failed - try demo fallback
+                        console.log('=== DEBUG: User playlist failed, trying demo fallback ===');
+                        that.continueWithoutPlaylist();
                     }
                 }
             })
