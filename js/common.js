@@ -53,35 +53,19 @@ function saveData(key, data) {
     window[key] = data;
 }
 function getMovieUrl(stream_id, stream_type, extension) {
-    // For Xtreme API format, don't add extension for live streams
-    if (stream_type === "live") {
-        return (
-            api_host_url +
-            "/" +
-            stream_type +
-            "/" +
-            user_name +
-            "/" +
-            password +
-            "/" +
-            stream_id
-        );
-    } else {
-        // For VOD and series, use the provided extension
-        return (
-            api_host_url +
-            "/" +
-            stream_type +
-            "/" +
-            user_name +
-            "/" +
-            password +
-            "/" +
-            stream_id +
-            "." +
-            extension
-        );
-    }
+    return (
+        api_host_url +
+        "/" +
+        stream_type +
+        "/" +
+        user_name +
+        "/" +
+        password +
+        "/" +
+        stream_id +
+        "." +
+        extension
+    );
 }
 function moveScrollPosition(parent_element, element, direction, to_center) {
     // move the scroll bar according to element position
@@ -213,30 +197,8 @@ function parseM3uResponse(type, text_response) {
                                 break;
                         }
                     });
-                    
-                    // Extract stream ID from Xtreme API URL if not already set
-                    if (result_item.stream_id.trim() === "") {
-                        // Check if URL is Xtreme API format and extract stream ID
-                        if (url.includes('/live/') || url.includes('/movie/') || url.includes('/series/')) {
-                            var url_parts = url.split('/');
-                            var last_part = url_parts[url_parts.length - 1];
-                            // Remove file extension if present
-                            var stream_id_match = last_part.match(/^(\d+)/);
-                            if (stream_id_match) {
-                                result_item.stream_id = stream_id_match[1];
-                            } else {
-                                // Fallback: try to extract number from anywhere in the last part
-                                var number_match = last_part.match(/(\d+)/);
-                                if (number_match) {
-                                    result_item.stream_id = number_match[1];
-                                } else {
-                                    result_item.stream_id = result_item.name;
-                                }
-                            }
-                        } else {
-                            result_item.stream_id = result_item.name;
-                        }
-                    }
+                    if (result_item.stream_id.trim() === "")
+                        result_item.stream_id = result_item.name;
                     result_item.url = url;
                     result_item.num = num;
 
@@ -322,26 +284,7 @@ function parseM3uResponse(type, text_response) {
                     if (url.includes("/series/")) type = "series";
                     var result_item = {};
                     name = name.trim();
-                    
-                    // Extract stream ID from Xtreme API URL if possible
-                    var stream_id = name;
-                    if (url.includes('/live/') || url.includes('/movie/') || url.includes('/series/')) {
-                        var url_parts = url.split('/');
-                        var last_part = url_parts[url_parts.length - 1];
-                        // Remove file extension if present
-                        var stream_id_match = last_part.match(/^(\d+)/);
-                        if (stream_id_match) {
-                            stream_id = stream_id_match[1];
-                        } else {
-                            // Fallback: try to extract number from anywhere in the last part
-                            var number_match = last_part.match(/(\d+)/);
-                            if (number_match) {
-                                stream_id = number_match[1];
-                            }
-                        }
-                    }
-                    
-                    result_item.stream_id = stream_id;
+                    result_item.stream_id = name;
                     result_item.name = name;
                     result_item.stream_icon = "";
                     result_item.num = i + 1;
@@ -687,7 +630,6 @@ function encryptRequest(data) {
     var position = Math.floor(Math.random() * string_data.length);
     if (position >= 42) position = 42;
     var encrypt_key = getEncryptKey(encrypt_key_length);
-    console.clear();
     // console.log("enc_key=",encrypt_key)
     var app_type = "samsung";
     var encrypted_data;
