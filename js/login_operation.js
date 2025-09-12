@@ -730,25 +730,23 @@ var login_page={
             // Handle both string and object formats
             if(typeof demo_url === 'string' && demo_url.trim() !== '') {
                 backend_demo_url = demo_url;
-                // Auto-detect Xtream playlist type
+                // Detect Xtream URLs exactly like parseM3uUrl() does
                 var detectedType = 'general';
-                if(backend_demo_url.includes('username=') && backend_demo_url.includes('password=')) {
+                if(backend_demo_url.includes("username=") && backend_demo_url.includes("password=")) {
                     detectedType = 'xtreme';
-                    console.log('=== DEBUG: Auto-detected Xtream playlist type in continueWithoutPlaylist ===');
                 }
                 backend_demo_playlist = {
                     id: 'backend_demo',
-                    name: 'Backend Demo Content',
+                    name: 'Backend Demo Content', 
                     url: backend_demo_url,
                     type: detectedType
                 };
             } else if(typeof demo_url === 'object' && demo_url.url && demo_url.url.trim() !== '') {
                 backend_demo_url = demo_url.url;
-                // Auto-detect Xtream playlist type
-                var detectedType = demo_url.type || 'general';
-                if(backend_demo_url.includes('username=') && backend_demo_url.includes('password=')) {
+                // Detect Xtream URLs exactly like parseM3uUrl() does
+                var detectedType = 'general';
+                if(backend_demo_url.includes("username=") && backend_demo_url.includes("password=")) {
                     detectedType = 'xtreme';
-                    console.log('=== DEBUG: Auto-detected Xtream playlist type in continueWithoutPlaylist ===');
                 }
                 backend_demo_playlist = {
                     id: demo_url.id || 'backend_demo',
@@ -772,49 +770,124 @@ var login_page={
             settings.playlist = backend_demo_playlist;
             parseM3uUrl();
 
-            // Use proper method based on playlist type
+            // Use the EXACT same method as proceed_login() for Xtream URLs
             if(backend_demo_playlist.type === 'xtreme') {
-                console.log('=== DEBUG: Using Xtream M3U URL method for backend demo ===');
-                console.log('Original URL:', backend_demo_url);
+                console.log('=== DEBUG: Using Xtream API method for backend demo ===');
+                console.log('Playlist type:', settings.playlist_type);
+                console.log('API host URL:', api_host_url);
+                console.log('Username:', user_name);
+                console.log('Password:', password);
 
-                // For Xtream URLs, use the original M3U URL directly
+                // Use the same Xtream API method used by proceed_login()
+                var prefix_url = api_host_url + '/player_api.php?username=' + user_name + '&password=' + password + '&action=';
+                var login_url = prefix_url.replace("&action=", "");
+                
                 $.ajax({
                     method: 'get',
-                    url: backend_demo_url,
-                    timeout: 15000,
+                    url: login_url,
                     success: function(data) {
-                        console.log('=== DEBUG: Xtream M3U Success for backend demo ===');
-                        
-                        // Process the M3U response
-                        parseM3uResponse('type1', data);
-                        
-                        // Restore user's original playlist settings
-                        settings.playlist = user_playlist;
-                        settings.playlist_id = user_playlist_id;
+                        if(typeof data.server_info != "undefined")
+                            calculateTimeDifference(data.server_info.time_now, data.server_info.timestamp_now)
+                        if(typeof data.user_info != "undefined") {
+                            if(data.user_info.auth == 0 || (typeof data.user_info.status != 'undefined' && (data.user_info.status === 'Expired' || data.user_info.status === 'Banned'))) {
+                                // Auth failed, try local demo
+                                settings.playlist = user_playlist;
+                                settings.playlist_id = user_playlist_id;
+                                tryLocalDemo();
+                            } else {
+                                // Auth success, load all Xtream data
+                                $.when(
+                                    $.ajax({
+                                        method: 'get',
+                                        url: prefix_url + 'get_live_streams',
+                                        success: function(data) {
+                                            LiveModel.setMovies(data);
+                                        }
+                                    }),
+                                    $.ajax({
+                                        method: 'get',
+                                        url: prefix_url + 'get_live_categories',
+                                        success: function(data) {
+                                            LiveModel.setCategories(data);
+                                        }
+                                    }),
+                                    $.ajax({
+                                        method: 'get',
+                                        url: prefix_url + 'get_vod_categories',
+                                        success: function(data) {
+                                            VodModel.setCategories(data);
+                                        }
+                                    }),
+                                    $.ajax({
+                                        method: 'get',
+                                        url: prefix_url + 'get_series_categories',
+                                        success: function(data) {
+                                            SeriesModel.setCategories(data);
+                                        }
+                                    }),
+                                    $.ajax({
+                                        method: 'get',
+                                        url: prefix_url + 'get_vod_streams',
+                                        success: function(data) {
+                                            VodModel.setMovies(data);
+                                        }
+                                    }),
+                                    $.ajax({
+                                        method: 'get',
+                                        url: prefix_url + 'get_series',
+                                        success: function(data) {
+                                            SeriesModel.setMovies(data);
+                                        }
+                                    })
+                                ).then(function() {
+                                    try {
+                                        LiveModel.insertMoviesToCategories();
+                                        VodModel.insertMoviesToCategories();
+                                        SeriesModel.insertMoviesToCategories();
+                                        
+                                        // Restore user's original playlist settings
+                                        settings.playlist = user_playlist;
+                                        settings.playlist_id = user_playlist_id;
 
-                        // Show success in modal briefly before closing
-                        that.showDemoContentStatus('Demo Content', 'Using backend demo content until your playlist is working');
+                                        // Show success in modal briefly before closing
+                                        that.showDemoContentStatus('Demo Content', 'Using backend demo content until your playlist is working');
 
-                        setTimeout(function() {
-                            // Force close modal completely
-                            $('#playlist-error-modal').modal('hide');
-                            $('#playlist-error-modal').removeClass('show');
-                            $('.modal-backdrop').remove();
-                            $('body').removeClass('modal-open').css('padding-right', '');
+                                        setTimeout(function() {
+                                            // Force close modal completely
+                                            $('#playlist-error-modal').modal('hide');
+                                            $('#playlist-error-modal').removeClass('show');
+                                            $('.modal-backdrop').remove();
+                                            $('body').removeClass('modal-open').css('padding-right', '');
 
-                            that.keys.focused_part = 'main_area';
-                            that.keys.main_area = 0;
-                            that.is_loading = false;
+                                            that.keys.focused_part = 'main_area';
+                                            that.keys.main_area = 0;
+                                            that.is_loading = false;
 
-                            // Remove modal event handlers
-                            $('#playlist-error-modal').off('shown.bs.modal');
+                                            // Remove modal event handlers
+                                            $('#playlist-error-modal').off('shown.bs.modal');
 
-                            $('#loading-page').addClass('hide');
-                            home_page.init();
-                        }, 1200);
+                                            $('#loading-page').addClass('hide');
+                                            home_page.init();
+                                        }, 1200);
+                                    } catch(e) {
+                                        console.log(e);
+                                        // Restore user's original playlist settings first
+                                        settings.playlist = user_playlist;
+                                        settings.playlist_id = user_playlist_id;
+                                        tryLocalDemo();
+                                    }
+                                }).fail(function(e) {
+                                    console.log(e);
+                                    // Restore user's original playlist settings first
+                                    settings.playlist = user_playlist;
+                                    settings.playlist_id = user_playlist_id;
+                                    tryLocalDemo();
+                                })
+                            }
+                        }
                     },
                     error: function(error) {
-                        console.log('=== DEBUG: Xtream M3U failed for backend demo, trying local ===');
+                        console.log('=== DEBUG: Xtream API failed for backend demo, trying local ===');
                         console.log('Error:', error);
 
                         // Restore user's original playlist settings first
@@ -823,7 +896,8 @@ var login_page={
 
                         // Try local demo as fallback
                         tryLocalDemo();
-                    }
+                    },
+                    timeout: 15000
                 });
             } else {
                 // Use standard M3U method for non-Xtream URLs
