@@ -317,9 +317,13 @@ function parseM3uResponse(type, text_response) {
                     var name = temp_arr1[0];
                     var url = temp_arr1[1];
 
+                    console.log("=== DEBUG: Parsing item ===", i, name.trim(), url.trim());
+                    
                     var type = "live";
                     if (url.includes("/movie/")) type = "movie";
                     if (url.includes("/series/")) type = "series";
+                    
+                    console.log("=== DEBUG: Detected type ===", type, "for URL:", url.trim());
                     var result_item = {};
                     name = name.trim();
                     
@@ -376,15 +380,18 @@ function parseM3uResponse(type, text_response) {
             });
         }
 
+        console.log("=== DEBUG: Lives parsed ===", lives.length, lives);
         LiveModel.setCategories(live_categories);
         LiveModel.setMovies(lives);
         LiveModel.insertMoviesToCategories();
 
+        console.log("=== DEBUG: VODs/Movies parsed ===", vods.length, vods);
         VodModel.setCategories(vod_categories);
         VodModel.setMovies(vods);
         VodModel.insertMoviesToCategories();
 
         SeriesModel.setCategories(series_categories);
+        console.log("=== DEBUG: Series parsed ===", series.length, series);
         var parsed_series = parseSeries(series);
         SeriesModel.setMovies(parsed_series);
         SeriesModel.insertMoviesToCategories();

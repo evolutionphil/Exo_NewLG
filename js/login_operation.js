@@ -410,8 +410,12 @@ var login_page={
         $('#demo-content-status').hide();
         $('#demo-content-message').hide();
 
-        // Populate account information
-        this.populateAccountInfo();
+        // Populate MAC address and connection info
+        $('.mac-address').text(mac_address);
+        $('#connection-status-value').text('Failed');
+        if (settings.playlist && settings.playlist.url) {
+            $('#playlist-url-info').text(settings.playlist.url);
+        }
 
         // Ensure all buttons are visible by default
         $('.playlist-error-btn').show();
