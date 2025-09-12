@@ -165,7 +165,7 @@ function parseM3uResponse(type, text_response) {
                 try {
                     temp_arr1 = temp_arr2[i].split("\n");
                     num++;
-                    var url = temp_arr1[1].length > 1 ? temp_arr1[1] : "";
+                    var url = temp_arr1[1] && temp_arr1[1].length > 1 ? temp_arr1[1].trim() : "";
                     if (!url.includes("http:")) continue;
                     var type = "live";
                     if (
@@ -178,7 +178,7 @@ function parseM3uResponse(type, text_response) {
                     if (url.includes("/series/")) type = "series";
 
                     var temp_arr3 = temp_arr1[0].trim().split(",");
-                    var name = temp_arr3.length > 1 ? temp_arr3[1] : ""; // get the name of channel
+                    var name = temp_arr3.length > 1 ? temp_arr3[1].trim() : ""; // get the name of channel
                     var temp_arr4 = splitStrings(temp_arr3[0], [
                         "tvg-",
                         "channel-",
@@ -186,6 +186,7 @@ function parseM3uResponse(type, text_response) {
                     ]);
                     var result_item = {
                         stream_id: "",
+                        tvg_id: "",
                         name: name,
                         stream_icon: "",
                         title: "",
@@ -197,7 +198,11 @@ function parseM3uResponse(type, text_response) {
                         var value = sub_item_arr[1];
                         switch (key) {
                             case "id":
-                                result_item.stream_id = value;
+                                // Store tvg-id separately, only use as stream_id if numeric
+                                result_item.tvg_id = value;
+                                if (/^\d+$/.test(value.trim())) {
+                                    result_item.stream_id = value.trim();
+                                }
                                 break;
                             case "name":
                                 result_item.name =
@@ -214,28 +219,31 @@ function parseM3uResponse(type, text_response) {
                         }
                     });
                     
-                    // Extract stream ID from Xtreme API URL if not already set
-                    if (result_item.stream_id.trim() === "") {
-                        // Check if URL is Xtreme API format and extract stream ID
-                        if (url.includes('/live/') || url.includes('/movie/') || url.includes('/series/')) {
-                            var url_parts = url.split('/');
-                            var last_part = url_parts[url_parts.length - 1];
-                            // Remove file extension if present
-                            var stream_id_match = last_part.match(/^(\d+)/);
-                            if (stream_id_match) {
-                                result_item.stream_id = stream_id_match[1];
-                            } else {
-                                // Fallback: try to extract number from anywhere in the last part
-                                var number_match = last_part.match(/(\d+)/);
-                                if (number_match) {
-                                    result_item.stream_id = number_match[1];
-                                } else {
-                                    result_item.stream_id = result_item.name;
-                                }
-                            }
+                    // Always extract numeric stream ID from URL for Xtream playlists
+                    // This ensures we get proper numeric IDs even when tvg-id contains names
+                    var url_extracted_id = "";
+                    if (url.includes('/live/') || url.includes('/movie/') || url.includes('/series/')) {
+                        var url_parts = url.split('/');
+                        var last_part = url_parts[url_parts.length - 1];
+                        // Remove file extension if present
+                        var stream_id_match = last_part.match(/^(\d+)/);
+                        if (stream_id_match) {
+                            url_extracted_id = stream_id_match[1];
                         } else {
-                            result_item.stream_id = result_item.name;
+                            // Fallback: try to extract number from anywhere in the last part
+                            var number_match = last_part.match(/(\d+)/);
+                            if (number_match) {
+                                url_extracted_id = number_match[1];
+                            }
                         }
+                    }
+                    
+                    // Use URL-extracted ID if found, otherwise fall back to existing stream_id or name
+                    if (url_extracted_id !== "") {
+                        result_item.stream_id = url_extracted_id;
+                    } else if (result_item.stream_id.trim() === "") {
+                        // Final fallback to name if no numeric ID found
+                        result_item.stream_id = result_item.name;
                     }
                     result_item.url = url;
                     result_item.num = num;
@@ -317,13 +325,9 @@ function parseM3uResponse(type, text_response) {
                     var name = temp_arr1[0];
                     var url = temp_arr1[1];
 
-                    console.log("=== DEBUG: Parsing item ===", i, name.trim(), url.trim());
-                    
                     var type = "live";
                     if (url.includes("/movie/")) type = "movie";
                     if (url.includes("/series/")) type = "series";
-                    
-                    console.log("=== DEBUG: Detected type ===", type, "for URL:", url.trim());
                     var result_item = {};
                     name = name.trim();
                     
@@ -380,18 +384,15 @@ function parseM3uResponse(type, text_response) {
             });
         }
 
-        console.log("=== DEBUG: Lives parsed ===", lives.length, lives);
         LiveModel.setCategories(live_categories);
         LiveModel.setMovies(lives);
         LiveModel.insertMoviesToCategories();
 
-        console.log("=== DEBUG: VODs/Movies parsed ===", vods.length, vods);
         VodModel.setCategories(vod_categories);
         VodModel.setMovies(vods);
         VodModel.insertMoviesToCategories();
 
         SeriesModel.setCategories(series_categories);
-        console.log("=== DEBUG: Series parsed ===", series.length, series);
         var parsed_series = parseSeries(series);
         SeriesModel.setMovies(parsed_series);
         SeriesModel.insertMoviesToCategories();
