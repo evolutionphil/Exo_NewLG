@@ -27,45 +27,41 @@ trust_anchor: []
 
 # list of files to exclude based on the matched patterns
 excludes:
-  - \.buildResult
-  - \.settings\/*
-  - \.vscode
-  - \.wgt
-  - "Store Details and images"
-  - \.git
-  - \.gitignore
-  - \.project
-  - \.replit
-  - \.rds_delta
-  - \.reloadignore
-  - \.sdk_delta.info
-  - \.tizen-ui-builder-tool.xml
-  - \.tproject
-  - ^\.csproj$
-  - ^\.externalToolBuilders$
-  - ^\.obj$
-  - ^\.package$
-  - ^\.gn$
+  - .vscode
+  - .git
   - ^\.sign$
-  - ^tools/*
-  - ^tools$
-  - Build
-  - build-tmp
-  - Certificate
-  - attached_assets
-  - Debug
-  - Directory.Build.targets
-  - ExoTVSmartTV-master.csproj
-  - LICENSE
-  - node_modules/*
-  - package-lock.json
-  - package.json
-  - server.js
+  - ^.csproj$
+  - ^.externalToolBuilders$
+  - ^\.gn$
+  - ^.obj$
+  - ^.package$
+  - webOSTVjs-1.2.0/webOSTV-dev.js
+  - webOSTVjs-1.2.0/LICENSE-2.0.txt
   - README.md
+  - node_modules/*
+  - attached_assets/*
+  - package.json
+  - package-lock.json
+  - .settings/.jsdtscope
+  - .settings/org.eclipse.wst.css.core.prefs
+  - .settings/org.eclipse.wst.jsdt.ui.superType.container
+  - .settings/org.eclipse.wst.jsdt.ui.superType.name
+  - .buildResult
+  - .wgt
+  - Build
   - Release
-  - tizen_web_project.yaml
-  - webOSTVjs-1.2.0\/LICENSE-2.0.txt
-  - webOSTVjs-1.2.0\/webOSTV-dev.js
+  - Debug
+  - Certficate
+  - tools
+  - "Store Details and images"
+  - ExoTVSmartTV-master.csproj
+  - .project
+  - .rds_delta
+  - .sdk_delta.info
+  - .rds_delta
+  - .tizen-ui-builder-tool.xml
+  - .tproject
+  - Directory.Build.targets
   - webUnitTest
 
 # project dependencies
