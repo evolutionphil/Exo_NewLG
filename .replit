@@ -2,13 +2,13 @@ modules = ["nodejs-20", "web"]
 run = "node app.js"
 
 [nix]
-channel = "stable-25_05"
+channel = "stable-24_05"
 
 [deployment]
 run = ["sh", "-c", "node server.js"]
 
 [workflows]
-runButton = "Project"
+runButton = "Run"
 
 [[workflows.workflow]]
 name = "Run"
@@ -19,34 +19,6 @@ mode = "sequential"
 task = "shell.exec"
 args = "node server.js"
 
-[[workflows.workflow]]
-name = "Project"
-mode = "parallel"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "workflow.run"
-args = "IPTV App Server"
-
-[[workflows.workflow]]
-name = "IPTV App Server"
-author = "agent"
-
-[[workflows.workflow.tasks]]
-task = "shell.exec"
-args = "node server.js"
-waitForPort = 5000
-
-[workflows.workflow.metadata]
-outputType = "webview"
-
 [[ports]]
 localPort = 5000
 externalPort = 80
-
-[[ports]]
-localPort = 36227
-externalPort = 3000
-
-[agent]
-expertMode = true
