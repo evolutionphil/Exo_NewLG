@@ -562,44 +562,6 @@ var login_page={
     },
 
     populateAccountInfo:function(){
-        // Get stored API data
-        var api_data = localStorage.getItem(storage_id+'api_data');
-        if(api_data) {
-            try {
-                var data = JSON.parse(api_data);
-                
-                // Account Status and Trial Logic
-                if(data.mac_registered) {
-                    // Account is activated - hide trial section completely
-                    $('#playlist-account-status').hide();
-                    $('#playlist-trial-info').hide();
-                } else {
-                    // Account is not activated - show not activated status and trial days if any
-                    $('#playlist-account-status').show();
-                    $('#account-status-value').text('Not Activated').css('color', '#ff4832');
-                    
-                    if(data.trial_days && data.trial_days > 0) {
-                        $('#playlist-trial-info').show();
-                        $('#trial-days-value').text(data.trial_days + ' days left').css('color', '#FFA500');
-                    } else {
-                        $('#playlist-trial-info').hide();
-                    }
-                }
-                
-            } catch(e) {
-                console.error('Error parsing API data for account info:', e);
-                $('#playlist-account-status').show();
-                $('#account-status-value').text('Unknown').css('color', '#999');
-                $('#playlist-trial-info').show();
-                $('#trial-days-value').text('Unknown').css('color', '#999');
-            }
-        } else {
-            $('#playlist-account-status').show();
-            $('#account-status-value').text('No Data').css('color', '#999');
-            $('#playlist-trial-info').show();
-            $('#trial-days-value').text('No Data').css('color', '#999');
-        }
-        
         // Connection Status (always failed in error modal)
         $('#connection-status-value').text('Failed').css('color', '#ff4832');
         
@@ -615,7 +577,7 @@ var login_page={
                                url.includes('exoapdemodhfew');
             
             if(isDemoPlaylist) {
-                $('#playlist-url-info').text('Demo content - credentials hidden for security');
+                $('#playlist-url-info').text('Demo content');
             } else {
                 // Add Xtream credentials info if available (only for non-demo)
                 if(settings.playlist_type === 'xtreme' && user_name && password && api_host_url) {
