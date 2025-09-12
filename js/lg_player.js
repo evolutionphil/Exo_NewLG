@@ -12,7 +12,7 @@ var lg_player={
     },
     init:function(id, parent_id) {
         this.id=id;
-        this.videoObj=null;	// tag video
+        this.videoObj=null;     // tag video
         this.parent_id=parent_id;
         this.current_time=0;
 
@@ -77,15 +77,27 @@ var lg_player={
         }catch (e) {
         }
         console.log(url);
-        var  that=this;
+        var that = this;
         $('#'+this.parent_id).find('.video-error').hide();
+        
+        // Stop and clear previous content
         while (this.videoObj.firstChild)
             this.videoObj.removeChild(this.videoObj.firstChild);
         this.videoObj.load();
+        
+        // Create new source element
         var source = document.createElement("source");
         source.setAttribute('src',url);
         this.videoObj.appendChild(source);
-        this.videoObj.play();
+        
+        // Add small delay before play to prevent play/pause conflict on LG TVs
+        setTimeout(function() {
+            that.videoObj.play().catch(function(error) {
+                console.error('LG TV play error:', error);
+                $('#'+that.parent_id).find('.video-error').show();
+            });
+        }, 100);
+        
         $('#'+this.parent_id).find('.progress-amount').css({width:0})
 
         source.addEventListener("error", function(e) {
