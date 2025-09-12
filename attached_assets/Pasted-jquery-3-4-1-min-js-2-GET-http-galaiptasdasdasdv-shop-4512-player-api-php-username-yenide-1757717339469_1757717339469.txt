@@ -1,0 +1,59 @@
+jquery.3.4.1.min.js:2          GET http://galaiptasdasdasdv.shop:4512/player_api.php?username=yenideneme1&password=mWT6HVdjMZ net::ERR_NAME_NOT_RESOLVED
+send @ jquery.3.4.1.min.js:2
+ajax @ jquery.3.4.1.min.js:2
+proceed_login @ login_operation.js:851
+login @ login_operation.js:314
+loadApp @ login_operation.js:226
+success @ login_operation.js:122
+c @ jquery.3.4.1.min.js:2
+fireWith @ jquery.3.4.1.min.js:2
+l @ jquery.3.4.1.min.js:2
+(anonymous) @ jquery.3.4.1.min.js:2
+load (async)
+send @ jquery.3.4.1.min.js:2
+ajax @ jquery.3.4.1.min.js:2
+fetchPlaylistInformation @ login_operation.js:90
+onSuccess @ login_operation.js:280
+value @ webOSTV.js:146
+callbackHandler @ VM133 C:\Users\mumiix\AppData\Local\Temp\2eDOpmooNAy3ZiMSbT51n6baVeJ\resources\app.asar\dist\main\preload.js:2
+emit @ VM24 node:events:513
+onMessage @ VM131 renderer_init:2
+login_operation.js:483 === Hovering playlist error button ===
+login_operation.js:484 Index: 0
+login_operation.js:492 Visible buttons count: 2
+login_operation.js:493 Available buttons: (2) ['Retry Loading', 'Continue Anyway']
+login_operation.js:525 Focused DOM element for button: 0
+login_operation.js:526 Button text: Retry Loading
+login_operation.js:531 Applied active class to button: 0
+login_operation.js:466 Modal focus state set to: playlist_error_btn
+login_operation.js:467 Active element after focus: <div class=​"modal show" id=​"playlist-error-modal" data-backdrop=​"static" data-keyboard=​"false" aria-modal=​"true" tabindex=​"0" style=​"display:​ block;​ z-index:​ 9999;​">​…​</div>​
+login_operation.js:468 Modal focused_part: playlist_error_btn
+login_operation.js:483 === Hovering playlist error button ===
+login_operation.js:484 Index: 2
+login_operation.js:492 Visible buttons count: 2
+login_operation.js:493 Available buttons: (2) ['Retry Loading', 'Continue Anyway']
+login_operation.js:497 Index out of bounds, reset to 0
+login_operation.js:525 Focused DOM element for button: 0
+login_operation.js:526 Button text: Retry Loading
+login_operation.js:531 Applied active class to button: 0
+login_operation.js:621 === Continue without playlist ===
+login_operation.js:625 === DEBUG: Continue without playlist called ===
+login_operation.js:626 Backend demo_url: {id: 'demo', name: 'Demo', url: 'http://flixdemo.com:25461/get.php?username=exoapde…w&password=7gPIdWWl7y&type=m3u_plus&output=mpegts', type: 'general'}
+login_operation.js:725 === DEBUG: Checking demo_url ===
+login_operation.js:726 demo_url type: object
+login_operation.js:727 demo_url value: {id: 'demo', name: 'Demo', url: 'http://flixdemo.com:25461/get.php?username=exoapde…w&password=7gPIdWWl7y&type=m3u_plus&output=mpegts', type: 'general'}
+login_operation.js:750 === DEBUG: Processed demo data ===
+login_operation.js:751 backend_demo_url: http://flixdemo.com:25461/get.php?username=exoapdemodhfew&password=7gPIdWWl7y&type=m3u_plus&output=mpegts
+login_operation.js:752 backend_demo_playlist: {id: 'demo', name: 'Demo', url: 'http://flixdemo.com:25461/get.php?username=exoapde…w&password=7gPIdWWl7y&type=m3u_plus&output=mpegts', type: 'general'}id: "demo"name: "Demo"type: "general"url: "http://flixdemo.com:25461/get.php?username=exoapdemodhfew&password=7gPIdWWl7y&type=m3u_plus&output=mpegts"[[Prototype]]: Object
+login_operation.js:755 === DEBUG: Trying backend demo URL ===
+login_operation.js:756 Backend Demo URL: http://flixdemo.com:25461/get.php?username=exoapdemodhfew&password=7gPIdWWl7y&type=m3u_plus&output=mpegts
+login_operation.js:757 Backend Demo Playlist: {id: 'demo', name: 'Demo', url: 'http://flixdemo.com:25461/get.php?username=exoapde…w&password=7gPIdWWl7y&type=m3u_plus&output=mpegts', type: 'general'}
+login_operation.js:768 === DEBUG: Backend demo content loaded successfully ===
+common.js:410 Here Series Map {Exo TV Demo 1: {…}, Exo TV Series 1: {…}}
+home_operation.js:22 Ελληνικά
+home_operation.js:22 Српски
+home_operation.js:22 Shqiptare
+home_operation.js:22 Український
+home_operation.js:22 हिन्दी
+mediaPlayer.js:386 http://flixdemo.com:25461/live/exoapdemodhfew/7gPIdWWl7y/Exo TV Demo 1 .ts
+Exo%20TV%20Demo%201%20.ts:1          GET http://flixdemo.com:25461/live/exoapdemodhfew/7gPIdWWl7y/Exo%20TV%20Demo%201%20.ts 406 (Not Acceptable)
