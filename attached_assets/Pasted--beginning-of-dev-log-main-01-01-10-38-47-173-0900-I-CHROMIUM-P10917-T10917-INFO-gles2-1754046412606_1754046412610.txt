@@ -1,0 +1,682 @@
+--------- beginning of /dev/log_main
+01-01 10:38:47.173+0900 I/CHROMIUM(P10917, T10917): [INFO:gles2_implementation.cc: ~GLES2Implementation(334)] ~GLES2Implementation  0x1e84140
+01-01 10:38:47.180+0900 I/CHROMIUM(P10917, T20985): [INFO:video_capture_device_factory_tizen.cc: ~VideoCaptureDeviceFactoryTizen(28)] ~VideoCaptureDeviceFactoryTizen[0x1ca8260]
+01-01 10:38:47.181+0900 I/CHROMIUM(P10917, T20985): [INFO:camera_device_tizen.cc: ~CameraHandle(342)] CameraHandle[0x1d0e598]::~CameraHandle
+01-01 10:38:47.181+0900 I/CHROMIUM(P10917, T20985): [INFO:camera_device_tizen.cc: DeinitializeDeviceManager(923)] CameraHandle[0x1d0e598]::DeinitializeDeviceManager, cb_id_: -1, manager_handle_: 0
+01-01 10:38:47.191+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_main_delegate_tv.cc: CheckCPUUsage(284)] /proc/self/stat - [13] : 258, [14] : 120
+01-01 10:38:47.195+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_main_delegate_tv.cc: CheckCPUUsage(294)] prev_total : 378, cur_total : 378, usage diff : 0
+01-01 10:38:47.456+0900 I/CHROMIUM(P10917, T10917): [INFO:wrt_service_manager.cc: CreateUvHandlers(87)] CreateUvHandlers
+01-01 10:38:47.463+0900 E/CHROMIUM(P10917, T10917): [ERROR:wrt_content_main.cc: WRTMain(253)] process exit success ret is 0
+01-01 10:38:47.463+0900 I/CHROMIUM(P10917, T10917): [INFO:message_pump_for_ui_efl.cc: ~MessagePumpForUIEfl(28)] ~MessagePumpForUIEfl
+01-01 10:38:47.463+0900 I/CHROMIUM(P10917, T10917): [INFO:message_pump_for_ui_efl.cc: ~MessagePumpForUIEfl(41)] delete schedule_delayed_work_timer_
+01-01 10:38:47.463+0900 I/CHROMIUM(P10917, T10917): [INFO:wrt_main_delegate.cc: ~WRTMainDelegate(47)] WRTMainDelegate[0x1989268]::~WRTMainDelegate, set ContentClient to nullptr
+01-01 10:38:47.607+0900 I/CHROMIUM(P10917, T10917): [INFO:mounter.cc: Umount(196)] PS_Umount : /opt/usr/apps/exoTMjMYi1/res/wgt/
+01-01 10:38:55.303+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(118)] loader remove_fd 37
+01-01 10:38:55.307+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(74)] loader prelaunch
+01-01 10:38:55.308+0900 I/CHROMIUM(P20971, T21460): [INFO:wrt_main_delegate_tv.cc: operator()(233)] prelaunch_worker
+01-01 10:38:55.308+0900 I/CHROMIUM(P20971, T21460): [INFO:native_web_runtime_delegate_tv.cc: PreSetupOnWorker(660)] PreSetupOnWorker
+01-01 10:38:55.308+0900 I/CHROMIUM(P20971, T21460): [INFO:application_data_tv.cc: ApplicationDataTV(47)] user_data_path_ : /home/owner/apps_rw/exoTMjMYi1/data
+01-01 10:38:55.308+0900 I/CHROMIUM(P20971, T21460): [INFO:application_data_tv.cc: ApplicationDataTV(48)] backup_config_xml_ : /opt/usr/apps/exoTMjMYi1/res/config.xml
+01-01 10:38:55.337+0900 I/CHROMIUM(P20971, T21460): [INFO:application_data_tv.cc: LoadPreconnectURL(113)] preconnect list loaded count=2
+01-01 10:38:55.337+0900 I/CHROMIUM(P20971, T21460): [INFO:native_web_runtime_delegate_tv.cc: GetTmgFilePath(511)] tmg_link : /opt/usr/apps/exoTMjMYi1/res/tmg.link
+01-01 10:38:55.337+0900 I/CHROMIUM(P20971, T21460): [INFO:native_web_runtime_delegate_tv.cc: GetTmgFilePath(512)] tmg_file_path : /opt/usr/apps/exoTMjMYi1/res/3202507040736.tmg
+01-01 10:38:55.337+0900 I/CHROMIUM(P20971, T21460): [INFO:mounter.cc: Mount(143)] tmg file path: [/opt/usr/apps/exoTMjMYi1/res/3202507040736.tmg], mount path: [/opt/usr/apps/exoTMjMYi1/res/wgt/]
+01-01 10:38:55.431+0900 I/CHROMIUM(P20971, T21460): [INFO:native_web_runtime_delegate_tv.cc: MountTmgFile(131)] Mounted
+01-01 10:38:55.432+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(84)] loader launch
+01-01 10:38:55.432+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(110)] loader loop_quit
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(89)] loader terminated
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[0] : /opt/usr/apps/exoTMjMYi1/bin/exoTMjMYi1.ExoTv
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[1] : `zaybxcwdveuftgsh`
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[2] : CallerId
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[3] : LgAAAAEEAAAJAAAAQ2FsbGVySWQAFQAAAGNvbS5zYW1zdW5nLnR2LnN0b3JlAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[4] : __K_SPLASH_SCREEN
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[5] : MAAAAAEEAAASAAAAX19LX1NQTEFTSF9TQ1JFRU4ADgAAAExBX1VJX0RFRkFVTFQA
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[6] : Title
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[7] : LQAAAAEEAAAGAAAAVGl0bGUAFwAAAEV4byBUViBJUFRWIG0zdSBwbGF5ZXIA
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[8] : IconPath
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[9] : TwAAAAEEAAAJAAAASWNvblBhdGgANgAAAC9vcHQvc2hhcmUvd2ViYXBwc2VydmljZS9hcHBzX2ljb24vYWxsLzMyMDI1MDcwNDA3MzYvAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[10] : callerid
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[11] : LgAAAAEEAAAJAAAAY2FsbGVyaWQAFQAAAGNvbS5zYW1zdW5nLnR2LnN0b3JlAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[12] : __K_RELOCATE_BELOW
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[13] : NwAAAAEEAAATAAAAX19LX1JFTE9DQVRFX0JFTE9XABQAAABjb20uc2Ftc3VuZy50di5jc2ZzAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[14] : USE_DISKCACHE
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[15] : IgAAAAEEAAAOAAAAVVNFX0RJU0tDQUNIRQAEAAAAWWVzAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[16] : caller_process
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[17] : OwAAAAEEAAAPAAAAY2FsbGVyX3Byb2Nlc3MAHAAAAG9yZy50aXplbi5saXRld2ViYXBwc2VydmljZQA=
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[18] : WidgetCategory
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[19] : MAAAAAEEAAAPAAAAV2lkZ2V0Q2F0ZWdvcnkAEQAAAGQvbWVkaWEuY2F0ZWdvcnkA
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[20] : __APP_SVC_OP_TYPE__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[21] : UgAAAAEEAAAUAAAAX19BUFBfU1ZDX09QX1RZUEVfXwAuAAAAaHR0cDovL3RpemVuLm9yZy9hcHBjb250cm9sL29wZXJhdGlvbi9kZWZhdWx0AA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[22] : __AUL_TARGET_UID__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[23] : KAAAAAEEAAATAAAAX19BVUxfVEFSR0VUX1VJRF9fAAUAAAA1MDAxAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[24] : __AUL_APPID__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[25] : LwAAAAEEAAAOAAAAX19BVUxfQVBQSURfXwARAAAAZXhvVE1qTVlpMS5FeG9UdgA=
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[26] : __AUL_STARTTIME__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[27] : MQAAAAEEAAASAAAAX19BVUxfU1RBUlRUSU1FX18ADwAAADU5MzUvMjUwNzA1NjMwAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[28] : __APP_SVC_PKG_NAME__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[29] : NgAAAAEEAAAVAAAAX19BUFBfU1ZDX1BLR19OQU1FX18AEQAAAGV4b1RNak1ZaTEuRXhvVHYA
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[30] : __AUL_EX_CHECK_IS_WAS_APP
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[31] : LgAAAAEEAAAaAAAAX19BVUxfRVhfQ0hFQ0tfSVNfV0FTX0FQUAAEAAAAWWVzAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[32] : __AUL_EX_CHECK_IS_LWAS_LAUNCHED
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[33] : NAAAAAEEAAAgAAAAX19BVUxfRVhfQ0hFQ0tfSVNfTFdBU19MQVVOQ0hFRAAEAAAAWWVzAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[34] : __AUL_CALLER_APPID__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[35] : QQAAAAEEAAAVAAAAX19BVUxfQ0FMTEVSX0FQUElEX18AHAAAAG9yZy50aXplbi5saXRld2ViYXBwc2VydmljZQA=
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[36] : __AUL_CALLER_PID__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[37] : KAAAAAEEAAATAAAAX19BVUxfQ0FMTEVSX1BJRF9fAAUAAAAxNDQ1AA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[38] : __AUL_CALLER_UID__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[39] : KAAAAAEEAAATAAAAX19BVUxfQ0FMTEVSX1VJRF9fAAUAAAA1MDAxAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[40] : __AUL_HWACC__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[41] : IgAAAAEEAAAOAAAAX19BVUxfSFdBQ0NfXwAEAAAAU1lTAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[42] : __AUL_ROOT_PATH__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[43] : OwAAAAEEAAASAAAAX19BVUxfUk9PVF9QQVRIX18AGQAAAC9vcHQvdXNyL2FwcHMvZXhvVE1qTVlpMQA=
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[44] : __AUL_EXEC__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[45] : SwAAAAEEAAANAAAAX19BVUxfRVhFQ19fAC4AAAAvb3B0L3Vzci9hcHBzL2V4b1RNak1ZaTEvYmluL2V4b1RNak1ZaTEuRXhvVHYA
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[46] : __AUL_PACKAGETYPE__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[47] : KAAAAAEEAAAUAAAAX19BVUxfUEFDS0FHRVRZUEVfXwAEAAAAd2d0AA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[48] : __AUL_PKGID_
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[49] : KAAAAAEEAAANAAAAX19BVUxfUEtHSURfAAsAAABleG9UTWpNWWkxAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[50] : __AUL_INTERNAL_POOL__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[51] : LAAAAAEEAAAWAAAAX19BVUxfSU5URVJOQUxfUE9PTF9fAAYAAABmYWxzZQA=
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[52] : __AUL_COMP_TYPE__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[53] : KAAAAAEEAAASAAAAX19BVUxfQ09NUF9UWVBFX18ABgAAAHVpYXBwAA==
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[54] : __AUL_APP_TYPE__
+01-01 10:38:55.433+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[55] : KAAAAAEEAAARAAAAX19BVUxfQVBQX1RZUEVfXwAHAAAAd2ViYXBwAA==
+01-01 10:38:55.434+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[56] : __AUL_API_VERSION__
+01-01 10:38:55.434+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[57] : KAAAAAEEAAAUAAAAX19BVUxfQVBJX1ZFUlNJT05fXwAEAAAAMi4zAA==
+01-01 10:38:55.434+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[58] : __AUL_IS_GLOBAL__
+01-01 10:38:55.434+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[59] : JwAAAAEEAAASAAAAX19BVUxfSVNfR0xPQkFMX18ABQAAAHRydWUA
+01-01 10:38:55.434+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[60] : __AUL_INSTALLED_STORAGE__
+01-01 10:38:55.434+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_content_main.cc: operator()(93)] argv[61] : MwAAAAEEAAAaAAAAX19BVUxfSU5TVEFMTEVEX1NUT1JBR0VfXwAJAAAAaW50ZXJuYWwA
+01-01 10:38:55.435+0900 I/CHROMIUM(P20971, T21461): [INFO:wrt_main_delegate_tv.cc: operator()(247)] reallaunch_worker
+01-01 10:38:55.435+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(358)] security_manager_get_app_manifest_policy start
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(361)] security_manager_get_app_manifest_policy end
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://developer.samsung.com/privilege/network.public
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://developer.samsung.com/privilege/widgetdata
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/feature/network.ethernet
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/application.info
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/appmanager.launch
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/call
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/camera
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/display
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/externalstorage
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/filesystem.read
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/filesystem.write
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/haptic
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/internal/buxton/location
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/internal/buxton/network.get
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/internal/buxton/telephony
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/internal/default/partner
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/internal/default/public
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/internet
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/mediastorage
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/network.get
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/notification
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/packagemanager.info
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/recorder
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/system
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/telephony
+01-01 10:38:55.450+0900 I/CHROMIUM(P20971, T21461): [INFO:native_web_runtime_delegate_tv.cc: BuildPrivilegeCache(379)] privileges[i] : http://tizen.org/privilege/tv.inputdevice
+01-01 10:38:55.466+0900 I/CHROMIUM(P20971, T20971): [INFO:ui_runtime.cc: OnCreate(36)] OnCreate()
+01-01 10:38:55.466+0900 E/CHROMIUM(P20971, T20971): [ERROR:widget_state.cc: OnStatusChanged(67)] [WidgetStatus] key :rtc/memory/WebApp/exoTMjMYi1.ExoTv, value :init
+01-01 10:38:55.486+0900 I/CHROMIUM(P20971, T20971): [INFO:native_web_runtime_delegate_tv.cc: SetDiskCacheDirFlag(401)] disk_cache_flag : --wasm_samsung_cache_dir=/home/owner/.cache/Apps/WebAppsCache/exoTMjMYi1.ExoTv
+01-01 10:38:55.486+0900 I/CHROMIUM(P20971, T20971): [INFO:widget_state.cc: OnURLChanged(97)] vconf key before :
+01-01 10:38:55.486+0900 I/CHROMIUM(P20971, T20971): [INFO:widget_state.cc: OnURLChanged(98)] vconf key after :rtc/memory/WebApp/exoTMjMYi1.ExoTv_URL, value :index.html
+01-01 10:38:55.488+0900 I/CHROMIUM(P20971, T20971): [INFO:ui_runtime.cc: OnAppControl(59)] OnAppControl()
+01-01 10:38:55.489+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] app-control
+01-01 10:38:55.489+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] Tizen Web App launch
+01-01 10:38:55.490+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] Creating WebApplication
+01-01 10:38:55.491+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] launch mode is 
+01-01 10:38:55.491+0900 I/CHROMIUM(P20971, T20971): [INFO:native_web_runtime_delegate_tv.cc: IsMultitaskingSupport(740)] system multitasking support = 1
+01-01 10:38:55.498+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window.cc: WRTNativeWindow(513)] WRTNativeWindow[0x26e20e0] create
+01-01 10:38:55.498+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window.cc: EnsurePlatformWindow(241)] Use onscreen rendering mode
+01-01 10:38:55.500+0900 I/CHROMIUM(P20971, T20971): [INFO:efl_window.cc: EflWindow(64)] 0x244a038
+01-01 10:38:55.500+0900 I/CHROMIUM(P20971, T20971): [INFO:efl_window.cc: Initialize(323)] Use prepared ee instance
+01-01 10:38:55.502+0900 I/CHROMIUM(P20971, T20971): [INFO:efl_window.cc: UpdateFocus(291)] EflWindow Focus:1
+01-01 10:38:55.502+0900 I/CHROMIUM(P20971, T20971): [INFO:tizen_tv_platform.h: IsLFDTouchSupported(200)] LFD touch is supported : 0
+01-01 10:38:55.502+0900 I/CHROMIUM(P20971, T20971): [INFO:tizen_tv_platform.h: IsIRTouchSupported(214)] IR touch is supported : 0
+01-01 10:38:55.502+0900 I/CHROMIUM(P20971, T20971): [INFO:tizen_tv_platform.h: IsTouchSupported(220)] touch is supported : 0
+01-01 10:38:55.503+0900 I/CHROMIUM(P20971, T20971): [INFO:efl_screen.cc: UpdateDisplayInfo(78)] ecore_evas_screen width 1920 height 1080 rotation 0 device_scale_factor 1
+01-01 10:38:55.503+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window.cc: AddVisibilityEventListener(121)] Add event listener for visibility change
+01-01 10:38:55.504+0900 I/CHROMIUM(P20971, T20971): [INFO:im_context_efl.cc: CreateIMFContext(36)] ## IMCTX ## CreateIMFContext 
+01-01 10:38:55.509+0900 I/CHROMIUM(P20971, T20971): [INFO:im_context_efl.cc: IMContextEfl(89)] ## IMCTX ## IMContextEfl 
+01-01 10:38:55.509+0900 I/CHROMIUM(P20971, T20971): [INFO:efl_input_method_context.cc: CreateIMContextEfl(42)] IMContextEfl : 0x244c6e0, EflEventHandler : 0x2876350
+01-01 10:38:55.515+0900 I/CHROMIUM(P20971, T20971): [INFO:version_info.cc: VersionForUserAgent(177)] CHROMIUM_VERSION:108.0.5359.1
+01-01 10:38:55.515+0900 I/CHROMIUM(P20971, T20971): [INFO:version_info.cc: BuildUserAgentForTV(167)] Default UA: Mozilla/5.0 (SMART-TV; LINUX; Tizen 8.0) AppleWebKit/537.36 (KHTML, like Gecko) 108.0.5359.1/8.0 TV Safari/537.36
+01-01 10:38:55.516+0900 I/CHROMIUM(P20971, T21428): [INFO:storage_service_impl.cc: BindPartition(113)] 
+01-01 10:38:55.516+0900 I/CHROMIUM(P20971, T21428): [INFO:partition_impl.cc: PartitionImpl(52)] 
+01-01 10:38:55.520+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_browser_client_tv.cc: ConfigureNetworkContextParams(139)] DiskCache path will be /home/owner/.cache/Apps/WebAppsCache/exoTMjMYi1.ExoTv
+01-01 10:38:55.520+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_browser_client_tv.cc: ConfigureNetworkContextParams(140)] DiskCache enabled? 1
+01-01 10:38:55.522+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_browser_context.cc: HandlePreconnectUrls(144)] start PreconnectUrls!
+01-01 10:38:55.524+0900 I/CHROMIUM(P20971, T20971): [INFO:web_contents_impl.cc: WebContentsImpl(993)] 0x28c7368
+01-01 10:38:55.527+0900 I/CHROMIUM(P20971, T20971): [INFO:tizen_tv_platform.h: IsLFDTouchSupported(200)] LFD touch is supported : 0
+01-01 10:38:55.527+0900 I/CHROMIUM(P20971, T20971): [INFO:tizen_tv_platform.h: IsIRTouchSupported(214)] IR touch is supported : 0
+01-01 10:38:55.527+0900 I/CHROMIUM(P20971, T20971): [INFO:tizen_tv_platform.h: IsTouchSupported(220)] touch is supported : 0
+01-01 10:38:55.527+0900 I/CHROMIUM(P20971, T20971): [INFO:privilege.cc: CheckHostedAppPrivilege(48)] No 'hostedapp_deviceapi_allow' privilege!
+01-01 10:38:55.541+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] web-contents-created
+01-01 10:38:55.545+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] browser-window-created
+01-01 10:38:55.546+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] window created : #1
+01-01 10:38:55.546+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: SetWebContents(352)] WRTNativeWindowTV::SetWebContents()
+01-01 10:38:55.546+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: OnRotation(1714)] degree:0, origin_degree : -1
+01-01 10:38:55.546+0900 I/CHROMIUM(P20971, T20971): [INFO:web_contents_view_aura.cc: SetOrientation(983)] SetOrientation 0
+01-01 10:38:55.547+0900 I/CHROMIUM(P20971, T20971): [INFO:efl_screen.cc: UpdateDisplayInfo(78)] ecore_evas_screen width 1920 height 1080 rotation 0 device_scale_factor 1
+01-01 10:38:55.547+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: GetScreenResolution(177)] screen resolution = 1920x1080
+01-01 10:38:55.547+0900 I/CHROMIUM(P20971, T20971): [INFO:efl_window.cc: SetBoundsInPixels(164)]  bounds 0,0 1920x1080 rotation 0
+01-01 10:38:55.547+0900 I/CHROMIUM(P20971, T20971): [INFO:efl_screen.cc: UpdateDisplayInfo(78)] ecore_evas_screen width 1920 height 1080 rotation 0 device_scale_factor 1
+01-01 10:38:55.547+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: RotateWindow(1853)] degree : 0 (1920x1080)
+01-01 10:38:55.551+0900 E/CHROMIUM(P20971, T20971): [ERROR:wrt_native_window_tv.cc: AddNewElementToDictionary(202)] Adding [id] -> [exoTMjMYi1.ExoTv]
+01-01 10:38:55.551+0900 E/CHROMIUM(P20971, T20971): [ERROR:wrt_native_window_tv.cc: AddNewElementToDictionary(202)] Adding [packageId] -> [exoTMjMYi1]
+01-01 10:38:55.551+0900 E/CHROMIUM(P20971, T20971): [ERROR:wrt_native_window_tv.cc: AddNewElementToDictionary(202)] Adding [installPath] -> [/opt/usr/apps/exoTMjMYi1/res/wgt/]
+01-01 10:38:55.551+0900 E/CHROMIUM(P20971, T20971): [ERROR:wrt_native_window_tv.cc: AddNewElementToDictionary(202)] Adding [temporaryStoragePath] -> [/opt/var/tmp/pepper]
+01-01 10:38:55.551+0900 E/CHROMIUM(P20971, T20971): [ERROR:wrt_native_window_tv.cc: AddNewElementToDictionary(202)] Adding [persistentStoragePath] -> [/home/owner/apps_rw/exoTMjMYi1/datapepper]
+01-01 10:38:55.551+0900 E/CHROMIUM(P20971, T20971): [ERROR:wrt_native_window_tv.cc: AddNewElementToDictionary(202)] Adding [widgetVersion] -> [1.1.0]
+01-01 10:38:55.551+0900 E/CHROMIUM(P20971, T20971): [ERROR:wrt_native_window_tv.cc: SetPepperExtensionWidgetInfo(1448)] widgetVersion = 1.1.0
+01-01 10:38:55.551+0900 I/CHROMIUM(P20971, T20971): [INFO:tv_window_manager.cc: Initialize(167)] parent's w: 1920, h: 1080
+01-01 10:38:55.551+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: SetDisplayRotatorCallback(1514)] display_rotator_is_supported!
+01-01 10:38:55.551+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: SetScreenOrientation(1499)] ScreenOrientation : 2
+01-01 10:38:55.551+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: SetRuntimeVariables(929)] global_resource_id : 124
+01-01 10:38:55.551+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: SetRuntimeVariables(935)] window_id : 0x800098ae
+01-01 10:38:55.551+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: SetRuntimeVariables(940)] widget_version : 1.1.0
+01-01 10:38:55.551+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: SetProxyInfo(956)] proxy address : 
+01-01 10:38:55.551+0900 I/CHROMIUM(P20971, T21428): [INFO:wrt_native_window_tv.cc: SetDiskCacheEnableOnIOThread(236)] Set diskCache mode to net::HttpCache::NORMAL
+01-01 10:38:55.552+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:55.552+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:55.554+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] initBundleValue = 
+01-01 10:38:55.554+0900 I/CHROMIUM(P20971, T20971): [INFO:application_data.cc: GetLoadInfo(524)] Passed AppControl data
+01-01 10:38:55.554+0900 I/CHROMIUM(P20971, T20971): [INFO:application_data.cc: GetLoadInfo(525)]  - operation : http://tizen.org/appcontrol/operation/default
+01-01 10:38:55.554+0900 I/CHROMIUM(P20971, T20971): [INFO:application_data.cc: GetLoadInfo(526)]  - mimetype  : 
+01-01 10:38:55.554+0900 I/CHROMIUM(P20971, T20971): [INFO:application_data.cc: GetLoadInfo(527)]  - uri       : 
+01-01 10:38:55.554+0900 I/CHROMIUM(P20971, T20971): [INFO:application_data.cc: GetDefaultLoadInfo(550)] src: index.html
+01-01 10:38:55.554+0900 I/CHROMIUM(P20971, T20971): [INFO:application_data.cc: GetDefaultLoadInfo(551)] type: 
+01-01 10:38:55.554+0900 I/CHROMIUM(P20971, T20971): [INFO:application_data.cc: GetDefaultLoadInfo(552)] encoding: UTF-8
+01-01 10:38:55.561+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] launchInspectorIfNeeded
+01-01 10:38:55.563+0900 E/CHROMIUM(P20971, T20971): [ERROR:navigation_controller_impl.cc: LoadURLWithParams(1292)] url: file:///index.html
+01-01 10:38:55.563+0900 I/CHROMIUM(P20971, T20971): [INFO:navigator.cc: Navigate(700)] dest_url: file:///index.html
+01-01 10:38:55.563+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:55.563+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_manager.cc: GetFrameHostForNavigation(1137)] use_current_rfh: 1
+01-01 10:38:55.565+0900 I/CHROMIUM(P20971, T20971): [INFO:native_web_runtime.cc: GetTTSMode(548)] TTS_MODE_SCREEN_READER
+01-01 10:38:55.565+0900 E/CHROMIUM(P20971, T30101): [ERROR:backend_impl.cc: SyncInit(234)] MemoryLifeTime was dangerous for using cache
+01-01 10:38:55.566+0900 E/CHROMIUM(P20971, T30101): [ERROR:backend_impl.cc: SyncInit(234)] MemoryLifeTime was dangerous for using cache
+01-01 10:38:55.571+0900 I/CHROMIUM(P20971, T20971): [INFO:microphone_state_updater.cc: MicrophoneStateUpdaterTizenEfl(22)] MicrophoneStateUpdaterTizenEfl this:0x28f8168
+01-01 10:38:55.571+0900 I/CHROMIUM(P20971, T20971): [INFO:native_web_runtime_delegate_tv.cc: CheckPrivilege(347)] CheckPrivilege : http://developer.samsung.com/privilege/smartcontroller.microphone - not_found
+01-01 10:38:55.571+0900 I/CHROMIUM(P20971, T20971): [INFO:microphone_state_updater.cc: CheckMicrophonePrivilege(93)] CheckSmartRCMicPrivilege = 0
+01-01 10:38:55.571+0900 E/CHROMIUM(P20971, T20971): [ERROR:microphone_state_updater.cc: MicrophoneStateUpdaterTizenEfl(37)] Do not have micrphone privilege!
+01-01 10:38:55.571+0900 I/CHROMIUM(P20971, T20971): [INFO:render_widget_host_view_aura.cc: RenderWidgetHostViewAura(335)] Rotation_ 0
+01-01 10:38:55.571+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:55.571+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:55.571+0900 I/CHROMIUM(P20971, T20971): [INFO:render_widget_host_view_aura.cc: InternalSetBounds(2797)] set bounds for aura 0,0 1920x1080
+01-01 10:38:55.572+0900 I/CHROMIUM(P20971, T20971): [INFO:render_widget_host_impl.cc: BindWidgetInterfaces(754)] Bind WidgetInterfaces
+01-01 10:38:55.575+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:55.576+0900 I/CHROMIUM(P20971, T20971): [INFO:rwhv_aura_common_helper_efl.cc: UpdateCursorName(704)] UpdateCursorName,without focus,just return
+01-01 10:38:55.577+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] webContents did-start-loading
+01-01 10:38:55.577+0900 I/CHROMIUM(P20971, T20971): [INFO:navigation_request.cc: BeginNavigation(1969)] NavigationRequest: 0x28dc9c8
+01-01 10:38:55.577+0900 I/CHROMIUM(P20971, T20971): [INFO:navigation_request.cc: BeginNavigationImpl(2219)] NavigationRequest: 0x28dc9c8
+01-01 10:38:55.582+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] WebApplication : prelaunch
+01-01 10:38:55.583+0900 E/CHROMIUM(P20971, T20971): [ERROR:widget_state.cc: OnStatusChanged(67)] [WidgetStatus] key :rtc/memory/WebApp/exoTMjMYi1.ExoTv, value :load
+01-01 10:38:55.585+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] runningStatus: load, false
+01-01 10:38:55.591+0900 I/CHROMIUM(P20971, T30102): [INFO:isolate_holder.cc: getDefaultIsolateParams(231)]  The board is ROSEP
+01-01 10:38:55.598+0900 I/CHROMIUM(P20971, T30102): [INFO:wrt_renderer_client_tv.cc: RenderThreadStarted(249)] RenderThreadStarted
+01-01 10:38:55.601+0900 I/CHROMIUM(P20971, T30102): [INFO:chrome_client_impl.cc: ChromeClientImpl(178)] ChromeClientImpl, this: 0x27b28590
+01-01 10:38:55.601+0900 I/CHROMIUM(P20971, T30102): [INFO:web_view_impl.cc: WebViewImpl(604)] WebViewImpl, this: 0x5ee68000
+01-01 10:38:55.601+0900 I/CHROMIUM(P20971, T30102): [INFO:page.cc: Page(236)] Page, this: 0x27b28628
+01-01 10:38:55.604+0900 I/CHROMIUM(P20971, T30102): [INFO:local_frame.cc: LocalFrame(1543)] LocalFrame, this: 0x27b28c78
+01-01 10:38:55.613+0900 E/CHROMIUM(P20971, T30102): [ERROR:local_frame.cc: OnPageLifecycleStateUpdated(2486)] OnPageLifecycleStateUpdated ; this: 0x27b28c78 ; frame_lifecycle_state : kRunning
+01-01 10:38:55.613+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: WebFrameWidgetImpl(304)] WebFrameWidgetImpl, this: 0x27b2c3e0
+01-01 10:38:55.620+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: UpdateVisualProperties(1503)] UpdateVisualProperties, new_size: width 1920 , height 1080
+01-01 10:38:55.620+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: UpdateVisualProperties(1505)] UpdateVisualProperties, visible_viewport_size: width 1920 , height 1080
+01-01 10:38:55.620+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: UpdateVisualProperties(1605)] UpdateVisualProperties
+01-01 10:38:55.620+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: UpdateVisualProperties(1606)] IsProvisional: 0
+01-01 10:38:55.620+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: UpdateVisualProperties(1607)] IsFocused: 0
+01-01 10:38:55.624+0900 I/CHROMIUM(P20971, T30102): [INFO:scrollbar.cc: Scrollbar(102)]  SCROLLBAR  NativeScrollbars : 0 , tv_scrollbar :1 , thickness : 4
+01-01 10:38:55.625+0900 I/CHROMIUM(P20971, T30102): [INFO:suspend_resume_manager.cc: OnResume(27)] 
+01-01 10:38:55.650+0900 I/CHROMIUM(P20971, T20971): [INFO:gles2_implementation.cc: GLES2Implementation(252)] GLES2Implementation  0x28c6368
+01-01 10:38:55.656+0900 I/CHROMIUM(P20971, T21441): [INFO:gl_surface_presentation_helper.cc: OnMakeCurrent(227)] Disable GPU timing client in favor of GL fences
+01-01 10:38:55.656+0900 I/CHROMIUM(P20971, T21441): [INFO:gl_surface_presentation_helper.cc: OnMakeCurrent(227)] Disable GPU timing client in favor of GL fences
+01-01 10:38:55.674+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.679+0900 E/CHROMIUM(P20971, T20971): [ERROR:disk_cache.cc: DoCallback(214)] Unable to create cache
+01-01 10:38:55.679+0900 E/CHROMIUM(P20971, T20971): [ERROR:gpu_disk_cache.cc: CacheCreatedCallback(673)] Gpu Cache Creation failed: -2
+01-01 10:38:55.679+0900 E/CHROMIUM(P20971, T20971): [ERROR:disk_cache.cc: DoCallback(214)] Unable to create cache
+01-01 10:38:55.679+0900 E/CHROMIUM(P20971, T20971): [ERROR:gpu_disk_cache.cc: CacheCreatedCallback(673)] Gpu Cache Creation failed: -2
+01-01 10:38:55.687+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_manager.cc: GetFrameHostForNavigation(1137)] use_current_rfh: 1
+01-01 10:38:55.696+0900 I/CHROMIUM(P20971, T30102): [INFO:render_frame_impl.cc: DidCommitNavigation(3672)] url: file:///index.html
+01-01 10:38:55.697+0900 I/CHROMIUM(P20971, T30106): [INFO:gles2_implementation.cc: GLES2Implementation(252)] GLES2Implementation  0xde760e78
+01-01 10:38:55.698+0900 I/CHROMIUM(P20971, T21441): [INFO:gl_surface_presentation_helper.cc: OnMakeCurrent(227)] Disable GPU timing client in favor of GL fences
+01-01 10:38:55.698+0900 I/CHROMIUM(P20971, T21441): [INFO:gl_surface_presentation_helper.cc: OnMakeCurrent(227)] Disable GPU timing client in favor of GL fences
+01-01 10:38:55.702+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:55.703+0900 I/CHROMIUM(P20971, T20971): [INFO:tizen_tv_platform.h: operator()(236)] Strict screen protection support: 0
+01-01 10:38:55.703+0900 I/CHROMIUM(P20971, T20971): [INFO:tizen_tv_platform.h: operator()(250)] Pixel shift support: 0
+01-01 10:38:55.703+0900 I/CHROMIUM(P20971, T20971): [INFO:privilege.cc: CheckHostedAppPrivilege(48)] No 'hostedapp_deviceapi_allow' privilege!
+01-01 10:38:55.704+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: GetImeAndKeyPadConfig(909)] use.keypad.without.useraction is not false!!
+01-01 10:38:55.704+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: DidFinishNavigation(1616)] FinishNavigation, url = file:///index.html
+01-01 10:38:55.704+0900 I/CHROMIUM(P20971, T20971): [INFO:widget_state.cc: OnURLChanged(97)] vconf key before :index.html
+01-01 10:38:55.704+0900 I/CHROMIUM(P20971, T20971): [INFO:widget_state.cc: OnURLChanged(98)] vconf key after :rtc/memory/WebApp/exoTMjMYi1.ExoTv_URL, value :file:///index.html
+01-01 10:38:55.705+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: SetKeyEventChecker(1610)] efl_window : 0x244a038
+01-01 10:38:55.705+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: SetKeyEventChecker(272)] SetKeyEventChecker
+01-01 10:38:55.706+0900 I/CHROMIUM(P20971, T20971): [INFO:eweb_accessibility.cc: NotifyAccessibilityStatus(99)] EWebAccessibility::NotifyAccessibilityStatus() start
+01-01 10:38:55.706+0900 I/CHROMIUM(P20971, T20971): [INFO:eweb_accessibility.cc: NotifyAccessibilityStatus(113)] EWebAccessibility::NotifyAccessibilityStatus() end
+01-01 10:38:55.720+0900 I/CHROMIUM(P20971, T30102): [INFO:xwalk_extension_context_data.cc: XWalkExtensionContextData(77)] Create context data : 0xe7490028
+01-01 10:38:55.732+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension.cc: Initialize(399)] XWalkExtension:Initialize
+01-01 10:38:55.732+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension_manager.cc: CreateInstance(378)] 1 : extension name tizen
+01-01 10:38:55.741+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension.cc: Initialize(399)] XWalkExtension:Initialize
+01-01 10:38:55.743+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension_manager.cc: CreateInstance(378)] 2 : extension name xwalk
+01-01 10:38:55.762+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.764+0900 I/CHROMIUM(P20971, T21462): [INFO:skia_output_surface_impl.cc: Reshape(302)] SkiaOutputSurfaceImpl::Reshape 1920x1080
+01-01 10:38:55.765+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.768+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.770+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.771+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.773+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.775+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.788+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.793+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: UpdateVisualProperties(1503)] UpdateVisualProperties, new_size: width 1920 , height 1080
+01-01 10:38:55.793+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: UpdateVisualProperties(1505)] UpdateVisualProperties, visible_viewport_size: width 1920 , height 1080
+01-01 10:38:55.793+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: UpdateVisualProperties(1605)] UpdateVisualProperties
+01-01 10:38:55.793+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: UpdateVisualProperties(1606)] IsProvisional: 0
+01-01 10:38:55.793+0900 I/CHROMIUM(P20971, T30102): [INFO:web_frame_widget_impl.cc: UpdateVisualProperties(1607)] IsFocused: 0
+01-01 10:38:55.793+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.799+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.803+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.804+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.811+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.811+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.812+0900 I/CHROMIUM(P20971, T20971): [INFO:rwhv_aura_common_helper_efl.h: CompositingCompleteSwapWithNewSize(194)] New frame size 1920x1080
+01-01 10:38:55.815+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.815+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.816+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.818+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.818+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.820+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.825+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.829+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.829+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:55.830+0900 I/CHROMIUM(P20971, T20971): [INFO:resource_manager.cc: GetLocalizedPath(145)] uri=file:///images/live-tv-icon.png, decoded=images/live-tv-icon.png
+01-01 10:38:55.831+0900 I/CHROMIUM(P20971, T20971): [INFO:resource_manager.cc: GetLocalizedPath(145)] uri=file:///images/change-playlist-icon.png, decoded=images/change-playlist-icon.png
+01-01 10:38:55.831+0900 E/CHROMIUM(P20971, T30098): [ERROR:wrt_file_url_loader.cc: IsAllowedPath(161)] Invalid access : /images/live-tv-icon.png
+01-01 10:38:55.831+0900 E/CHROMIUM(P20971, T30095): [ERROR:wrt_file_url_loader.cc: IsAllowedPath(161)] Invalid access : /images/change-playlist-icon.png
+01-01 10:38:55.878+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: HTMLMediaElement(540)] HTMLMediaElement(0x27a8acb8)
+01-01 10:38:55.880+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: InsertedInto(806)] insertedInto(0x27a8acb8, DIV class="player-container")
+01-01 10:38:55.890+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: HTMLMediaElement(540)] HTMLMediaElement(0x27a94ea8)
+01-01 10:38:55.890+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: InsertedInto(806)] insertedInto(0x27a94ea8, DIV class="player-container")
+01-01 10:38:56.015+0900 I/CHROMIUM(P20971, T20971): [INFO:encrypted_file_url_loader.cc: ResolveAlias(86)] Url [file:///$WEBAPIS/webapis/webapis.js] resolved to [file:///opt/usr/apps/pepper/webapis/webapis.js]
+01-01 10:38:56.018+0900 I/CHROMIUM(P20971, T20971): [INFO:application_data_tv.cc: AddPreconnectURL(126)] push url : www.youtube.com
+01-01 10:38:56.019+0900 I/CHROMIUM(P20971, T30094): [INFO:url_request.cc: StartJob(661)] truncated url: https://www.youtube.com/iframe_api
+01-01 10:38:56.023+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.026+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.030+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.040+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.056+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.057+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.061+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.063+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.063+0900 I/CHROMIUM(P20971, T30102): [INFO:scrollbar.cc: Scrollbar(102)]  SCROLLBAR  NativeScrollbars : 0 , tv_scrollbar :1 , thickness : 4
+01-01 10:38:56.064+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.070+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.078+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.082+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.090+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.093+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.103+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.104+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.109+0900 E/CHROMIUM(P20971, T30101): [ERROR:backend_impl.cc: SyncInit(234)] MemoryLifeTime was dangerous for using cache
+01-01 10:38:56.110+0900 E/CHROMIUM(P20971, T30101): [ERROR:backend_impl.cc: SyncInit(234)] MemoryLifeTime was dangerous for using cache
+01-01 10:38:56.110+0900 E/CHROMIUM(P20971, T30094): [ERROR:disk_cache.cc: DoCallback(214)] Unable to create cache
+01-01 10:38:56.111+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.119+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.121+0900 I/CHROMIUM(P20971, T30102): [INFO:tizen_tv_platform.h: operator()(236)] Strict screen protection support: 0
+01-01 10:38:56.121+0900 I/CHROMIUM(P20971, T30102): [INFO:tizen_tv_platform.h: operator()(250)] Pixel shift support: 0
+01-01 10:38:56.121+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.132+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.135+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.138+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.146+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.147+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.148+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.148+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.152+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.155+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.161+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(136)] HandleKeyRouter on timer
+01-01 10:38:56.162+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] Down key is registered
+01-01 10:38:56.162+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] Left key is registered
+01-01 10:38:56.162+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] Return key is registered
+01-01 10:38:56.162+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] Right key is registered
+01-01 10:38:56.162+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] Up key is registered
+01-01 10:38:56.162+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86Back key is registered
+01-01 10:38:56.169+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.173+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.176+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.182+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.185+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.187+0900 E/CHROMIUM(P20971, T20971): [ERROR:resource_manager.cc: DecryptResource(373)] Failed to read resource
+01-01 10:38:56.215+0900 I/CHROMIUM(P20971, T21462): [INFO:compositor_frame_sink_impl.cc: SubmitCompositorFrameInternal(160)] Frame width is changed
+01-01 10:38:56.218+0900 I/CHROMIUM(P20971, T21462): [INFO:surface_aggregator.cc: Aggregate(2124)] Compositor from web contents frame's size is changed 
+01-01 10:38:56.225+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] mainWindow ready-to-show
+01-01 10:38:56.225+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] WebApplication : show
+01-01 10:38:56.225+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] show this.windowList.length : 1
+01-01 10:38:56.232+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension.cc: Initialize(399)] XWalkExtension:Initialize
+01-01 10:38:56.233+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension_manager.cc: CreateInstance(378)] 3 : extension name Widget
+01-01 10:38:56.233+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (19725)] "handle writable property, false", source: file:///$WEBAPIS/webapis/webapis.js (19725)
+01-01 10:38:56.244+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (19725)] "run append func, exoTMjMYi1", source: file:///$WEBAPIS/webapis/webapis.js (19725)
+01-01 10:38:56.244+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (19725)] "Uwa of pepper type doesn't exist", source: file:///$WEBAPIS/webapis/webapis.js (19725)
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window.cc: SetPageVisibility(668)] Page visibility changed to 1
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:rwhv_aura_common_helper_efl.cc: SetPageVisibility(280)] SetPageVisibility, visible : 1
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:56.258+0900 E/CHROMIUM(P20971, T20971): [ERROR:wrt_native_window_tv.cc: VisibilityChangedAsForeground(1202)] exoTMjMYi1.ExoTv has shown on the screen
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: InitializeTouchSetup(554)] App touch_device_support value:
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:platform_info.cc: IsLFDTouchSupported(328)] lfd_touch_support : 0
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: InitializeTouchSetup(565)] App floating_navigation value:
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:rwhv_aura_common_helper_efl.cc: SetTouchEventsEnabled(796)] SetTouchEventsEnabled:0
+01-01 10:38:56.258+0900 I/CHROMIUM(P20971, T20971): [INFO:platform_info.cc: IsIRTouchSupported(346)] is_ir_touch_support : 0
+01-01 10:38:56.272+0900 I/CHROMIUM(P20971, T30094): [INFO:url_request.cc: NotifyRequestCompleted(1161)] elapsed: 253ms, content-length: 570
+01-01 10:38:56.272+0900 I/CHROMIUM(P20971, T30094): [INFO:url_request.cc: NotifyRequestCompleted(1165)] truncated url: https://www.youtube.com/iframe_api
+01-01 10:38:56.279+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: CreateMouseCursor(498)] floating_navigation = 
+01-01 10:38:56.279+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: GetPointDeviceOptionValue(450)] pointing_device_support = 
+01-01 10:38:56.279+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: CreateMouseCursor(504)] System default support mouse, but app unsupport mouse.
+01-01 10:38:56.279+0900 I/CHROMIUM(P20971, T20971): [INFO:rwhv_aura_common_helper_efl.cc: SetMouseEventsEnabled(627)] SetMouseEventsEnabled:0
+01-01 10:38:56.279+0900 I/CHROMIUM(P20971, T20971): [INFO:efl_event_handler.cc: SetMouseEventsEnabled(403)] SetMouseEventsEnabled: disabled
+01-01 10:38:56.284+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_native_window_tv.cc: EnableVisibilitySetting(1136)] memory/VDWebApp/partial set as 0
+01-01 10:38:56.285+0900 I/CHROMIUM(P20971, T20971): [INFO:wrt_thread_booster.cc: BoostUpRegisteredThreads(57)] boost up registered all thread!
+01-01 10:38:56.287+0900 I/CHROMIUM(P20971, T20971): [INFO:ui_runtime.cc: OnResume(54)] OnResume()
+01-01 10:38:56.287+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] resume
+01-01 10:38:56.287+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] WebApplication : resume
+01-01 10:38:56.287+0900 E/CHROMIUM(P20971, T20971): [ERROR:widget_state.cc: OnStatusChanged(67)] [WidgetStatus] key :rtc/memory/WebApp/exoTMjMYi1.ExoTv, value :resume
+01-01 10:38:56.289+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] runningStatus: resume, false
+01-01 10:38:56.289+0900 I/CHROMIUM(P20971, T20971): [INFO:render_widget_host_view_aura.cc: OnWindowFocused(2353)] OnWindowFocused, Gained : 0x28eefa8, Lost : 0x244ac28
+01-01 10:38:56.290+0900 I/CHROMIUM(P20971, T20971): [INFO:web_contents_impl.cc: Focus(5201)] Setting focus on WebContents : 0x28c7368
+01-01 10:38:56.290+0900 I/CHROMIUM(P20971, T20971): [INFO:render_widget_host_view_aura.cc: Focus(618)] Setting focus on RWHV and aura::Window of WebContents : 0x28c7368
+01-01 10:38:56.290+0900 I/CHROMIUM(P20971, T20971): [INFO:render_frame_host_impl.cc: ForEachRenderFrameHostImpl(2347)] ForEachRenderFrameHostImpl
+01-01 10:38:56.446+0900 I/CHROMIUM(P20971, T30102): [INFO:focus_controller.cc: DispatchEventsOnWindowAndFocusedElement(381)] DispatchEventsOnWindowAndFocusedElement,focused:1
+01-01 10:38:56.448+0900 I/CHROMIUM(P20971, T30102): [INFO:wrt_render_frame_observer.cc: SuspendMediaTasks(347)] Suspend media tasks, suspend:0
+01-01 10:38:56.448+0900 I/CHROMIUM(P20971, T30102): [INFO:web_view_impl.cc: WRTMediaSuspend(4633)] WRTMediaSuspend:0,this:0x5ee68000
+01-01 10:38:56.448+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: WRTMediaSuspend(4925)] WRTMediaSuspend:0,this:0x27a94ea8
+01-01 10:38:56.448+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: WRTMediaSuspend(4925)] WRTMediaSuspend:0,this:0x27a8acb8
+01-01 10:38:56.449+0900 I/CHROMIUM(P20971, T30102): [INFO:local_frame_mojo_handler.cc: JavaScriptExecuteRequestForTests(946)] JavaScriptExecuteRequestForTests
+01-01 10:38:56.470+0900 I/CHROMIUM(P20971, T30094): [INFO:url_request.cc: StartJob(661)] truncated url: https://www.youtube.com/s/player/afb1da51/www-widgetapi.vflset/www-widgetapi.js
+01-01 10:38:56.545+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension.cc: Initialize(399)] XWalkExtension:Initialize
+01-01 10:38:56.546+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension_manager.cc: CreateInstance(378)] 4 : extension name tizen.tvinputdevice
+01-01 10:38:56.553+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension.cc: SendSyncMessageWithStringReply(207)] [WebAPI] message:{"cmd":"UtilsCheckPrivilegeAccess","args":{"privilege":"http://tizen.org/privilege/tv.inputdevice"}}
+01-01 10:38:56.559+0900 I/CHROMIUM(P20971, T30094): [INFO:url_request.cc: NotifyRequestCompleted(1161)] elapsed: 88ms, content-length: 10171
+01-01 10:38:56.559+0900 I/CHROMIUM(P20971, T30094): [INFO:url_request.cc: NotifyRequestCompleted(1165)] truncated url: https://www.youtube.com/s/player/afb1da51/www-widgetapi.vflset/www-widgetapi.js
+01-01 10:38:56.639+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension.cc: Initialize(399)] XWalkExtension:Initialize
+01-01 10:38:56.640+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension_manager.cc: CreateInstance(378)] 5 : extension name webapis.productinfo
+01-01 10:38:56.649+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension.cc: SendSyncMessageWithStringReply(207)] [WebAPI] message:{"cmd":"ProductInfoManager_getDuid","args":{}}
+01-01 10:38:56.659+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension.cc: Initialize(399)] XWalkExtension:Initialize
+01-01 10:38:56.662+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension_manager.cc: CreateInstance(378)] 6 : extension name tizen.systeminfo
+01-01 10:38:56.663+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (251)] "DUID not available, trying Tizen ID fallback", source: file:///js/login_operation.js (251)
+01-01 10:38:56.669+0900 I/CHROMIUM(P20971, T20971): [INFO:xwalk_extension.cc: SendSyncMessageWithStringReply(207)] [WebAPI] message:{"cmd":"SystemInfoGetCapability","args":{"key":"http://tizen.org/system/tizenid"}}
+01-01 10:38:56.683+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (81)] "=== DEBUG fetchPlaylistInformation ===", source: file:///js/login_operation.js (81)
+01-01 10:38:56.683+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (82)] "Panel URL: https://exoapp.tv/9dlE9XWmiwmAn2j", source: file:///js/login_operation.js (82)
+01-01 10:38:56.683+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (83)] "Device ID: RTFGVXBaTVF4S09qcWxpOUtsVnZzSXVIQWdBPQ==", source: file:///js/login_operation.js (83)
+01-01 10:38:56.683+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (84)] "Platform: samsung", source: file:///js/login_operation.js (84)
+01-01 10:38:56.683+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (85)] "Data to send: [object Object]", source: file:///js/login_operation.js (85)
+01-01 10:38:56.704+0900 I/CHROMIUM(P20971, T20971): [INFO:application_data_tv.cc: AddPreconnectURL(126)] push url : exoapp.tv
+01-01 10:38:56.705+0900 I/CHROMIUM(P20971, T30094): [INFO:url_request.cc: StartJob(661)] truncated url: https://exoapp.tv/9dlE9XWmiwmAn2j/device_info
+01-01 10:38:56.745+0900 I/CHROMIUM(P20971, T20971): [INFO:WRT: (0)] webContents did-finish-load, window length is 1
+01-01 10:38:56.746+0900 I/CHROMIUM(P20971, T20971): [INFO:web_contents_impl.cc: Focus(5201)] Setting focus on WebContents : 0x28c7368
+01-01 10:38:56.746+0900 I/CHROMIUM(P20971, T20971): [INFO:render_widget_host_view_aura.cc: Focus(618)] Setting focus on RWHV and aura::Window of WebContents : 0x28c7368
+01-01 10:38:56.746+0900 I/CHROMIUM(P20971, T20971): [INFO:rwhv_aura_common_helper_efl.cc: UpdateCursor(950)] UpdateCursor,mouse_events_enabled_ false,just return
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(136)] HandleKeyRouter on timer
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] 0 key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] 1 key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] 2 key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] 3 key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] 4 key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] 5 key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] 6 key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] 7 key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] 8 key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] 9 key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF863D key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(151)] XF86AudioLowerVolume key is unregistered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(151)] XF86AudioMute key is unregistered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86AudioNext key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86AudioPause key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86AudioPlay key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(151)] XF86AudioRaiseVolume key is unregistered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86AudioRecord key is registered
+01-01 10:38:57.068+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86AudioRewind key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86AudioStop key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86Blue key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86Caption key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86ChannelGuide key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86ChannelList key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86Display key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86EManual key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86Exit key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86ExtraApp key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86Green key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86Info key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86LowerChannel key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86MTS key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86NextChapter key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86PictureSize key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86PlayBack key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86PreviousChannel key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86PreviousChapter key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86RaiseChannel key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86Red key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86Search key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86SimpleMenu key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86SoccerMode key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86SysMenu key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86TTXMIX key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] XF86Yellow key is registered
+01-01 10:38:57.069+0900 I/CHROMIUM(P20971, T20971): [INFO:input_device_manager.cc: HandleKeyRouter(145)] minus key is registered
+01-01 10:39:04.826+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: HasPendingActivity(4982)] HasPendingActivity(0x27a8acb8) = 0
+01-01 10:39:04.826+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: HasPendingActivity(4982)] HasPendingActivity(0x27a94ea8) = 0
+01-01 10:39:04.831+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: HasPendingActivity(4982)] HasPendingActivity(0x27a8acb8) = 0
+01-01 10:39:04.831+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: HasPendingActivity(4982)] HasPendingActivity(0x27a94ea8) = 0
+01-01 10:39:05.439+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: HasPendingActivity(4982)] HasPendingActivity(0x27a8acb8) = 0
+01-01 10:39:05.439+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: HasPendingActivity(4982)] HasPendingActivity(0x27a94ea8) = 0
+01-01 10:39:05.445+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: HasPendingActivity(4982)] HasPendingActivity(0x27a8acb8) = 0
+01-01 10:39:05.445+0900 I/CHROMIUM(P20971, T30102): [INFO:html_media_element.cc: HasPendingActivity(4982)] HasPendingActivity(0x27a94ea8) = 0
+01-01 10:39:10.455+0900 I/CHROMIUM(P21423, T21423): ewk_interface_main.cc:WRTMain(476) > EWK-INTERFACE : WRTMain called..
+01-01 10:39:10.455+0900 I/CHROMIUM(P21423, T21423): ewk_interface_main.cc:WRTMain(482) > for wrt-loader, dlopen with RTLD_NOW | RTLD_GLOBAL
+01-01 10:39:10.455+0900 I/CHROMIUM(P21423, T21423): ewk_interface_main.cc:MountDefaultChromiumImage(178) > Already libchromium-impl.so exists
+01-01 10:39:10.455+0900 I/CHROMIUM(P21423, T21423): ewk_interface_main.cc:CheckFileExist(82) > /tmp/.chromium_update_or_preload_mount.ready not exist
+01-01 10:39:10.455+0900 I/CHROMIUM(P21423, T21423): ewk_interface_main.cc:CheckFileExist(84) > /tmp/.chromium_upgrade_mount.ready exist
+01-01 10:39:10.455+0900 I/CHROMIUM(P21423, T21423): ewk_interface_main.cc:CheckFileExist(84) > /tmp/.chromium_upgrade_tpk.exists exist
+01-01 10:39:11.069+0900 E/CHROMIUM(P21423, T21423): ewk_interface_main.cc:open_library(316) > Open library done. cost:614ms, path:/usr/share/chromium-efl/lib/libchromium-impl.so, size:79MB, dlopen mode:258
+01-01 10:39:11.069+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: Main(202)] argv[0] : /usr/bin/wrt-loader
+01-01 10:39:11.069+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: Main(202)] argv[1] : 4
+01-01 10:39:11.069+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: Main(202)] argv[2] : 0
+01-01 10:39:11.069+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: Main(202)] argv[3] : 0
+01-01 10:39:11.069+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: Main(202)] argv[4] : Nzc1OTQ1YjQ1M2EyNjlhMTEyMjk0ZjM0YzRjYmQ2ZWUhAAAAAQQAAA8AAABTQ0hFRF9QUklPUklUWQACAAAAMAA=
+01-01 10:39:11.069+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: Main(202)] argv[5] :                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+01-01 10:39:11.069+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_main_delegate_tv.cc: EnableWebIsolation(111)] webapp container is not supported
+01-01 10:39:11.074+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: LoadExtensions(126)] extension_path : /usr/lib/tizen-extensions-crosswalk
+01-01 10:39:11.075+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.hybridchannelinfo is registered.
+01-01 10:39:11.075+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.bixby is registered.
+01-01 10:39:11.075+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.cordova.file is registered.
+01-01 10:39:11.075+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.cordova.globalization is registered.
+01-01 10:39:11.075+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.featureconfig is registered.
+01-01 10:39:11.075+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] offload is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.account is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.alarm is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.application is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.archive is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.bluetooth is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.content is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.datacontrol is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.download is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.exif is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.filesystem is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.iotcon is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.keymanager is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.mediacontroller is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.mediakey is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.messageport is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.metadata is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.ml is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.package is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.push is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.systeminfo is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.time is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.tvaudiocontrol is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.tvchannel is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.tvdisplaycontrol is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.tvinfo is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.tvinputdevice is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.tvwindow is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] xwalk is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.voicecontrol is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] tizen.websetting is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] SplashScreen is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.unipicture is registered.
+01-01 10:39:11.076+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.voiceinteraction is registered.
+01-01 10:39:11.077+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.adinfo is registered.
+01-01 10:39:11.077+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.airplay is registered.
+01-01 10:39:11.077+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.aisound is registered.
+01-01 10:39:11.077+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.allshare is registered.
+01-01 10:39:11.077+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.appcommon is registered.
+01-01 10:39:11.077+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.audiocapture is registered.
+01-01 10:39:11.077+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.avinfo is registered.
+01-01 10:39:11.078+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.billing is registered.
+01-01 10:39:11.078+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.broadcast is registered.
+01-01 10:39:11.078+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.contentsinfo is registered.
+01-01 10:39:11.078+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.couponpromotion is registered.
+01-01 10:39:11.078+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.displayrotator is registered.
+01-01 10:39:11.078+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.drminfo is registered.
+01-01 10:39:11.078+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.logging is registered.
+01-01 10:39:11.078+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.microphone is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.network is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.oobepromotion is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.pluginmanager is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.productinfo is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.remotepower is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.samsunghealth is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.securityapp is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.settings is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.sso is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.systemcontrol is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.systeminfo is registered.
+01-01 10:39:11.079+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.terms is registered.
+01-01 10:39:11.080+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.timer is registered.
+01-01 10:39:11.080+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.tvinfo is registered.
+01-01 10:39:11.080+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.was is registered.
+01-01 10:39:11.080+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.watchtogether is registered.
+01-01 10:39:11.080+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.widgetdata is registered.
+01-01 10:39:11.080+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.xrfw is registered.
+01-01 10:39:11.080+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.avplay is registered.
+01-01 10:39:11.080+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] webapis.avplaystore is registered.
+01-01 10:39:11.080+0900 I/CHROMIUM(P21423, T21423): [INFO:xwalk_extension_manager.cc: RegisterExtension(234)] Widget is registered.
+01-01 10:39:11.081+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_main_delegate_tv.cc: CheckWindowManagerReady(92)] wm_ready file is ready. count = 0
+01-01 10:39:11.081+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: Main(223)] run with wrt-loader
+01-01 10:39:11.082+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: Load(122)] launchpad_loader_main is called !!
+01-01 10:39:11.082+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: operator()(60)] loader created
+01-01 10:39:11.083+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: operator()(114)] loader add_fd 37
+01-01 10:39:11.086+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: operator()(103)] loader loop_begin
+01-01 10:39:11.086+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_main_delegate_tv.cc: CreateReadyFile(387)] /run/user/5001/.wrt_loader.ready create successfully
+01-01 10:39:11.086+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_content_main.cc: operator()(63)] ContentMain will be initialized in idler.
+01-01 10:39:11.086+0900 I/CHROMIUM(P21423, T21423): [INFO:tizen_tv_platform.h: IsLFDTouchSupported(200)] LFD touch is supported : 0
+01-01 10:39:11.086+0900 I/CHROMIUM(P21423, T21423): [INFO:tizen_tv_platform.h: IsIRTouchSupported(214)] IR touch is supported : 0
+01-01 10:39:11.086+0900 I/CHROMIUM(P21423, T21423): [INFO:tizen_tv_platform.h: IsTouchSupported(220)] touch is supported : 0
+01-01 10:39:11.086+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_main_delegate_tv.cc: BasicStartupComplete(181)] SetNoZygote!!
+01-01 10:39:11.087+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_main_delegate.cc: BasicStartupComplete(76)] will run in single process mode
+01-01 10:39:11.195+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_main_delegate.cc: BasicStartupComplete(98)] WRTjs path: /usr/share/wrt
+01-01 10:39:11.200+0900 I/CHROMIUM(P21423, T21423): [INFO:paths_efl.cc: GetLibRootPath(194)] Library Path : /usr/share/chromium-efl
+01-01 10:39:11.228+0900 I/CHROMIUM(P21423, T21423): [INFO:discardable_shared_memory_manager.cc: DiscardableSharedMemoryManager(265)] DiscardableMemoryLimit : 20480KB
+01-01 10:39:11.228+0900 I/CHROMIUM(P21423, T21423): [INFO:discardable_shared_memory_manager.cc: DiscardableSharedMemoryManager(266)] DiscardableMemoryPurgeDelay : 0.500000 s
+01-01 10:39:11.244+0900 I/CHROMIUM(P21423, T21423): [INFO:electron_browser_main_parts.cc: PostEarlyInitialization(271)] Start Electron PostEarlyInitialization
+01-01 10:39:11.245+0900 I/CHROMIUM(P21423, T21423): [INFO:isolate_holder.cc: getDefaultIsolateParams(231)]  The board is ROSEP
+01-01 10:39:11.281+0900 I/CHROMIUM(P21423, T21423): [INFO:node.cc: ExecuteBootstrapper(205)] v8::Function::Call id : internal/bootstrap/loaders takes 1(ms)
+01-01 10:39:11.387+0900 I/CHROMIUM(P21423, T21423): [INFO:node.cc: ExecuteBootstrapper(205)] v8::Function::Call id : internal/bootstrap/node takes 105(ms)
+01-01 10:39:11.389+0900 I/CHROMIUM(P21423, T21423): [INFO:node.cc: ExecuteBootstrapper(205)] v8::Function::Call id : internal/bootstrap/switches/is_main_thread takes 1(ms)
+01-01 10:39:11.390+0900 I/CHROMIUM(P21423, T21423): [INFO:node.cc: ExecuteBootstrapper(205)] v8::Function::Call id : internal/bootstrap/switches/does_own_process_state takes 0(ms)
+01-01 10:39:11.533+0900 I/CHROMIUM(P21423, T21423): [INFO:node.cc: ExecuteBootstrapper(205)] v8::Function::Call id : internal/main/run_main_module takes 132(ms)
+01-01 10:39:11.533+0900 I/CHROMIUM(P21423, T21423): [INFO:electron_browser_main_parts.cc: PostEarlyInitialization(326)] End Electron PostEarlyInitialization
+01-01 10:39:11.560+0900 I/CHROMIUM(P21423, T21423): [INFO:trusted_pepper_plugin_info_cache.cc: AddPluginsFromDirectory(492)] AddPluginsFromDirectory, /opt/usr/apps/pepper, goal 0
+01-01 10:39:11.561+0900 E/CHROMIUM(P21423, T21423): [ERROR:trusted_pepper_plugin_info_cache.cc: MaybeUpdateRw(412)] file not found: /opt/usr/apps/appbinarymanager/webapi_result/upgrade_webapi_result.json
+01-01 10:39:11.561+0900 I/CHROMIUM(P21423, T21423): [INFO:trusted_pepper_plugin_info_cache.cc: TrustedPepperPluginInfoCache(397)] constru without param end, mime_to_ro_map_ size 0, mime_to_sro_map_ size 0, mime_to_rw_map_ size 0, path_map_ size 0, judge_map_ size 0, app_map_ size 0
+01-01 10:39:11.561+0900 I/CHROMIUM(P21423, T21423): [INFO:trusted_pepper_plugin_info_cache.cc: GetPlugins(306)] GetPlugins, param vector size 0
+01-01 10:39:11.561+0900 E/CHROMIUM(P21423, T21423): [ERROR:trusted_pepper_plugin_info_cache.cc: MaybeUpdateRw(412)] file not found: /opt/usr/apps/appbinarymanager/webapi_result/upgrade_webapi_result.json
+01-01 10:39:11.562+0900 I/CHROMIUM(P21423, T30295): [INFO:address_tracker_linux.cc: IsInterfaceIgnored(325)] Interface lo
+01-01 10:39:11.562+0900 I/CHROMIUM(P21423, T30295): [INFO:address_tracker_linux.cc: IsInterfaceIgnored(325)] Interface eth0
+01-01 10:39:11.562+0900 I/CHROMIUM(P21423, T30295): [INFO:address_tracker_linux.cc: IsInterfaceIgnored(325)] Interface lo
+01-01 10:39:11.562+0900 I/CHROMIUM(P21423, T30295): [INFO:address_tracker_linux.cc: IsInterfaceIgnored(325)] Interface eth0
+01-01 10:39:11.562+0900 I/CHROMIUM(P21423, T30288): [INFO:certificates_utils.cc: AddServerCert(301)] skip loading certificates because it is already loaded
+01-01 10:39:11.562+0900 I/CHROMIUM(P21423, T30295): [INFO:address_tracker_linux.cc: IsInterfaceIgnored(325)] Interface lo
+01-01 10:39:11.562+0900 I/CHROMIUM(P21423, T30295): [INFO:address_tracker_linux.cc: IsInterfaceIgnored(325)] Interface eth0
+01-01 10:39:11.562+0900 I/CHROMIUM(P21423, T30295): [INFO:address_tracker_linux.cc: IsInterfaceIgnored(325)] Interface wlan0
+01-01 10:39:11.563+0900 I/CHROMIUM(P21423, T30295): [INFO:address_tracker_linux.cc: IsInterfaceIgnored(322)] Ignore interface p2p0
+01-01 10:39:11.563+0900 I/CHROMIUM(P21423, T30295): [INFO:address_tracker_linux.cc: IsInterfaceIgnored(325)] Interface eth1
+01-01 10:39:11.566+0900 I/CHROMIUM(P21423, T21423): [INFO:audio_device_listener_tizen.cc: AddAudioDeviceConnectionChangedCb(58)] Will listen to audio device changes
+01-01 10:39:11.608+0900 I/CHROMIUM(P21423, T21423): [INFO:native_web_runtime_delegate_tv.cc: CheckPrivilege(333)] Not initialized : http://developer.samsung.com/privilege/smartcontroller.microphone
+01-01 10:39:11.608+0900 I/CHROMIUM(P21423, T21423): [INFO:audio_manager_capi.cc: CheckSmartRCMicPrivilege(105)] AudioManagerCapi::CheckSmartRCMicPrivilege = 0
+01-01 10:39:11.608+0900 E/CHROMIUM(P21423, T21423): [ERROR:audio_manager_capi.cc: AudioManagerCapi(56)] CheckSmartRCMicPrivilege fail
+01-01 10:39:11.608+0900 I/CHROMIUM(P21423, T21423): [INFO:stream_player_manager_impl.cc: StreamPlayerManagerImpl(43)] 
+01-01 10:39:11.670+0900 I/CHROMIUM(P21423, T21423): [INFO:video_capture_device_factory_tizen.cc: VideoCaptureDeviceFactoryTizen(23)] VideoCaptureDeviceFactoryTizen[0x2bd4550]
+01-01 10:39:11.670+0900 I/CHROMIUM(P21423, T21423): [INFO:camera_device_tizen.cc: CameraHandle(338)] CameraHandle[0x2bd4568]::CameraHandle
+01-01 10:39:11.700+0900 I/CHROMIUM(P21423, T21423): [INFO:WRT: (0)] ready
+01-01 10:39:11.701+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser.cc: PreloadExtensions(45)] preload name: common,lib:/usr/lib/tizen-extensions-crosswalk/libtizen_common.so
+01-01 10:39:11.705+0900 I/CHROMIUM(P20971, T30102): [INFO:resource_error.cc: CancelledError(50)] Cancel resource url: "https://exoapp.tv/9dlE9XWmiwmAn2j/device_info"
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (142)] "=== DEBUG API Request Error ===", source: file:///js/login_operation.js (142)
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (143)] "XHR Status: 0", source: file:///js/login_operation.js (143)
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (144)] "XHR StatusText: timeout", source: file:///js/login_operation.js (144)
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (145)] "Text Status: timeout", source: file:///js/login_operation.js (145)
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (146)] "Error Thrown: timeout", source: file:///js/login_operation.js (146)
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (147)] "Response Text: undefined", source: file:///js/login_operation.js (147)
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (148)] "Ready State: 0", source: file:///js/login_operation.js (148)
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (149)] "Panel URL that failed: https://exoapp.tv/9dlE9XWmiwmAn2j", source: file:///js/login_operation.js (149)
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (150)] "Tried panel indexes: ", source: file:///js/login_operation.js (150)
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (151)] "Total panel URLs: 1", source: file:///js/login_operation.js (151)
+01-01 10:39:11.709+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (155)] "Network error - possible CORS, timeout, or connectivity issue", source: file:///js/login_operation.js (155)
+01-01 10:39:11.711+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (165)] "Trying next panel URL, current failed indexes: 0", source: file:///js/login_operation.js (165)
+01-01 10:39:11.711+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (81)] "=== DEBUG fetchPlaylistInformation ===", source: file:///js/login_operation.js (81)
+01-01 10:39:11.711+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (82)] "Panel URL: undefined", source: file:///js/login_operation.js (82)
+01-01 10:39:11.711+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (83)] "Device ID: RTFGVXBaTVF4S09qcWxpOUtsVnZzSXVIQWdBPQ==", source: file:///js/login_operation.js (83)
+01-01 10:39:11.711+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (84)] "Platform: samsung", source: file:///js/login_operation.js (84)
+01-01 10:39:11.712+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (85)] "Data to send: [object Object]", source: file:///js/login_operation.js (85)
+01-01 10:39:11.715+0900 I/CHROMIUM(P20971, T20971): [INFO:resource_manager.cc: GetLocalizedPath(145)] uri=file:///undefined/device_info, decoded=undefined/device_info
+01-01 10:39:11.716+0900 E/CHROMIUM(P20971, T30116): [ERROR:wrt_file_url_loader.cc: IsAllowedPath(161)] Invalid access : /undefined/device_info
+01-01 10:39:11.717+0900 I/CHROMIUM(P20971, T30102): [INFO:resource_error.cc: CancelledError(50)] Cancel resource url: "https://exoapp.tv/9dlE9XWmiwmAn2j/device_info"
+01-01 10:39:11.718+0900 W/CHROMIUM(P20971, T30094): [WARNING:url_request_job.cc: OnDone(572)] net_error: -3 url:https://exoapp.tv/9dlE9XWmiwmAn2j/device_info
+01-01 10:39:11.718+0900 I/CHROMIUM(P20971, T30094): [INFO:url_request.cc: NotifyRequestCompleted(1161)] elapsed: 15012ms, content-length: 0
+01-01 10:39:11.718+0900 I/CHROMIUM(P20971, T30094): [INFO:url_request.cc: NotifyRequestCompleted(1165)] truncated url: https://exoapp.tv/9dlE9XWmiwmAn2j/device_info
+01-01 10:39:11.723+0900 I/CHROMIUM(P20971, T30102): [INFO:scrollbar.cc: Scrollbar(102)]  SCROLLBAR  NativeScrollbars : 0 , tv_scrollbar :1 , thickness : 4
+01-01 10:39:11.723+0900 I/CHROMIUM(P20971, T30102): [INFO:scrollbar.cc: Scrollbar(102)]  SCROLLBAR  NativeScrollbars : 0 , tv_scrollbar :1 , thickness : 4
+01-01 10:39:11.729+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (142)] "=== DEBUG API Request Error ===", source: file:///js/login_operation.js (142)
+01-01 10:39:11.729+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (143)] "XHR Status: 0", source: file:///js/login_operation.js (143)
+01-01 10:39:11.729+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (144)] "XHR StatusText: error", source: file:///js/login_operation.js (144)
+01-01 10:39:11.729+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser.cc: PreloadExtensions(45)] preload name: tizen,lib:/usr/lib/tizen-extensions-crosswalk/libtizen.so
+01-01 10:39:11.729+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (145)] "Text Status: error", source: file:///js/login_operation.js (145)
+01-01 10:39:11.730+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (146)] "Error Thrown: ", source: file:///js/login_operation.js (146)
+01-01 10:39:11.730+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (147)] "Response Text: undefined", source: file:///js/login_operation.js (147)
+01-01 10:39:11.730+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (148)] "Ready State: 0", source: file:///js/login_operation.js (148)
+01-01 10:39:11.730+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (149)] "Panel URL that failed: undefined", source: file:///js/login_operation.js (149)
+01-01 10:39:11.730+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (150)] "Tried panel indexes: 0", source: file:///js/login_operation.js (150)
+01-01 10:39:11.730+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (151)] "Total panel URLs: 1", source: file:///js/login_operation.js (151)
+01-01 10:39:11.730+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (155)] "Network error - possible CORS, timeout, or connectivity issue", source: file:///js/login_operation.js (155)
+01-01 10:39:11.730+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (168)] "All panel URLs failed, checking localStorage for cached data", source: file:///js/login_operation.js (168)
+01-01 10:39:11.730+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (175)] "No cached data available, showing network error", source: file:///js/login_operation.js (175)
+01-01 10:39:11.730+0900 I/CHROMIUM(P20971, T20971): [INFO:CONSOLE: (1000)] "Uncaught ReferenceError: buttons_dom is not defined", source: file:///js/login_operation.js (1000)
+01-01 10:39:11.733+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser.cc: PreloadExtensions(45)] preload name: tizen.application,lib:/usr/lib/tizen-extensions-crosswalk/libtizen_application.so
+01-01 10:39:11.761+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser.cc: PreloadExtensions(45)] preload name: widget,lib:/usr/lib/tizen-extensions-crosswalk/libwidget_plugin.so
+01-01 10:39:11.762+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser.cc: PreloadExtensions(45)] preload name: xwalk,lib:/usr/lib/tizen-extensions-crosswalk/libtizen_utils.so
+01-01 10:39:11.764+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser_tv.cc: PreloadExtensions(446)] preload name: tizen.systeminfo,lib:/usr/lib/tizen-extensions-crosswalk/libtizen_systeminfo.so
+01-01 10:39:11.944+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser_tv.cc: PreloadExtensions(446)] preload name: tizen.tvinputdevice,lib:/usr/lib/tizen-extensions-crosswalk/libtizen_tvinputdevice.so
+01-01 10:39:11.946+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser_tv.cc: PreloadExtensions(446)] preload name: webapis.adinfo,lib:/usr/lib/tizen-extensions-crosswalk/libwebapis_adinfo.so
+01-01 10:39:11.959+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser_tv.cc: PreloadExtensions(446)] preload name: webapis.avplay,lib:/usr/lib/tizen-extensions-crosswalk/libwebapis_avplay.so
+01-01 10:39:12.148+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser_tv.cc: PreloadExtensions(446)] preload name: webapis.productinfo,lib:/usr/lib/tizen-extensions-crosswalk/libwebapis_productinfo.so
+01-01 10:39:12.152+0900 I/CHROMIUM(P21423, T30318): [INFO:wrt_xwalk_extension_browser_tv.cc: PreloadExtensions(446)] preload name: webapis.tvinfo,lib:/usr/lib/tizen-extensions-crosswalk/libwebapis_tvinfo.so
+01-01 10:39:12.164+0900 I/CHROMIUM(P21423, T30318): [INFO:locale_manager.cc: UpdateSystemLocale(98)] Processing language description: en-US
+01-01 10:39:12.164+0900 I/CHROMIUM(P21423, T30318): [INFO:locale_manager.cc: UpdateSystemLocale(98)] Processing language description: en
+01-01 10:39:12.164+0900 I/CHROMIUM(P21423, T30318): [INFO:trusted_pepper_plugin_info_cache.cc: GetPlugins(306)] GetPlugins, param vector size 0
+01-01 10:39:12.164+0900 E/CHROMIUM(P21423, T30318): [ERROR:trusted_pepper_plugin_info_cache.cc: MaybeUpdateRw(412)] file not found: /opt/usr/apps/appbinarymanager/webapi_result/upgrade_webapi_result.json
+01-01 10:39:12.164+0900 I/CHROMIUM(P21423, T30318): [INFO:native_web_runtime_delegate_tv.cc: PreloadVconfKeys(691)] PreloadVconfKeys start
+01-01 10:39:12.165+0900 I/CHROMIUM(P21423, T30318): [INFO:native_web_runtime_delegate_tv.cc: PreloadVconfKeys(717)] PreloadVconfKeys end
+01-01 10:39:12.165+0900 I/CHROMIUM(P21423, T30318): [INFO:native_web_runtime_delegate_tv.cc: PreloadPlatformConfig(721)] PreloadPlatformConfig start
+01-01 10:39:12.165+0900 I/CHROMIUM(P21423, T30318): [INFO:platform_info.cc: GetPanelResolution(119)] panel resolution = 7680x4320
+01-01 10:39:12.165+0900 I/CHROMIUM(P21423, T30318): [INFO:platform_info.cc: IsVisualControllerSupported(246)] multiview.visual_controller supported : 0
+01-01 10:39:12.165+0900 I/CHROMIUM(P21423, T30318): [INFO:platform_info.cc: IsDefaultMouseSupport(275)] default_mouse_support : 1
+01-01 10:39:12.165+0900 I/CHROMIUM(P21423, T30318): [INFO:native_web_runtime_delegate_tv.cc: PreloadPlatformConfig(732)] PreloadPlatformConfig end
+01-01 10:39:12.169+0900 I/CHROMIUM(P21423, T21423): [INFO:input_device_manager.cc: InputDeviceManager(54)] Initialize keyrouter
+01-01 10:39:12.173+0900 I/CHROMIUM(P21423, T30318): [INFO:native_web_runtime_delegate_tv.cc: SetLocaleDir(683)] locale dir:/usr/share/chromium-efl/res/locale
+01-01 10:39:12.205+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_native_window_tv.cc: SetGlobalResourceId(606)] ee = 0x2b96bd0, wl_window = 0x2b96fc8, windowid = 1
+01-01 10:39:12.207+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_native_window_tv.cc: HandleResourceId(168)] got global resource id(131) from server 
+01-01 10:39:12.207+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_main_delegate_tv.cc: CreateReadyFile(387)] /tmp/.wrt_loader.completed create successfully
+01-01 10:39:12.207+0900 I/CHROMIUM(P21423, T21423): [INFO:wrt_main_delegate_tv.cc: SetPriority(164)] Set process priority : 0
+01-01 10:39:12.212+0900 I/CHROMIUM(P21423, T21423): [INFO:native_web_runtime_delegate_tv.cc: ShouldRunClearDeadMount(190)] vconf loader_count is 3
+01-01 10:39:12.215+0900 I/CHROMIUM(P21423, T30299): [INFO:gpu_mojo_media_client_tizen.cc: UpstreamArchitectureEnabled(29)] New architecture is enabled: 0

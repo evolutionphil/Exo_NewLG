@@ -63,6 +63,8 @@ var login_page={
         activation_page.init('login-page');
     },
     fetchPlaylistInformation:function(){
+        console.log('=== DEBUG fetchPlaylistInformation ===');
+
         if(this.is_loading)
             return;
         this.showLoadImage();
@@ -78,7 +80,6 @@ var login_page={
         }
 
         // Debug logging
-        console.log('=== DEBUG fetchPlaylistInformation ===');
         console.log('Panel URL:', url);
         console.log('Device ID:', device_id);
         console.log('Platform:', platform);
@@ -371,7 +372,7 @@ var login_page={
         var local_demo_playlist = {
             id: 'local_demo',
             name: 'Local Demo Playlist',
-            url: './tv_channels_exoapdemodhfew_plus.m3u',
+            url: './assets/tv_channels_flixdemo_plus.m3u',
             type: 'general'
         };
         settings.saveSettings('playlist', local_demo_playlist, 'array');
@@ -403,15 +404,15 @@ var login_page={
     showPlaylistErrorModal:function(){
         console.log('=== Showing playlist error modal ===');
 
+        // Populate account info including MAC address
+        this.populateAccountInfo();
+
         // Reset modal content to default state first
         $('#playlist-error-main-message').show();
         $('#playlist-error-reasons').show();
         $('#playlist-error-sub-message').show();
         $('#demo-content-status').hide();
         $('#demo-content-message').hide();
-
-        // Populate account information
-        this.populateAccountInfo();
 
         // Ensure all buttons are visible by default
         $('.playlist-error-btn').show();
@@ -561,44 +562,6 @@ var login_page={
         console.log('Modal closed, focus restored to:', this.keys.focused_part);
     },
 
-    populateAccountInfo:function(){
-        // Connection Status (always failed in error modal)
-        $('#connection-status-value').text('Failed').css('color', '#ff4832');
-        
-        // Playlist URL and Xtream Credentials (exclude demo URLs)
-        if(settings && settings.playlist && settings.playlist.url) {
-            var url = settings.playlist.url;
-            
-            // Check if this is a demo playlist - never show demo credentials
-            var isDemoPlaylist = settings.playlist.id === 'demo' || 
-                               settings.playlist.id === 'backend_demo' || 
-                               settings.playlist.id === 'local_demo' ||
-                               url.includes('flixdemo.com') ||
-                               url.includes('exoapdemodhfew');
-            
-            if(isDemoPlaylist) {
-                $('#playlist-url-info').text('Demo content');
-            } else {
-                // Add Xtream credentials info if available (only for non-demo)
-                if(settings.playlist_type === 'xtreme' && user_name && password && api_host_url) {
-                    var xtreamInfo = 'Server: ' + api_host_url + ' | User: ' + user_name + ' | Pass: ' + password.substring(0,3) + '***';
-                    if(xtreamInfo.length > 120) {
-                        xtreamInfo = xtreamInfo.substring(0, 117) + '...';
-                    }
-                    $('#playlist-url-info').html(xtreamInfo + '<br><span style="font-size: 10px; color: #666;">Original URL: ' + (url.length > 60 ? url.substring(0, 57) + '...' : url) + '</span>');
-                } else {
-                    // Truncate very long URLs
-                    if(url.length > 80) {
-                        url = url.substring(0, 77) + '...';
-                    }
-                    $('#playlist-url-info').text(url);
-                }
-            }
-        } else {
-            $('#playlist-url-info').text('No playlist configured');
-        }
-    },
-
     retryPlaylistLoad:function(){
         console.log('=== Retry playlist load ===');
         this.closePlaylistErrorModal();
@@ -681,7 +644,7 @@ var login_page={
             var local_demo_playlist = {
                 id: 'local_demo',
                 name: 'Local Demo Content',
-                url: './tv_channels_exoapdemodhfew_plus.m3u',
+                url: './assets/tv_channels_flixdemo_plus.m3u',
                 type: 'general'
             };
 
@@ -691,7 +654,7 @@ var login_page={
 
             $.ajax({
                 method: 'get',
-                url: './tv_channels_exoapdemodhfew_plus.m3u',
+                url: './assets/tv_channels_flixdemo_plus.m3u',
                 timeout: 15000,
                 success: function(data) {
                     console.log('=== DEBUG: Local demo content loaded successfully ===');
@@ -896,10 +859,8 @@ var login_page={
                         calculateTimeDifference(data.server_info.time_now,data.server_info.timestamp_now)
                     if(typeof  data.user_info!="undefined"){
                         if(data.user_info.auth==0 || (typeof data.user_info.status!='undefined' && (data.user_info.status==='Expired' || data.user_info.status==='Banned'))){
-                            console.log('=== DEBUG Xtreme API Authentication Failed - Trying Demo Fallback ===');
                             that.is_loading=false;
-                            // Try demo content fallback instead of going to error modal
-                            that.continueWithoutPlaylist();
+                            that.goToPlaylistPageWithError();
                         }
                         else{
                             // if(data.user_info.exp_date==null)
@@ -961,18 +922,12 @@ var login_page={
                                     that.retry_count = 0; // Reset retry count on success
                                     home_page.init();
                                 }catch (e) {
-                                    console.log('=== DEBUG Xtreme API Processing Failed - Trying Demo Fallback ===');
                                     console.log(e);
-                                    that.is_loading=false;
-                                    // Try demo content fallback instead of going to error modal
-                                    that.continueWithoutPlaylist();
+                                    that.goToPlaylistPageWithError();
                                 }
                             }).fail(function (e) {
-                                console.log('=== DEBUG Xtreme API Request Failed - Trying Demo Fallback ===');
                                 console.log(e);
-                                that.is_loading=false;
-                                // Try demo content fallback instead of going to error modal
-                                that.continueWithoutPlaylist();
+                                that.goToPlaylistPageWithError();
                             })
                         }
                     }
@@ -993,9 +948,8 @@ var login_page={
                         console.log('=== DEBUG: Local demo also failed ===');
                         that.goToPlaylistPageWithError();
                     } else {
-                        // User playlist failed - try demo fallback
-                        console.log('=== DEBUG: User playlist failed, trying demo fallback ===');
-                        that.continueWithoutPlaylist();
+                        // User playlist failed
+                        that.goToPlaylistPageWithError();
                     }
                 },
                 timeout: 15000
@@ -1031,9 +985,8 @@ var login_page={
                         console.log('=== DEBUG: Local demo also failed ===');
                         that.goToPlaylistPageWithError();
                     } else {
-                        // User playlist failed - try demo fallback
-                        console.log('=== DEBUG: User playlist failed, trying demo fallback ===');
-                        that.continueWithoutPlaylist();
+                        // User playlist failed
+                        that.goToPlaylistPageWithError();
                     }
                 }
             })
@@ -1043,7 +996,7 @@ var login_page={
         var keys=this.keys;
         keys.focused_part='network_issue_btn';
         keys.network_issue_btn=index;
-        buttons_dom.removeClass('active');
+        $(this.network_issue_btns).removeClass('active');
         $(this.network_issue_btns[index]).addClass('active');
     },
     hoverExpiredIssueBtn:function(index){
