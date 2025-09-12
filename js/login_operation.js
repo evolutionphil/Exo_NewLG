@@ -663,196 +663,20 @@ var login_page={
 
     continueWithoutPlaylist:function(){
         console.log('=== Continue without playlist ===');
+        console.log('=== DEBUG: Continue without playlist called ===');
+        
+        // Force close modal completely
+        $('#playlist-error-modal').modal('hide');
+        $('#playlist-error-modal').removeClass('show');
+        $('.modal-backdrop').remove();
+        $('body').removeClass('modal-open').css('padding-right', '');
+
+        // Reset loading state
         this.is_loading = false;
         this.device_id_fetched = false;
-
-        console.log('=== DEBUG: Continue without playlist called ===');
-        console.log('Backend demo_url:', demo_url);
-        $('.loader-image-container').removeClass('hide');
-
-        // Update modal to show loading demo content
-        this.showDemoContentStatus('Loading demo content...');
-
-        // Temporarily store current user playlist
-        var user_playlist = settings.playlist;
-        var user_playlist_id = settings.playlist_id;
-
-        var that = this;
-
-        // Function to try local demo playlist
-        function tryLocalDemo() {
-            console.log('=== DEBUG: Trying local demo playlist ===');
-            var local_demo_playlist = {
-                id: 'local_demo',
-                name: 'Local Demo Content',
-                url: './tv_channels_exoapdemodhfew_plus.m3u',
-                type: 'general'
-            };
-
-            // Set local demo playlist temporarily
-            settings.playlist = local_demo_playlist;
-            parseM3uUrl();
-
-            $.ajax({
-                method: 'get',
-                url: './tv_channels_exoapdemodhfew_plus.m3u',
-                timeout: 15000,
-                success: function(data) {
-                    console.log('=== DEBUG: Local demo content loaded successfully ===');
-                    parseM3uResponse('type1', data);
-
-                    // Restore user's original playlist settings
-                    settings.playlist = user_playlist;
-                    settings.playlist_id = user_playlist_id;
-
-                    // Show success in modal briefly before closing
-                    that.showDemoContentStatus('Demo Content', 'Using local demo content until your playlist is working');
-
-                    setTimeout(function() {
-                        // Force close modal completely
-                        $('#playlist-error-modal').modal('hide');
-                        $('#playlist-error-modal').removeClass('show');
-                        $('.modal-backdrop').remove();
-                        $('body').removeClass('modal-open').css('padding-right', '');
-
-                        that.keys.focused_part = 'main_area';
-                        that.keys.main_area = 0;
-                        that.is_loading = false;
-
-                        // Remove modal event handlers
-                        $('#playlist-error-modal').off('shown.bs.modal');
-
-                        $('#loading-page').addClass('hide');
-                        home_page.init();
-                    }, 1200);
-                },
-                error: function(error) {
-                    console.log('=== DEBUG: Local demo content also failed ===');
-                    console.log('Error:', error);
-
-                    // Restore user's original playlist settings
-                    settings.playlist = user_playlist;
-                    settings.playlist_id = user_playlist_id;
-
-                    // Show error in modal
-                    that.showDemoContentStatus('Error', 'No demo content available');
-
-                    setTimeout(function() {
-                        // Force close modal completely
-                        $('#playlist-error-modal').modal('hide');
-                        $('#playlist-error-modal').removeClass('show');
-                        $('.modal-backdrop').remove();
-                        $('body').removeClass('modal-open').css('padding-right', '');
-
-                        that.keys.focused_part = 'main_area';
-                        that.keys.main_area = 0;
-                        that.is_loading = false;
-
-                        // Remove modal event handlers
-                        $('#playlist-error-modal').off('shown.bs.modal');
-                        // Final fallback - empty data
-                        LiveModel.insertMoviesToCategories([]);
-                        VodModel.insertMoviesToCategories([]);
-                        SeriesModel.insertMoviesToCategories([]);
-
-                        $('#loading-page').addClass('hide');
-                        home_page.init();
-                    }, 1500);
-                }
-            });
-        }
-
-        // First try backend demo URL if available
-        var backend_demo_url = null;
-        var backend_demo_playlist = null;
-
-        console.log('=== DEBUG: Checking demo_url ===');
-        console.log('demo_url type:', typeof demo_url);
-        console.log('demo_url value:', demo_url);
-
-        if(demo_url) {
-            // Handle both string and object formats
-            if(typeof demo_url === 'string' && demo_url.trim() !== '') {
-                backend_demo_url = demo_url;
-                backend_demo_playlist = {
-                    id: 'backend_demo',
-                    name: 'Backend Demo Content',
-                    url: backend_demo_url,
-                    type: 'general'
-                };
-            } else if(typeof demo_url === 'object' && demo_url.url && demo_url.url.trim() !== '') {
-                backend_demo_url = demo_url.url;
-                backend_demo_playlist = {
-                    id: demo_url.id || 'backend_demo',
-                    name: demo_url.name || 'Backend Demo Content',
-                    url: demo_url.url,
-                    type: 'general'
-                };
-            }
-        }
-
-        console.log('=== DEBUG: Processed demo data ===');
-        console.log('backend_demo_url:', backend_demo_url);
-        console.log('backend_demo_playlist:', backend_demo_playlist);
-
-        if(backend_demo_url && backend_demo_playlist) {
-            console.log('=== DEBUG: Trying backend demo URL ===');
-            console.log('Backend Demo URL:', backend_demo_url);
-            console.log('Backend Demo Playlist:', backend_demo_playlist);
-
-            // Set backend demo playlist temporarily
-            settings.playlist = backend_demo_playlist;
-            parseM3uUrl();
-
-            $.ajax({
-                method: 'get',
-                url: backend_demo_url,
-                timeout: 15000,
-                success: function(data) {
-                    console.log('=== DEBUG: Backend demo content loaded successfully ===');
-                    parseM3uResponse('type1', data);
-
-                    // Restore user's original playlist settings
-                    settings.playlist = user_playlist;
-                    settings.playlist_id = user_playlist_id;
-
-                    // Show success in modal briefly before closing
-                    that.showDemoContentStatus('Demo Content', 'Using backend demo content until your playlist is working');
-
-                    setTimeout(function() {
-                        // Force close modal completely
-                        $('#playlist-error-modal').modal('hide');
-                        $('#playlist-error-modal').removeClass('show');
-                        $('.modal-backdrop').remove();
-                        $('body').removeClass('modal-open').css('padding-right', '');
-
-                        that.keys.focused_part = 'main_area';
-                        that.keys.main_area = 0;
-                        that.is_loading = false;
-
-                        // Remove modal event handlers
-                        $('#playlist-error-modal').off('shown.bs.modal');
-
-                        $('#loading-page').addClass('hide');
-                        home_page.init();
-                    }, 1200);
-                },
-                error: function(error) {
-                    console.log('=== DEBUG: Backend demo content failed, trying local ===');
-                    console.log('Backend demo error:', error);
-
-                    // Restore user's original playlist settings first
-                    settings.playlist = user_playlist;
-                    settings.playlist_id = user_playlist_id;
-
-                    // Try local demo as fallback
-                    tryLocalDemo();
-                }
-            });
-        } else {
-            console.log('=== DEBUG: No backend demo URL, trying local demo ===');
-            tryLocalDemo();
-        }
+        
+        // Use the original demo loading method - same as when user has no playlists
+        this.tryDemoContent();
     },
 
     showDemoContentStatus:function(title, message) {
