@@ -581,12 +581,27 @@ var vod_series_player_page={
         }else if(platform==='lg'){
             var default_track_text=kind==="TEXT" ? "Subtitle " : "Track ";
             items.map(function(item,index){
-                var language=item.language;
-                if(language!=''){
-                    language=typeof language_codes[language]!='undefined' ? language_codes[language] : language;
-                }else{
-                    language=default_track_text+(index+1);
+                var language;
+                
+                // Handle custom API subtitles (have 'label' property)
+                if(item.label && item.lang) {
+                    console.log('=== SUBTITLE DEBUG: Processing custom API subtitle ===');
+                    console.log('Item:', item);
+                    language = item.label;
+                } 
+                // Handle native platform subtitles (have 'language' property)
+                else {
+                    language = item.language;
+                    if(language!=''){
+                        language=typeof language_codes[language]!='undefined' ? language_codes[language] : language;
+                    }else{
+                        language=default_track_text+(index+1);
+                    }
                 }
+                
+                console.log('=== SUBTITLE DEBUG: Final language label ===');
+                console.log('Language for index', index+':', language);
+                
                 htmlContent+=
                     '<div class="setting-modal-option subtitle-item bg-focus"\
                         onmouseenter="vod_series_player_page.hoverSubtitle('+(index+hover_index_move)+')" \
@@ -910,8 +925,14 @@ var vod_series_player_page={
         }
         if(modal_title.toLowerCase().includes('subtitle')){
             this.current_subtitle_index=$('#subtitle-selection-modal').find('input[type=checkbox]:checked').val();
+            console.log('=== SUBTITLE DEBUG: confirmSubtitle called ===');
+            console.log('Selected subtitle index:', this.current_subtitle_index);
+            console.log('Platform:', platform);
+            console.log('Available subtitles:', media_player.subtitles);
+            
             try{
                 if(this.current_subtitle_index==-1){
+                    console.log('=== SUBTITLE DEBUG: Disabling subtitles ===');
                     this.show_subtitle=false;
                     $("#vod-series-player-page").find('.subtitle-container').css({visibility:'hidden'});
                     if(platform!="samsung"){
@@ -919,10 +940,63 @@ var vod_series_player_page={
                     }
                     return;
                 }
+                
                 this.show_subtitle=true;
-                media_player.setSubtitleOrAudioTrack("TEXT",parseInt(this.current_subtitle_index));
                 $("#vod-series-player-page").find('.subtitle-container').css({visibility:'visible'});
+                
+                // Handle custom API subtitles for non-Samsung platforms
+                if(platform!=='samsung' && media_player.subtitles && media_player.subtitles.length > 0) {
+                    console.log('=== SUBTITLE DEBUG: Loading custom API subtitle ===');
+                    var selectedSubtitle = media_player.subtitles[parseInt(this.current_subtitle_index)];
+                    console.log('Selected subtitle object:', selectedSubtitle);
+                    
+                    if(selectedSubtitle && selectedSubtitle.file) {
+                        console.log('=== SUBTITLE DEBUG: Fetching subtitle file ===');
+                        console.log('Subtitle file URL:', selectedSubtitle.file);
+                        
+                        // Ensure the URL is absolute
+                        var subtitleUrl = selectedSubtitle.file;
+                        if(subtitleUrl.startsWith('/')) {
+                            subtitleUrl = 'https://exoapp.tv' + subtitleUrl;
+                        }
+                        console.log('Final subtitle URL:', subtitleUrl);
+                        
+                        var that = this;
+                        $.ajax({
+                            url: subtitleUrl,
+                            method: 'GET',
+                            dataType: 'text',
+                            success: function(subtitleContent) {
+                                console.log('=== SUBTITLE DEBUG: Subtitle file loaded successfully ===');
+                                console.log('Content length:', subtitleContent.length);
+                                console.log('Content preview:', subtitleContent.substring(0, 200));
+                                
+                                // Initialize SrtOperation with the loaded content
+                                var current_time = media_player.getCurrentTime() || 0;
+                                console.log('Current video time:', current_time);
+                                
+                                SrtOperation.init({content: subtitleContent}, current_time);
+                                console.log('=== SUBTITLE DEBUG: SrtOperation initialized ===');
+                            },
+                            error: function(error) {
+                                console.log('=== SUBTITLE DEBUG: Failed to load subtitle file ===');
+                                console.log('Error:', error);
+                                console.log('Status:', error.status);
+                                console.log('Response text:', error.responseText);
+                                showToast("Error", "Failed to load subtitle file");
+                            }
+                        });
+                    } else {
+                        console.log('=== SUBTITLE DEBUG: No subtitle file URL found ===');
+                    }
+                } else {
+                    // Handle native platform subtitles
+                    console.log('=== SUBTITLE DEBUG: Using native platform subtitles ===');
+                    media_player.setSubtitleOrAudioTrack("TEXT",parseInt(this.current_subtitle_index));
+                }
             }catch(e){
+                console.log('=== SUBTITLE DEBUG: Error in confirmSubtitle ===');
+                console.log('Error:', e);
             }
             console.log(this.current_subtitle_index);
         }
