@@ -1348,11 +1348,13 @@ var vod_series_player_page={
                 console.log('Selected index:', keys.subtitle_audio_selection_modal);
                 console.log('Available subtitle menus:', this.subtitle_audio_menus.length);
                 
+                // Only select the item, don't close modal - wait for OK button
                 $(this.subtitle_audio_menus).find('input').prop('checked',false);
                 $(this.subtitle_audio_menus[keys.subtitle_audio_selection_modal]).find('input').prop('checked',true);
                 
-                console.log('=== SUBTITLE DEBUG: Calling confirmSubtitle() ===');
-                this.confirmSubtitle();
+                console.log('=== SUBTITLE DEBUG: Item selected, waiting for OK button ===');
+                console.log('Selected subtitle will be confirmed when OK is clicked');
+                // REMOVED: this.confirmSubtitle(); - Now only OK button calls this
                 break;
             case "subtitle_btn_selection":
                 $(this.subtitle_btn_doms[keys.subtitle_btn_selection]).trigger('click');
