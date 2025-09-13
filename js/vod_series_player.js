@@ -640,7 +640,7 @@ var vod_series_player_page={
                     }
                     $.ajax({
                         method:'post',
-                        url:'/api/get-subtitles',
+                        url:'https://exoapp.tv/api/get-subtitles',
                         data: subtitle_request_data,
                         dataType:'json',
                         success:function (result) {
