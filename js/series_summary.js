@@ -80,7 +80,25 @@ var series_summary_page={
         if(settings.playlist_type==='xtreme'){
             $.getJSON(api_host_url+'/player_api.php?username='+user_name+'&password='+password+'&action=get_series_info&series_id='+current_series.series_id)
                 .done(function(response){
+                    console.log('=== XTREME API get_series_info RESPONSE ANALYSIS ===');
+                    console.log('Full API response:', response);
+                    console.log('Response keys:', Object.keys(response));
+                    console.log('Info object:', response.info);
+                    if(response.info) {
+                        console.log('Info object keys:', Object.keys(response.info));
+                        console.log('TMDB ID check:', response.info.tmdb_id);
+                        console.log('TMDB ID type:', typeof response.info.tmdb_id);
+                    }
+                    
                     current_series.info=response.info;
+                    
+                    // CRITICAL: Extract TMDB ID from API response for series
+                    if(response.info && response.info.tmdb_id) {
+                        current_series.tmdb_id = response.info.tmdb_id;
+                        console.log('✅ SERIES TMDB ID extracted and stored:', current_series.tmdb_id);
+                    } else {
+                        console.log('⚠️ NO SERIES TMDB ID in API response - subtitle matching will be less accurate');
+                    }
                     var seasons=response.seasons;
                     if(response.episodes && (seasons && seasons.length>0 || Object.keys(response.episodes).length>0)){
                         var episodes=response.episodes;

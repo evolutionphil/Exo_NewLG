@@ -72,6 +72,16 @@ var vod_summary_page={
             this.is_loading=true;
             $.getJSON(api_host_url+"/player_api.php?username="+user_name+"&password="+password+"&action=get_vod_info&vod_id="+current_movie.stream_id)
                 .done(function(response){
+                    console.log('=== XTREME API get_vod_info RESPONSE ANALYSIS ===');
+                    console.log('Full API response:', response);
+                    console.log('Response keys:', Object.keys(response));
+                    console.log('Info object:', response.info);
+                    if(response.info) {
+                        console.log('Info object keys:', Object.keys(response.info));
+                        console.log('TMDB ID check:', response.info.tmdb_id);
+                        console.log('TMDB ID type:', typeof response.info.tmdb_id);
+                    }
+                    
                     var info=response.info;
                     $('#vod-summary-release-date').text(info.releasedate);
                     $('#vod-summary-release-genre').text(info.genre);
@@ -89,6 +99,14 @@ var vod_summary_page={
                         $('.vod-series-total-summary .duration').removeClass('hide')
                     }
                     current_movie.info=info;
+                    
+                    // CRITICAL: Extract TMDB ID from API response
+                    if(info.tmdb_id) {
+                        current_movie.tmdb_id = info.tmdb_id;
+                        console.log('✅ TMDB ID extracted and stored:', current_movie.tmdb_id);
+                    } else {
+                        console.log('⚠️ NO TMDB ID in API response - subtitle matching will be less accurate');
+                    }
                     var backdrop_image=current_movie.stream_icon ? current_movie.stream_icon : 'images/404.png';
                     try{
                         if(info.backdrop_path[0])
