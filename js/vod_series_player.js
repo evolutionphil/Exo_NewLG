@@ -1214,13 +1214,24 @@ var vod_series_player_page={
         $('#vod-series-player-page .rangeslider').removeClass('active');
     },
     hoverSubtitle:function(index){
+        console.log('=== SUBTITLE DEBUG: hoverSubtitle called ===');
+        console.log('Index:', index);
+        console.log('Available subtitle menus:', this.subtitle_audio_menus.length);
+        
         var keys=this.keys;
         keys.focused_part="subtitle_audio_selection_modal";
         $(this.subtitle_audio_menus).removeClass('active');
         $(this.subtitle_btn_doms).removeClass('active');
         keys.subtitle_audio_selection_modal=index;
+        
+        console.log('=== SUBTITLE DEBUG: Setting focus to subtitle ===');
+        console.log('Focused index:', keys.subtitle_audio_selection_modal);
+        console.log('Focused part:', keys.focused_part);
+        
         moveScrollPosition($('#subtitle-selection-container'),this.subtitle_audio_menus[keys.subtitle_audio_selection_modal],'vertical',false);
         $(this.subtitle_audio_menus[keys.subtitle_audio_selection_modal]).addClass('active');
+        
+        console.log('Active subtitle element:', this.subtitle_audio_menus[keys.subtitle_audio_selection_modal]);
     },
     hoverSubtitleBtn: function (index){
         var keys=this.keys;
@@ -1333,8 +1344,15 @@ var vod_series_player_page={
                 }
                 break;
             case "subtitle_audio_selection_modal":
+                console.log('=== SUBTITLE DEBUG: handleMenuClick - subtitle_audio_selection_modal ===');
+                console.log('Selected index:', keys.subtitle_audio_selection_modal);
+                console.log('Available subtitle menus:', this.subtitle_audio_menus.length);
+                
                 $(this.subtitle_audio_menus).find('input').prop('checked',false);
                 $(this.subtitle_audio_menus[keys.subtitle_audio_selection_modal]).find('input').prop('checked',true);
+                
+                console.log('=== SUBTITLE DEBUG: Calling confirmSubtitle() ===');
+                this.confirmSubtitle();
                 break;
             case "subtitle_btn_selection":
                 $(this.subtitle_btn_doms[keys.subtitle_btn_selection]).trigger('click');
