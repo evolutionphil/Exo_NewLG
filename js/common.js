@@ -563,34 +563,7 @@ function parseM3uUrl() {
             if (key.toLowerCase() === "password") password = value;
         });
         api_host_url = temp_array1[0].replace("/get.php", "");
-        
-        // TEMPORARY MIXED CONTENT BYPASS - REVERT THIS LATER!
-        // LOG: Added on 2025-01-13 to bypass HTTPS/HTTP mixed content blocking
-        // LOG: This forces HTTP API URLs to HTTPS to prevent browser blocking
-        // LOG: ORIGINAL ISSUE: Browser blocks HTTP requests from HTTPS page
-        // LOG: LOCATION: js/common.js parseM3uUrl() function around line 565-570
-        // LOG: TO REVERT: Remove this entire block and restore original HTTP URLs
-        if (api_host_url.startsWith('http://')) {
-            console.log('🚨 MIXED CONTENT BYPASS: Converting HTTP to HTTPS');
-            console.log('Original API URL:', api_host_url);
-            api_host_url = api_host_url.replace('http://', 'https://');
-            console.log('Modified API URL:', api_host_url);
-            console.log('⚠️ THIS IS TEMPORARY - WILL BE REVERTED LATER');
-        }
-        
-    } else {
-        api_host_url = playlist_url;
-        
-        // TEMPORARY MIXED CONTENT BYPASS - REVERT THIS LATER!
-        // LOG: Same bypass for non-xtreme playlists
-        if (api_host_url.startsWith('http://')) {
-            console.log('🚨 MIXED CONTENT BYPASS: Converting HTTP to HTTPS (non-xtreme)');
-            console.log('Original API URL:', api_host_url);
-            api_host_url = api_host_url.replace('http://', 'https://');
-            console.log('Modified API URL:', api_host_url);
-            console.log('⚠️ THIS IS TEMPORARY - WILL BE REVERTED LATER');
-        }
-    }
+    } else api_host_url = playlist_url;
 }
 function makeRearrangeArray(array1, source_position, destination_position) {
     var result = [];
