@@ -647,30 +647,151 @@ var vod_series_player_page={
                     var subtitle_request_data;
                     if(this.current_movie_type==='movies'){
                         console.log('=== SUBTITLE DEBUG: Building movie request data ===');
-                        subtitle_request_data={
-                            movie_name:this.current_movie.name
+                        console.log('=== DETAILED MOVIE ANALYSIS FOR SUBTITLE MATCHING ===');
+                        console.log('Current movie object (FULL):', this.current_movie);
+                        console.log('Movie name (RAW from IPTV):', this.current_movie.name);
+                        console.log('Movie stream_id:', this.current_movie.stream_id);
+                        console.log('Movie category_id:', this.current_movie.category_id);
+                        console.log('Movie tmdb_id:', this.current_movie.tmdb_id || 'NOT AVAILABLE');
+                        console.log('Movie year:', this.current_movie.year || 'NOT AVAILABLE');
+                        console.log('Movie rating:', this.current_movie.rating || 'NOT AVAILABLE');
+                        console.log('Movie director:', this.current_movie.director || 'NOT AVAILABLE');
+                        console.log('Movie cast:', this.current_movie.cast || 'NOT AVAILABLE');
+                        console.log('Movie genre:', this.current_movie.genre || 'NOT AVAILABLE');
+                        console.log('Movie plot (first 150 chars):', this.current_movie.plot ? this.current_movie.plot.substring(0, 150) : 'NOT AVAILABLE');
+                        
+                        // Analyze and clean movie name for better OpenSubtitles matching
+                        var original_name = this.current_movie.name;
+                        var cleaned_name = original_name;
+                        console.log('=== MOVIE NAME CLEANING PROCESS ===');
+                        console.log('Step 1 - Original name:', original_name);
+                        
+                        // Extract year if present in name
+                        var year_match = cleaned_name.match(/\((\d{4})\)/);
+                        var extracted_year = null;
+                        if (year_match) {
+                            extracted_year = parseInt(year_match[1]);
+                            cleaned_name = cleaned_name.replace(/\s*\(\d{4}\)\s*/, '').trim();
+                            console.log('Step 2 - Found year:', extracted_year);
+                            console.log('Step 2 - Name after year removal:', cleaned_name);
+                        } else {
+                            console.log('Step 2 - No year found in movie name');
                         }
-                        if(this.current_movie.tmdb_id)
-                            subtitle_request_data.tmdb_id=this.current_movie.tmdb_id;
-                        console.log('Movie request data:', subtitle_request_data);
+                        
+                        // Remove quality indicators that might interfere with matching
+                        var quality_patterns = /\s*\b(HD|4K|1080p|720p|480p|BluRay|BRRip|WEB-DL|WEBRip|DVDRip|CAMRip|TS|TC|HDTV|PDTV|XviD|x264|x265|HEVC|DivX|AC3|AAC|MP3|Dubbed|Subbed)\b\s*/gi;
+                        var before_quality = cleaned_name;
+                        cleaned_name = cleaned_name.replace(quality_patterns, ' ').trim();
+                        cleaned_name = cleaned_name.replace(/\s+/g, ' ').trim();
+                        console.log('Step 3 - Before quality removal:', before_quality);
+                        console.log('Step 3 - After quality removal:', cleaned_name);
+                        
+                        // Remove brackets content (except years)
+                        var before_brackets = cleaned_name;
+                        cleaned_name = cleaned_name.replace(/\[.*?\]/g, '').trim();
+                        cleaned_name = cleaned_name.replace(/\{.*?\}/g, '').trim();
+                        cleaned_name = cleaned_name.replace(/\s+/g, ' ').trim();
+                        console.log('Step 4 - Before brackets removal:', before_brackets);
+                        console.log('Step 4 - After brackets removal:', cleaned_name);
+                        
+                        subtitle_request_data={
+                            movie_name: cleaned_name,
+                            movie_type: 'movie'
+                        }
+                        
+                        // Add TMDB ID if available (highest priority for matching)
+                        if(this.current_movie.tmdb_id) {
+                            subtitle_request_data.tmdb_id = this.current_movie.tmdb_id;
+                            console.log('✅ TMDB ID added (BEST matching method):', this.current_movie.tmdb_id);
+                        } else {
+                            console.log('⚠️ NO TMDB ID available - using movie name matching only');
+                        }
+                        
+                        // Add extracted or existing year for better matching
+                        if(extracted_year) {
+                            subtitle_request_data.year = extracted_year;
+                            console.log('✅ Year added from name:', extracted_year);
+                        } else if(this.current_movie.year) {
+                            subtitle_request_data.year = this.current_movie.year;
+                            console.log('✅ Year added from metadata:', this.current_movie.year);
+                        } else {
+                            console.log('⚠️ NO YEAR available for matching');
+                        }
+                        
+                        console.log('=== FINAL MOVIE REQUEST DATA ===');
+                        console.log('Request will search OpenSubtitles for:', subtitle_request_data);
+                        console.log('Original IPTV name vs Clean name:', {
+                            original: original_name,
+                            cleaned: cleaned_name,
+                            difference: original_name !== cleaned_name ? 'CHANGED' : 'SAME'
+                        });
                     }else {
                         console.log('=== SUBTITLE DEBUG: Building series/episode request data ===');
-                        console.log('Current series:', current_series);
-                        console.log('Current season:', current_season);
+                        console.log('=== DETAILED SERIES/EPISODE ANALYSIS FOR SUBTITLE MATCHING ===');
+                        console.log('Current series (FULL):', current_series);
+                        console.log('Current season (FULL):', current_season);
                         console.log('Episode variable:', episode_variable);
+                        console.log('Current movie info:', this.current_movie.info || 'NOT AVAILABLE');
                         
                         var episode=current_season.episodes[episode_variable.keys.index];
-                        console.log('Selected episode:', episode);
+                        console.log('Selected episode (FULL):', episode);
+                        
+                        // Analyze series name
+                        var original_series_name = current_series.name;
+                        var cleaned_series_name = original_series_name;
+                        console.log('=== SERIES NAME CLEANING PROCESS ===');
+                        console.log('Step 1 - Original series name:', original_series_name);
+                        
+                        // Remove season/episode indicators from series name
+                        cleaned_series_name = cleaned_series_name.replace(/\s*[Ss]\d+[Ee]\d+.*$/i, '').trim();
+                        cleaned_series_name = cleaned_series_name.replace(/\s*Season\s*\d+.*$/i, '').trim();
+                        cleaned_series_name = cleaned_series_name.replace(/\s*Episode\s*\d+.*$/i, '').trim();
+                        cleaned_series_name = cleaned_series_name.replace(/\s*\(\d{4}\)\s*/, '').trim();
+                        console.log('Step 2 - After season/episode removal:', cleaned_series_name);
+                        
+                        // Season and episode number analysis
+                        var season_num = current_season.season_number ? current_season.season_number : seasons_variable.keys.index+1;
+                        var episode_num = episode.episode_num ? episode.episode_num : episode_variable.keys.index+1;
+                        
+                        console.log('=== SEASON/EPISODE NUMBER ANALYSIS ===');
+                        console.log('Season number (from metadata):', current_season.season_number || 'NOT AVAILABLE');
+                        console.log('Season number (from index):', seasons_variable.keys.index+1);
+                        console.log('Final season number:', season_num);
+                        console.log('Episode number (from metadata):', episode.episode_num || 'NOT AVAILABLE');
+                        console.log('Episode number (from index):', episode_variable.keys.index+1);
+                        console.log('Final episode number:', episode_num);
+                        console.log('Episode title:', episode.title || 'NOT AVAILABLE');
                         
                         subtitle_request_data={
-                            movie_name:current_series.name,
-                            movie_type:'episode',
-                            season_number:current_season.season_number ? current_season.season_number : seasons_variable.keys.index+1,
-                            episode_number:episode.episode_num ? episode.episode_num : episode_variable.keys.index+1
+                            movie_name: cleaned_series_name,
+                            movie_type: 'episode',
+                            season_number: season_num,
+                            episode_number: episode_num
                         }
-                        if(this.current_movie.info && this.current_movie.info.tmdb_id)
-                            subtitle_request_data.tmdb_id=this.current_movie.info.tmdb_id;
-                        console.log('Series/Episode request data:', subtitle_request_data);
+                        
+                        // Add TMDB ID if available
+                        if(this.current_movie.info && this.current_movie.info.tmdb_id) {
+                            subtitle_request_data.tmdb_id = this.current_movie.info.tmdb_id;
+                            console.log('✅ SERIES TMDB ID added:', this.current_movie.info.tmdb_id);
+                        } else {
+                            console.log('⚠️ NO SERIES TMDB ID available');
+                        }
+                        
+                        // Add episode title if available for better matching
+                        if(episode.title && episode.title.trim() !== '') {
+                            subtitle_request_data.episode_title = episode.title;
+                            console.log('✅ Episode title added:', episode.title);
+                        } else {
+                            console.log('⚠️ NO episode title available');
+                        }
+                        
+                        console.log('=== FINAL SERIES REQUEST DATA ===');
+                        console.log('Request will search OpenSubtitles for:', subtitle_request_data);
+                        console.log('Original series name vs Clean name:', {
+                            original: original_series_name,
+                            cleaned: cleaned_series_name,
+                            difference: original_series_name !== cleaned_series_name ? 'CHANGED' : 'SAME'
+                        });
                     }
                     
                     console.log('=== SUBTITLE DEBUG: Making AJAX request ===');
@@ -684,11 +805,73 @@ var vod_series_player_page={
                         dataType:'json',
                         success:function (result) {
                             console.log('=== SUBTITLE DEBUG: AJAX Success ===');
-                            console.log('Raw response:', result);
+                            console.log('Raw response (FULL):', result);
                             console.log('Response type:', typeof result);
                             console.log('Response status:', result.status);
                             console.log('Response subtitles:', result.subtitles);
                             console.log('Subtitles length:', result.subtitles ? result.subtitles.length : 'undefined');
+                            
+                            // Detailed analysis of what OpenSubtitles returned
+                            console.log('=== OPENSUBTITLES RESPONSE ANALYSIS ===');
+                            if(result.subtitles && Array.isArray(result.subtitles)) {
+                                console.log('Number of subtitle languages found:', result.subtitles.length);
+                                
+                                result.subtitles.forEach(function(subtitle, index) {
+                                    console.log(`=== SUBTITLE ${index + 1} ANALYSIS ===`);
+                                    console.log('Language:', subtitle.label || 'NO LABEL');
+                                    console.log('Language code:', subtitle.lang || 'NO LANG CODE');
+                                    console.log('File URL:', subtitle.file || 'NO FILE URL');
+                                    console.log('Full subtitle object:', subtitle);
+                                    
+                                    // Analyze if the subtitle URL looks correct
+                                    if(subtitle.file) {
+                                        if(subtitle.file.startsWith('/api/subtitle-file')) {
+                                            console.log('✅ Subtitle file URL looks correct (internal API)');
+                                        } else if(subtitle.file.includes('opensubtitles')) {
+                                            console.log('✅ Subtitle file URL looks correct (OpenSubtitles direct)');
+                                        } else {
+                                            console.log('⚠️ Subtitle file URL looks unusual:', subtitle.file);
+                                        }
+                                        
+                                        // Extract any ID from the URL to track matching
+                                        var id_match = subtitle.file.match(/id[=:](\d+)/i);
+                                        if(id_match) {
+                                            console.log('OpenSubtitles file ID:', id_match[1]);
+                                        }
+                                    } else {
+                                        console.log('❌ NO SUBTITLE FILE URL provided');
+                                    }
+                                });
+                                
+                                // Check for potential mismatches
+                                console.log('=== SUBTITLE MATCHING QUALITY ANALYSIS ===');
+                                console.log('Expected movie/series:', subtitle_request_data.movie_name);
+                                console.log('Expected type:', subtitle_request_data.movie_type || 'movie');
+                                if(subtitle_request_data.season_number) {
+                                    console.log('Expected season:', subtitle_request_data.season_number);
+                                    console.log('Expected episode:', subtitle_request_data.episode_number);
+                                }
+                                if(subtitle_request_data.tmdb_id) {
+                                    console.log('TMDB ID used for matching:', subtitle_request_data.tmdb_id);
+                                    console.log('✅ High confidence match expected (TMDB ID used)');
+                                } else {
+                                    console.log('⚠️ Name-only matching used - potential for incorrect results');
+                                }
+                                if(subtitle_request_data.year) {
+                                    console.log('Year used for matching:', subtitle_request_data.year);
+                                }
+                                
+                                // Warning about potential mismatches
+                                if(!subtitle_request_data.tmdb_id && (!subtitle_request_data.year || subtitle_request_data.movie_name.length < 4)) {
+                                    console.log('🚨 HIGH RISK OF WRONG SUBTITLES: No TMDB ID, weak matching criteria');
+                                } else if(!subtitle_request_data.tmdb_id) {
+                                    console.log('⚠️ MEDIUM RISK: Name+year matching only (no TMDB ID)');
+                                } else {
+                                    console.log('✅ LOW RISK: TMDB ID matching used');
+                                }
+                            } else {
+                                console.log('❌ NO SUBTITLES returned or invalid format');
+                            }
                             
                             that.subtitle_loading=false;
                             that.subtitle_loaded=true;
