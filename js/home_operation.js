@@ -59,61 +59,56 @@ var home_page={
         
         var prefix_url = api_host_url + '/player_api.php?username=' + user_name + '&password=' + password + '&action=';
         
-        // Load VOD and Series data asynchronously without blocking UI
-        setTimeout(function() {
-            console.log('=== Starting async VOD categories and streams download ===');
-            
-            // Load VOD categories and streams
-            $.when(
-                $.ajax({
-                    method: 'get',
-                    url: prefix_url + 'get_vod_categories',
-                    timeout: 30000,
-                    success: function(data) {
-                        console.log('=== VOD categories loaded successfully ===');
-                        console.log('VOD categories count:', data.length);
-                        VodModel.setCategories(data);
-                    },
-                    error: function(error) {
-                        console.log('=== VOD categories loading failed ===');
-                        console.log('Error:', error);
-                    }
-                }),
-                $.ajax({
-                    method: 'get',
-                    url: prefix_url + 'get_vod_streams',
-                    timeout: 60000, // Longer timeout for movies
-                    success: function(data) {
-                        console.log('=== VOD streams loaded successfully ===');
-                        console.log('VOD streams count:', data.length);
-                        VodModel.setMovies(data);
-                    },
-                    error: function(error) {
-                        console.log('=== VOD streams loading failed ===');
-                        console.log('Error:', error);
-                    }
-                })
-            ).then(function() {
-                try {
-                    console.log('=== Processing VOD data ===');
-                    VodModel.insertMoviesToCategories();
-                    console.log('=== VOD data processing completed ===');
-                } catch(e) {
-                    console.log('=== VOD data processing failed ===');
-                    console.log('Error:', e);
-                }
-            }).fail(function(e) {
-                console.log('=== VOD loading failed ===');
-                console.log('Error:', e);
-            });
-            
-        }, 2000); // Wait 2 seconds after main app loads
+        // Load VOD categories and streams immediately but asynchronously (non-blocking)
+        console.log('=== Starting async VOD categories and streams download ===');
         
-        // Load Series data separately with another delay
-        setTimeout(function() {
-            console.log('=== Starting async Series categories and data download ===');
-            
-            $.when(
+        $.when(
+            $.ajax({
+                method: 'get',
+                url: prefix_url + 'get_vod_categories',
+                timeout: 30000,
+                success: function(data) {
+                    console.log('=== VOD categories loaded successfully ===');
+                    console.log('VOD categories count:', data.length);
+                    VodModel.setCategories(data);
+                },
+                error: function(error) {
+                    console.log('=== VOD categories loading failed ===');
+                    console.log('Error:', error);
+                }
+            }),
+            $.ajax({
+                method: 'get',
+                url: prefix_url + 'get_vod_streams',
+                timeout: 60000, // Longer timeout for movies
+                success: function(data) {
+                    console.log('=== VOD streams loaded successfully ===');
+                    console.log('VOD streams count:', data.length);
+                    VodModel.setMovies(data);
+                },
+                error: function(error) {
+                    console.log('=== VOD streams loading failed ===');
+                    console.log('Error:', error);
+                }
+            })
+        ).then(function() {
+            try {
+                console.log('=== Processing VOD data ===');
+                VodModel.insertMoviesToCategories();
+                console.log('=== VOD data processing completed ===');
+            } catch(e) {
+                console.log('=== VOD data processing failed ===');
+                console.log('Error:', e);
+            }
+        }).fail(function(e) {
+            console.log('=== VOD loading failed ===');
+            console.log('Error:', e);
+        });
+        
+        // Load Series categories and data immediately but asynchronously (non-blocking)
+        console.log('=== Starting async Series categories and data download ===');
+        
+        $.when(
                 $.ajax({
                     method: 'get',
                     url: prefix_url + 'get_series_categories',
@@ -155,8 +150,6 @@ var home_page={
                 console.log('=== Series loading failed ===');
                 console.log('Error:', e);
             });
-            
-        }, 4000); // Wait 4 seconds after main app loads (stagger the requests)
     },
     
     exit:function(){
