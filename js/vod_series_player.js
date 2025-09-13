@@ -601,6 +601,14 @@ var vod_series_player_page={
         return htmlContent;
     },
     showSubtitleAudioModal:function(kind){
+        console.log('=== SUBTITLE DEBUG: showSubtitleAudioModal called ===');
+        console.log('Kind:', kind);
+        console.log('Platform:', platform);
+        console.log('Current movie type:', this.current_movie_type);
+        console.log('Current movie:', this.current_movie);
+        console.log('Subtitle loaded:', this.subtitle_loaded);
+        console.log('Subtitle loading:', this.subtitle_loading);
+        
         var keys=this.keys;
         if(keys.focused_part!="subtitle_audio_selection_modal" && keys.focused_part!='subtitle_btn_selection')
             keys.prev_focus=keys.focused_part;
@@ -608,6 +616,7 @@ var vod_series_player_page={
         var subtitles
         try{
             if(platform!=='samsung' && kind==='TEXT'){  // we will use our own made subtitles
+                console.log('=== SUBTITLE DEBUG: Non-Samsung text subtitle request ===');
                 if(!this.subtitle_loaded) {
                     $("#subtitle-selection-container").html('');
                     if(!(this.current_movie_type==='movies' || (this.current_movie_type==='series' && settings.playlist_type==='xtreme')))
@@ -622,13 +631,22 @@ var vod_series_player_page={
                     $('#subtitle-loader-container').show();
                     var subtitle_request_data;
                     if(this.current_movie_type==='movies'){
+                        console.log('=== SUBTITLE DEBUG: Building movie request data ===');
                         subtitle_request_data={
                             movie_name:this.current_movie.name
                         }
                         if(this.current_movie.tmdb_id)
-                            subtitle_request_data.tmdb_id=this.current_movie.tmdb_id
+                            subtitle_request_data.tmdb_id=this.current_movie.tmdb_id;
+                        console.log('Movie request data:', subtitle_request_data);
                     }else {
+                        console.log('=== SUBTITLE DEBUG: Building series/episode request data ===');
+                        console.log('Current series:', current_series);
+                        console.log('Current season:', current_season);
+                        console.log('Episode variable:', episode_variable);
+                        
                         var episode=current_season.episodes[episode_variable.keys.index];
+                        console.log('Selected episode:', episode);
+                        
                         subtitle_request_data={
                             movie_name:current_series.name,
                             movie_type:'episode',
@@ -637,28 +655,57 @@ var vod_series_player_page={
                         }
                         if(this.current_movie.info && this.current_movie.info.tmdb_id)
                             subtitle_request_data.tmdb_id=this.current_movie.info.tmdb_id;
+                        console.log('Series/Episode request data:', subtitle_request_data);
                     }
+                    
+                    console.log('=== SUBTITLE DEBUG: Making AJAX request ===');
+                    console.log('URL:', 'https://exoapp.tv/api/get-subtitles');
+                    console.log('Data to send:', subtitle_request_data);
+                    
                     $.ajax({
                         method:'post',
                         url:'https://exoapp.tv/api/get-subtitles',
                         data: subtitle_request_data,
                         dataType:'json',
                         success:function (result) {
+                            console.log('=== SUBTITLE DEBUG: AJAX Success ===');
+                            console.log('Raw response:', result);
+                            console.log('Response type:', typeof result);
+                            console.log('Response status:', result.status);
+                            console.log('Response subtitles:', result.subtitles);
+                            console.log('Subtitles length:', result.subtitles ? result.subtitles.length : 'undefined');
+                            
                             that.subtitle_loading=false;
                             that.subtitle_loaded=true;
                             $('#subtitle-loader-container').hide();
+                            
                             if(result.status==='success'){
-                                if(result.subtitles.length>0){
+                                console.log('=== SUBTITLE DEBUG: Processing successful response ===');
+                                if(result.subtitles && result.subtitles.length>0){
+                                    console.log('=== SUBTITLE DEBUG: Found subtitles, rendering ===');
+                                    console.log('Subtitles to render:', result.subtitles);
                                     media_player.subtitles= result.subtitles;
                                     that.renderSubtitles(kind, media_player.subtitles);
                                 }
                                 else{
+                                    console.log('=== SUBTITLE DEBUG: No subtitles found ===');
                                     media_player.subtitles=[];
                                     that.showEmptySubtitleMessage(kind);
                                 }
+                            } else {
+                                console.log('=== SUBTITLE DEBUG: Response status not success ===');
+                                console.log('Status:', result.status);
+                                that.showEmptySubtitleMessage(kind);
                             }
                         },
                         error:function (error){
+                            console.log('=== SUBTITLE DEBUG: AJAX Error ===');
+                            console.log('Error object:', error);
+                            console.log('Error status:', error.status);
+                            console.log('Error statusText:', error.statusText);
+                            console.log('Error responseText:', error.responseText);
+                            console.log('Error readyState:', error.readyState);
+                            
                             that.subtitle_loading=false;
                             that.subtitle_loaded=true;
                             $('#subtitle-loader-container').hide();
@@ -791,6 +838,21 @@ var vod_series_player_page={
         },10000)
     },
     renderSubtitles:function (kind, subtitles) {
+        console.log('=== SUBTITLE DEBUG: renderSubtitles called ===');
+        console.log('Kind:', kind);
+        console.log('Subtitles array:', subtitles);
+        console.log('Subtitles count:', subtitles ? subtitles.length : 'undefined');
+        
+        if(subtitles && subtitles.length > 0) {
+            console.log('=== SUBTITLE DEBUG: Individual subtitle items ===');
+            subtitles.forEach((subtitle, index) => {
+                console.log(`Subtitle ${index}:`, subtitle);
+                console.log(`  - label: "${subtitle.label}"`);
+                console.log(`  - file: "${subtitle.file}"`);
+                console.log(`  - lang: "${subtitle.lang}"`);
+            });
+        }
+        
         var that=this;
         this.hideControlBar();
         if(kind=="TEXT")
@@ -799,7 +861,13 @@ var vod_series_player_page={
             $("#subtitle-modal-title").text("Audio Track");
         this.keys.focused_part="subtitle_audio_selection_modal";
         $('#subtitle-selection-modal').find('.modal-operation-menu-type-2').removeClass('active');
+        
+        console.log('=== SUBTITLE DEBUG: About to create HTML content ===');
         var htmlContent=this.makeMediaTrackElement(subtitles, kind);
+        console.log('=== SUBTITLE DEBUG: Generated HTML content ===');
+        console.log('HTML length:', htmlContent ? htmlContent.length : 'undefined');
+        console.log('HTML content:', htmlContent);
+        
         $("#subtitle-selection-container").html(htmlContent);
         $('#subtitle-selection-modal').modal('show');
         var subtitle_menus=$('#subtitle-selection-modal .subtitle-item');
