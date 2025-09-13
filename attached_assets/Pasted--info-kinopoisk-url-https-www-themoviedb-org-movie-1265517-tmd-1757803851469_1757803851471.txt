@@ -1,0 +1,41 @@
+{
+    "info": {
+        "kinopoisk_url": "https://www.themoviedb.org/movie/1265517",
+        "tmdb_id": "1265517",
+        "name": "You Shall Not Sleep Tonight (2024)",
+        "o_name": "You Shall Not Sleep Tonight (2024)",
+        "cover_big": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/3FbjpuKjtE03DNEuoImle42fQxA.jpg",
+        "movie_image": "https://image.tmdb.org/t/p/w600_and_h900_bestv2/3FbjpuKjtE03DNEuoImle42fQxA.jpg",
+        "releasedate": "2024-08-01",
+        "episode_run_time": "79",
+        "youtube_trailer": "",
+        "director": "Julien Deka",
+        "actors": "Greg Lucey, Dan Bronchinson, John C. Forman, Agustin Olcese, Gabriela Freire",
+        "cast": "Greg Lucey, Dan Bronchinson, John C. Forman, Agustin Olcese, Gabriela Freire",
+        "description": "Ein Junge wird Nacht für Nacht von grausamen Albträumen geplagt – ein unheimliches Wesen lauert in seinem Kleiderschrank. Während ihn die Angst lähmt, erscheint sein Vater im Dunkeln, um ihm beizustehen und ihn zu ermutigen, sich der Bedrohung zu stellen. Doch je länger die Nächte andauern, desto stärker schleichen sich Zweifel in den Jungen ein. Ist sein Vater wirklich der Beschützer, für den er ihn hält? Oder ist er längst Teil des Schreckens, der im Schatten lauert und nur darauf wartet, ihn zu verschlingen?",
+        "plot": "Ein Junge wird Nacht für Nacht von grausamen Albträumen geplagt – ein unheimliches Wesen lauert in seinem Kleiderschrank. Während ihn die Angst lähmt, erscheint sein Vater im Dunkeln, um ihm beizustehen und ihn zu ermutigen, sich der Bedrohung zu stellen. Doch je länger die Nächte andauern, desto stärker schleichen sich Zweifel in den Jungen ein. Ist sein Vater wirklich der Beschützer, für den er ihn hält? Oder ist er längst Teil des Schreckens, der im Schatten lauert und nur darauf wartet, ihn zu verschlingen?",
+        "age": "",
+        "mpaa_rating": "",
+        "rating_count_kinopoisk": 0,
+        "country": "",
+        "genre": "Horror, Thriller",
+        "backdrop_path": [
+            "https://image.tmdb.org/t/p/w1280/oqFdBPhutu8nbfNg1g5zTmEScbd.jpg"
+        ],
+        "duration_secs": 4740,
+        "duration": "01:19:00",
+        "video": [],
+        "audio": [],
+        "bitrate": 0,
+        "rating": "6.5"
+    },
+    "movie_data": {
+        "stream_id": 301433,
+        "name": "You Shall Not Sleep Tonight (2024)",
+        "added": "1750723168",
+        "category_id": "1033",
+        "container_extension": "mkv",
+        "custom_sid": "",
+        "direct_source": ""
+    }
+}
