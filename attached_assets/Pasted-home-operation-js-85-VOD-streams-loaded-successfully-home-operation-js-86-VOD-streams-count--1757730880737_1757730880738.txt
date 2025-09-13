@@ -1,0 +1,135 @@
+home_operation.js:85 === VOD streams loaded successfully ===
+home_operation.js:86 VOD streams count: 40845
+home_operation.js:96 === Processing VOD data ===
+home_operation.js:98 === VOD data processing completed ===
+null:1          GET file:///C:/Users/mumiix/Desktop/Exo_NewLG-main/null net::ERR_FILE_NOT_FOUND
+Image (async)
+we @ jquery.3.4.1.min.js:2
+Ie @ jquery.3.4.1.min.js:2
+append @ jquery.3.4.1.min.js:2
+renderFilteredMovies @ search_page.js:152
+(anonymous) @ search_page.js:78
+setTimeout (async)
+keywordChange @ search_page.js:55
+onkeyup @ index.html:1002
+mediaPlayer.js:386 http://galaiptv.shop:4512/movie/yenideneme1/mWT6HVdjMZ/117549.mkv
+mediaPlayer.js:359 1920 x 804px
+vod_series_player.js:619 === SUBTITLE DEBUG: showSubtitleAudioModal called ===
+vod_series_player.js:620 Kind: TEXT
+vod_series_player.js:621 Platform: lg
+vod_series_player.js:622 Current movie type: movies
+vod_series_player.js:623 Current movie: {num: 11934, name: 'Matrix Resurrections (2021)', stream_type: 'movie', stream_id: 117549, stream_icon: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/nZVEevpwL4gM4bzZjQD1JNOgChl.jpg', …}
+vod_series_player.js:624 Subtitle loaded: false
+vod_series_player.js:625 Subtitle loading: false
+vod_series_player.js:634 === SUBTITLE DEBUG: Non-Samsung text subtitle request ===
+vod_series_player.js:649 === SUBTITLE DEBUG: Building movie request data ===
+vod_series_player.js:655 Movie request data: {movie_name: 'Matrix Resurrections (2021)'}
+vod_series_player.js:676 === SUBTITLE DEBUG: Making AJAX request ===
+vod_series_player.js:677 URL: https://exoapp.tv/api/get-subtitles
+vod_series_player.js:678 Data to send: {movie_name: 'Matrix Resurrections (2021)'}
+vod_series_player.js:686 === SUBTITLE DEBUG: AJAX Success ===
+vod_series_player.js:687 Raw response: {status: 'success', subtitles: Array(6)}
+vod_series_player.js:688 Response type: object
+vod_series_player.js:689 Response status: success
+vod_series_player.js:690 Response subtitles: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:691 Subtitles length: 6
+vod_series_player.js:698 === SUBTITLE DEBUG: Processing successful response ===
+vod_series_player.js:700 === SUBTITLE DEBUG: Found subtitles, rendering ===
+vod_series_player.js:701 Subtitles to render: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:856 === SUBTITLE DEBUG: renderSubtitles called ===
+vod_series_player.js:857 Kind: TEXT
+vod_series_player.js:858 Subtitles array: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:859 Subtitles count: 6
+vod_series_player.js:862 === SUBTITLE DEBUG: Individual subtitle items ===
+vod_series_player.js:864 Subtitle 0: {label: 'Russian', file: '/api/subtitle-file?lang=ru&id=7142987', lang: 'ru'}
+vod_series_player.js:865   - label: "Russian"
+vod_series_player.js:866   - file: "/api/subtitle-file?lang=ru&id=7142987"
+vod_series_player.js:867   - lang: "ru"
+vod_series_player.js:864 Subtitle 1: {label: 'Italian', file: '/api/subtitle-file?lang=it&id=7249042', lang: 'it'}
+vod_series_player.js:865   - label: "Italian"
+vod_series_player.js:866   - file: "/api/subtitle-file?lang=it&id=7249042"
+vod_series_player.js:867   - lang: "it"
+vod_series_player.js:864 Subtitle 2: {label: 'German', file: '/api/subtitle-file?lang=de&id=7674171', lang: 'de'}
+vod_series_player.js:865   - label: "German"
+vod_series_player.js:866   - file: "/api/subtitle-file?lang=de&id=7674171"
+vod_series_player.js:867   - lang: "de"
+vod_series_player.js:864 Subtitle 3: {label: 'French', file: '/api/subtitle-file?lang=fr&id=7142523', lang: 'fr'}
+vod_series_player.js:865   - label: "French"
+vod_series_player.js:866   - file: "/api/subtitle-file?lang=fr&id=7142523"
+vod_series_player.js:867   - lang: "fr"
+vod_series_player.js:864 Subtitle 4: {label: 'Spanish', file: '/api/subtitle-file?lang=es&id=11121686', lang: 'es'}
+vod_series_player.js:865   - label: "Spanish"
+vod_series_player.js:866   - file: "/api/subtitle-file?lang=es&id=11121686"
+vod_series_player.js:867   - lang: "es"
+vod_series_player.js:864 Subtitle 5: {label: 'Arabic', file: '/api/subtitle-file?lang=ar&id=9108920', lang: 'ar'}
+vod_series_player.js:865   - label: "Arabic"
+vod_series_player.js:866   - file: "/api/subtitle-file?lang=ar&id=9108920"
+vod_series_player.js:867   - lang: "ar"
+vod_series_player.js:880 === SUBTITLE DEBUG: About to create HTML content ===
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'Russian', file: '/api/subtitle-file?lang=ru&id=7142987', lang: 'ru'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 0: Russian
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'Italian', file: '/api/subtitle-file?lang=it&id=7249042', lang: 'it'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 1: Italian
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'German', file: '/api/subtitle-file?lang=de&id=7674171', lang: 'de'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 2: German
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'French', file: '/api/subtitle-file?lang=fr&id=7142523', lang: 'fr'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 3: French
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'Spanish', file: '/api/subtitle-file?lang=es&id=11121686', lang: 'es'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 4: Spanish
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'Arabic', file: '/api/subtitle-file?lang=ar&id=9108920', lang: 'ar'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 5: Arabic
+vod_series_player.js:882 === SUBTITLE DEBUG: Generated HTML content ===
+vod_series_player.js:883 HTML length: 2909
+vod_series_player.js:884 HTML content: <div class="setting-modal-option subtitle-item bg-focus"                    onmouseenter="vod_series_player_page.hoverSubtitle(0)"                     onclick="vod_series_player_page.handleMenuClick()"                 >                   <input class="setting-modal-checkbox" type="checkbox" name="subtitle" id="disable-subtitle" value="-1">                   <label for="disable-subtitle">Disabled</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(1)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="0">                    <label>Russian</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(2)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="1">                    <label>Italian</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(3)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="2">                    <label>German</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(4)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="3">                    <label>French</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(5)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="4">                    <label>Spanish</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(6)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="5">                    <label>Arabic</label>                </div>
+vod_series_player.js:928 === SUBTITLE DEBUG: confirmSubtitle called ===
+vod_series_player.js:929 Selected subtitle index: 2
+vod_series_player.js:930 Platform: lg
+vod_series_player.js:931 Available subtitles: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:949 === SUBTITLE DEBUG: Loading custom API subtitle ===
+vod_series_player.js:951 Selected subtitle object: {label: 'German', file: '/api/subtitle-file?lang=de&id=7674171', lang: 'de'}
+vod_series_player.js:954 === SUBTITLE DEBUG: Fetching subtitle file ===
+vod_series_player.js:955 Subtitle file URL: /api/subtitle-file?lang=de&id=7674171
+vod_series_player.js:962 Final subtitle URL: https://exoapp.tv/api/subtitle-file?lang=de&id=7674171
+vod_series_player.js:1001 2
+vod_series_player.js:970 === SUBTITLE DEBUG: Subtitle file loaded successfully ===
+vod_series_player.js:971 Content length: 99344
+vod_series_player.js:972 Content preview: WEBVTT
+
+00:00:58.058 --> 00:00:59.768
+- Seg, bin drin.
+<i>- Captain?</i>
+
+00:00:59.893 --> 00:01:02.104
+Du hattest recht.
+Das Oberlicht war ein Fenster.
+
+00:01:02.229 --> 00:01:05.857
+<i>- Ich hab sta
+vod_series_player.js:975 Uncaught TypeError: media_player.getCurrentTime is not a function
+    at Object.success (vod_series_player.js:975:65)
+    at c (jquery.3.4.1.min.js:2:27742)
+    at Object.fireWith [as resolveWith] (jquery.3.4.1.min.js:2:28487)
+    at l (jquery.3.4.1.min.js:2:78789)
+    at XMLHttpRequest.<anonymous> (jquery.3.4.1.min.js:2:81117)
+success @ vod_series_player.js:975
+c @ jquery.3.4.1.min.js:2
+fireWith @ jquery.3.4.1.min.js:2
+l @ jquery.3.4.1.min.js:2
+(anonymous) @ jquery.3.4.1.min.js:2
+load (async)
+send @ jquery.3.4.1.min.js:2
+ajax @ jquery.3.4.1.min.js:2
+confirmSubtitle @ vod_series_player.js:965
+onclick @ index.html:968

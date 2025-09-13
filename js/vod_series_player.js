@@ -972,7 +972,20 @@ var vod_series_player_page={
                                 console.log('Content preview:', subtitleContent.substring(0, 200));
                                 
                                 // Initialize SrtOperation with the loaded content
-                                var current_time = media_player.getCurrentTime() || 0;
+                                var current_time = 0;
+                                try {
+                                    if (typeof media_player.getCurrentTime === 'function') {
+                                        current_time = media_player.getCurrentTime();
+                                    } else if (typeof webapis !== 'undefined' && webapis.avplay) {
+                                        current_time = webapis.avplay.getCurrentTime() / 1000; // Convert ms to seconds
+                                    } else if (typeof webOS !== 'undefined' && webOS.service) {
+                                        // LG WebOS alternative - start from 0
+                                        current_time = 0;
+                                    }
+                                } catch (e) {
+                                    console.log('Could not get current time, starting from 0:', e);
+                                    current_time = 0;
+                                }
                                 console.log('Current video time:', current_time);
                                 
                                 SrtOperation.init({content: subtitleContent}, current_time);
