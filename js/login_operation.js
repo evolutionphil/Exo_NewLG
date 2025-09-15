@@ -795,7 +795,7 @@ var login_page={
                                 settings.playlist_id = user_playlist_id;
                                 tryLocalDemo();
                             } else {
-                                // Auth success, load only Live streams (VOD/Series will be loaded async)
+                                // Auth success, load all content synchronously
                                 $.when(
                                     $.ajax({
                                         method: 'get',
@@ -810,11 +810,40 @@ var login_page={
                                         success: function(data) {
                                             LiveModel.setCategories(data);
                                         }
+                                    }),
+                                    $.ajax({
+                                        method: 'get',
+                                        url: prefix_url + 'get_vod_streams',
+                                        success: function(data) {
+                                            VodModel.setMovies(data);
+                                        }
+                                    }),
+                                    $.ajax({
+                                        method: 'get',
+                                        url: prefix_url + 'get_vod_categories',
+                                        success: function(data) {
+                                            VodModel.setCategories(data);
+                                        }
+                                    }),
+                                    $.ajax({
+                                        method: 'get',
+                                        url: prefix_url + 'get_series',
+                                        success: function(data) {
+                                            SeriesModel.setMovies(data);
+                                        }
+                                    }),
+                                    $.ajax({
+                                        method: 'get',
+                                        url: prefix_url + 'get_series_categories',
+                                        success: function(data) {
+                                            SeriesModel.setCategories(data);
+                                        }
                                     })
                                 ).then(function() {
                                     try {
                                         LiveModel.insertMoviesToCategories();
-                                        // VOD and Series will be loaded asynchronously by home_page.loadVodAndSeriesAsync()
+                                        VodModel.insertMoviesToCategories();
+                                        SeriesModel.insertMoviesToCategories();
                                         
                                         // Restore user's original playlist settings
                                         settings.playlist = user_playlist;
@@ -993,12 +1022,41 @@ var login_page={
                                     success:function (data) {
                                         LiveModel.setCategories(data);
                                     }
+                                }),
+                                $.ajax({
+                                    method:'get',
+                                    url:prefix_url+'get_vod_streams',
+                                    success:function (data) {
+                                        VodModel.setMovies(data);
+                                    }
+                                }),
+                                $.ajax({
+                                    method:'get',
+                                    url:prefix_url+'get_vod_categories',
+                                    success:function (data) {
+                                        VodModel.setCategories(data);
+                                    }
+                                }),
+                                $.ajax({
+                                    method:'get',
+                                    url:prefix_url+'get_series',
+                                    success:function (data) {
+                                        SeriesModel.setMovies(data);
+                                    }
+                                }),
+                                $.ajax({
+                                    method:'get',
+                                    url:prefix_url+'get_series_categories',
+                                    success:function (data) {
+                                        SeriesModel.setCategories(data);
+                                    }
                                 })
                             ).
                             then(function(){
                                 try{
                                     LiveModel.insertMoviesToCategories();
-                                    // VOD and Series will be loaded asynchronously by home_page.loadVodAndSeriesAsync()
+                                    VodModel.insertMoviesToCategories();
+                                    SeriesModel.insertMoviesToCategories();
                                     that.is_loading=false;
                                     that.retry_count = 0; // Reset retry count on success
                                     home_page.init();
