@@ -1344,15 +1344,9 @@ var vod_series_player_page={
                 }
                 break;
             case "subtitle_audio_selection_modal":
-                console.log('=== SUBTITLE DEBUG: handleMenuClick - subtitle_audio_selection_modal ===');
-                console.log('Selected index:', keys.subtitle_audio_selection_modal);
-                console.log('Available subtitle menus:', this.subtitle_audio_menus.length);
-                
+                // Just select the item without confirming - user must click OK button to confirm
                 $(this.subtitle_audio_menus).find('input').prop('checked',false);
                 $(this.subtitle_audio_menus[keys.subtitle_audio_selection_modal]).find('input').prop('checked',true);
-                
-                console.log('=== SUBTITLE DEBUG: Calling confirmSubtitle() ===');
-                this.confirmSubtitle();
                 break;
             case "subtitle_btn_selection":
                 $(this.subtitle_btn_doms[keys.subtitle_btn_selection]).trigger('click');
