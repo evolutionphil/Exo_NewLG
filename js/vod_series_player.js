@@ -47,6 +47,27 @@ var vod_series_player_page={
     init:function(movie,movie_type,back_url,movie_url){
         this.resume_videos_updated=false;
         this.current_movie=movie;
+        
+        // CRITICAL FIX: Preserve episode TMDB ID before any info overwriting
+        console.log('=== SERIES PLAYER INIT: PRESERVING EPISODE TMDB ID ===');
+        console.log('Original episode object:', movie);
+        console.log('Original episode.info:', movie.info);
+        
+        // Store TMDB ID if it exists in the episode
+        var preserved_tmdb_id = null;
+        if(movie.info && movie.info.tmdb_id) {
+            preserved_tmdb_id = movie.info.tmdb_id;
+            console.log('✅ PRESERVED EPISODE TMDB ID:', preserved_tmdb_id);
+        } else {
+            console.log('⚠️ NO EPISODE TMDB ID to preserve from:', movie.info);
+        }
+        
+        // Store it in current_movie for later subtitle access
+        if(preserved_tmdb_id) {
+            this.current_movie.preserved_tmdb_id = preserved_tmdb_id;
+            console.log('✅ STORED preserved_tmdb_id in current_movie:', this.current_movie.preserved_tmdb_id);
+        }
+        
         this.current_time=0;
         this.video_duration=0;
         this.subtitle_loaded=false;
@@ -783,7 +804,30 @@ var vod_series_player_page={
                         console.log('Selected episode object:', episode);
                         console.log('Episode.info exists:', !!episode.info);
                         console.log('Episode.info:', episode.info);
-                        console.log('Episode.info.tmdb_id:', episode.info ? episode.info.tmdb_id : 'NO EPISODE INFO');
+                        
+                        // CHECK ALL PROPERTIES of episode.info to find TMDB ID (especially at the END)
+                        if(episode.info) {
+                            console.log('=== COMPLETE EPISODE INFO ANALYSIS ===');
+                            var info_keys = Object.keys(episode.info);
+                            console.log('All episode.info keys:', info_keys);
+                            console.log('Total episode.info properties:', info_keys.length);
+                            
+                            // Show first few and LAST few properties
+                            console.log('FIRST 3 properties:');
+                            for(var i = 0; i < Math.min(3, info_keys.length); i++) {
+                                console.log('  [' + i + '] ' + info_keys[i] + ':', episode.info[info_keys[i]]);
+                            }
+                            
+                            console.log('LAST 5 properties (WHERE TMDB_ID SHOULD BE):');
+                            for(var i = Math.max(0, info_keys.length - 5); i < info_keys.length; i++) {
+                                console.log('  [' + i + '] ' + info_keys[i] + ':', episode.info[info_keys[i]]);
+                            }
+                            
+                            // Specific TMDB ID check
+                            console.log('Episode.info.tmdb_id:', episode.info.tmdb_id);
+                        } else {
+                            console.log('NO EPISODE INFO AVAILABLE');
+                        }
                         
                         var tmdb_id = null;
                         
