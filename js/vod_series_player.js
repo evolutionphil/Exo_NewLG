@@ -856,6 +856,13 @@ var vod_series_player_page={
                             console.log('⚠️ NO EPISODE TMDB ID available - subtitle matching will be less accurate');
                         }
                         
+                        console.log('=== COMPLETE SUBTITLE REQUEST DATA ===');
+                        console.log('Final subtitle_request_data:', subtitle_request_data);
+                        console.log('Request data keys:', Object.keys(subtitle_request_data));
+                        console.log('TMDB ID in request:', subtitle_request_data.tmdb_id);
+                        console.log('Series name in request:', subtitle_request_data.query);
+                        console.log('Season/Episode in request:', subtitle_request_data.season_number, '/', subtitle_request_data.episode_number);
+                        
                         // Add episode title if available for better matching
                         if(episode.title && episode.title.trim() !== '') {
                             subtitle_request_data.episode_title = episode.title;
@@ -889,6 +896,20 @@ var vod_series_player_page={
                             console.log('Response status:', result.status);
                             console.log('Response subtitles:', result.subtitles);
                             console.log('Subtitles length:', result.subtitles ? result.subtitles.length : 'undefined');
+                            
+                            // ENHANCED DEBUGGING FOR SUBTITLE RESPONSE
+                            if(result.subtitles && result.subtitles.length > 0) {
+                                console.log('✅ SUBTITLES FOUND - Processing...');
+                                console.log('First subtitle sample:', result.subtitles[0]);
+                                console.log('Available subtitle languages:', result.subtitles.map(s => s.language));
+                            } else {
+                                console.log('⚠️ NO SUBTITLES IN RESPONSE');
+                                console.log('Result keys:', Object.keys(result));
+                                console.log('Possible empty result reasons:');
+                                console.log('- TMDB ID not found in OpenSubtitles DB');
+                                console.log('- No subtitles available for this episode');
+                                console.log('- Network/API error');
+                            }
                             
                             // Detailed analysis of what OpenSubtitles returned
                             console.log('=== OPENSUBTITLES RESPONSE ANALYSIS ===');
