@@ -43,7 +43,7 @@ var SrtOperation={
         let mid=Math.floor((start + end)/2);
 
         // Compare mid with given key x
-        if (arr[mid].startSeconds<=time && time<arr[mid].endTime)
+        if (arr[mid].startSeconds<=time && time<arr[mid].endSeconds)
             return mid;
 
 
