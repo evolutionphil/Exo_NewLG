@@ -12,7 +12,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^5.1.0"
+    "axios": "^1.12.2",
+    "express": "^5.1.0",
+    "http-proxy-middleware": "^3.0.5"
   },
   "devDependencies": {
     "@webos-tools/cli": "^3.2.1",
