@@ -1,0 +1,1797 @@
+SRT Operation stopped, returning
+vod_series_player.js:619 === SUBTITLE DEBUG: showSubtitleAudioModal called ===
+vod_series_player.js:620 Kind: TEXT
+vod_series_player.js:621 Platform: lg
+vod_series_player.js:622 Current movie type: movies
+vod_series_player.js:623 Current movie: {num: 14870, name: 'Ballon (2018)', stream_type: 'movie', stream_id: 343981, stream_icon: 'https://image.tmdb.org/t/p/w600_and_h900_bestv2/eVINvKpRVZ6AZH3H6S527TkJeET.jpg', …}
+vod_series_player.js:624 Subtitle loaded: true
+vod_series_player.js:625 Subtitle loading: false
+vod_series_player.js:634 === SUBTITLE DEBUG: Non-Samsung text subtitle request ===
+vod_series_player.js:1039 === SUBTITLE DEBUG: renderSubtitles called ===
+vod_series_player.js:1040 Kind: TEXT
+vod_series_player.js:1041 Subtitles array: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1042 Subtitles count: 6
+vod_series_player.js:1045 === SUBTITLE DEBUG: Individual subtitle items ===
+vod_series_player.js:1047 Subtitle 0: {label: 'Arabic', file: '/api/subtitle-file?lang=ar&id=7626726', lang: 'ar'}
+vod_series_player.js:1048   - label: "Arabic"
+vod_series_player.js:1049   - file: "/api/subtitle-file?lang=ar&id=7626726"
+vod_series_player.js:1050   - lang: "ar"
+vod_series_player.js:1047 Subtitle 1: {label: 'French', file: '/api/subtitle-file?lang=fr&id=5138657', lang: 'fr'}
+vod_series_player.js:1048   - label: "French"
+vod_series_player.js:1049   - file: "/api/subtitle-file?lang=fr&id=5138657"
+vod_series_player.js:1050   - lang: "fr"
+vod_series_player.js:1047 Subtitle 2: {label: 'German', file: '/api/subtitle-file?lang=de&id=5283379', lang: 'de'}
+vod_series_player.js:1048   - label: "German"
+vod_series_player.js:1049   - file: "/api/subtitle-file?lang=de&id=5283379"
+vod_series_player.js:1050   - lang: "de"
+vod_series_player.js:1047 Subtitle 3: {label: 'Italian', file: '/api/subtitle-file?lang=it&id=3520989', lang: 'it'}
+vod_series_player.js:1048   - label: "Italian"
+vod_series_player.js:1049   - file: "/api/subtitle-file?lang=it&id=3520989"
+vod_series_player.js:1050   - lang: "it"
+vod_series_player.js:1047 Subtitle 4: {label: 'Spanish', file: '/api/subtitle-file?lang=es&id=3520542', lang: 'es'}
+vod_series_player.js:1048   - label: "Spanish"
+vod_series_player.js:1049   - file: "/api/subtitle-file?lang=es&id=3520542"
+vod_series_player.js:1050   - lang: "es"
+vod_series_player.js:1047 Subtitle 5: {label: 'Russian', file: '/api/subtitle-file?lang=ru&id=703371', lang: 'ru'}
+vod_series_player.js:1048   - label: "Russian"
+vod_series_player.js:1049   - file: "/api/subtitle-file?lang=ru&id=703371"
+vod_series_player.js:1050   - lang: "ru"
+vod_series_player.js:1063 === SUBTITLE DEBUG: About to create HTML content ===
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'Arabic', file: '/api/subtitle-file?lang=ar&id=7626726', lang: 'ar'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 0: Arabic
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'French', file: '/api/subtitle-file?lang=fr&id=5138657', lang: 'fr'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 1: French
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'German', file: '/api/subtitle-file?lang=de&id=5283379', lang: 'de'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 2: German
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'Italian', file: '/api/subtitle-file?lang=it&id=3520989', lang: 'it'}file: "/api/subtitle-file?lang=it&id=3520989"label: "Italian"lang: "it"[[Prototype]]: Object
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 3: Italian
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'Spanish', file: '/api/subtitle-file?lang=es&id=3520542', lang: 'es'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 4: Spanish
+vod_series_player.js:588 === SUBTITLE DEBUG: Processing custom API subtitle ===
+vod_series_player.js:589 Item: {label: 'Russian', file: '/api/subtitle-file?lang=ru&id=703371', lang: 'ru'}
+vod_series_player.js:602 === SUBTITLE DEBUG: Final language label ===
+vod_series_player.js:603 Language for index 5: Russian
+vod_series_player.js:1065 === SUBTITLE DEBUG: Generated HTML content ===
+vod_series_player.js:1066 HTML length: 2909
+vod_series_player.js:1067 HTML content: <div class="setting-modal-option subtitle-item bg-focus"                    onmouseenter="vod_series_player_page.hoverSubtitle(0)"                     onclick="vod_series_player_page.handleMenuClick()"                 >                   <input class="setting-modal-checkbox" type="checkbox" name="subtitle" id="disable-subtitle" value="-1">                   <label for="disable-subtitle">Disabled</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(1)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="0">                    <label>Arabic</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(2)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="1">                    <label>French</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(3)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="2">                    <label>German</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(4)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="3">                    <label>Italian</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(5)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="4">                    <label>Spanish</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(6)"                         onclick="vod_series_player_page.handleMenuClick()"                 >                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle"                        value="5">                    <label>Russian</label>                </div>
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 12.315668
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 12.580023
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 12.846681
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 13.111596
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 13.386046
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 13.642579
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 13.90816
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 14.187604
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 14.442667
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 14.705658
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 14.983964
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 15.247487
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 15.507574
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 15.772629
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 16.043748
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 16.306299
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 16.568188
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 16.832111
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 17.095265
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 17.360566
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 17.640043
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 17.891873
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 18.157362
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 18.423601
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 18.691674
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 18.954589
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 19.219804
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+vod_series_player.js:1111 === SUBTITLE DEBUG: confirmSubtitle called ===
+vod_series_player.js:1112 Selected subtitle index: 2
+vod_series_player.js:1113 Platform: lg
+vod_series_player.js:1114 Available subtitles: (6) [{…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1132 === SUBTITLE DEBUG: Loading custom API subtitle ===
+vod_series_player.js:1134 Selected subtitle object: {label: 'German', file: '/api/subtitle-file?lang=de&id=5283379', lang: 'de'}file: "/api/subtitle-file?lang=de&id=5283379"label: "German"lang: "de"[[Prototype]]: Object
+vod_series_player.js:1137 === SUBTITLE DEBUG: Fetching subtitle file ===
+vod_series_player.js:1138 Subtitle file URL: /api/subtitle-file?lang=de&id=5283379
+vod_series_player.js:1145 Final subtitle URL: https://exoapp.tv/api/subtitle-file?lang=de&id=5283379
+vod_series_player.js:1197 2
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 19.485636
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 19.751601
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+vod_series_player.js:1153 === SUBTITLE DEBUG: Subtitle file loaded successfully ===
+vod_series_player.js:1154 Content length: 86247
+vod_series_player.js:1155 Content preview: WEBVTT
+
+00:00:48.880 --> 00:00:51.269
+[unheilvolle Klänge]
+
+00:01:00.800 --> 00:01:04.554
+[Kinderchor singt entfernt Pionierlied
+"Unsere Heimat"]
+
+00:01:04.720 --> 00:01:08.350
+<i>Unsre Heimat
+Das sin
+vod_series_player.js:1172 Current video time: 0
+srt_parser.js:123 1 'ms take to parse'
+vod_series_player.js:1175 === SUBTITLE DEBUG: SrtOperation initialized ===
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 20.019912
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 20.285107
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 20.55842
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 20.821486
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 21.081639
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 21.359646
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 21.610519
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 21.880651
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 22.153732
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 22.414539
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 22.674323
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 22.949621
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 23.213633
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 23.47964
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 23.735485
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 24.002558
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 24.279669
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 24.551699
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 24.816637
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 25.091716
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 25.350698
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 25.622674
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 25.889757
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 26.151779
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 26.419656
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 26.686894
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 26.950668
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 27.210467
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 27.471718
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 27.741865
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 28.011708
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 28.275688
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 28.541668
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 28.808234
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 29.063672
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 29.344761
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 29.610667
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 29.887678
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 30.145579
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 30.408051
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 30.687104
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 30.938779
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 31.215796
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 31.473435
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 31.735554
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 32.015187
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 32.267729
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 32.543629
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 32.799411
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 33.067622
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 33.329193
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 33.596707
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 33.873806
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 34.134395
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 34.39224
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 34.665709
+​ Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 34.927092
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 35.189516
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 35.455572
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 35.731704
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 35.997228
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 36.251731
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 36.517722
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 36.791705
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 37.048218
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 37.313651
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 37.583776
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 37.852793
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 38.118384
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 38.385595
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 38.643773
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 38.922815
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 39.191822
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 39.457733
+​ Stopped status: true
+​ SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 39.724733
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 39.991748
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 40.256407
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 40.531314
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 40.785602
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 41.06172
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 41.326963
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 41.579631
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 41.845255
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 42.11775
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 42.385783
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 42.641784
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 42.911777
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 43.175811
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 43.451791
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 43.714632
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 43.974925
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 44.236283
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 44.513778
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 44.777755
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 45.039902
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 45.311639
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 45.563846
+srt_operation.js:62 Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 45.84184
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 46.107935
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 46.364654
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 46.63365
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 46.891853
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 47.166815
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 47.437809
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 47.69184
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 47.959779
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 48.233801
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 48.491001
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 48.763663
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 49.025801
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+​ Subtitle shown status: false
+​ SRT Operation stopped, returning
+​ === SRT OPERATION timeChange DEBUG ===
+​ Current time received: 49.296009
+​ Stopped status: true
+​ SRT array length: 0
+​ Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 49.556578
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 49.817896
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 50.085131
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 50.349366
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 50.611674
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 50.877732
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 51.143118
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 51.418843
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 51.681803
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 51.948553
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 52.21784
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 52.470863
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 52.749839
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 53.005542
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 53.269714
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 53.535833
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 53.798242
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 54.065894
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 54.342842
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 54.605717
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 54.862781
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 55.134946
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 55.3929
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 55.671842
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 55.935126
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 56.19685
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 56.469895
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 56.746239
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 57.002721
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 57.26684
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 57.535773
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 57.811934
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 58.063889
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 58.333793
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 58.595742
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 58.860749
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 59.126739
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 59.401937
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 59.662035
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 59.922978
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 60.197004
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 60.457873
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 60.731907
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 60.986739
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 61.252026
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 61.51687
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 61.785895
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 62.051818
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 62.323684
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 62.592794
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 62.852645
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 63.117597
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 63.379667
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 63.643827
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 63.910833
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 64.173458
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 64.448914
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 64.715916
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 64.977773
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 65.243111
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 65.50493
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 65.773665
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 66.032931
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 66.308935
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 66.564008
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 66.829441
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 67.098166
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 67.370882
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 67.631879
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 67.907828
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 68.175751
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 68.445121
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 68.704391
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 68.976594
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 69.239821
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 69.501918
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 69.767436
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 70.038268
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 70.304935
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 70.577737
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 70.837985
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 71.095098
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 71.362963
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 71.626152
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 71.892058
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 72.15998
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 72.43325
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 72.689146
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 72.959037
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 73.220978
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 73.498841
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 73.764621
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 74.017387
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 74.282978
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 74.54947
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 74.815004
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 75.087004
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 75.348056
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 75.610979
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 75.889983
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 76.141966
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 76.42202
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 76.688115
+srt_operation.js:62 Stopped status: true
+srt_operation.js:63 SRT array length: 0
+srt_operation.js:64 Current SRT index: 0
+srt_operation.js:65 Subtitle shown status: false
+srt_operation.js:68 SRT Operation stopped, returning
+srt_operation.js:60 === SRT OPERATION timeChange DEBUG ===
+srt_operation.js:61 Current time received: 76.952995
+srt_operation.js:62 Stopped status: true
