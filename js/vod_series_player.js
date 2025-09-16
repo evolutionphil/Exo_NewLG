@@ -49,23 +49,14 @@ var vod_series_player_page={
         this.current_movie=movie;
         
         // CRITICAL FIX: Preserve episode TMDB ID before any info overwriting
-        console.log('=== SERIES PLAYER INIT: PRESERVING EPISODE TMDB ID ===');
-        console.log('Original episode object:', movie);
-        console.log('Original episode.info:', movie.info);
-        
-        // Store TMDB ID if it exists in the episode
         var preserved_tmdb_id = null;
         if(movie.info && movie.info.tmdb_id) {
             preserved_tmdb_id = movie.info.tmdb_id;
-            console.log('✅ PRESERVED EPISODE TMDB ID:', preserved_tmdb_id);
-        } else {
-            console.log('⚠️ NO EPISODE TMDB ID to preserve from:', movie.info);
         }
         
         // Store it in current_movie for later subtitle access
         if(preserved_tmdb_id) {
             this.current_movie.preserved_tmdb_id = preserved_tmdb_id;
-            console.log('✅ STORED preserved_tmdb_id in current_movie:', this.current_movie.preserved_tmdb_id);
         }
         
         this.current_time=0;
@@ -748,39 +739,26 @@ var vod_series_player_page={
                         });
                     }else {
                         console.log('=== SUBTITLE DEBUG: Building series/episode request data ===');
-                        console.log('=== DETAILED SERIES/EPISODE ANALYSIS FOR SUBTITLE MATCHING ===');
-                        console.log('Current series (FULL):', current_series);
-                        console.log('Current season (FULL):', current_season);
-                        console.log('Episode variable:', episode_variable);
-                        console.log('Current movie info:', this.current_movie.info || 'NOT AVAILABLE');
+                        // Series/Episode analysis for subtitle matching
                         
                         var episode=current_season.episodes[episode_variable.keys.index];
-                        console.log('Selected episode (FULL):', episode);
                         
                         // Analyze series name
                         var original_series_name = current_series.name;
                         var cleaned_series_name = original_series_name;
-                        console.log('=== SERIES NAME CLEANING PROCESS ===');
-                        console.log('Step 1 - Original series name:', original_series_name);
+                        // Clean series name for subtitle matching
                         
                         // Remove season/episode indicators from series name
                         cleaned_series_name = cleaned_series_name.replace(/\s*[Ss]\d+[Ee]\d+.*$/i, '').trim();
                         cleaned_series_name = cleaned_series_name.replace(/\s*Season\s*\d+.*$/i, '').trim();
                         cleaned_series_name = cleaned_series_name.replace(/\s*Episode\s*\d+.*$/i, '').trim();
                         cleaned_series_name = cleaned_series_name.replace(/\s*\(\d{4}\)\s*/, '').trim();
-                        console.log('Step 2 - After season/episode removal:', cleaned_series_name);
                         
                         // Season and episode number analysis
                         var season_num = current_season.season_number ? current_season.season_number : seasons_variable.keys.index+1;
                         var episode_num = episode.episode_num ? episode.episode_num : episode_variable.keys.index+1;
                         
-                        console.log('=== SEASON/EPISODE NUMBER ANALYSIS ===');
-                        console.log('Season number (from metadata):', current_season.season_number || 'NOT AVAILABLE');
-                        console.log('Season number (from index):', seasons_variable.keys.index+1);
-                        console.log('Final season number:', season_num);
-                        console.log('Episode number (from metadata):', episode.episode_num || 'NOT AVAILABLE');
-                        console.log('Episode number (from index):', episode_variable.keys.index+1);
-                        console.log('Final episode number:', episode_num);
+                        // Season and episode number determination
                         console.log('Episode title:', episode.title || 'NOT AVAILABLE');
                         
                         subtitle_request_data={
@@ -798,70 +776,23 @@ var vod_series_player_page={
                         console.log('current_movie.info.tmdb_id:', this.current_movie.info ? this.current_movie.info.tmdb_id : 'INFO OBJECT NOT FOUND');
                         console.log('Type of tmdb_id:', this.current_movie.info ? typeof this.current_movie.info.tmdb_id : 'N/A');
                         
-                        // ALTERNATIVE: Check selected episode directly for TMDB ID
+                        // Check episode directly for TMDB ID
                         var episode = current_season.episodes[episode_variable.keys.index];
-                        console.log('=== DIRECT EPISODE TMDB ID CHECK ===');
-                        console.log('Selected episode object:', episode);
-                        console.log('Episode.info exists:', !!episode.info);
-                        console.log('Episode.info:', episode.info);
-                        
-                        // CHECK ALL PROPERTIES of episode.info to find TMDB ID (especially at the END)
-                        if(episode.info) {
-                            console.log('=== COMPLETE EPISODE INFO ANALYSIS ===');
-                            var info_keys = Object.keys(episode.info);
-                            console.log('All episode.info keys:', info_keys);
-                            console.log('Total episode.info properties:', info_keys.length);
-                            
-                            // Show first few and LAST few properties
-                            console.log('FIRST 3 properties:');
-                            for(var i = 0; i < Math.min(3, info_keys.length); i++) {
-                                console.log('  [' + i + '] ' + info_keys[i] + ':', episode.info[info_keys[i]]);
-                            }
-                            
-                            console.log('LAST 5 properties (WHERE TMDB_ID SHOULD BE):');
-                            for(var i = Math.max(0, info_keys.length - 5); i < info_keys.length; i++) {
-                                console.log('  [' + i + '] ' + info_keys[i] + ':', episode.info[info_keys[i]]);
-                            }
-                            
-                            // Specific TMDB ID check
-                            console.log('Episode.info.tmdb_id:', episode.info.tmdb_id);
-                        } else {
-                            console.log('NO EPISODE INFO AVAILABLE');
-                        }
                         
                         var tmdb_id = null;
                         
                         // Try multiple sources for TMDB ID (prioritize episode-level)
-                        // CRITICAL: Check episode.info.tmdb_id first (from seasons -> episodes -> info -> tmdb_id)
                         if(episode.info && episode.info.tmdb_id) {
                             tmdb_id = episode.info.tmdb_id;
-                            console.log('✅ FOUND EPISODE TMDB ID in episode.info.tmdb_id:', tmdb_id);
                         } else if(this.current_movie.info && this.current_movie.info.tmdb_id) {
                             tmdb_id = this.current_movie.info.tmdb_id;
-                            console.log('✅ FOUND EPISODE TMDB ID in current_movie.info.tmdb_id:', tmdb_id);
                         } else if(this.current_movie.preserved_tmdb_id) {
                             tmdb_id = this.current_movie.preserved_tmdb_id;
-                            console.log('✅ FOUND EPISODE TMDB ID in preserved_tmdb_id:', tmdb_id);
-                        } else {
-                            console.log('⚠️ NO EPISODE TMDB ID found in any location');
-                            console.log('Episode info keys:', episode.info ? Object.keys(episode.info) : 'NO EPISODE INFO');
-                            console.log('Current movie info keys:', this.current_movie.info ? Object.keys(this.current_movie.info) : 'NO CURRENT MOVIE INFO');
-                            console.log('Available preserved_tmdb_id:', this.current_movie.preserved_tmdb_id || 'NONE');
                         }
                         
                         if(tmdb_id) {
                             subtitle_request_data.tmdb_id = tmdb_id;
-                            console.log('✅ EPISODE TMDB ID added (BEST matching):', tmdb_id);
-                        } else {
-                            console.log('⚠️ NO EPISODE TMDB ID available - subtitle matching will be less accurate');
                         }
-                        
-                        console.log('=== COMPLETE SUBTITLE REQUEST DATA ===');
-                        console.log('Final subtitle_request_data:', subtitle_request_data);
-                        console.log('Request data keys:', Object.keys(subtitle_request_data));
-                        console.log('TMDB ID in request:', subtitle_request_data.tmdb_id);
-                        console.log('Series name in request:', subtitle_request_data.query);
-                        console.log('Season/Episode in request:', subtitle_request_data.season_number, '/', subtitle_request_data.episode_number);
                         
                         // Add episode title if available for better matching
                         if(episode.title && episode.title.trim() !== '') {
@@ -880,9 +811,7 @@ var vod_series_player_page={
                         });
                     }
                     
-                    console.log('=== SUBTITLE DEBUG: Making AJAX request ===');
-                    console.log('URL:', 'https://exoapp.tv/api/get-subtitles');
-                    console.log('Data to send:', subtitle_request_data);
+                    // Making subtitle request to OpenSubtitles API
                     
                     $.ajax({
                         method:'post',
@@ -890,26 +819,6 @@ var vod_series_player_page={
                         data: subtitle_request_data,
                         dataType:'json',
                         success:function (result) {
-                            console.log('=== SUBTITLE DEBUG: AJAX Success ===');
-                            console.log('Raw response (FULL):', result);
-                            console.log('Response type:', typeof result);
-                            console.log('Response status:', result.status);
-                            console.log('Response subtitles:', result.subtitles);
-                            console.log('Subtitles length:', result.subtitles ? result.subtitles.length : 'undefined');
-                            
-                            // ENHANCED DEBUGGING FOR SUBTITLE RESPONSE
-                            if(result.subtitles && result.subtitles.length > 0) {
-                                console.log('✅ SUBTITLES FOUND - Processing...');
-                                console.log('First subtitle sample:', result.subtitles[0]);
-                                console.log('Available subtitle languages:', result.subtitles.map(s => s.language));
-                            } else {
-                                console.log('⚠️ NO SUBTITLES IN RESPONSE');
-                                console.log('Result keys:', Object.keys(result));
-                                console.log('Possible empty result reasons:');
-                                console.log('- TMDB ID not found in OpenSubtitles DB');
-                                console.log('- No subtitles available for this episode');
-                                console.log('- Network/API error');
-                            }
                             
                             // Detailed analysis of what OpenSubtitles returned
                             console.log('=== OPENSUBTITLES RESPONSE ANALYSIS ===');
@@ -997,12 +906,6 @@ var vod_series_player_page={
                             }
                         },
                         error:function (error){
-                            console.log('=== SUBTITLE DEBUG: AJAX Error ===');
-                            console.log('Error object:', error);
-                            console.log('Error status:', error.status);
-                            console.log('Error statusText:', error.statusText);
-                            console.log('Error responseText:', error.responseText);
-                            console.log('Error readyState:', error.readyState);
                             
                             that.subtitle_loading=false;
                             that.subtitle_loaded=true;
