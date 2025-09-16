@@ -769,12 +769,20 @@ var vod_series_player_page={
                             episode_number: episode_num
                         }
                         
-                        // Add TMDB ID if available
+                        // Add EPISODE TMDB ID if available (each episode has its own TMDB ID)
+                        console.log('=== EPISODE TMDB ID DEBUG ===');
+                        console.log('current_movie object:', this.current_movie);
+                        console.log('current_movie.info exists:', !!this.current_movie.info);
+                        console.log('current_movie.info:', this.current_movie.info);
+                        console.log('current_movie.info.tmdb_id:', this.current_movie.info ? this.current_movie.info.tmdb_id : 'INFO OBJECT NOT FOUND');
+                        console.log('Type of tmdb_id:', this.current_movie.info ? typeof this.current_movie.info.tmdb_id : 'N/A');
+                        
                         if(this.current_movie.info && this.current_movie.info.tmdb_id) {
                             subtitle_request_data.tmdb_id = this.current_movie.info.tmdb_id;
-                            console.log('✅ SERIES TMDB ID added:', this.current_movie.info.tmdb_id);
+                            console.log('✅ EPISODE TMDB ID added (BEST matching):', this.current_movie.info.tmdb_id);
                         } else {
-                            console.log('⚠️ NO SERIES TMDB ID available');
+                            console.log('⚠️ NO EPISODE TMDB ID available - subtitle matching will be less accurate');
+                            console.log('Available episode info keys:', this.current_movie.info ? Object.keys(this.current_movie.info) : 'NO INFO OBJECT');
                         }
                         
                         // Add episode title if available for better matching
