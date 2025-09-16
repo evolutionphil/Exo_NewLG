@@ -1,25 +1,12 @@
 
 const express = require('express');
 const path = require('path');
-const axios = require('axios');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware to parse JSON and form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// CORS middleware to handle cross-origin requests
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-  if (req.method === 'OPTIONS') {
-    res.sendStatus(200);
-  } else {
-    next();
-  }
-});
 
 // Serve static files from the current directory
 app.use(express.static('.'));
@@ -89,77 +76,6 @@ app.post('/api/get-subtitles', async (req, res) => {
       status: 'error',
       message: error.message,
       subtitles: []
-    });
-  }
-});
-
-// Serve M3U file with proxy URLs
-app.get('/m3u/yenideneme1', (req, res) => {
-  const fs = require('fs');
-  const m3uPath = path.join(__dirname, 'assets', 'tv_channels_yenideneme1.m3u');
-  
-  console.log('=== Serving M3U file with proxy URLs ===');
-  
-  try {
-    let m3uContent = fs.readFileSync(m3uPath, 'utf8');
-    
-    // Replace HTTP URLs with our proxy URLs  
-    m3uContent = m3uContent.replace(/http:\/\/galaiptv\.shop:2095/g, 
-      `${req.protocol}://${req.get('host')}/proxy?url=http://galaiptv.shop:2095`);
-    
-    res.setHeader('Content-Type', 'application/vnd.apple.mpegurl');
-    res.setHeader('Content-Disposition', 'inline; filename="tv_channels_yenideneme1.m3u"');
-    res.send(m3uContent);
-    
-  } catch (error) {
-    console.error('Error serving M3U file:', error);
-    res.status(500).send('Error serving M3U file');
-  }
-});
-
-// Simple proxy using query parameters to avoid path issues
-app.get('/proxy', async (req, res) => {
-  const targetUrl = req.query.url;
-  
-  if (!targetUrl) {
-    return res.status(400).json({ error: 'Missing url parameter' });
-  }
-  
-  console.log(`=== Proxying request: ${targetUrl} ===`);
-  
-  try {
-    const response = await axios({
-      method: 'GET',
-      url: targetUrl,
-      responseType: 'stream',
-      timeout: 30000,
-      headers: {
-        'User-Agent': req.headers['user-agent'] || 'IPTV-Proxy/1.0'
-      }
-    });
-    
-    // Set CORS headers for streaming
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', '*');
-    
-    // Forward content headers
-    if (response.headers['content-type']) {
-      res.setHeader('Content-Type', response.headers['content-type']);
-    }
-    if (response.headers['content-length']) {
-      res.setHeader('Content-Length', response.headers['content-length']);
-    }
-    
-    // Pipe the stream response
-    response.data.pipe(res);
-    
-  } catch (error) {
-    console.error(`Proxy error for ${targetUrl}:`, error.message);
-    res.status(502).json({ 
-      error: 'Proxy error', 
-      message: error.message,
-      url: targetUrl 
     });
   }
 });
