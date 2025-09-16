@@ -1157,19 +1157,18 @@ var vod_series_player_page={
                                 // Initialize SrtOperation with the loaded content
                                 var current_time = 0;
                                 try {
-                                    if (typeof media_player.getCurrentTime === 'function') {
-                                        current_time = media_player.getCurrentTime();
-                                    } else if (typeof webapis !== 'undefined' && webapis.avplay) {
+                                    if (platform === 'samsung' && typeof webapis !== 'undefined' && webapis.avplay) {
                                         current_time = webapis.avplay.getCurrentTime() / 1000; // Convert ms to seconds
-                                    } else if (typeof webOS !== 'undefined' && webOS.service) {
-                                        // LG WebOS alternative - start from 0
-                                        current_time = 0;
+                                    } else if (media_player && media_player.videoObj) {
+                                        current_time = media_player.videoObj.currentTime || 0; // Already in seconds
                                     }
                                 } catch (e) {
                                     console.log('Could not get current time, starting from 0:', e);
                                     current_time = 0;
                                 }
-                                console.log('Current video time:', current_time);
+                                console.log('=== SUBTITLE DEBUG: Fixed current video time ===');
+                                console.log('Platform:', platform);
+                                console.log('Current video time (seconds):', current_time);
                                 
                                 SrtOperation.init({content: subtitleContent}, current_time);
                                 console.log('=== SUBTITLE DEBUG: SrtOperation initialized ===');
