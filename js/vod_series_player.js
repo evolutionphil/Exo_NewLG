@@ -832,16 +832,21 @@ var vod_series_player_page={
                         var tmdb_id = null;
                         
                         // Try multiple sources for TMDB ID (prioritize episode-level)
+                        // CRITICAL: Check episode.info.tmdb_id first (from seasons -> episodes -> info -> tmdb_id)
                         if(episode.info && episode.info.tmdb_id) {
                             tmdb_id = episode.info.tmdb_id;
-                            console.log('✅ FOUND EPISODE TMDB ID in episode.info:', tmdb_id);
+                            console.log('✅ FOUND EPISODE TMDB ID in episode.info.tmdb_id:', tmdb_id);
                         } else if(this.current_movie.info && this.current_movie.info.tmdb_id) {
                             tmdb_id = this.current_movie.info.tmdb_id;
-                            console.log('✅ FOUND EPISODE TMDB ID in current_movie.info:', tmdb_id);
+                            console.log('✅ FOUND EPISODE TMDB ID in current_movie.info.tmdb_id:', tmdb_id);
+                        } else if(this.current_movie.preserved_tmdb_id) {
+                            tmdb_id = this.current_movie.preserved_tmdb_id;
+                            console.log('✅ FOUND EPISODE TMDB ID in preserved_tmdb_id:', tmdb_id);
                         } else {
-                            console.log('⚠️ NO EPISODE TMDB ID found in either location');
+                            console.log('⚠️ NO EPISODE TMDB ID found in any location');
                             console.log('Episode info keys:', episode.info ? Object.keys(episode.info) : 'NO EPISODE INFO');
                             console.log('Current movie info keys:', this.current_movie.info ? Object.keys(this.current_movie.info) : 'NO CURRENT MOVIE INFO');
+                            console.log('Available preserved_tmdb_id:', this.current_movie.preserved_tmdb_id || 'NONE');
                         }
                         
                         if(tmdb_id) {
