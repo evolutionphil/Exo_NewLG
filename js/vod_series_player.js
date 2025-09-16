@@ -742,14 +742,13 @@ var vod_series_player_page={
                         console.log('🔍 TMDB ID Check:', this.current_movie.info?.tmdb_id, '| Preserved:', this.current_movie.preserved_tmdb_id);
                         // Series/Episode analysis for subtitle matching
                         
-                        try {
-                            console.log('🔍 Checking required variables...');
-                            console.log('current_season exists:', !!current_season);
-                            console.log('episode_variable exists:', !!episode_variable);
-                            console.log('seasons_variable exists:', !!seasons_variable);
-                            
-                            var episode=current_season.episodes[episode_variable.keys.index];
-                            console.log('✅ Episode found:', episode?.title || 'NO TITLE');
+                        console.log('🔍 Checking required variables...');
+                        console.log('current_season exists:', !!current_season);
+                        console.log('episode_variable exists:', !!episode_variable);
+                        console.log('seasons_variable exists:', !!seasons_variable);
+                        
+                        var episode=current_season.episodes[episode_variable.keys.index];
+                        console.log('✅ Episode found:', episode?.title || 'NO TITLE');
                         
                         // Analyze series name
                         var original_series_name = current_series.name;
@@ -817,20 +816,6 @@ var vod_series_player_page={
                             cleaned: cleaned_series_name,
                             difference: original_series_name !== cleaned_series_name ? 'CHANGED' : 'SAME'
                         });
-                        
-                        } catch (error) {
-                            console.log('❌ ERROR in episode subtitle logic:', error);
-                            console.log('Error message:', error.message);
-                            console.log('Error stack:', error.stack);
-                            
-                            // Fallback: Use current_movie data for episode subtitles
-                            subtitle_request_data = {
-                                movie_name: this.current_movie.title,
-                                movie_type: 'episode',
-                                tmdb_id: this.current_movie.info?.tmdb_id || this.current_movie.preserved_tmdb_id
-                            };
-                            console.log('🔄 Using fallback subtitle request data:', subtitle_request_data);
-                        }
                     }
                     
                     // Making subtitle request to OpenSubtitles API
