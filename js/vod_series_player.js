@@ -777,12 +777,34 @@ var vod_series_player_page={
                         console.log('current_movie.info.tmdb_id:', this.current_movie.info ? this.current_movie.info.tmdb_id : 'INFO OBJECT NOT FOUND');
                         console.log('Type of tmdb_id:', this.current_movie.info ? typeof this.current_movie.info.tmdb_id : 'N/A');
                         
-                        if(this.current_movie.info && this.current_movie.info.tmdb_id) {
-                            subtitle_request_data.tmdb_id = this.current_movie.info.tmdb_id;
-                            console.log('✅ EPISODE TMDB ID added (BEST matching):', this.current_movie.info.tmdb_id);
+                        // ALTERNATIVE: Check selected episode directly for TMDB ID
+                        var episode = current_season.episodes[episode_variable.keys.index];
+                        console.log('=== DIRECT EPISODE TMDB ID CHECK ===');
+                        console.log('Selected episode object:', episode);
+                        console.log('Episode.info exists:', !!episode.info);
+                        console.log('Episode.info:', episode.info);
+                        console.log('Episode.info.tmdb_id:', episode.info ? episode.info.tmdb_id : 'NO EPISODE INFO');
+                        
+                        var tmdb_id = null;
+                        
+                        // Try multiple sources for TMDB ID (prioritize episode-level)
+                        if(episode.info && episode.info.tmdb_id) {
+                            tmdb_id = episode.info.tmdb_id;
+                            console.log('✅ FOUND EPISODE TMDB ID in episode.info:', tmdb_id);
+                        } else if(this.current_movie.info && this.current_movie.info.tmdb_id) {
+                            tmdb_id = this.current_movie.info.tmdb_id;
+                            console.log('✅ FOUND EPISODE TMDB ID in current_movie.info:', tmdb_id);
+                        } else {
+                            console.log('⚠️ NO EPISODE TMDB ID found in either location');
+                            console.log('Episode info keys:', episode.info ? Object.keys(episode.info) : 'NO EPISODE INFO');
+                            console.log('Current movie info keys:', this.current_movie.info ? Object.keys(this.current_movie.info) : 'NO CURRENT MOVIE INFO');
+                        }
+                        
+                        if(tmdb_id) {
+                            subtitle_request_data.tmdb_id = tmdb_id;
+                            console.log('✅ EPISODE TMDB ID added (BEST matching):', tmdb_id);
                         } else {
                             console.log('⚠️ NO EPISODE TMDB ID available - subtitle matching will be less accurate');
-                            console.log('Available episode info keys:', this.current_movie.info ? Object.keys(this.current_movie.info) : 'NO INFO OBJECT');
                         }
                         
                         // Add episode title if available for better matching
