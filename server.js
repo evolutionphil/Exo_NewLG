@@ -38,30 +38,24 @@ app.post('/api/get-subtitles', async (req, res) => {
     const https = require('https');
     const querystring = require('querystring');
     
-    // Prepare data for exoapp.tv API - include movie_name when available
+    // Prepare data for exoapp.tv API - prioritize TMDB ID for episodes like movies
     let apiData = {};
     
-    if (id) {
-      // Episode ID is primary, but include movie_name for API requirement
-      apiData.id = id;
-      if (movie_name) apiData.movie_name = movie_name;
-      if (movie_type) apiData.movie_type = movie_type;
-      if (season_number) apiData.season_number = season_number;
-      if (episode_number) apiData.episode_number = episode_number;
-    } else if (tmdb_id) {
-      // TMDB ID fallback
+    if (tmdb_id) {
+      // TMDB ID is primary for both movies and episodes
       apiData.tmdb_id = tmdb_id;
       if (movie_name) apiData.movie_name = movie_name;
       if (movie_type) apiData.movie_type = movie_type;
-      if (season_number) apiData.season_number = season_number;
-      if (episode_number) apiData.episode_number = episode_number;
       if (year) apiData.year = year;
+    } else if (id) {
+      // Episode ID fallback
+      apiData.id = id;  
+      if (movie_name) apiData.movie_name = movie_name;
+      if (movie_type) apiData.movie_type = movie_type;
     } else if (movie_name) {
       // Name-only search
       apiData.movie_name = movie_name;
       if (movie_type) apiData.movie_type = movie_type;
-      if (season_number) apiData.season_number = season_number;
-      if (episode_number) apiData.episode_number = episode_number;
       if (year) apiData.year = year;
     }
     

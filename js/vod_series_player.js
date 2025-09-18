@@ -762,44 +762,49 @@ var vod_series_player_page={
                         console.log('Final episode number:', episode_num);
                         console.log('Episode title:', episode.title || 'NOT AVAILABLE');
                         
+                        // SIMPLE APPROACH: Like movies, but with fallback to episode ID
+                        console.log('=== SIMPLE EPISODE APPROACH (LIKE MOVIES WITH FALLBACK) ===');
+                        console.log('Episode title:', this.current_movie.title);
+                        console.log('Episode ID:', this.current_movie.id);
+                        console.log('Episode TMDB ID:', this.current_movie.info ? this.current_movie.info.tmdb_id : 'N/A');
+                        
+                        // Extract series name from full episode title
+                        var episode_title = this.current_movie.title;
+                        var series_name = 'Snowpiercer'; // Default
+                        
+                        // Try to extract series name from episode title
+                        var series_match = episode_title.match(/^(?:TR:\s*)?([^-]+)/);
+                        if(series_match) {
+                            series_name = series_match[1].trim();
+                        }
+                        console.log('Extracted series name:', series_name);
+                        
                         subtitle_request_data={
-                            movie_name: cleaned_series_name,
-                            movie_type: 'episode',
-                            season_number: season_num,
-                            episode_number: episode_num
+                            movie_name: series_name,
+                            movie_type: 'episode'
                         }
                         
-                        // Add episode ID (primary) - this is what exoapp.tv expects
-                        if(this.current_movie.id) {
-                            subtitle_request_data.id = this.current_movie.id;
-                            console.log('✅ EPISODE ID added (PRIMARY):', this.current_movie.id);
-                        } else {
-                            console.log('⚠️ NO EPISODE ID available');
-                        }
-                        
-                        // Add TMDB ID as backup
+                        // Add TMDB ID (primary attempt)
                         if(this.current_movie.info && this.current_movie.info.tmdb_id) {
                             subtitle_request_data.tmdb_id = this.current_movie.info.tmdb_id;
-                            console.log('✅ SERIES TMDB ID added (backup):', this.current_movie.info.tmdb_id);
-                        } else {
-                            console.log('⚠️ NO SERIES TMDB ID available');
+                            console.log('✅ EPISODE TMDB ID added (PRIMARY):', this.current_movie.info.tmdb_id);
                         }
                         
-                        // Add episode title if available for better matching
-                        if(episode.title && episode.title.trim() !== '') {
-                            subtitle_request_data.episode_title = episode.title;
-                            console.log('✅ Episode title added:', episode.title);
-                        } else {
-                            console.log('⚠️ NO episode title available');
+                        // Add episode ID as fallback
+                        if(this.current_movie.id) {
+                            subtitle_request_data.episode_id = this.current_movie.id;
+                            console.log('✅ Episode ID added (FALLBACK):', this.current_movie.id);
                         }
                         
-                        console.log('=== FINAL SERIES REQUEST DATA ===');
-                        console.log('Request will search OpenSubtitles for:', subtitle_request_data);
-                        console.log('Original series name vs Clean name:', {
-                            original: original_series_name,
-                            cleaned: cleaned_series_name,
-                            difference: original_series_name !== cleaned_series_name ? 'CHANGED' : 'SAME'
-                        });
+                        // Add year if available
+                        if(this.current_movie.info && this.current_movie.info.releasedate) {
+                            var release_year = new Date(this.current_movie.info.releasedate).getFullYear();
+                            subtitle_request_data.year = release_year;
+                            console.log('✅ Release year added:', release_year);
+                        }
+                        
+                        console.log('=== FINAL EPISODE REQUEST (HYBRID) ===');
+                        console.log('Request data:', subtitle_request_data);
                     }
                     
                     console.log('=== SUBTITLE DEBUG: Making AJAX request ===');
