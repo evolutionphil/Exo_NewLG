@@ -81,63 +81,30 @@ app.post('/api/get-subtitles', async (req, res) => {
 });
 
 // Serve subtitle files
-app.get('/api/subtitle-file', async (req, res) => {
+app.get('/api/subtitle-file', (req, res) => {
   const { lang, id } = req.query;
   
-  console.log(`=== Serving subtitle file: ${lang} for OpenSubtitles ID: ${id} ===`);
+  console.log(`=== Serving subtitle file: ${lang} for ${id} ===`);
   
-  try {
-    // Create test SRT content that matches the app's expected format
-    const testSRT = `1
-00:00:10,500 --> 00:00:13,200
-Welcome to ${lang.toUpperCase()} subtitles
+  // Mock VTT subtitle content
+  const mockVTT = `WEBVTT
+
+1
+00:00:01.000 --> 00:00:04.000
+[${lang.toUpperCase()}] This is a sample subtitle
 
 2
-00:00:15,000 --> 00:00:18,500
-This subtitle file ID: ${id}
+00:00:05.000 --> 00:00:08.000
+[${lang.toUpperCase()}] Replace this with real subtitle content
 
 3
-00:00:20,000 --> 00:00:23,800
-Real OpenSubtitles integration working
-
-4
-00:01:00,000 --> 00:01:04,200
-<i>Movie dialogue would appear here</i>
-
-5
-00:01:30,500 --> 00:01:34,000
-<i>Synchronized with video timing</i>
-
-6
-00:02:00,000 --> 00:02:04,500
-Test subtitle for ${lang} language
-
-7
-00:02:30,000 --> 00:02:34,200
-<i>Turkish characters: ğüşöçıİĞÜŞÖÇ</i>
+00:00:10.000 --> 00:00:13.000
+[${lang.toUpperCase()}] From your subtitle service
 `;
-
-    console.log(`✅ Serving ${lang.toUpperCase()} SRT subtitle file for ID: ${id}`);
-    
-    // Set correct headers for SRT format (what your app expects)
-    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.send(testSRT);
-    
-  } catch (error) {
-    console.error(`❌ Error serving subtitle file ${id}:`, error);
-    
-    // Fallback SRT on error
-    const fallbackSRT = `1
-00:00:01,000 --> 00:00:05,000
-Subtitle loading error: ${error.message}
-`;
-    
-    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.send(fallbackSRT);
-  }
+  
+  res.setHeader('Content-Type', 'text/vtt');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.send(mockVTT);
 });
 
 // Start the server

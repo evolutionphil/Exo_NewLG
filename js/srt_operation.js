@@ -66,13 +66,13 @@ var SrtOperation={
         var srt_index=this.current_srt_index;
         var srt_item=this.srt[srt_index];
         
-        if(current_time>=srt_item.startSeconds && current_time<srt_item.endTime){
+        if(current_time>=srt_item.startSeconds && current_time<srt_item.endSeconds){
             if(!this.subtitle_shown) {
                 $('#'+media_player.parent_id).find('.subtitle-container').html(srt_item.text);
                 this.subtitle_shown = true;
             }
         }
-        else if(current_time>srt_item.endTime) {
+        else if(current_time>srt_item.endSeconds) {
             var next_srt_item=this.srt[srt_index+1];
             try{
                 if(current_time<next_srt_item.startSeconds){
@@ -80,7 +80,7 @@ var SrtOperation={
                         $('#'+media_player.parent_id).find('.subtitle-container').html('');
                         this.subtitle_shown=false;
                     }
-                }else if(next_srt_item.endTime>current_time){
+                }else if(next_srt_item.endSeconds>current_time){
                     $('#'+media_player.parent_id).find('.subtitle-container').html(next_srt_item.text);
                     this.subtitle_shown=true;
                     this.current_srt_index+=1;
