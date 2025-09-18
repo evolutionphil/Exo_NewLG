@@ -1,0 +1,114 @@
+1280 x 720px
+vod_series_player.js:1 === SUBTITLE DEBUG: showSubtitleAudioModal called ===
+vod_series_player.js:1 Kind: TEXT
+vod_series_player.js:1 Platform: lg
+vod_series_player.js:1 Current movie type: series
+vod_series_player.js:1 Current movie: 
+{id: '98231', episode_num: 1, title: 'TR: Snowpiercer - S01E07 - Evren Kayıtsızdır', container_extension: 'mkv', info: {…}, …}
+added
+: 
+"1618434704"
+container_extension
+: 
+"mkv"
+custom_sid
+: 
+""
+direct_source
+: 
+""
+episode_num
+: 
+1
+id
+: 
+"98231"
+info
+: 
+audio
+: 
+{index: 2, codec_name: 'ac3', codec_long_name: 'ATSC A/52A (AC-3)', codec_type: 'audio', codec_time_base: '1/48000', …}
+bitrate
+: 
+1834
+duration
+: 
+"00:47:11"
+duration_secs
+: 
+2831
+movie_image
+: 
+"https://image.tmdb.org/t/p/w600_and_h900_bestv2/52c4ivNLxNhmM0VqkY1L6bsRUHu.jpg"
+plot
+: 
+"Trenle ilgili karanlık bir sırrın ortaya çıkacağından endişelenen Melanie, Layton'ı arar. Josie, Miles'ı görmeye çalışır. Ruth beklenmedik bir buluşma gerçekleştirir."
+rating
+: 
+6.2
+releasedate
+: 
+"2020-06-28"
+season
+: 
+"1"
+tmdb_id
+: 
+2276929
+video
+: 
+{index: 0, codec_name: 'h264', codec_long_name: 'H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10', profile: 'High', codec_type: 'video', …}
+[[Prototype]]
+: 
+Object
+season
+: 
+1
+title
+: 
+"TR: Snowpiercer - S01E07 - Evren Kayıtsızdır"
+[[Prototype]]
+: 
+Object
+vod_series_player.js:1 Subtitle loaded: false
+vod_series_player.js:1 Subtitle loading: false
+vod_series_player.js:1 === SUBTITLE DEBUG: Non-Samsung text subtitle request ===
+vod_series_player.js:1 === SUBTITLE DEBUG: Building series/episode request data ===
+vod_series_player.js:1 === DETAILED SERIES/EPISODE ANALYSIS FOR SUBTITLE MATCHING ===
+vod_series_player.js:1 Current series (FULL): 
+{num: 11, name: 'TR: Snowpiercer', series_id: 283, cover: 'https://styles.redditmedia.com/t5_35gju/styles/communityIcon_mv4sihrwo1f81.png', plot: 'Dünya buzlarla kaplanınca hayatta kalan son insanl…sas dengeyi bozmadan birlikte yaşamak çok zordur.', …}
+vod_series_player.js:1 Current season (FULL): 
+{air_date: '2020-05-17', episode_count: 10, id: 104013, name: 'Staffel 1', overview: '', …}
+air_date
+: 
+"2020-05-17"
+cover
+: 
+"https://image.tmdb.org/t/p/w600_and_h900_bestv2/n6UNHZoiYj81abwmG38HbNjflDx.jpg"
+cover_big
+: 
+"https://image.tmdb.org/t/p/w600_and_h900_bestv2/n6UNHZoiYj81abwmG38HbNjflDx.jpg"
+episode_count
+: 
+10
+episodes
+: 
+(4) [{…}, {…}, {…}, {…}]
+id
+: 
+104013
+name
+: 
+"Staffel 1"
+overview
+: 
+""
+season_number
+: 
+1
+vote_average
+: 
+6.6
+[[Prototype]]
+: 
+Object
