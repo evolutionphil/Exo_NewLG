@@ -86,23 +86,25 @@ app.get('/api/subtitle-file', (req, res) => {
   
   console.log(`=== Serving subtitle file: ${lang} for ${id} ===`);
   
-  // Mock SRT subtitle content
-  const mockSRT = `1
-00:00:01,000 --> 00:00:04,000
+  // Mock VTT subtitle content
+  const mockVTT = `WEBVTT
+
+1
+00:00:01.000 --> 00:00:04.000
 [${lang.toUpperCase()}] This is a sample subtitle
 
 2
-00:00:05,000 --> 00:00:08,000
+00:00:05.000 --> 00:00:08.000
 [${lang.toUpperCase()}] Replace this with real subtitle content
 
 3
-00:00:10,000 --> 00:00:13,000
+00:00:10.000 --> 00:00:13.000
 [${lang.toUpperCase()}] From your subtitle service
 `;
   
-  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.setHeader('Content-Type', 'text/vtt');
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.send(mockSRT);
+  res.send(mockVTT);
 });
 
 // Start the server
