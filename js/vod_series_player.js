@@ -779,28 +779,17 @@ var vod_series_player_page={
                         }
                         console.log('Extracted series name:', series_name);
                         
+                        // SIMPLE: Only TMDB ID and movie_type=auto
                         subtitle_request_data={
-                            movie_name: series_name,
                             movie_type: 'auto'
                         }
                         
-                        // Add TMDB ID (primary attempt)
+                        // Add TMDB ID (only parameter needed)
                         if(this.current_movie.info && this.current_movie.info.tmdb_id) {
                             subtitle_request_data.tmdb_id = this.current_movie.info.tmdb_id;
-                            console.log('✅ EPISODE TMDB ID added (PRIMARY):', this.current_movie.info.tmdb_id);
-                        }
-                        
-                        // Add episode ID as fallback
-                        if(this.current_movie.id) {
-                            subtitle_request_data.episode_id = this.current_movie.id;
-                            console.log('✅ Episode ID added (FALLBACK):', this.current_movie.id);
-                        }
-                        
-                        // Add year if available
-                        if(this.current_movie.info && this.current_movie.info.releasedate) {
-                            var release_year = new Date(this.current_movie.info.releasedate).getFullYear();
-                            subtitle_request_data.year = release_year;
-                            console.log('✅ Release year added:', release_year);
+                            console.log('✅ EPISODE TMDB ID added (ONLY PARAM):', this.current_movie.info.tmdb_id);
+                        } else {
+                            console.log('⚠️ NO EPISODE TMDB ID - cannot search');
                         }
                         
                         console.log('=== FINAL EPISODE REQUEST (HYBRID) ===');
