@@ -80,31 +80,78 @@ app.post('/api/get-subtitles', async (req, res) => {
   }
 });
 
-// Serve subtitle files
-app.get('/api/subtitle-file', (req, res) => {
+// Serve subtitle files - fetch real data from exoapp.tv
+app.get('/api/subtitle-file', async (req, res) => {
   const { lang, id } = req.query;
   
-  console.log(`=== Serving subtitle file: ${lang} for ${id} ===`);
+  console.log(`=== Serving subtitle file: ${lang} for ID: ${id} ===`);
   
-  // Mock VTT subtitle content
-  const mockVTT = `WEBVTT
-
-1
-00:00:01.000 --> 00:00:04.000
-[${lang.toUpperCase()}] This is a sample subtitle
+  try {
+    const https = require('https');
+    
+    // Fetch real subtitle from exoapp.tv API
+    const subtitleUrl = `https://exoapp.tv/api/subtitle-file?lang=${lang}&id=${id}`;
+    
+    console.log(`Fetching real subtitle from: ${subtitleUrl}`);
+    
+    const request = https.get(subtitleUrl, (response) => {
+      let data = '';
+      
+      response.setEncoding('utf8');
+      
+      response.on('data', (chunk) => {
+        data += chunk;
+      });
+      
+      response.on('end', () => {
+        if (response.statusCode === 200 && data.length > 10) {
+          console.log(`✅ Successfully fetched real subtitle file: ${data.length} bytes`);
+          console.log(`First 200 chars: ${data.substring(0, 200)}...`);
+          
+          // Return real SRT content with proper headers
+          res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+          res.setHeader('Access-Control-Allow-Origin', '*');
+          res.setHeader('Cache-Control', 'public, max-age=86400');
+          
+          res.send(data);
+        } else {
+          console.error(`HTTP Error: ${response.statusCode}`);
+          throw new Error(`Failed to fetch subtitle: HTTP ${response.statusCode}`);
+        }
+      });
+    });
+    
+    request.on('error', (error) => {
+      console.error(`Request error: ${error.message}`);
+      throw error;
+    });
+    
+    request.setTimeout(20000, () => {
+      request.destroy();
+      throw new Error('Request timeout');
+    });
+    
+  } catch (error) {
+    console.error(`❌ Error fetching subtitle ${id}:`, error.message);
+    
+    // Return error message in SRT format  
+    const errorSRT = `1
+00:00:01,000 --> 00:00:05,000
+Unable to load ${lang.toUpperCase()} subtitles
 
 2
-00:00:05.000 --> 00:00:08.000
-[${lang.toUpperCase()}] Replace this with real subtitle content
+00:00:06,000 --> 00:00:10,000
+Subtitle ID: ${id}
 
 3
-00:00:10.000 --> 00:00:13.000
-[${lang.toUpperCase()}] From your subtitle service
+00:00:11,000 --> 00:00:15,000
+Error: ${error.message}
 `;
-  
-  res.setHeader('Content-Type', 'text/vtt');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.send(mockVTT);
+    
+    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.send(errorSRT);
+  }
 });
 
 // Start the server
