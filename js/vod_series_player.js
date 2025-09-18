@@ -781,7 +781,7 @@ var vod_series_player_page={
                         
                         subtitle_request_data={
                             movie_name: series_name,
-                            movie_type: 'episode'
+                            movie_type: 'auto'
                         }
                         
                         // Add TMDB ID (primary attempt)
