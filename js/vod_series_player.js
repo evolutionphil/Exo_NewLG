@@ -779,6 +779,11 @@ var vod_series_player_page={
                         }
                         console.log('Extracted series name:', series_name);
                         
+                        console.log('🔍 ===== SERIES SUBTITLE REQUEST DEBUG =====');
+                        console.log('📺 Current episode data:', this.current_movie);
+                        console.log('📋 Episode info:', this.current_movie.info);
+                        console.log('🎬 Series name extracted:', series_name);
+                        
                         // SIMPLE: Only TMDB ID and movie_type=auto
                         subtitle_request_data={
                             movie_type: 'auto'
@@ -787,13 +792,19 @@ var vod_series_player_page={
                         // Add TMDB ID (only parameter needed)
                         if(this.current_movie.info && this.current_movie.info.tmdb_id) {
                             subtitle_request_data.tmdb_id = this.current_movie.info.tmdb_id;
-                            console.log('✅ EPISODE TMDB ID added (ONLY PARAM):', this.current_movie.info.tmdb_id);
+                            console.log('✅ EPISODE TMDB ID FOUND:', this.current_movie.info.tmdb_id);
+                            console.log('🔗 TMDB ID TYPE:', typeof this.current_movie.info.tmdb_id);
                         } else {
-                            console.log('⚠️ NO EPISODE TMDB ID - cannot search');
+                            console.log('❌ NO EPISODE TMDB ID FOUND');
+                            console.log('📊 Available episode info keys:', this.current_movie.info ? Object.keys(this.current_movie.info) : 'No info object');
                         }
                         
-                        console.log('=== FINAL EPISODE REQUEST (HYBRID) ===');
-                        console.log('Request data:', subtitle_request_data);
+                        console.log('📤 ===== FINAL EPISODE REQUEST =====');
+                        console.log('🌐 API URL: https://exoapp.tv/api/get-subtitles');
+                        console.log('📝 Request data:', subtitle_request_data);
+                        console.log('🔗 Equivalent CURL:');
+                        console.log(`curl -X POST "https://exoapp.tv/api/get-subtitles" -H "Content-Type: application/x-www-form-urlencoded" -d "tmdb_id=${subtitle_request_data.tmdb_id}&movie_type=${subtitle_request_data.movie_type}"`);
+                        console.log('===============================================');
                     }
                     
                     console.log('=== SUBTITLE DEBUG: Making AJAX request ===');
@@ -806,12 +817,14 @@ var vod_series_player_page={
                         data: subtitle_request_data,
                         dataType:'json',
                         success:function (result) {
-                            console.log('=== SUBTITLE DEBUG: AJAX Success ===');
-                            console.log('Raw response (FULL):', result);
-                            console.log('Response type:', typeof result);
-                            console.log('Response status:', result.status);
-                            console.log('Response subtitles:', result.subtitles);
-                            console.log('Subtitles length:', result.subtitles ? result.subtitles.length : 'undefined');
+                            console.log('🎉 ===== SERIES SUBTITLE API RESPONSE =====');
+                            console.log('📥 Raw response (FULL):', result);
+                            console.log('📊 Response type:', typeof result);
+                            console.log('✅ Response status:', result.status);
+                            console.log('🎬 Response subtitles:', result.subtitles);
+                            console.log('📈 Subtitles length:', result.subtitles ? result.subtitles.length : 'undefined');
+                            console.log('🔗 Request TMDB ID was:', subtitle_request_data.tmdb_id);
+                            console.log('🎯 Request type was:', subtitle_request_data.movie_type);
                             
                             // Detailed analysis of what OpenSubtitles returned
                             console.log('=== OPENSUBTITLES RESPONSE ANALYSIS ===');
