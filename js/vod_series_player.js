@@ -769,10 +769,18 @@ var vod_series_player_page={
                             episode_number: episode_num
                         }
                         
-                        // Add TMDB ID if available
+                        // Add episode ID (primary) - this is what exoapp.tv expects
+                        if(this.current_movie.id) {
+                            subtitle_request_data.id = this.current_movie.id;
+                            console.log('✅ EPISODE ID added (PRIMARY):', this.current_movie.id);
+                        } else {
+                            console.log('⚠️ NO EPISODE ID available');
+                        }
+                        
+                        // Add TMDB ID as backup
                         if(this.current_movie.info && this.current_movie.info.tmdb_id) {
                             subtitle_request_data.tmdb_id = this.current_movie.info.tmdb_id;
-                            console.log('✅ SERIES TMDB ID added:', this.current_movie.info.tmdb_id);
+                            console.log('✅ SERIES TMDB ID added (backup):', this.current_movie.info.tmdb_id);
                         } else {
                             console.log('⚠️ NO SERIES TMDB ID available');
                         }

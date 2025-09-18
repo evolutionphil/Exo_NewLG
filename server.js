@@ -16,57 +16,136 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-// Subtitle API endpoint - matches what your app expects
+// Subtitle API endpoint - proxy to real exoapp.tv API
 app.post('/api/get-subtitles', async (req, res) => {
   try {
     console.log('=== Subtitle Request Received ===');
     console.log('Request data:', req.body);
     
-    const { movie_name, tmdb_id, movie_type, season_number, episode_number } = req.body;
+    const { movie_name, tmdb_id, id, movie_type, season_number, episode_number, episode_title, year } = req.body;
     
-    // Build query for OpenSubtitles API (you'll need an API key)
-    let searchParams = {};
-    
-    if (tmdb_id) {
-      searchParams.tmdb_id = tmdb_id;
-    } else {
-      // Fallback to title search
-      searchParams.query = movie_name;
-    }
-    
+    console.log(`=== Forwarding to exoapp.tv API ===`);
+    console.log(`Movie: ${movie_name}`);
+    console.log(`Episode ID: ${id}`);
+    console.log(`TMDB ID: ${tmdb_id}`);
+    console.log(`Type: ${movie_type}`);
     if (movie_type === 'episode') {
-      searchParams.season_number = season_number;
-      searchParams.episode_number = episode_number;
+      console.log(`Season: ${season_number}, Episode: ${episode_number}`);
+      if (episode_title) console.log(`Episode Title: ${episode_title}`);
+    }
+    if (year) console.log(`Year: ${year}`);
+    
+    const https = require('https');
+    const querystring = require('querystring');
+    
+    // Prepare data for exoapp.tv API - include movie_name when available
+    let apiData = {};
+    
+    if (id) {
+      // Episode ID is primary, but include movie_name for API requirement
+      apiData.id = id;
+      if (movie_name) apiData.movie_name = movie_name;
+      if (movie_type) apiData.movie_type = movie_type;
+      if (season_number) apiData.season_number = season_number;
+      if (episode_number) apiData.episode_number = episode_number;
+    } else if (tmdb_id) {
+      // TMDB ID fallback
+      apiData.tmdb_id = tmdb_id;
+      if (movie_name) apiData.movie_name = movie_name;
+      if (movie_type) apiData.movie_type = movie_type;
+      if (season_number) apiData.season_number = season_number;
+      if (episode_number) apiData.episode_number = episode_number;
+      if (year) apiData.year = year;
+    } else if (movie_name) {
+      // Name-only search
+      apiData.movie_name = movie_name;
+      if (movie_type) apiData.movie_type = movie_type;
+      if (season_number) apiData.season_number = season_number;
+      if (episode_number) apiData.episode_number = episode_number;
+      if (year) apiData.year = year;
     }
     
-    // For now, return mock data that matches your app's expected format
-    // Replace this with actual OpenSubtitles API call
-    const mockSubtitles = [
-      {
-        label: 'English',
-        file: '/api/subtitle-file?lang=en&id=' + (tmdb_id || 'mock'),
-        lang: 'en'
-      },
-      {
-        label: 'Spanish', 
-        file: '/api/subtitle-file?lang=es&id=' + (tmdb_id || 'mock'),
-        lang: 'es'
-      },
-      {
-        label: 'French',
-        file: '/api/subtitle-file?lang=fr&id=' + (tmdb_id || 'mock'), 
-        lang: 'fr'
+    console.log('Final API data to send:', apiData);
+    const postData = querystring.stringify(apiData);
+    
+    const options = {
+      hostname: 'exoapp.tv',
+      path: '/api/get-subtitles',
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Length': Buffer.byteLength(postData)
       }
-    ];
+    };
     
-    console.log('=== Returning subtitles ===');
-    console.log('Subtitles count:', mockSubtitles.length);
-    
-    // Return the exact format your app expects
-    res.json({
-      status: 'success',
-      subtitles: mockSubtitles
+    const request = https.request(options, (response) => {
+      let data = '';
+      
+      response.setEncoding('utf8');
+      
+      response.on('data', (chunk) => {
+        data += chunk;
+      });
+      
+      response.on('end', () => {
+        try {
+          console.log(`=== Response from exoapp.tv ===`);
+          console.log(`Status: ${response.statusCode}`);
+          console.log(`Raw response: ${data.substring(0, 500)}...`);
+          
+          if (response.statusCode === 200) {
+            const jsonResponse = JSON.parse(data);
+            console.log(`✅ Successfully fetched subtitles from exoapp.tv`);
+            console.log(`Subtitles count: ${jsonResponse.subtitles ? jsonResponse.subtitles.length : 0}`);
+            
+            // Log each subtitle for debugging
+            if (jsonResponse.subtitles && jsonResponse.subtitles.length > 0) {
+              jsonResponse.subtitles.forEach((sub, i) => {
+                console.log(`Subtitle ${i + 1}: ${sub.label} (${sub.lang}) -> ${sub.file}`);
+              });
+            }
+            
+            res.json(jsonResponse);
+          } else {
+            throw new Error(`HTTP ${response.statusCode}: ${data}`);
+          }
+        } catch (parseError) {
+          console.error(`❌ Error parsing response:`, parseError.message);
+          console.log(`Raw response that failed to parse: ${data}`);
+          
+          res.json({
+            status: 'error',
+            message: 'Failed to parse API response',
+            subtitles: []
+          });
+        }
+      });
     });
+    
+    request.on('error', (error) => {
+      console.error(`❌ Request error:`, error.message);
+      
+      res.json({
+        status: 'error',
+        message: `API request failed: ${error.message}`,
+        subtitles: []
+      });
+    });
+    
+    request.setTimeout(30000, () => {
+      request.destroy();
+      console.error(`❌ Request timeout`);
+      
+      res.json({
+        status: 'error',
+        message: 'API request timeout',
+        subtitles: []
+      });
+    });
+    
+    // Write data to request
+    request.write(postData);
+    request.end();
     
   } catch (error) {
     console.log('=== Subtitle API Error ===');
