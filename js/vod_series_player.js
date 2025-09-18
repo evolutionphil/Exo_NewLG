@@ -797,12 +797,12 @@ var vod_series_player_page={
                     }
                     
                     console.log('=== SUBTITLE DEBUG: Making AJAX request ===');
-                    console.log('URL:', '/api/get-subtitles');
+                    console.log('URL:', 'https://exoapp.tv/api/get-subtitles');
                     console.log('Data to send:', subtitle_request_data);
                     
                     $.ajax({
                         method:'post',
-                        url:'/api/get-subtitles',
+                        url:'https://exoapp.tv/api/get-subtitles',
                         data: subtitle_request_data,
                         dataType:'json',
                         success:function (result) {
