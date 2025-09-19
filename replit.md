@@ -19,6 +19,12 @@ Preferred communication style: Simple, everyday language.
 - **Dual Player Architecture**: 
   - Samsung: Native `webapis.avplay` for hardware-accelerated video playback
   - LG: HTML5 video element with WebOS media APIs integration
+- **Advanced Aspect Ratio Control**: 
+  - Samsung: Auto aspect ratio and full screen modes with native display methods
+  - LG: Three-mode CSS object-fit control (contain/letterbox, cover/crop, fill/stretch)
+  - Cross-platform UI controls with HD-line button for aspect ratio toggling
+  - User preference persistence in localStorage for both platforms
+- **Responsive Video Display**: Media queries supporting various TV screen sizes (HD, 4K, ultra-wide, 4:3)
 - **Adaptive Streaming**: Support for multiple video formats and quality levels
 - **Subtitle Support**: SRT subtitle parsing and display with real-time synchronization
 - **Audio Track Management**: Multiple audio track selection and switching
