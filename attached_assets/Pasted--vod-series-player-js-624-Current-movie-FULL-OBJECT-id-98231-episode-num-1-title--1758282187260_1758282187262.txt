@@ -1,0 +1,123 @@
+﻿
+vod_series_player.js:624 📺 Current movie (FULL OBJECT): 
+{id: '98231', episode_num: 1, title: 'TR: Snowpiercer - S01E07 - Evren Kayıtsızdır', container_extension: 'mkv', info: {…}, …}
+added
+: 
+"1618434704"
+container_extension
+: 
+"mkv"
+custom_sid
+: 
+""
+direct_source
+: 
+""
+episode_num
+: 
+1
+id
+: 
+"98231"
+info
+: 
+audio
+: 
+{index: 2, codec_name: 'ac3', codec_long_name: 'ATSC A/52A (AC-3)', codec_type: 'audio', codec_time_base: '1/48000', …}
+bitrate
+: 
+1834
+duration
+: 
+"00:47:11"
+duration_secs
+: 
+2831
+movie_image
+: 
+"https://image.tmdb.org/t/p/w600_and_h900_bestv2/52c4ivNLxNhmM0VqkY1L6bsRUHu.jpg"
+plot
+: 
+"Trenle ilgili karanlık bir sırrın ortaya çıkacağından endişelenen Melanie, Layton'ı arar. Josie, Miles'ı görmeye çalışır. Ruth beklenmedik bir buluşma gerçekleştirir."
+rating
+: 
+6.2
+releasedate
+: 
+"2020-06-28"
+season
+: 
+"1"
+tmdb_id
+: 
+2276929
+video
+: 
+{index: 0, codec_name: 'h264', codec_long_name: 'H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10', profile: 'High', codec_type: 'video', …}
+[[Prototype]]
+: 
+Object
+season
+: 
+1
+title
+: 
+"TR: Snowpiercer - S01E07 - Evren Kayıtsızdır"
+[[Prototype]]
+: 
+Object
+vod_series_player.js:625 📊 Episode info available: YES
+vod_series_player.js:627 🔗 Episode TMDB ID: 2276929
+vod_series_player.js:628 📅 Episode release date: 2020-06-28
+vod_series_player.js:629 🎞️ Episode title: undefined
+vod_series_player.js:630 📋 All episode info keys: 
+(11) ['tmdb_id', 'releasedate', 'plot', 'duration_secs', 'duration', 'movie_image', 'video', 'audio', 'bitrate', 'rating', 'season']
+0
+: 
+"tmdb_id"
+1
+: 
+"releasedate"
+2
+: 
+"plot"
+3
+: 
+"duration_secs"
+4
+: 
+"duration"
+5
+: 
+"movie_image"
+6
+: 
+"video"
+7
+: 
+"audio"
+8
+: 
+"bitrate"
+9
+: 
+"rating"
+10
+: 
+"season"
+length
+: 
+11
+[[Prototype]]
+: 
+Array(0)
+vod_series_player.js:632 ✅ Subtitle loaded status: false
+vod_series_player.js:633 ⏳ Subtitle loading status: false
+vod_series_player.js:634 ================================================
+vod_series_player.js:643 === SUBTITLE DEBUG: Non-Samsung text subtitle request ===
+vod_series_player.js:738 === SUBTITLE DEBUG: Building series/episode request data ===
+vod_series_player.js:739 === DETAILED SERIES/EPISODE ANALYSIS FOR SUBTITLE MATCHING ===
+vod_series_player.js:740 Current series (FULL): 
+{num: 11, name: 'TR: Snowpiercer', series_id: 283, cover: 'https://styles.redditmedia.com/t5_35gju/styles/communityIcon_mv4sihrwo1f81.png', plot: 'Dünya buzlarla kaplanınca hayatta kalan son insanl…sas dengeyi bozmadan birlikte yaşamak çok zordur.', …}
+vod_series_player.js:741 Current season (FULL): 
+{air_date: '2020-05-17', episode_count: 10, id: 104013, name: 'Staffel 1', overview: '', …}

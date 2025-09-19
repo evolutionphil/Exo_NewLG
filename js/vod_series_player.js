@@ -734,91 +734,33 @@ var vod_series_player_page={
                             cleaned: cleaned_name,
                             difference: original_name !== cleaned_name ? 'CHANGED' : 'SAME'
                         });
-                    }else {
-                        console.log('=== SUBTITLE DEBUG: Building series/episode request data ===');
-                        console.log('=== DETAILED SERIES/EPISODE ANALYSIS FOR SUBTITLE MATCHING ===');
-                        console.log('Current series (FULL):', current_series);
-                        console.log('Current season (FULL):', current_season);
-                        console.log('Episode variable:', episode_variable);
-                        console.log('Current movie info:', this.current_movie.info || 'NOT AVAILABLE');
-                        
-                        var episode=current_season.episodes[episode_variable.keys.index];
-                        console.log('Selected episode (FULL):', episode);
-                        
-                        // Analyze series name
-                        var original_series_name = current_series.name;
-                        var cleaned_series_name = original_series_name;
-                        console.log('=== SERIES NAME CLEANING PROCESS ===');
-                        console.log('Step 1 - Original series name:', original_series_name);
-                        
-                        // Remove season/episode indicators from series name
-                        cleaned_series_name = cleaned_series_name.replace(/\s*[Ss]\d+[Ee]\d+.*$/i, '').trim();
-                        cleaned_series_name = cleaned_series_name.replace(/\s*Season\s*\d+.*$/i, '').trim();
-                        cleaned_series_name = cleaned_series_name.replace(/\s*Episode\s*\d+.*$/i, '').trim();
-                        cleaned_series_name = cleaned_series_name.replace(/\s*\(\d{4}\)\s*/, '').trim();
-                        console.log('Step 2 - After season/episode removal:', cleaned_series_name);
-                        
-                        // Season and episode number analysis
-                        var season_num = current_season.season_number ? current_season.season_number : seasons_variable.keys.index+1;
-                        var episode_num = episode.episode_num ? episode.episode_num : episode_variable.keys.index+1;
-                        
-                        console.log('=== SEASON/EPISODE NUMBER ANALYSIS ===');
-                        console.log('Season number (from metadata):', current_season.season_number || 'NOT AVAILABLE');
-                        console.log('Season number (from index):', seasons_variable.keys.index+1);
-                        console.log('Final season number:', season_num);
-                        console.log('Episode number (from metadata):', episode.episode_num || 'NOT AVAILABLE');
-                        console.log('Episode number (from index):', episode_variable.keys.index+1);
-                        console.log('Final episode number:', episode_num);
-                        console.log('Episode title:', episode.title || 'NOT AVAILABLE');
-                        
-                        // SIMPLE APPROACH: Like movies, but with fallback to episode ID
-                        console.log('=== SIMPLE EPISODE APPROACH (LIKE MOVIES WITH FALLBACK) ===');
-                        console.log('Episode title:', this.current_movie.title);
-                        console.log('Episode ID:', this.current_movie.id);
-                        console.log('Episode TMDB ID:', this.current_movie.info ? this.current_movie.info.tmdb_id : 'N/A');
-                        
-                        // Extract series name from full episode title
-                        var episode_title = this.current_movie.title;
-                        var series_name = 'Snowpiercer'; // Default
-                        
-                        // Try to extract series name from episode title
-                        var series_match = episode_title.match(/^(?:TR:\s*)?([^-]+)/);
-                        if(series_match) {
-                            series_name = series_match[1].trim();
-                        }
-                        console.log('Extracted series name:', series_name);
-                        
-                        console.log('🔍 ===== SERIES SUBTITLE REQUEST DEBUG =====');
-                        console.log('📺 Current episode data:', this.current_movie);
+                    } else {
+                        // SERIES EPISODES: Use episode TMDB ID directly
+                        console.log('🎬 ===== SERIES EPISODE SUBTITLE REQUEST =====');
+                        console.log('📺 Episode data:', this.current_movie);
                         console.log('📋 Episode info:', this.current_movie.info);
-                        console.log('🎬 Series name extracted:', series_name);
                         
-                        // SIMPLE: Only TMDB ID and movie_type=auto
-                        subtitle_request_data={
+                        // Simple approach: Only TMDB ID and movie_type=auto
+                        subtitle_request_data = {
                             movie_type: 'auto'
                         }
                         
-                        // Add TMDB ID from episode info (THIS IS THE KEY!)
+                        // Use episode TMDB ID from this.current_movie.info.tmdb_id
                         if(this.current_movie && this.current_movie.info && this.current_movie.info.tmdb_id) {
                             subtitle_request_data.tmdb_id = String(this.current_movie.info.tmdb_id);
                             console.log('✅ USING EPISODE TMDB ID:', this.current_movie.info.tmdb_id);
-                            console.log('🔗 TMDB ID TYPE:', typeof this.current_movie.info.tmdb_id);
-                            console.log('📝 TMDB ID AS STRING:', String(this.current_movie.info.tmdb_id));
+                            console.log('📝 TMDB ID as string:', String(this.current_movie.info.tmdb_id));
+                            console.log('🎯 Movie type:', subtitle_request_data.movie_type);
                         } else {
-                            console.log('❌ NO EPISODE TMDB ID FOUND');
-                            console.log('🔍 Current movie structure:', this.current_movie);
-                            console.log('📊 Episode info available:', (this.current_movie && this.current_movie.info) ? 'YES' : 'NO');
-                            if(this.current_movie && this.current_movie.info) {
-                                console.log('📋 Available episode info keys:', Object.keys(this.current_movie.info));
-                            }
+                            console.log('❌ NO EPISODE TMDB ID - cannot search for subtitles');
                         }
                         
-                        console.log('📤 ===== FINAL EPISODE REQUEST =====');
-                        console.log('🌐 API URL: https://exoapp.tv/api/get-subtitles');
-                        console.log('📝 Request data:', subtitle_request_data);
-                        console.log('🔗 Equivalent CURL:');
+                        console.log('📤 ===== FINAL API REQUEST =====');
+                        console.log('🌐 URL: https://exoapp.tv/api/get-subtitles');
+                        console.log('📝 Data:', subtitle_request_data);
+                        console.log('🔗 CURL equivalent:');
                         console.log(`curl -X POST "https://exoapp.tv/api/get-subtitles" -H "Content-Type: application/x-www-form-urlencoded" -d "tmdb_id=${subtitle_request_data.tmdb_id}&movie_type=${subtitle_request_data.movie_type}"`);
-                        console.log('===============================================');
+                        console.log('==============================================');
                     }
                     
                     console.log('=== SUBTITLE DEBUG: Making AJAX request ===');
