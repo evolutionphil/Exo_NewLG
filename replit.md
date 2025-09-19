@@ -20,10 +20,11 @@ Preferred communication style: Simple, everyday language.
   - Samsung: Native `webapis.avplay` for hardware-accelerated video playback
   - LG: HTML5 video element with WebOS media APIs integration
 - **Advanced Aspect Ratio Control**: 
-  - Samsung: Auto aspect ratio and full screen modes with native display methods
-  - LG: Three-mode CSS object-fit control (contain/letterbox, cover/crop, fill/stretch)
+  - Samsung: 16:9 widescreen (default), auto aspect ratio, and full screen modes with native display methods
+  - LG: Four-mode CSS control (16:9 widescreen default, contain/letterbox, fill/stretch, cover/crop)
   - Cross-platform UI controls with HD-line button for aspect ratio toggling
   - User preference persistence in localStorage for both platforms
+  - **16:9 Default**: Both platforms now default to 16:9 widescreen aspect ratio for optimal TV viewing
 - **Responsive Video Display**: Media queries supporting various TV screen sizes (HD, 4K, ultra-wide, 4:3)
 - **Adaptive Streaming**: Support for multiple video formats and quality levels
 - **Subtitle Support**: SRT subtitle parsing and display with real-time synchronization
