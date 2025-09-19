@@ -10,9 +10,10 @@
 
 /* Enhanced video styling for proper aspect ratio control */
 #vod-series-player-page video {
-    object-fit: contain; /* Default to letterbox mode */
+    object-fit: fill; /* Default to 16:9 mode */
     object-position: center;
-    transition: object-fit 0.3s ease; /* Smooth transition between modes */
+    aspect-ratio: 16/9; /* Default 16:9 aspect ratio */
+    transition: all 0.3s ease; /* Smooth transition between modes */
 }
 
 /* Ensure video elements maintain proper positioning */
@@ -32,20 +33,28 @@
     }
 }
 
-/* Support for ultra-wide displays */
+/* Support for ultra-wide displays - maintain 16:9 aspect ratio */
 @media screen and (min-aspect-ratio: 21/9) {
     #vod-series-player-page video {
+        aspect-ratio: 16/9;
         max-width: 100%;
         height: auto;
     }
 }
 
-/* Support for older 4:3 ratio displays */
+/* Support for older 4:3 ratio displays - maintain 16:9 aspect ratio */
 @media screen and (max-aspect-ratio: 4/3) {
     #vod-series-player-page video {
+        aspect-ratio: 16/9;
         width: auto;
         max-height: 100%;
     }
+}
+
+/* 16:9 aspect ratio enforcement for all video elements */
+#vod-series-player-page video[data-aspect-mode="16-9"] {
+    aspect-ratio: 16/9 !important;
+    object-fit: fill !important;
 }
 
 /* Optimize for common TV resolutions */

@@ -20,11 +20,18 @@ function initPlayer() {
                 this.parent_id=parent_id;
                 this.current_time=0;
                 this.videoObj = document.getElementById(id);
-                // Load saved aspect ratio preference for Samsung
+                // Load saved aspect ratio preference for Samsung - default to 16:9 mode (0)
                 var saved_samsung_mode = localStorage.getItem('samsung_aspect_ratio_mode');
                 this.full_screen_state = saved_samsung_mode ? parseInt(saved_samsung_mode) : 0;
                 try{
-                    webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_AUTO_ASPECT_RATIO');
+                    // Set initial display mode based on preference - default to 16:9 letterbox
+                    if(this.full_screen_state === 0) {
+                        webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_LETTER_BOX');
+                    } else if(this.full_screen_state === 1) {
+                        webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_AUTO_ASPECT_RATIO');
+                    } else {
+                        webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_FULL_SCREEN');
+                    }
                 }catch (e) {
                 }
                 $('.video-resolution').text('');
@@ -121,25 +128,29 @@ function initPlayer() {
                 webapis.avplay.close();
             },
             toggleScreenRatio:function(){
-                if(this.full_screen_state==1){
-                    try{
+                // Cycle through Samsung display modes: 16:9 -> Auto Aspect -> Full Screen -> 16:9
+                this.full_screen_state = (this.full_screen_state + 1) % 3;
+                
+                try{
+                    if(this.full_screen_state === 0) {
+                        // 16:9 aspect ratio mode - use letterbox with proper display
+                        webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_LETTER_BOX');
+                    } else if(this.full_screen_state === 1) {
+                        // Auto aspect ratio mode
                         webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_AUTO_ASPECT_RATIO');
-                        this.full_screen_state=0;
-                    }catch (e) {
-                    }
-                }else{
-                    try{
+                    } else {
+                        // Full screen mode
                         webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_FULL_SCREEN');
-                        this.full_screen_state=1;
-                    }catch (e) {
                     }
+                }catch (e) {
+                    console.log('Samsung display method error:', e);
                 }
                 
                 // Save Samsung aspect ratio preference
                 localStorage.setItem('samsung_aspect_ratio_mode', this.full_screen_state.toString());
                 
                 // Show user feedback about current mode
-                var mode_names = ['Auto Aspect Ratio', 'Full Screen'];
+                var mode_names = ['16:9 Widescreen', 'Auto Aspect Ratio', 'Full Screen'];
                 var current_mode = mode_names[this.full_screen_state];
                 if(typeof showToast === 'function') {
                     showToast("Display Mode", current_mode);
@@ -323,7 +334,7 @@ function initPlayer() {
             videoObj:null,
             parent_id:'',
             current_time:0,
-            aspect_ratio_mode:0, // 0 = contain (letterbox), 1 = fill (stretch), 2 = cover (crop)
+            aspect_ratio_mode:0, // 0 = 16:9 (default), 1 = contain (letterbox), 2 = fill (stretch), 3 = cover (crop)
             STATES:{
                 STOPPED: 0,
                 PLAYING: 1,
@@ -331,9 +342,10 @@ function initPlayer() {
                 PREPARED: 4
             },
             ASPECT_MODES:{
-                CONTAIN: 0,  // Maintain aspect ratio with letterboxing
-                FILL: 1,     // Stretch to fill (may distort)
-                COVER: 2     // Crop to fill while maintaining aspect ratio
+                RATIO_16_9: 0,  // Force 16:9 aspect ratio (default)
+                CONTAIN: 1,     // Maintain aspect ratio with letterboxing
+                FILL: 2,        // Stretch to fill (may distort)
+                COVER: 3        // Crop to fill while maintaining aspect ratio
             },
             subtitles:[],
             tracks:[],
@@ -344,7 +356,7 @@ function initPlayer() {
                 this.videoObj=null;     // tag video
                 this.parent_id=parent_id;
                 this.current_time=0;
-                // Load saved aspect ratio preference or default to contain mode
+                // Load saved aspect ratio preference or default to 16:9 mode
                 var saved_aspect_mode = localStorage.getItem('lg_aspect_ratio_mode');
                 this.aspect_ratio_mode = saved_aspect_mode ? parseInt(saved_aspect_mode) : 0;
 
@@ -527,15 +539,15 @@ function initPlayer() {
                 }
             },
             toggleScreenRatio:function(){
-                // Cycle through aspect ratio modes: contain -> cover -> fill -> contain
-                this.aspect_ratio_mode = (this.aspect_ratio_mode + 1) % 3;
+                // Cycle through aspect ratio modes: 16:9 -> contain -> fill -> cover -> 16:9
+                this.aspect_ratio_mode = (this.aspect_ratio_mode + 1) % 4;
                 this.setVideoAspectRatio();
                 
                 // Save preference to localStorage
                 localStorage.setItem('lg_aspect_ratio_mode', this.aspect_ratio_mode.toString());
                 
                 // Show user feedback about current mode
-                var mode_names = ['Letterbox (Contain)', 'Crop to Fill (Cover)', 'Stretch to Fill'];
+                var mode_names = ['16:9 Widescreen', 'Letterbox (Contain)', 'Stretch to Fill', 'Crop to Fill (Cover)'];
                 var current_mode = mode_names[this.aspect_ratio_mode];
                 if(typeof showToast === 'function') {
                     showToast("Aspect Ratio", current_mode);
@@ -550,16 +562,29 @@ function initPlayer() {
             setVideoAspectRatio:function(){
                 if(!this.videoObj) return;
                 
-                var object_fit_values = ['contain', 'cover', 'fill'];
-                var current_fit = object_fit_values[this.aspect_ratio_mode];
-                
-                // Apply CSS object-fit property for proper aspect ratio control
-                this.videoObj.style.objectFit = current_fit;
-                this.videoObj.style.objectPosition = 'center';
+                if(this.aspect_ratio_mode === 0) {
+                    // 16:9 mode - force aspect ratio
+                    this.videoObj.style.objectFit = 'fill';
+                    this.videoObj.style.aspectRatio = '16/9';
+                    this.videoObj.style.objectPosition = 'center';
+                    this.videoObj.style.width = '100%';
+                    this.videoObj.style.height = 'auto';
+                } else {
+                    // Other modes - use standard object-fit values
+                    var object_fit_values = ['16/9', 'contain', 'fill', 'cover'];
+                    var current_fit = object_fit_values[this.aspect_ratio_mode];
+                    
+                    this.videoObj.style.objectFit = current_fit;
+                    this.videoObj.style.aspectRatio = 'auto';
+                    this.videoObj.style.objectPosition = 'center';
+                    this.videoObj.style.width = '100%';
+                    this.videoObj.style.height = '100%';
+                }
                 
                 if(typeof env !== 'undefined' && env === 'develop') {
                     console.log('=== LG VIDEO ASPECT RATIO SET ===');
-                    console.log('Applied object-fit:', current_fit);
+                    console.log('Mode index:', this.aspect_ratio_mode);
+                    console.log('Applied styling for mode');
                 }
             }
         }
