@@ -20,7 +20,9 @@ function initPlayer() {
                 this.parent_id=parent_id;
                 this.current_time=0;
                 this.videoObj = document.getElementById(id);
-                this.full_screen_state=0;
+                // Load saved aspect ratio preference for Samsung
+                var saved_samsung_mode = localStorage.getItem('samsung_aspect_ratio_mode');
+                this.full_screen_state = saved_samsung_mode ? parseInt(saved_samsung_mode) : 0;
                 try{
                     webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_AUTO_ASPECT_RATIO');
                 }catch (e) {
@@ -131,6 +133,22 @@ function initPlayer() {
                         this.full_screen_state=1;
                     }catch (e) {
                     }
+                }
+                
+                // Save Samsung aspect ratio preference
+                localStorage.setItem('samsung_aspect_ratio_mode', this.full_screen_state.toString());
+                
+                // Show user feedback about current mode
+                var mode_names = ['Auto Aspect Ratio', 'Full Screen'];
+                var current_mode = mode_names[this.full_screen_state];
+                if(typeof showToast === 'function') {
+                    showToast("Display Mode", current_mode);
+                }
+                
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== SAMSUNG DISPLAY MODE CHANGED ===');
+                    console.log('New mode:', current_mode);
+                    console.log('Mode index:', this.full_screen_state);
                 }
             },
             setDisplayArea:function() {

@@ -23,6 +23,43 @@
     width: 100%;
     height: 100%;
 }
+
+/* Responsive video container improvements for different TV screen sizes */
+@media screen and (max-width: 1920px) {
+    #vod-series-player-page .player-container {
+        max-width: 100vw;
+        max-height: 100vh;
+    }
+}
+
+/* Support for ultra-wide displays */
+@media screen and (min-aspect-ratio: 21/9) {
+    #vod-series-player-page video {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* Support for older 4:3 ratio displays */
+@media screen and (max-aspect-ratio: 4/3) {
+    #vod-series-player-page video {
+        width: auto;
+        max-height: 100%;
+    }
+}
+
+/* Optimize for common TV resolutions */
+@media screen and (min-width: 3840px) { /* 4K TVs */
+    #vod-series-player-page .player-container {
+        font-size: 1.2em; /* Scale UI elements for 4K */
+    }
+}
+
+@media screen and (max-width: 1280px) { /* HD TVs */
+    #vod-series-player-page .player-container {
+        font-size: 0.9em; /* Scale down UI for smaller screens */
+    }
+}
 #vod-series-video-controls-container {
     position: absolute;
     bottom: 0;
