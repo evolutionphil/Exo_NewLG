@@ -622,8 +622,8 @@ var vod_series_player_page={
         console.log('📱 Platform:', platform);
         console.log('🎭 Current movie type:', this.current_movie_type);
         console.log('📺 Current movie (FULL OBJECT):', this.current_movie);
-        console.log('📊 Episode info available:', this.current_movie?.info ? 'YES' : 'NO');
-        if(this.current_movie?.info) {
+        console.log('📊 Episode info available:', (this.current_movie && this.current_movie.info) ? 'YES' : 'NO');
+        if(this.current_movie && this.current_movie.info) {
             console.log('🔗 Episode TMDB ID:', this.current_movie.info.tmdb_id);
             console.log('📅 Episode release date:', this.current_movie.info.releasedate);
             console.log('🎞️ Episode title:', this.current_movie.info.title);
@@ -807,8 +807,8 @@ var vod_series_player_page={
                         } else {
                             console.log('❌ NO EPISODE TMDB ID FOUND');
                             console.log('🔍 Current movie structure:', this.current_movie);
-                            console.log('📊 Episode info available:', this.current_movie?.info ? 'YES' : 'NO');
-                            if(this.current_movie?.info) {
+                            console.log('📊 Episode info available:', (this.current_movie && this.current_movie.info) ? 'YES' : 'NO');
+                            if(this.current_movie && this.current_movie.info) {
                                 console.log('📋 Available episode info keys:', Object.keys(this.current_movie.info));
                             }
                         }
