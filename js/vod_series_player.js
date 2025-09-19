@@ -616,22 +616,6 @@ var vod_series_player_page={
         return htmlContent;
     },
     showSubtitleAudioModal:function(kind){
-        console.log('🎬 ======== SERIES EPISODE SUBTITLE START ========');
-        console.log('🎯 Function called: showSubtitleAudioModal');
-        console.log('📝 Kind requested:', kind);
-        console.log('📱 Platform:', platform);
-        console.log('🎭 Current movie type:', this.current_movie_type);
-        console.log('📺 Current movie (FULL OBJECT):', this.current_movie);
-        console.log('📊 Episode info available:', (this.current_movie && this.current_movie.info) ? 'YES' : 'NO');
-        if(this.current_movie && this.current_movie.info) {
-            console.log('🔗 Episode TMDB ID:', this.current_movie.info.tmdb_id);
-            console.log('📅 Episode release date:', this.current_movie.info.releasedate);
-            console.log('🎞️ Episode title:', this.current_movie.info.title);
-            console.log('📋 All episode info keys:', Object.keys(this.current_movie.info));
-        }
-        console.log('✅ Subtitle loaded status:', this.subtitle_loaded);
-        console.log('⏳ Subtitle loading status:', this.subtitle_loading);
-        console.log('================================================');
         
         var keys=this.keys;
         if(keys.focused_part!="subtitle_audio_selection_modal" && keys.focused_part!='subtitle_btn_selection')
@@ -736,11 +720,6 @@ var vod_series_player_page={
                         });
                     } else {
                         // SERIES EPISODES: Use episode TMDB ID directly
-                        console.log('🎬 ===== SERIES EPISODE SUBTITLE REQUEST =====');
-                        console.log('📺 Episode data:', this.current_movie);
-                        console.log('📋 Episode info:', this.current_movie.info);
-                        
-                        // Simple approach: Only TMDB ID and movie_type=auto
                         subtitle_request_data = {
                             movie_type: 'auto'
                         }
@@ -748,24 +727,9 @@ var vod_series_player_page={
                         // Use episode TMDB ID from this.current_movie.info.tmdb_id
                         if(this.current_movie && this.current_movie.info && this.current_movie.info.tmdb_id) {
                             subtitle_request_data.tmdb_id = String(this.current_movie.info.tmdb_id);
-                            console.log('✅ USING EPISODE TMDB ID:', this.current_movie.info.tmdb_id);
-                            console.log('📝 TMDB ID as string:', String(this.current_movie.info.tmdb_id));
-                            console.log('🎯 Movie type:', subtitle_request_data.movie_type);
-                        } else {
-                            console.log('❌ NO EPISODE TMDB ID - cannot search for subtitles');
                         }
-                        
-                        console.log('📤 ===== FINAL API REQUEST =====');
-                        console.log('🌐 URL: https://exoapp.tv/api/get-subtitles');
-                        console.log('📝 Data:', subtitle_request_data);
-                        console.log('🔗 CURL equivalent:');
-                        console.log(`curl -X POST "https://exoapp.tv/api/get-subtitles" -H "Content-Type: application/x-www-form-urlencoded" -d "tmdb_id=${subtitle_request_data.tmdb_id}&movie_type=${subtitle_request_data.movie_type}"`);
-                        console.log('==============================================');
                     }
                     
-                    console.log('=== SUBTITLE DEBUG: Making AJAX request ===');
-                    console.log('URL:', 'https://exoapp.tv/api/get-subtitles');
-                    console.log('Data to send:', subtitle_request_data);
                     
                     $.ajax({
                         method:'post',
@@ -773,108 +737,24 @@ var vod_series_player_page={
                         data: subtitle_request_data,
                         dataType:'json',
                         success:function (result) {
-                            console.log('🎉 ===== SERIES SUBTITLE API RESPONSE =====');
-                            console.log('📥 Raw response (FULL):', result);
-                            console.log('📊 Response type:', typeof result);
-                            console.log('✅ Response status:', result.status);
-                            console.log('🎬 Response subtitles:', result.subtitles);
-                            console.log('📈 Subtitles length:', result.subtitles ? result.subtitles.length : 'undefined');
-                            console.log('🔗 Request TMDB ID was:', subtitle_request_data.tmdb_id);
-                            console.log('🎯 Request type was:', subtitle_request_data.movie_type);
-                            
-                            // Detailed analysis of what OpenSubtitles returned
-                            console.log('=== OPENSUBTITLES RESPONSE ANALYSIS ===');
-                            if(result.subtitles && Array.isArray(result.subtitles)) {
-                                console.log('Number of subtitle languages found:', result.subtitles.length);
-                                
-                                result.subtitles.forEach(function(subtitle, index) {
-                                    console.log(`=== SUBTITLE ${index + 1} ANALYSIS ===`);
-                                    console.log('Language:', subtitle.label || 'NO LABEL');
-                                    console.log('Language code:', subtitle.lang || 'NO LANG CODE');
-                                    console.log('File URL:', subtitle.file || 'NO FILE URL');
-                                    console.log('Full subtitle object:', subtitle);
-                                    
-                                    // Analyze if the subtitle URL looks correct
-                                    if(subtitle.file) {
-                                        if(subtitle.file.startsWith('/api/subtitle-file')) {
-                                            console.log('✅ Subtitle file URL looks correct (internal API)');
-                                        } else if(subtitle.file.includes('opensubtitles')) {
-                                            console.log('✅ Subtitle file URL looks correct (OpenSubtitles direct)');
-                                        } else {
-                                            console.log('⚠️ Subtitle file URL looks unusual:', subtitle.file);
-                                        }
-                                        
-                                        // Extract any ID from the URL to track matching
-                                        var id_match = subtitle.file.match(/id[=:](\d+)/i);
-                                        if(id_match) {
-                                            console.log('OpenSubtitles file ID:', id_match[1]);
-                                        }
-                                    } else {
-                                        console.log('❌ NO SUBTITLE FILE URL provided');
-                                    }
-                                });
-                                
-                                // Check for potential mismatches
-                                console.log('=== SUBTITLE MATCHING QUALITY ANALYSIS ===');
-                                console.log('Expected movie/series:', subtitle_request_data.movie_name);
-                                console.log('Expected type:', subtitle_request_data.movie_type || 'movie');
-                                if(subtitle_request_data.season_number) {
-                                    console.log('Expected season:', subtitle_request_data.season_number);
-                                    console.log('Expected episode:', subtitle_request_data.episode_number);
-                                }
-                                if(subtitle_request_data.tmdb_id) {
-                                    console.log('TMDB ID used for matching:', subtitle_request_data.tmdb_id);
-                                    console.log('✅ High confidence match expected (TMDB ID used)');
-                                } else {
-                                    console.log('⚠️ Name-only matching used - potential for incorrect results');
-                                }
-                                if(subtitle_request_data.year) {
-                                    console.log('Year used for matching:', subtitle_request_data.year);
-                                }
-                                
-                                // Warning about potential mismatches
-                                if(!subtitle_request_data.tmdb_id && (!subtitle_request_data.year || subtitle_request_data.movie_name.length < 4)) {
-                                    console.log('🚨 HIGH RISK OF WRONG SUBTITLES: No TMDB ID, weak matching criteria');
-                                } else if(!subtitle_request_data.tmdb_id) {
-                                    console.log('⚠️ MEDIUM RISK: Name+year matching only (no TMDB ID)');
-                                } else {
-                                    console.log('✅ LOW RISK: TMDB ID matching used');
-                                }
-                            } else {
-                                console.log('❌ NO SUBTITLES returned or invalid format');
-                            }
-                            
                             that.subtitle_loading=false;
                             that.subtitle_loaded=true;
                             $('#subtitle-loader-container').hide();
                             
                             if(result.status==='success'){
-                                console.log('=== SUBTITLE DEBUG: Processing successful response ===');
                                 if(result.subtitles && result.subtitles.length>0){
-                                    console.log('=== SUBTITLE DEBUG: Found subtitles, rendering ===');
-                                    console.log('Subtitles to render:', result.subtitles);
                                     media_player.subtitles= result.subtitles;
                                     that.renderSubtitles(kind, media_player.subtitles);
                                 }
                                 else{
-                                    console.log('=== SUBTITLE DEBUG: No subtitles found ===');
                                     media_player.subtitles=[];
                                     that.showEmptySubtitleMessage(kind);
                                 }
                             } else {
-                                console.log('=== SUBTITLE DEBUG: Response status not success ===');
-                                console.log('Status:', result.status);
                                 that.showEmptySubtitleMessage(kind);
                             }
                         },
                         error:function (error){
-                            console.log('=== SUBTITLE DEBUG: AJAX Error ===');
-                            console.log('Error object:', error);
-                            console.log('Error status:', error.status);
-                            console.log('Error statusText:', error.statusText);
-                            console.log('Error responseText:', error.responseText);
-                            console.log('Error readyState:', error.readyState);
-                            
                             that.subtitle_loading=false;
                             that.subtitle_loaded=true;
                             $('#subtitle-loader-container').hide();
