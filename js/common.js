@@ -7,10 +7,8 @@ var mac_address,
     is_trial,
     panel_urls = ["https://exoapp.tv/9dlE9XWmiwmAn2j"],
     panel_url = "https://exoapp.tv/9dlE9XWmiwmAn2j",
-    // panel_urls=["https://flixiptv.org/CNdvBMKcnS","https://flixiptv.org/CNdvBMKcnS"],
-    // panel_url="http://flixiptv.org/CNdvBMKcnS",
+ 
     time_difference_with_server = 0; // time difference between user time and server time, measured by mins
-// panel_urls=['http://dev.bai.com:4000/CNdvBMKcnS']
 var expire_date,
     app_loading = false;
 var current_route = "login-page";
