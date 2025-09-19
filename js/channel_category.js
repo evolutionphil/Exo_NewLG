@@ -351,23 +351,48 @@ var channel_category_page={
         this.current_epg_programmes=[];
         this.showCurrentChannelEpg();
         var that=this;
-        $.ajax({
-            method:'get',
-            url:api_host_url+'/player_api.php?username='+user_name+'&password='+password+'&action=get_short_epg&stream_id='+current_channel.stream_id+'&limit=20',
-            success:function (data) {
-                var programmes=[];
-                data.epg_listings.map(function (item) {
-                    programmes.push({
-                        start:item.start,
-                        stop:item.end,
-                        title:item.title
-                    })
-                })
-                that.current_epg_programmes=programmes;
+        
+        // Try to get EPG data from XMLTV Manager
+        var xmltvData = XmltvManager.getChannelEpg(current_channel.stream_id);
+        if(xmltvData && xmltvData.programmes) {
+            that.current_epg_programmes=xmltvData.programmes;
+            that.updateCurrentChannelEpg();
+            that.epg_channel_id=current_channel.stream_id;
+            console.log('EPG data loaded from XMLTV Manager for channel ' + current_channel.stream_id);
+            return;
+        }
+        
+        // If no XMLTV data available, use loading state
+        console.log('EPG data loading for channel ' + current_channel.stream_id + ' via XMLTV Manager');
+        
+        // Start XMLTV fetch if not already loading (non-blocking)
+        if (settings.playlist_type === 'xtreme' && !XmltvManager.isLoading) {
+            XmltvManager.fetchXmltvAsync(false);
+        }
+        
+        // Set up a callback to update when XMLTV data becomes available
+        var updateCallback = function(channelId, programmes) {
+            if (channelId === current_channel.stream_id && programmes) {
+                that.current_epg_programmes = programmes;
                 that.updateCurrentChannelEpg();
-                that.epg_channel_id=current_channel.stream_id;
+                that.epg_channel_id = current_channel.stream_id;
+                // Remove this callback after use
+                XmltvManager.removeEpgUpdateCallback(updateCallback);
             }
-        });
+        };
+        
+        XmltvManager.onEpgUpdate(updateCallback);
+        
+        // Also check again after a short delay in case data loads quickly
+        setTimeout(function() {
+            var updatedXmltvData = XmltvManager.getChannelEpg(current_channel.stream_id);
+            if(updatedXmltvData && updatedXmltvData.programmes) {
+                that.current_epg_programmes = updatedXmltvData.programmes;
+                that.updateCurrentChannelEpg();
+                that.epg_channel_id = current_channel.stream_id;
+                XmltvManager.removeEpgUpdateCallback(updateCallback);
+            }
+        }, 2000);
     },
     hoverCategoryItem:function (index){
         var keys=this.keys;
