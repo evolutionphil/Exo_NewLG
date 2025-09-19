@@ -1474,18 +1474,48 @@ var vod_series_player_page={
         $('#subtitle-selection-modal').modal('show');
         var subtitle_menus=$('#subtitle-selection-modal .subtitle-item');
         this.subtitle_audio_menus=subtitle_menus;
-        $(subtitle_menus[0]).find('input').prop('checked',true);
-        this.hoverSubtitle(0);
+        
+        // **FIX SUBTITLE SELECTION PERSISTENCE**: Better logic for Samsung combined subtitles
         var diff_index=kind==='TEXT' ? 1 : 0;
         var current_selected_index=kind==="TEXT" ? this.current_subtitle_index : this.current_audio_track_index;
-        subtitles.map(function(item, index){
-            var index1=platform==='samsung' ? item.index : index
-            if(index1==current_selected_index){
-                $(subtitle_menus).find('input').prop('checked',false);
-                $(subtitle_menus[index+diff_index]).find('input').prop('checked',true);
-                that.hoverSubtitle(index+diff_index);
+        var selectionFound = false;
+        
+        if(typeof env !== 'undefined' && env === 'develop') {
+            console.log('=== SUBTITLE MODAL DEBUG: Selection Logic ===');
+            console.log('Current selected index:', current_selected_index);
+            console.log('Available subtitles:', subtitles);
+            console.log('Platform:', platform);
+        }
+        
+        // First try to match using combinedIndex or value from checkboxes
+        $(subtitle_menus).each(function(menuIndex, menuElement) {
+            var checkbox = $(menuElement).find('input');
+            var checkboxValue = parseInt(checkbox.val());
+            
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log(`Menu ${menuIndex}: checkbox value = ${checkboxValue}, current = ${current_selected_index}`);
+            }
+            
+            if(checkboxValue === current_selected_index) {
+                $(subtitle_menus).find('input').prop('checked', false);
+                checkbox.prop('checked', true);
+                that.hoverSubtitle(menuIndex);
+                selectionFound = true;
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log(`Found match at menu index ${menuIndex}`);
+                }
+                return false; // break out of each loop
             }
         });
+        
+        // If no selection found, default to first option ("Turn Off Subtitles")
+        if(!selectionFound) {
+            $(subtitle_menus[0]).find('input').prop('checked',true);
+            this.hoverSubtitle(0);
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('No selection found, defaulting to Turn Off Subtitles');
+            }
+        }
     },
     showEmptySubtitleMessage: function (kind) {
         $('#subtitle-selection-modal').modal('hide');
