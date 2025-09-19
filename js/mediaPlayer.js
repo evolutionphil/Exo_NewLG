@@ -305,11 +305,17 @@ function initPlayer() {
             videoObj:null,
             parent_id:'',
             current_time:0,
+            aspect_ratio_mode:0, // 0 = contain (letterbox), 1 = fill (stretch), 2 = cover (crop)
             STATES:{
                 STOPPED: 0,
                 PLAYING: 1,
                 PAUSED: 2,
                 PREPARED: 4
+            },
+            ASPECT_MODES:{
+                CONTAIN: 0,  // Maintain aspect ratio with letterboxing
+                FILL: 1,     // Stretch to fill (may distort)
+                COVER: 2     // Crop to fill while maintaining aspect ratio
             },
             subtitles:[],
             tracks:[],
@@ -320,11 +326,17 @@ function initPlayer() {
                 this.videoObj=null;     // tag video
                 this.parent_id=parent_id;
                 this.current_time=0;
+                // Load saved aspect ratio preference or default to contain mode
+                var saved_aspect_mode = localStorage.getItem('lg_aspect_ratio_mode');
+                this.aspect_ratio_mode = saved_aspect_mode ? parseInt(saved_aspect_mode) : 0;
 
                 SrtOperation.deStruct();
                 $('.video-resolution').text('');
                 this.state = this.STATES.STOPPED;
                 this.videoObj = document.getElementById(id);
+                
+                // Set initial aspect ratio styling
+                this.setVideoAspectRatio();
                 var  videoObj=this.videoObj;
                 $('#'+this.parent_id).find('.video-error').hide();
                 var  that=this;
@@ -494,6 +506,42 @@ function initPlayer() {
                         this.videoObj.audioTracks[i].enabled = false;
                     }
                     this.videoObj.audioTracks[index].enabled = true;
+                }
+            },
+            toggleScreenRatio:function(){
+                // Cycle through aspect ratio modes: contain -> cover -> fill -> contain
+                this.aspect_ratio_mode = (this.aspect_ratio_mode + 1) % 3;
+                this.setVideoAspectRatio();
+                
+                // Save preference to localStorage
+                localStorage.setItem('lg_aspect_ratio_mode', this.aspect_ratio_mode.toString());
+                
+                // Show user feedback about current mode
+                var mode_names = ['Letterbox (Contain)', 'Crop to Fill (Cover)', 'Stretch to Fill'];
+                var current_mode = mode_names[this.aspect_ratio_mode];
+                if(typeof showToast === 'function') {
+                    showToast("Aspect Ratio", current_mode);
+                }
+                
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== LG ASPECT RATIO CHANGED ===');
+                    console.log('New mode:', current_mode);
+                    console.log('Mode index:', this.aspect_ratio_mode);
+                }
+            },
+            setVideoAspectRatio:function(){
+                if(!this.videoObj) return;
+                
+                var object_fit_values = ['contain', 'cover', 'fill'];
+                var current_fit = object_fit_values[this.aspect_ratio_mode];
+                
+                // Apply CSS object-fit property for proper aspect ratio control
+                this.videoObj.style.objectFit = current_fit;
+                this.videoObj.style.objectPosition = 'center';
+                
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== LG VIDEO ASPECT RATIO SET ===');
+                    console.log('Applied object-fit:', current_fit);
                 }
             }
         }
