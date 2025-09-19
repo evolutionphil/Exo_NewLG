@@ -169,6 +169,7 @@ var XmltvManager = {
         this.currentRequest = $.ajax({
             url: url,
             method: 'GET',
+            dataType: 'text', // Ensure we get raw XML text, not parsed JSON
             timeout: 60000, // 60 second timeout
             async: true, // Non-blocking
             success: function(xmlData) {
