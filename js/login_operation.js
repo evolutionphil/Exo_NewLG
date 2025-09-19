@@ -72,6 +72,24 @@ var login_page={
         this.is_loading=true;
         var temps=pickPanelUrl(this.tried_panel_indexes);
         var url=temps[1],url_index=temps[0];
+        
+        // Check if all panel URLs have been exhausted
+        if(!url || url_index === undefined) {
+            console.log('=== DEBUG: All panel URLs exhausted, using cached data ===');
+            var api_data=localStorage.getItem(storage_id+'api_data');
+            if(api_data){
+                console.log('Using cached API data');
+                api_data=JSON.parse(api_data);
+                this.is_loading=false;
+                this.loadApp(api_data);
+                return;
+            } else {
+                console.log('No cached data available, showing network error');
+                this.is_loading=false;
+                this.showNetworkErrorModal();
+                return;
+            }
+        }
         var version=platform==='samsung' ? samsung_version : lg_version;
         var data={
             app_device_id:device_id,
