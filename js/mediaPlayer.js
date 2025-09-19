@@ -61,8 +61,14 @@ function initPlayer() {
                             that.state = that.STATES.PLAYING;
                             webapis.avplay.play();
                             try{
-                                that.full_screen_state=0;
-                                webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_AUTO_ASPECT_RATIO');
+                                // Maintain the user's chosen aspect ratio mode - don't override it
+                                if(that.full_screen_state === 0) {
+                                    webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_LETTER_BOX');
+                                } else if(that.full_screen_state === 1) {
+                                    webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_AUTO_ASPECT_RATIO');
+                                } else {
+                                    webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_FULL_SCREEN');
+                                }
                             }catch (e) {
                             }
                             $('#'+that.parent_id).find('.video-total-time').text(that.formatTime(webapis.avplay.getDuration()/1000));
@@ -319,7 +325,8 @@ function initPlayer() {
             },
             setSubtitleOrAudioTrack:function(kind, index){
                 try{
-                    $('#'+this.parent_id+' .subtitle-container').show();
+                    // Ensure subtitle container is visible for Samsung platform
+                    $('#'+this.parent_id).find('.subtitle-container').show();
                     webapis.avplay.setSelectTrack(kind,index);
                 }catch (e) {
                 }
