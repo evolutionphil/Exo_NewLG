@@ -569,7 +569,7 @@ var vod_series_player_page={
                     onclick="vod_series_player_page.handleMenuClick()" \
                 >\
                    <input class="setting-modal-checkbox" type="checkbox" name="subtitle" id="disable-subtitle" value="-1">\
-                   <label for="disable-subtitle">Disabled</label>\
+                   <label for="disable-subtitle">Turn Off Subtitles</label>\
                 </div>';
         }
         if(platform==='samsung'){
