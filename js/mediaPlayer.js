@@ -113,6 +113,12 @@ function initPlayer() {
                 try{
                     webapis.avplay.play();
                 }catch(e){
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== SAMSUNG PLAY FALLBACK ===');
+                        console.log('webapis.avplay.play() failed, using fallback timing');
+                    }
+                    // When webapis aren't available, initialize timing for fallback system
+                    this.current_time = 0;
                 }
             },
             pause:function() {
@@ -127,11 +133,39 @@ function initPlayer() {
             },
             stop:function() {
                 this.state = this.STATES.STOPPED;
-                webapis.avplay.stop();
+                try {
+                    webapis.avplay.stop();
+                } catch(e) {
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('webapis.avplay.stop() failed:', e.message);
+                    }
+                }
+                // Clean up fallback timer
+                if (this.fallbackTimer) {
+                    clearInterval(this.fallbackTimer);
+                    this.fallbackTimer = null;
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('Fallback timer stopped and cleaned up');
+                    }
+                }
             },
             close:function(){
                 this.state = this.STATES.STOPPED;
-                webapis.avplay.close();
+                try {
+                    webapis.avplay.close();
+                } catch(e) {
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('webapis.avplay.close() failed:', e.message);
+                    }
+                }
+                // Clean up fallback timer
+                if (this.fallbackTimer) {
+                    clearInterval(this.fallbackTimer);
+                    this.fallbackTimer = null;
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('Fallback timer closed and cleaned up');
+                    }
+                }
             },
             toggleScreenRatio:function(){
                 // Cycle through Samsung display modes: 16:9 -> Auto Aspect -> Full Screen -> 16:9
@@ -257,7 +291,48 @@ function initPlayer() {
                         // console.log("subtitleText: ",text,data3,data4);
                     }
                 }
-                webapis.avplay.setListener(listener);
+                
+                // Add fallback timing system when webapis are not available
+                try {
+                    webapis.avplay.setListener(listener);
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('Samsung webapis.avplay.setListener successfully set');
+                    }
+                } catch (e) {
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== SAMSUNG WEBAPIS NOT AVAILABLE ===');
+                        console.log('Starting fallback timing system for subtitle support');
+                        console.log('Error:', e.message);
+                    }
+                    
+                    // Create fallback timer for subtitle timing when webapis aren't available
+                    this.fallbackTimer = setInterval(function() {
+                        if (that.state === that.STATES.PLAYING) {
+                            // Simulate currentTime progression 
+                            that.current_time += 1000; // Add 1 second in milliseconds
+                            var currentTimeSeconds = that.current_time / 1000;
+                            
+                            if(typeof env !== 'undefined' && env === 'develop') {
+                                console.log('=== FALLBACK TIMING DEBUG ===');
+                                console.log('Simulated time (seconds):', currentTimeSeconds);
+                            }
+                            
+                            // Update UI progress
+                            if(current_route==='vod-series-player-video') {
+                                vod_series_player_page.current_time = currentTimeSeconds;
+                            }
+                            
+                            // Connect subtitle timing updates via fallback system
+                            if (typeof SrtOperation !== 'undefined' && !SrtOperation.stopped) {
+                                SrtOperation.timeChange(currentTimeSeconds);
+                                if(typeof env !== 'undefined' && env === 'develop') {
+                                    console.log('=== FALLBACK SRT TIMING UPDATE ===');
+                                    console.log('SrtOperation.timeChange called with (seconds):', currentTimeSeconds);
+                                }
+                            }
+                        }
+                    }, 1000); // Update every second
+                }
             },
             onDeviceReady:function() {
                 document.addEventListener('pause', this.onPause);
