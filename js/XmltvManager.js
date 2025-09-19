@@ -161,6 +161,11 @@ var XmltvManager = {
         var that = this;
         var url = api_host_url + '/xmltv.php?username=' + user_name + '&password=' + password;
         
+        console.log('XmltvManager: Making XMLTV request to:', url);
+        console.log('XmltvManager: API host:', api_host_url);
+        console.log('XmltvManager: Username:', user_name);
+        console.log('XmltvManager: Password length:', password ? password.length : 'undefined');
+        
         this.currentRequest = $.ajax({
             url: url,
             method: 'GET',
@@ -172,6 +177,17 @@ var XmltvManager = {
                 that.stats.lastUpdateTime = new Date();
                 
                 console.log('XmltvManager: XMLTV fetch completed in ' + fetchDuration + 'ms');
+                console.log('XmltvManager: Response data type:', typeof xmlData);
+                console.log('XmltvManager: Response length:', xmlData ? xmlData.length : 'null/undefined');
+                console.log('XmltvManager: First 200 chars:', xmlData ? xmlData.substring(0, 200) : 'No data');
+                
+                // Check for empty response
+                if (!xmlData || xmlData.trim().length === 0) {
+                    console.error('XmltvManager: Received empty response from XMLTV endpoint');
+                    that.handleFetchError(null, 'empty_response', 'Empty XMLTV response received');
+                    return;
+                }
+                
                 that.parseXmltvDataAsync(xmlData);
             },
             error: function(xhr, status, error) {
