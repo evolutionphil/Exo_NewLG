@@ -87,9 +87,6 @@ var channel_category_page={
         this.selectPage('category',1);
         this.hoverCategoryItem(0);
         this.current_view='category';
-        
-        // Initialize XMLTV Manager for automatic EPG updates
-        this.initializeXmltvManager();
         if(settings.terms_accepted!=1)
             terms_page.init('channel-category-page');
     },
@@ -194,18 +191,6 @@ var channel_category_page={
             var count_per_page=this.channel_count_per_page;
             current_page_channels.map(function (item, index){
                   var num=(page-1)*count_per_page+index+1;
-                  
-                  // Get initial EPG data from XMLTV Manager
-                  var epg_text = 'Loading...';
-                  var xmltvData = XmltvManager.getChannelEpg(item.stream_id);
-                  if(xmltvData && xmltvData.programmes) {
-                      var current_program = channel_category_page.getCurrentProgrammeFromXmltv(xmltvData.programmes);
-                      if(current_program) {
-                          epg_text = getAtob(current_program.title);
-                      } else {
-                          epg_text = 'No Information';
-                      }
-                  }
                 html+=
                     '<div class="channel-item-container">\
                         <div class="channel-item-wrapper"\
@@ -220,8 +205,8 @@ var channel_category_page={
                                 <span class="channel-item-number">'+(num)+'</span> \
                                 <span class="channel-item-title max-line-2">'+item.name+'</span>\
                             </div>\
-                            <div class="channel-item-current-programme epg-txt-color" data-channel-epg="'+item.stream_id+'">\
-                                '+epg_text+'\
+                            <div class="channel-item-current-programme epg-txt-color">\
+                                No Information\
                             </div> \
                         </div> \
                     </div>\
@@ -259,9 +244,6 @@ var channel_category_page={
         $('.channel-category-group-count-label').text(this.current_category.category_name);
         $('#channel-category-group-count').text(this.current_category_channels.length);
         this.current_view='channel';
-        
-        // Initialize XMLTV Manager when showing channels
-        this.initializeXmltvManager();
     },
     showCategoryPart:function (){
         if(this.current_view==='category')
@@ -369,96 +351,24 @@ var channel_category_page={
         this.current_epg_programmes=[];
         this.showCurrentChannelEpg();
         var that=this;
-        
-        // Try to get EPG data from XMLTV Manager
-        var xmltvData = XmltvManager.getChannelEpg(current_channel.stream_id);
-        if(xmltvData && xmltvData.programmes) {
-            that.current_epg_programmes=xmltvData.programmes;
-            that.updateCurrentChannelEpg();
-            that.epg_channel_id=current_channel.stream_id;
-            console.log('EPG data loaded from XMLTV Manager for channel ' + current_channel.stream_id);
-            return;
-        }
-        
-        // If no XMLTV data available, use loading state
-        console.log('EPG data loading for channel ' + current_channel.stream_id + ' via XMLTV Manager');
-        
-        // Start XMLTV fetch if not already loading (non-blocking)
-        if (settings.playlist_type === 'xtreme' && !XmltvManager.isLoading) {
-            XmltvManager.fetchXmltvAsync(false);
-        }
-        
-        // Set up a callback to update when XMLTV data becomes available
-        var updateCallback = function(channelId, programmes) {
-            if (channelId === current_channel.stream_id && programmes) {
-                that.current_epg_programmes = programmes;
+        $.ajax({
+            method:'get',
+            url:api_host_url+'/player_api.php?username='+user_name+'&password='+password+'&action=get_short_epg&stream_id='+current_channel.stream_id+'&limit=20',
+            success:function (data) {
+                var programmes=[];
+                data.epg_listings.map(function (item) {
+                    programmes.push({
+                        start:item.start,
+                        stop:item.end,
+                        title:item.title
+                    })
+                })
+                that.current_epg_programmes=programmes;
                 that.updateCurrentChannelEpg();
-                that.epg_channel_id = current_channel.stream_id;
-                // Remove this callback after use
-                XmltvManager.removeEpgUpdateCallback(updateCallback);
-            }
-        };
-        
-        XmltvManager.onEpgUpdate(updateCallback);
-        
-        // Also check again after a short delay in case data loads quickly
-        setTimeout(function() {
-            var updatedXmltvData = XmltvManager.getChannelEpg(current_channel.stream_id);
-            if(updatedXmltvData && updatedXmltvData.programmes) {
-                that.current_epg_programmes = updatedXmltvData.programmes;
-                that.updateCurrentChannelEpg();
-                that.epg_channel_id = current_channel.stream_id;
-                XmltvManager.removeEpgUpdateCallback(updateCallback);
-            }
-        }, 2000);
-    },
-
-    // Get current programme from XMLTV data
-    getCurrentProgrammeFromXmltv: function(programmes) {
-        if (!programmes || programmes.length === 0) return null;
-        
-        var now = moment().unix();
-        for (var i = 0; i < programmes.length; i++) {
-            var programme = programmes[i];
-            var startTime = moment(programme.start).unix();
-            var endTime = moment(programme.stop).unix();
-            
-            if (startTime <= now && now < endTime) {
-                return programme;
-            }
-        }
-        
-        return null;
-    },
-
-    // Initialize XMLTV Manager for automatic EPG updates
-    initializeXmltvManager: function() {
-        var that = this;
-        
-        // Initialize XMLTV Manager if not already done
-        if (!XmltvManager.isInitialized) {
-            XmltvManager.init();
-        }
-        
-        // Register callback for EPG updates to update all visible channels
-        XmltvManager.onEpgUpdate(function(channelId, programmes) {
-            if (channelId === '__PARSING_COMPLETE__') {
-                console.log('XMLTV parsing completed for category screen');
-                return;
-            }
-            
-            // Update EPG display for this channel using the universal system
-            var epgElement = $('[data-channel-epg="' + channelId + '"]');
-            if (epgElement.length > 0) {
-                var currentProgramme = that.getCurrentProgrammeFromXmltv(programmes);
-                var epgText = currentProgramme ? getAtob(currentProgramme.title) : 'No Information';
-                epgElement.text(epgText);
+                that.epg_channel_id=current_channel.stream_id;
             }
         });
-        
-        console.log('Category page: XMLTV Manager initialized');
     },
-    
     hoverCategoryItem:function (index){
         var keys=this.keys;
         keys.focused_part='category_selection';

@@ -47,17 +47,6 @@ var channel_page={
     hover_channel_epg_timer:null,
     hover_channel_epg_timeout:400,
     hover_channel_epg_id:null,
-    
-    // EPG Caching System
-    epg_cache: new Map(),
-    cache_duration: 30 * 60 * 1000, // 30 minutes
-    batch_fetch_timer: null,
-    active_timers: [],
-    last_program_check: new Map(), // Track last program end times for smart refresh
-    preload_queue: [],
-    max_concurrent_preloads: 3,
-    current_preloads: 0,
-    
 
 
     init:function (channel, focus_play_btn, prev_route) {
@@ -71,9 +60,6 @@ var channel_page={
         $('#channel-category-page').addClass('hide');
         $("#channel-page").removeClass('hide');
         current_route="channel-page";
-
-        // Initialize XMLTV Manager for async EPG loading
-        this.initializeXmltvManager();
 
         var categories=LiveModel.getCategories(false, true);
         this.categories=categories;
@@ -118,70 +104,6 @@ var channel_page={
         $('#channel-item-modal .video-pop-up-header-title').text(current_category.category_name);
         this.renderCategoryChannel();
     },
-
-    // Initialize XMLTV Manager for async EPG loading
-    initializeXmltvManager: function() {
-        var that = this;
-        
-        // Initialize XMLTV Manager if not already done
-        if (!XmltvManager.isInitialized) {
-            XmltvManager.init();
-        }
-        
-        // Register callback for EPG updates
-        XmltvManager.onEpgUpdate(function(channelId, programmes) {
-            if (channelId === '__PARSING_COMPLETE__') {
-                console.log('XMLTV parsing completed');
-                return;
-            }
-            
-            // Update UI for this channel
-            that.updateChannelEpgFromXmltv(channelId, programmes);
-        });
-        
-        console.log('Channel page: XMLTV Manager initialized');
-    },
-
-    // Update channel EPG display from XMLTV data
-    updateChannelEpgFromXmltv: function(channelId, programmes) {
-        // Update channel list EPG displays
-        var epgElement = $('[data-channel-epg="' + channelId + '"]');
-        if (epgElement.length > 0) {
-            var currentProgramme = this.getCurrentProgrammeFromXmltv(programmes);
-            var epgText = currentProgramme ? getAtob(currentProgramme.title) : 'No Information';
-            epgElement.text(epgText);
-        }
-        
-        // Update current channel if it matches
-        if (this.current_channel_id === channelId) {
-            this.current_channel_programmes = programmes;
-            this.updateNextProgrammes();
-        }
-        
-        // Update hover channel if it matches
-        if (this.hover_channel_epg_id === channelId) {
-            this.hover_channel_programmes = programmes;
-            this.showNextProgrammes(true);
-        }
-    },
-
-    // Get current programme from XMLTV data
-    getCurrentProgrammeFromXmltv: function(programmes) {
-        if (!programmes || programmes.length === 0) return null;
-        
-        var now = moment().unix();
-        for (var i = 0; i < programmes.length; i++) {
-            var programme = programmes[i];
-            var startTime = moment(programme.start).unix();
-            var endTime = moment(programme.stop).unix();
-            
-            if (startTime <= now && now < endTime) {
-                return programme;
-            }
-        }
-        
-        return null;
-    },
     goBack:function(){
         var keys=this.keys;
         switch (keys.focused_part) {
@@ -217,9 +139,9 @@ var channel_page={
             console.log(e);
         }
         $("#channel-page").addClass('hide');
-        
-        this.clearAllTimers();
-        
+        clearInterval(this.progressbar_timer);
+        clearTimeout(this.full_screen_timer);
+        clearTimeout(this.next_channel_timer);
         current_route=this.prev_route;
         if(this.prev_route==='channel-category-page'){
             $('#channel-category-page').removeClass('hide');
@@ -241,8 +163,7 @@ var channel_page={
         this.showChannelModal();
     },
     renderCategoryChannel:function (){
-        var that = this;
-        var htmlContents='';
+        var  htmlContents='';
         var favourite_ids=LiveModel.favourite_ids;
         if(this.movies.length==0){
             htmlContents='<div class="video-pop-up-empty-msg">Sorry, No Channels Exists</div>'
@@ -250,37 +171,11 @@ var channel_page={
             this.channel_doms=[];
             return;
         }
-        
         this.movies.map(function(movie, index){
-            var is_favourite=favourite_ids.includes(movie.stream_id);
-            var epg_text = 'Loading...';
-            
-            // Check XMLTV Manager first for EPG data
-            var xmltvData = XmltvManager.getChannelEpg(movie.stream_id);
-            if(xmltvData && xmltvData.programmes) {
-                var current_program = that.getCurrentProgrammeFromXmltv(xmltvData.programmes);
-                if(current_program) {
-                    epg_text = getAtob(current_program.title);
-                } else {
-                    epg_text = 'No Information';
-                }
-            } else {
-                // Fallback to legacy cache system
-                var cached_data = that.getCachedEpg(movie.stream_id);
-                if(cached_data && !that.shouldRefreshEpg(movie.stream_id, cached_data)) {
-                    var current_program = that.getCurrentProgramFromCache(cached_data.programmes);
-                    if(current_program) {
-                        epg_text = getAtob(current_program.title);
-                    } else {
-                        epg_text = 'No Information';
-                    }
-                }
-            }
-            
+            var is_favourite=favourite_ids.includes(movie.stream_id)
             htmlContents+=
                 '<div class="channel-menu-item video-pop-up-item-wrapper bg-focus"\
                    data-index="'+index+'"\
-                   data-channel-id="'+movie.stream_id+'"\
                    onmouseenter="channel_page.hoverChannel(this)"\
                    onclick="channel_page.handleMenuClick()"\
                 >\
@@ -288,16 +183,13 @@ var channel_page={
                     <img class="video-pop-up-item-icon" src="'+movie.stream_icon+'" onerror="this.src=\''+default_movie_icon+'\'">'+'</span>'+'\
                     <i class="fa fa-heart favourite-icon '+(is_favourite ? 'favourite' : '')+'"></i>\
                     <span class="video-pop-up-item-name">'+movie.name+'</span>'+
-                '<span class="video-pop-up-counts-wrapper epg-txt-color" data-channel-epg="'+movie.stream_id+'">\
-                    '+epg_text+'\
+                '<span class="video-pop-up-counts-wrapper epg-txt-color">\
+                    No Information\
                 </span>\
             </div>'
         })
         $('#channel-page-menu-container').html(htmlContents);
         this.channel_doms=$('#channel-page-menu-container .channel-menu-item');
-        
-        // XMLTV Manager handles all EPG loading - no individual requests needed
-        console.log('Channel list rendered with XMLTV EPG data');
     },
     goChannelNum:function(new_value){
         var channel_num=this.channel_num;
@@ -445,9 +337,7 @@ var channel_page={
         this.next_programme_timer=setInterval(function () {
             that.showNextProgrammes(false);
             that.showNextProgrammes(true);
-        },60000);
-        
-        this.addTimer(this.next_programme_timer, 'next_programme');
+        },60000)
     },
     getCurrentChannelProgrammes:function(is_hover_channel){
         var that=this;
@@ -456,75 +346,35 @@ var channel_page={
             this.current_channel_programmes=[];
         else
             this.hover_channel_programmes=[];
-            
+        that.showNextProgrammes(is_hover_channel);
         var channel_id;
         if(!is_hover_channel)
             channel_id=this.current_channel_id;
         else
             channel_id=this.movies[this.keys.channel_selection].stream_id;
-            
-        // Try to get EPG data from XMLTV Manager first
-        var xmltvData = XmltvManager.getChannelEpg(channel_id);
-        if(xmltvData && xmltvData.programmes) {
-            programmes = xmltvData.programmes;
-            if(!is_hover_channel)
-                this.current_channel_programmes=programmes;
-            else{
-                this.hover_channel_programmes=programmes;
-                this.hover_channel_epg_id=channel_id;
-            }
-            that.showNextProgrammes(is_hover_channel);
-            if(!is_hover_channel) {
-                that.updateNextProgrammes();
-            }
-            return;
-        }
-        
-        // Fallback to legacy cache system for compatibility
-        var cached_data = this.getCachedEpg(channel_id);
-        if(cached_data && !this.shouldRefreshEpg(channel_id, cached_data)){
-            programmes = cached_data.programmes;
-            if(!is_hover_channel)
-                this.current_channel_programmes=programmes;
-            else{
-                this.hover_channel_programmes=programmes;
-                this.hover_channel_epg_id=channel_id;
-            }
-            that.showNextProgrammes(is_hover_channel);
-            if(!is_hover_channel) {
-                that.updateNextProgrammes();
-            }
-            return;
-        }
-        
-        // Show loading state while XMLTV loads in background
-        that.showNextProgrammes(is_hover_channel);
-        
-        // XMLTV Manager handles all EPG fetching - no individual API calls needed
-        console.log('EPG data loading for channel ' + channel_id + ' via XMLTV Manager');
-        
-        // Start XMLTV fetch if not already loading (non-blocking)
-        if (settings.playlist_type === 'xtreme' && !XmltvManager.isLoading) {
-            XmltvManager.fetchXmltvAsync(false);
-        }
-        
-        // Set up a timeout to update UI once XMLTV data becomes available
-        setTimeout(function() {
-            var updatedXmltvData = XmltvManager.getChannelEpg(channel_id);
-            if(updatedXmltvData && updatedXmltvData.programmes) {
-                programmes = updatedXmltvData.programmes;
-                if(!is_hover_channel)
-                    that.current_channel_programmes=programmes;
-                else{
-                    that.hover_channel_programmes=programmes;
-                    that.hover_channel_epg_id=channel_id;
-                }
-                that.showNextProgrammes(is_hover_channel);
-                if(!is_hover_channel) {
+        if(settings.playlist_type==='xtreme'){
+            $.ajax({
+                method:'get',
+                url:api_host_url+'/player_api.php?username='+user_name+'&password='+password+'&action=get_short_epg&stream_id='+channel_id+'&limit='+this.short_epg_limit_count,
+                success:function (data) {
+                    data.epg_listings.map(function (item) {
+                        programmes.push({
+                            start:item.start,
+                            stop:item.end,
+                            title:item.title,
+                            description:item.description
+                        })
+                    })
+                    if(!is_hover_channel)
+                        that.current_channel_programmes=programmes;
+                    else{
+                        that.hover_channel_programmes=programmes;
+                        that.hover_channel_epg_id=channel_id;
+                    }
                     that.updateNextProgrammes();
                 }
-            }
-        }, 2000); // Check again after 2 seconds for XMLTV data
+            });
+        }
     },
     showFullScreenInfo:function(){
         $('#full-screen-information').slideDown();
@@ -533,9 +383,7 @@ var channel_page={
         clearTimeout(this.full_screen_timer);
         this.full_screen_timer=setTimeout(function () {
             that.hideFullScreenInfo();
-        },5000);
-        
-        this.addTimer(this.full_screen_timer, 'full_screen_info');
+        },5000)
     },
     hideFullScreenInfo:function(){
         var keys=this.keys;
@@ -575,8 +423,6 @@ var channel_page={
         this.current_channel_epg_timer=setTimeout(function () {
             that.getCurrentChannelProgrammes(false);
         },this.current_channel_epg_timeout);
-        
-        this.addTimer(this.current_channel_epg_timer, 'current_channel_epg', movie_id);
 
         if(LiveModel.favourite_ids.includes(current_movie.stream_id))
             $(this.video_control_doms[3]).addClass('favourite');
@@ -613,9 +459,7 @@ var channel_page={
             that.current_channel_id=movie.stream_id;
             that.showMovie(that.movies[keys.channel_selection]);
             that.showFullScreenInfo();
-        },200);
-        
-        this.addTimer(this.next_channel_timer, 'next_channel', this.movies[keys.channel_selection].stream_id);
+        },200)
     },
     playOrPause:function(){
         if(media_player.state==media_player.STATES.PLAYING){
@@ -666,113 +510,86 @@ var channel_page={
             this.is_loading=true;
             showLoader(true);
 
-            // Use XMLTV Manager instead of individual API call
-            var xmltvData = XmltvManager.getChannelEpg(movie.stream_id);
-            
-            // Process XMLTV data if available
-            if(xmltvData && xmltvData.programmes && xmltvData.programmes.length > 0){
-                that.processEpgDataForModal(xmltvData.programmes, movie);
-            } else {
-                // If XMLTV data not available yet, try to fetch it
-                if (!XmltvManager.isLoading) {
-                    XmltvManager.fetchXmltvAsync(false);
-                }
-                
-                // Set up callback to handle data when it arrives
-                var checkDataTimer = setInterval(function() {
-                    var updatedXmltvData = XmltvManager.getChannelEpg(movie.stream_id);
-                    if(updatedXmltvData && updatedXmltvData.programmes && updatedXmltvData.programmes.length > 0) {
-                        clearInterval(checkDataTimer);
-                        that.processEpgDataForModal(updatedXmltvData.programmes, movie);
-                    }
-                }, 1000);
-                
-                // Timeout after 10 seconds if no data
-                setTimeout(function() {
-                    clearInterval(checkDataTimer);
-                    if(!that.epg_doms || that.epg_doms.length === 0) {
+            $.ajax({
+                method:'get',
+                url:api_host_url+'/player_api.php?username='+user_name+'&password='+password+'&action=get_simple_data_table&stream_id='+movie.stream_id,
+                success:function (data) {
+                    if(data.epg_listings && data.epg_listings.length>0){
+                        var epg_selection=0;
+                        var archive=movie.tv_archive==1 ? true : false;
+                        var html='';
+                        var temp_date='adfd';
+                        var current_time;
+                        current_time=moment().unix();
+                        var today=moment().format('Y-MM-DD');
+                        var current_time_exceed=false, epg_selection0;
+
+                        data.epg_listings.map(function (item, index) {
+                            var start=getLocalChannelTime(item.start), stop=getLocalChannelTime(item.end);
+                            var title=getAtob(item.title);
+                            var start_time=start.format(format_text);
+                            var stop_time=stop.format(format_text);
+                            programmes.push({
+                                start:start_time,
+                                stop:stop_time,
+                                title:title,
+                                description:item.description
+                            })
+                            if(!start_time.includes(temp_date)){
+                                html+=
+                                    '<div class="epg-date-label">'+start_time.substr(0,10)+'</div>'
+                                temp_date=start_time.substr(0,10);
+                            }
+                            var epg_available=0,epg_html='';
+                            if(!current_time_exceed){
+                                if(temp_date<=today){
+                                    stop=stop.unix();
+                                    start=start.unix();
+                                    if(stop<=current_time){
+                                        if(archive){
+                                            epg_html='<img class="channel-epg-available-icon" src="images/clock.png">'
+                                            epg_available=1;
+                                        }
+                                    }
+                                    if(stop>=current_time){
+                                        if(start<=current_time){
+                                            epg_selection=index;
+                                        }
+                                        current_time_exceed=true;
+                                    }
+                                }else{
+                                    current_time_exceed=true;
+                                }
+                            }
+                            html+=
+                                '<div class="epg-item-wrapper bg-focus" data-epg_available="'+epg_available+'"\
+                                    onmouseenter="channel_page.hoverEpgItem('+index+')" \
+                                    onclick="channel_page.handleMenuClick()" \
+                                >\
+                                    <div class="epg-time-wrapper">'+
+                                        start_time.substr(11)+' : '+stop_time.substr(11)+
+                                '   </div>'+
+                                    epg_html+
+                                    '<div class="epg-item-name">'+title+'</div>\
+                                </div>'
+                        })
+                        $('#channel-epg-items-container').html(html);
+                        that.epg_doms=$('.epg-item-wrapper');
+                        $('#channel-epg-container').show();
+                        that.hoverEpgItem(epg_selection);
+
+                        that.is_loading=false;
+                        showLoader(false);
+                        that.epg_programmes=programmes;
+                    }else
                         that.showEmptyEpg();
-                    }
-                }, 10000);
-            }
+                },
+                error:function (error){
+                    that.showEmptyEpg();
+                }
+            });
         }else
             that.showEmptyEpg();
-    },
-    
-    processEpgDataForModal:function(epgListings, movie) {
-        var that = this;
-        var programmes = [];
-        var epg_selection = 0;
-        var archive = movie.tv_archive == 1 ? true : false;
-        var html = '';
-        var temp_date = 'adfd';
-        var current_time = moment().unix();
-        var today = moment().format('Y-MM-DD');
-        var current_time_exceed = false;
-        var format_text = 'Y-MM-DD HH:mm';
-
-        epgListings.map(function (item, index) {
-            var start = getLocalChannelTime(item.start);
-            var stop = getLocalChannelTime(item.stop);
-            var title = getAtob(item.title);
-            var start_time = start.format(format_text);
-            var stop_time = stop.format(format_text);
-            
-            programmes.push({
-                start: start_time,
-                stop: stop_time,
-                title: title,
-                description: item.description || ''
-            });
-            
-            if(!start_time.includes(temp_date)){
-                html += '<div class="epg-date-label">'+start_time.substr(0,10)+'</div>';
-                temp_date = start_time.substr(0,10);
-            }
-            
-            var epg_available = 0, epg_html = '';
-            if(!current_time_exceed){
-                if(temp_date <= today){
-                    var stop_unix = stop.unix();
-                    var start_unix = start.unix();
-                    if(stop_unix <= current_time){
-                        if(archive){
-                            epg_html = '<img class="channel-epg-available-icon" src="images/clock.png">';
-                            epg_available = 1;
-                        }
-                    }
-                    if(stop_unix >= current_time){
-                        if(start_unix <= current_time){
-                            epg_selection = index;
-                        }
-                        current_time_exceed = true;
-                    }
-                }else{
-                    current_time_exceed = true;
-                }
-            }
-            
-            html += 
-                '<div class="epg-item-wrapper bg-focus" data-epg_available="'+epg_available+'"\
-                    onmouseenter="channel_page.hoverEpgItem('+index+')" \
-                    onclick="channel_page.handleMenuClick()" \
-                >\
-                    <div class="epg-time-wrapper">'+
-                        start_time.substr(11)+' : '+stop_time.substr(11)+
-                    '</div>'+
-                    epg_html+
-                    '<div class="epg-item-name">'+title+'</div>\
-                </div>';
-        });
-        
-        $('#channel-epg-items-container').html(html);
-        that.epg_doms = $('.epg-item-wrapper');
-        $('#channel-epg-container').show();
-        that.hoverEpgItem(epg_selection);
-
-        that.is_loading = false;
-        showLoader(false);
-        that.epg_programmes = programmes;
     },
     showEmptyEpg:function (){
         this.is_loading=false;
@@ -892,8 +709,6 @@ var channel_page={
             this.hover_channel_epg_timer=setTimeout(function (){
                 that.getCurrentChannelProgrammes(true);
             },this.hover_channel_epg_timeout);
-            
-            this.addTimer(this.hover_channel_epg_timer, 'hover_channel_epg', channel.stream_id);
         }
     },
     hoverVideoControl:function (index){
@@ -1111,137 +926,5 @@ var channel_page={
                 this.handleBlueKeyEvent();
                 break;
         }
-    },
-    
-    // EPG Caching Methods
-    getCachedEpg: function(channel_id) {
-        return this.epg_cache.get(channel_id);
-    },
-    
-    setCachedEpg: function(channel_id, programmes) {
-        var cache_entry = {
-            programmes: programmes,
-            cached_at: Date.now(),
-            last_program_end: null
-        };
-        
-        // Find the current program end time for smart refresh
-        if(programmes.length > 0) {
-            var current_time = moment().unix();
-            for(var i = 0; i < programmes.length; i++) {
-                var start_time = getLocalChannelTime(programmes[i].start).unix();
-                var end_time = getLocalChannelTime(programmes[i].stop).unix();
-                if(start_time <= current_time && current_time <= end_time) {
-                    cache_entry.last_program_end = end_time;
-                    break;
-                }
-            }
-        }
-        
-        this.epg_cache.set(channel_id, cache_entry);
-        this.last_program_check.set(channel_id, cache_entry.last_program_end);
-    },
-    
-    shouldRefreshEpg: function(channel_id, cached_data) {
-        if(!cached_data) return true;
-        
-        var current_time = Date.now();
-        var cache_age = current_time - cached_data.cached_at;
-        
-        // Force refresh if cache is older than 30 minutes
-        if(cache_age > this.cache_duration) {
-            return true;
-        }
-        
-        // Smart refresh: check if current program has ended
-        if(cached_data.last_program_end) {
-            var current_unix_time = moment().unix();
-            if(current_unix_time > cached_data.last_program_end) {
-                return true;
-            }
-        }
-        
-        return false;
-    },
-    
-    // Helper method to get current program from cached EPG data
-    getCurrentProgramFromCache: function(programmes) {
-        if(!programmes || programmes.length === 0) return null;
-        
-        var current_time = moment().unix();
-        for(var i = 0; i < programmes.length; i++) {
-            var start_time = getLocalChannelTime(programmes[i].start).unix();
-            var end_time = getLocalChannelTime(programmes[i].stop).unix();
-            if(start_time <= current_time && current_time <= end_time) {
-                return programmes[i];
-            }
-        }
-        return null;
-    },
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // Timer Management
-    clearAllTimers: function() {
-        // Clear specific timers
-        clearInterval(this.progressbar_timer);
-        clearTimeout(this.full_screen_timer);
-        clearTimeout(this.next_channel_timer);
-        clearTimeout(this.current_channel_epg_timer);
-        clearTimeout(this.hover_channel_epg_timer);
-        clearTimeout(this.category_hover_timer);
-        clearTimeout(this.channel_number_timer);
-        clearInterval(this.next_programme_timer);
-        clearTimeout(this.batch_fetch_timer);
-        
-        // Clear all tracked timers
-        for(var i = 0; i < this.active_timers.length; i++) {
-            clearTimeout(this.active_timers[i].timer_id);
-        }
-        this.active_timers = [];
-        
-        
-        // Reset timer references
-        this.progressbar_timer = null;
-        this.full_screen_timer = null;
-        this.next_channel_timer = null;
-        this.current_channel_epg_timer = null;
-        this.hover_channel_epg_timer = null;
-        this.category_hover_timer = null;
-        this.channel_number_timer = null;
-        this.next_programme_timer = null;
-        this.batch_fetch_timer = null;
-        
-    },
-    
-    // Timer tracking helper
-    addTimer: function(timer_id, type, channel_id) {
-        this.active_timers.push({
-            timer_id: timer_id,
-            type: type,
-            channel_id: channel_id || null,
-            created_at: Date.now()
-        });
-    },
-    
-    removeTimer: function(timer_id) {
-        this.active_timers = this.active_timers.filter(function(timer) {
-            return timer.timer_id !== timer_id;
-        });
-    },
-    
-    
-    
-    
-    
-};
+    }
+}
