@@ -616,13 +616,22 @@ var vod_series_player_page={
         return htmlContent;
     },
     showSubtitleAudioModal:function(kind){
-        console.log('=== SUBTITLE DEBUG: showSubtitleAudioModal called ===');
-        console.log('Kind:', kind);
-        console.log('Platform:', platform);
-        console.log('Current movie type:', this.current_movie_type);
-        console.log('Current movie:', this.current_movie);
-        console.log('Subtitle loaded:', this.subtitle_loaded);
-        console.log('Subtitle loading:', this.subtitle_loading);
+        console.log('🎬 ======== SERIES EPISODE SUBTITLE START ========');
+        console.log('🎯 Function called: showSubtitleAudioModal');
+        console.log('📝 Kind requested:', kind);
+        console.log('📱 Platform:', platform);
+        console.log('🎭 Current movie type:', this.current_movie_type);
+        console.log('📺 Current movie (FULL OBJECT):', this.current_movie);
+        console.log('📊 Episode info available:', this.current_movie?.info ? 'YES' : 'NO');
+        if(this.current_movie?.info) {
+            console.log('🔗 Episode TMDB ID:', this.current_movie.info.tmdb_id);
+            console.log('📅 Episode release date:', this.current_movie.info.releasedate);
+            console.log('🎞️ Episode title:', this.current_movie.info.title);
+            console.log('📋 All episode info keys:', Object.keys(this.current_movie.info));
+        }
+        console.log('✅ Subtitle loaded status:', this.subtitle_loaded);
+        console.log('⏳ Subtitle loading status:', this.subtitle_loading);
+        console.log('================================================');
         
         var keys=this.keys;
         if(keys.focused_part!="subtitle_audio_selection_modal" && keys.focused_part!='subtitle_btn_selection')
@@ -789,14 +798,19 @@ var vod_series_player_page={
                             movie_type: 'auto'
                         }
                         
-                        // Add TMDB ID (only parameter needed)
-                        if(this.current_movie.info && this.current_movie.info.tmdb_id) {
-                            subtitle_request_data.tmdb_id = this.current_movie.info.tmdb_id;
-                            console.log('✅ EPISODE TMDB ID FOUND:', this.current_movie.info.tmdb_id);
+                        // Add TMDB ID from episode info (THIS IS THE KEY!)
+                        if(this.current_movie && this.current_movie.info && this.current_movie.info.tmdb_id) {
+                            subtitle_request_data.tmdb_id = String(this.current_movie.info.tmdb_id);
+                            console.log('✅ USING EPISODE TMDB ID:', this.current_movie.info.tmdb_id);
                             console.log('🔗 TMDB ID TYPE:', typeof this.current_movie.info.tmdb_id);
+                            console.log('📝 TMDB ID AS STRING:', String(this.current_movie.info.tmdb_id));
                         } else {
                             console.log('❌ NO EPISODE TMDB ID FOUND');
-                            console.log('📊 Available episode info keys:', this.current_movie.info ? Object.keys(this.current_movie.info) : 'No info object');
+                            console.log('🔍 Current movie structure:', this.current_movie);
+                            console.log('📊 Episode info available:', this.current_movie?.info ? 'YES' : 'NO');
+                            if(this.current_movie?.info) {
+                                console.log('📋 Available episode info keys:', Object.keys(this.current_movie.info));
+                            }
                         }
                         
                         console.log('📤 ===== FINAL EPISODE REQUEST =====');
