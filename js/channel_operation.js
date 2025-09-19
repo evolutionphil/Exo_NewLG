@@ -47,6 +47,16 @@ var channel_page={
     hover_channel_epg_timer:null,
     hover_channel_epg_timeout:400,
     hover_channel_epg_id:null,
+    
+    // EPG Caching System
+    epg_cache: new Map(),
+    cache_duration: 30 * 60 * 1000, // 30 minutes
+    batch_fetch_timer: null,
+    active_timers: [],
+    last_program_check: new Map(), // Track last program end times for smart refresh
+    preload_queue: [],
+    max_concurrent_preloads: 3,
+    current_preloads: 0,
 
 
     init:function (channel, focus_play_btn, prev_route) {
@@ -103,6 +113,9 @@ var channel_page={
             +channel_category_page.keys.channel_selection;
         $('#channel-item-modal .video-pop-up-header-title').text(current_category.category_name);
         this.renderCategoryChannel();
+        
+        // Initialize progressive EPG loading for favorites
+        this.initializePreloading();
     },
     goBack:function(){
         var keys=this.keys;
@@ -139,9 +152,7 @@ var channel_page={
             console.log(e);
         }
         $("#channel-page").addClass('hide');
-        clearInterval(this.progressbar_timer);
-        clearTimeout(this.full_screen_timer);
-        clearTimeout(this.next_channel_timer);
+        this.clearAllTimers();
         current_route=this.prev_route;
         if(this.prev_route==='channel-category-page'){
             $('#channel-category-page').removeClass('hide');
@@ -337,7 +348,9 @@ var channel_page={
         this.next_programme_timer=setInterval(function () {
             that.showNextProgrammes(false);
             that.showNextProgrammes(true);
-        },60000)
+        },60000);
+        
+        this.addTimer(this.next_programme_timer, 'next_programme');
     },
     getCurrentChannelProgrammes:function(is_hover_channel){
         var that=this;
@@ -346,31 +359,58 @@ var channel_page={
             this.current_channel_programmes=[];
         else
             this.hover_channel_programmes=[];
-        that.showNextProgrammes(is_hover_channel);
+            
         var channel_id;
         if(!is_hover_channel)
             channel_id=this.current_channel_id;
         else
             channel_id=this.movies[this.keys.channel_selection].stream_id;
+            
+        // Check cache first
+        var cached_data = this.getCachedEpg(channel_id);
+        if(cached_data && !this.shouldRefreshEpg(channel_id, cached_data)){
+            programmes = cached_data.programmes;
+            if(!is_hover_channel)
+                this.current_channel_programmes=programmes;
+            else{
+                this.hover_channel_programmes=programmes;
+                this.hover_channel_epg_id=channel_id;
+            }
+            that.showNextProgrammes(is_hover_channel);
+            that.updateNextProgrammes();
+            return;
+        }
+        
+        that.showNextProgrammes(is_hover_channel);
         if(settings.playlist_type==='xtreme'){
             $.ajax({
                 method:'get',
                 url:api_host_url+'/player_api.php?username='+user_name+'&password='+password+'&action=get_short_epg&stream_id='+channel_id+'&limit='+this.short_epg_limit_count,
                 success:function (data) {
-                    data.epg_listings.map(function (item) {
-                        programmes.push({
-                            start:item.start,
-                            stop:item.end,
-                            title:item.title,
-                            description:item.description
+                    if(data.epg_listings && data.epg_listings.length > 0){
+                        data.epg_listings.map(function (item) {
+                            programmes.push({
+                                start:item.start,
+                                stop:item.end,
+                                title:item.title,
+                                description:item.description
+                            })
                         })
-                    })
+                        
+                        // Cache the EPG data
+                        that.setCachedEpg(channel_id, programmes);
+                    }
+                    
                     if(!is_hover_channel)
                         that.current_channel_programmes=programmes;
                     else{
                         that.hover_channel_programmes=programmes;
                         that.hover_channel_epg_id=channel_id;
                     }
+                    that.updateNextProgrammes();
+                },
+                error: function(xhr, status, error) {
+                    console.log('EPG API error for channel ' + channel_id + ':', error);
                     that.updateNextProgrammes();
                 }
             });
@@ -383,7 +423,9 @@ var channel_page={
         clearTimeout(this.full_screen_timer);
         this.full_screen_timer=setTimeout(function () {
             that.hideFullScreenInfo();
-        },5000)
+        },5000);
+        
+        this.addTimer(this.full_screen_timer, 'full_screen_info');
     },
     hideFullScreenInfo:function(){
         var keys=this.keys;
@@ -423,6 +465,8 @@ var channel_page={
         this.current_channel_epg_timer=setTimeout(function () {
             that.getCurrentChannelProgrammes(false);
         },this.current_channel_epg_timeout);
+        
+        this.addTimer(this.current_channel_epg_timer, 'current_channel_epg', movie_id);
 
         if(LiveModel.favourite_ids.includes(current_movie.stream_id))
             $(this.video_control_doms[3]).addClass('favourite');
@@ -459,7 +503,9 @@ var channel_page={
             that.current_channel_id=movie.stream_id;
             that.showMovie(that.movies[keys.channel_selection]);
             that.showFullScreenInfo();
-        },200)
+        },200);
+        
+        this.addTimer(this.next_channel_timer, 'next_channel', this.movies[keys.channel_selection].stream_id);
     },
     playOrPause:function(){
         if(media_player.state==media_player.STATES.PLAYING){
@@ -709,6 +755,8 @@ var channel_page={
             this.hover_channel_epg_timer=setTimeout(function (){
                 that.getCurrentChannelProgrammes(true);
             },this.hover_channel_epg_timeout);
+            
+            this.addTimer(this.hover_channel_epg_timer, 'hover_channel_epg', channel.stream_id);
         }
     },
     hoverVideoControl:function (index){
@@ -926,5 +974,194 @@ var channel_page={
                 this.handleBlueKeyEvent();
                 break;
         }
+    },
+    
+    // EPG Caching Methods
+    getCachedEpg: function(channel_id) {
+        return this.epg_cache.get(channel_id);
+    },
+    
+    setCachedEpg: function(channel_id, programmes) {
+        var cache_entry = {
+            programmes: programmes,
+            cached_at: Date.now(),
+            last_program_end: null
+        };
+        
+        // Find the current program end time for smart refresh
+        if(programmes.length > 0) {
+            var current_time = moment().unix();
+            for(var i = 0; i < programmes.length; i++) {
+                var start_time = getLocalChannelTime(programmes[i].start).unix();
+                var end_time = getLocalChannelTime(programmes[i].stop).unix();
+                if(start_time <= current_time && current_time <= end_time) {
+                    cache_entry.last_program_end = end_time;
+                    break;
+                }
+            }
+        }
+        
+        this.epg_cache.set(channel_id, cache_entry);
+        this.last_program_check.set(channel_id, cache_entry.last_program_end);
+    },
+    
+    shouldRefreshEpg: function(channel_id, cached_data) {
+        if(!cached_data) return true;
+        
+        var current_time = Date.now();
+        var cache_age = current_time - cached_data.cached_at;
+        
+        // Force refresh if cache is older than 30 minutes
+        if(cache_age > this.cache_duration) {
+            return true;
+        }
+        
+        // Smart refresh: check if current program has ended
+        if(cached_data.last_program_end) {
+            var current_unix_time = moment().unix();
+            if(current_unix_time > cached_data.last_program_end) {
+                return true;
+            }
+        }
+        
+        return false;
+    },
+    
+    // Timer Management
+    clearAllTimers: function() {
+        // Clear specific timers
+        clearInterval(this.progressbar_timer);
+        clearTimeout(this.full_screen_timer);
+        clearTimeout(this.next_channel_timer);
+        clearTimeout(this.current_channel_epg_timer);
+        clearTimeout(this.hover_channel_epg_timer);
+        clearTimeout(this.category_hover_timer);
+        clearTimeout(this.channel_number_timer);
+        clearInterval(this.next_programme_timer);
+        clearTimeout(this.batch_fetch_timer);
+        
+        // Clear all tracked timers
+        for(var i = 0; i < this.active_timers.length; i++) {
+            clearTimeout(this.active_timers[i].timer_id);
+        }
+        this.active_timers = [];
+        
+        // Reset timer references
+        this.progressbar_timer = null;
+        this.full_screen_timer = null;
+        this.next_channel_timer = null;
+        this.current_channel_epg_timer = null;
+        this.hover_channel_epg_timer = null;
+        this.category_hover_timer = null;
+        this.channel_number_timer = null;
+        this.next_programme_timer = null;
+        this.batch_fetch_timer = null;
+    },
+    
+    // Timer tracking helper
+    addTimer: function(timer_id, type, channel_id) {
+        this.active_timers.push({
+            timer_id: timer_id,
+            type: type,
+            channel_id: channel_id || null,
+            created_at: Date.now()
+        });
+    },
+    
+    removeTimer: function(timer_id) {
+        this.active_timers = this.active_timers.filter(function(timer) {
+            return timer.timer_id !== timer_id;
+        });
+    },
+    
+    // Progressive Loading for Favorite Channels
+    preloadFavoriteChannelsEpg: function() {
+        if(this.current_preloads >= this.max_concurrent_preloads) {
+            return;
+        }
+        
+        var that = this;
+        var favorite_channels = [];
+        
+        // Get favorite channels from current movies
+        if(LiveModel && LiveModel.favourite_ids) {
+            this.movies.forEach(function(movie) {
+                if(LiveModel.favourite_ids.includes(movie.stream_id)) {
+                    favorite_channels.push(movie.stream_id);
+                }
+            });
+        }
+        
+        // Filter out already cached channels
+        var channels_to_preload = favorite_channels.filter(function(channel_id) {
+            var cached = that.getCachedEpg(channel_id);
+            return !cached || that.shouldRefreshEpg(channel_id, cached);
+        });
+        
+        if(channels_to_preload.length === 0) {
+            return;
+        }
+        
+        // Start preloading
+        this.preload_queue = channels_to_preload;
+        this.processPreloadQueue();
+    },
+    
+    processPreloadQueue: function() {
+        var that = this;
+        
+        if(this.preload_queue.length === 0 || this.current_preloads >= this.max_concurrent_preloads) {
+            return;
+        }
+        
+        var channel_id = this.preload_queue.shift();
+        this.current_preloads++;
+        
+        if(settings.playlist_type === 'xtreme') {
+            $.ajax({
+                method: 'get',
+                url: api_host_url + '/player_api.php?username=' + user_name + '&password=' + password + '&action=get_short_epg&stream_id=' + channel_id + '&limit=' + this.short_epg_limit_count,
+                success: function(data) {
+                    var programmes = [];
+                    if(data.epg_listings && data.epg_listings.length > 0) {
+                        data.epg_listings.forEach(function(item) {
+                            programmes.push({
+                                start: item.start,
+                                stop: item.end,
+                                title: item.title,
+                                description: item.description
+                            });
+                        });
+                        that.setCachedEpg(channel_id, programmes);
+                    }
+                    
+                    that.current_preloads--;
+                    
+                    // Continue processing queue
+                    setTimeout(function() {
+                        that.processPreloadQueue();
+                    }, 100); // Small delay to prevent overwhelming the API
+                },
+                error: function(xhr, status, error) {
+                    console.log('Preload EPG error for channel ' + channel_id + ':', error);
+                    that.current_preloads--;
+                    
+                    // Continue processing queue even on error
+                    setTimeout(function() {
+                        that.processPreloadQueue();
+                    }, 200); // Longer delay on error
+                }
+            });
+        }
+    },
+    
+    // Initialize progressive loading with delay
+    initializePreloading: function() {
+        var that = this;
+        this.batch_fetch_timer = setTimeout(function() {
+            that.preloadFavoriteChannelsEpg();
+        }, 2000); // Wait 2 seconds after init before starting preload
+        
+        this.addTimer(this.batch_fetch_timer, 'preload_batch');
     }
 }
