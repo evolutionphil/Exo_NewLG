@@ -1624,27 +1624,38 @@ var vod_series_player_page={
                 this.show_subtitle=true;
                 $("#vod-series-player-page").find('.subtitle-container').css({visibility:'visible'});
                 
-                // Use explicit source detection with new mapping system
+                // Use explicit source detection with fallback for non-Samsung platforms
                 var selectedSubtitle = null;
                 var subtitleSource = null;
                 
-                // Find the selected subtitle using the robust mapping system
-                if(window.subtitleMapping && window.subtitleMapping.combined) {
+                // **Samsung Platform**: Use robust mapping system
+                if(platform === 'samsung' && window.subtitleMapping && window.subtitleMapping.combined) {
                     selectedSubtitle = window.subtitleMapping.combined[selectedCombinedIndex];
                     if(selectedSubtitle) {
                         subtitleSource = selectedSubtitle.source; // Explicit source metadata
+                    }
+                } else {
+                    // **LG/Other Platforms**: Use traditional API subtitle system
+                    if(media_player.subtitles && selectedCombinedIndex >= 0 && selectedCombinedIndex < media_player.subtitles.length) {
+                        selectedSubtitle = media_player.subtitles[selectedCombinedIndex];
+                        subtitleSource = 'api'; // LG only uses API subtitles
                     }
                 }
                 
                 if(typeof env !== 'undefined' && env === 'develop') {
                     console.log('=== SUBTITLE DEBUG: Selected subtitle object ===');
+                    console.log('Platform:', platform);
+                    console.log('Selected combined index:', selectedCombinedIndex);
                     console.log('Selected subtitle:', selectedSubtitle);
                     console.log('Detected source:', subtitleSource);
+                    console.log('Available subtitles:', media_player.subtitles);
                 }
                 
                 if(!selectedSubtitle || !subtitleSource) {
                     if(typeof env !== 'undefined' && env === 'develop') {
                         console.log('=== SUBTITLE DEBUG: Could not find selected subtitle or determine source ===');
+                        console.log('Subtitle mapping exists:', !!window.subtitleMapping);
+                        console.log('API subtitles exist:', !!(media_player.subtitles && media_player.subtitles.length > 0));
                     }
                     showToast("Error", "Invalid subtitle selection");
                     return;
@@ -1670,7 +1681,7 @@ var vod_series_player_page={
                     // **API SUBTITLE**: Stop native tracks and use SrtOperation
                     if(typeof env !== 'undefined' && env === 'develop') {
                         console.log('=== SUBTITLE DEBUG: Using API subtitle ===');
-                        console.log('API subtitle data:', selectedSubtitle.apiData);
+                        console.log('API subtitle data:', selectedSubtitle.apiData || selectedSubtitle);
                     }
                     
                     // Stop native subtitle track first
@@ -1681,7 +1692,7 @@ var vod_series_player_page={
                     }
                     
                     // Load and initialize API subtitle using SrtOperation
-                    var subtitleFile = selectedSubtitle.apiData.file;
+                    var subtitleFile = selectedSubtitle.apiData ? selectedSubtitle.apiData.file : selectedSubtitle.file;
                     if(subtitleFile) {
                         // Ensure the URL is absolute
                         var subtitleUrl = subtitleFile;
@@ -1719,7 +1730,7 @@ var vod_series_player_page={
                                 
                                 // Initialize SrtOperation with the loaded content
                                 SrtOperation.init({content: subtitleContent}, current_time);
-                                that.current_subtitle_index = selectedSubtitle.combinedIndex;
+                                that.current_subtitle_index = selectedSubtitle.combinedIndex || selectedCombinedIndex;
                             },
                             error: function(error) {
                                 that.subtitle_loading = false; // Clear loading state on error
