@@ -49,15 +49,12 @@ var vod_series_player_page={
         if(media_player && typeof media_player.getSubtitleOrAudioTrack === 'function') {
             return media_player.getSubtitleOrAudioTrack(kind);
         } else {
-            console.log('⚠️ media_player.getSubtitleOrAudioTrack not available for', kind);
             return [];
         }
     },
 
     // Enhanced episode name parsing for subtitle fallback matching
     parseEpisodeName: function(episodeName) {
-        console.log('=== EPISODE NAME PARSING ===');
-        console.log('Input episode name:', episodeName);
         
         var result = {
             series_name: null,
@@ -67,7 +64,6 @@ var vod_series_player_page={
         };
         
         if (!episodeName || typeof episodeName !== 'string') {
-            console.log('❌ Invalid episode name provided');
             return result;
         }
         
@@ -75,7 +71,6 @@ var vod_series_player_page={
         
         // Step 1: Remove country/language codes (TR:, ES:, EN:, etc.)
         cleaned_name = cleaned_name.replace(/^[A-Z]{2}:\s*/i, '');
-        console.log('After country code removal:', cleaned_name);
         
         // Step 2: Try to match various season/episode patterns
         var season_episode_patterns = [
@@ -99,14 +94,12 @@ var vod_series_player_page={
                     result.episode_title = match[4].trim();
                 }
                 
-                console.log('✅ Pattern', (i + 1), 'matched successfully');
                 break;
             }
         }
         
         // Step 3: If no season/episode pattern found, try to extract just series name
         if (!result.series_name) {
-            console.log('No season/episode pattern found, extracting series name only...');
             
             // Remove common episode indicators and clean up
             var series_only = cleaned_name
@@ -120,7 +113,6 @@ var vod_series_player_page={
                 
             if (series_only && series_only.length > 2) {
                 result.series_name = series_only;
-                console.log('✅ Extracted series name only:', series_only);
             }
         }
         
@@ -134,15 +126,8 @@ var vod_series_player_page={
                 .replace(/\s+/g, ' ') // Normalize multiple spaces
                 .trim();
                 
-            console.log('Final cleaned series name:', result.series_name);
         }
         
-        console.log('=== PARSING RESULT ===');
-        console.log('Series:', result.series_name);
-        console.log('Season:', result.season_number);
-        console.log('Episode:', result.episode_number);
-        console.log('Episode Title:', result.episode_title);
-        console.log('=== END PARSING ===');
         
         return result;
     },
@@ -318,7 +303,7 @@ var vod_series_player_page={
         try{
             media_player.close();
         }catch(e){
-            console.log(e);
+
         }
         $('#'+media_player.parent_id).find('.video-error').hide();
         $('#'+media_player.parent_id).find('.subtitle-container').text('');
@@ -401,8 +386,7 @@ var vod_series_player_page={
                     SeriesModel.removeVideoTime(movie.id);
             }
         }catch (e) {
-            console.log('Save Video Time Issue Here', e);
-        }
+                    }
     },
     goBack:function(){
         $('.modal').modal('hide');
@@ -721,7 +705,6 @@ var vod_series_player_page={
                 
                 // Handle custom API subtitles (have 'label' property)
                 if(item.label && item.lang) {
-                    console.log('Item:', item);
                     language = item.label;
                 } 
                 // Handle native platform subtitles (have 'language' property)
@@ -734,7 +717,6 @@ var vod_series_player_page={
                     }
                 }
                 
-                console.log('Language for index', index+':', language);
                 
                 htmlContent+=
                     '<div class="setting-modal-option subtitle-item bg-focus"\
@@ -784,24 +766,10 @@ var vod_series_player_page={
                     $('#subtitle-loader-container').show();
                     var subtitle_request_data;
                     if(this.current_movie_type==='movies'){
-                        console.log('=== DETAILED MOVIE ANALYSIS FOR SUBTITLE MATCHING ===');
-                        console.log('Current movie object (FULL):', this.current_movie);
-                        console.log('Movie name (RAW from IPTV):', this.current_movie.name);
-                        console.log('Movie stream_id:', this.current_movie.stream_id);
-                        console.log('Movie category_id:', this.current_movie.category_id);
-                        console.log('Movie tmdb_id:', this.current_movie.tmdb_id || 'NOT AVAILABLE');
-                        console.log('Movie year:', this.current_movie.year || 'NOT AVAILABLE');
-                        console.log('Movie rating:', this.current_movie.rating || 'NOT AVAILABLE');
-                        console.log('Movie director:', this.current_movie.director || 'NOT AVAILABLE');
-                        console.log('Movie cast:', this.current_movie.cast || 'NOT AVAILABLE');
-                        console.log('Movie genre:', this.current_movie.genre || 'NOT AVAILABLE');
-                        console.log('Movie plot (first 150 chars):', this.current_movie.plot ? this.current_movie.plot.substring(0, 150) : 'NOT AVAILABLE');
                         
                         // Analyze and clean movie name for better OpenSubtitles matching
                         var original_name = this.current_movie.name;
                         var cleaned_name = original_name;
-                        console.log('=== MOVIE NAME CLEANING PROCESS ===');
-                        console.log('Step 1 - Original name:', original_name);
                         
                         // Extract year if present in name
                         var year_match = cleaned_name.match(/\((\d{4})\)/);
@@ -809,10 +777,7 @@ var vod_series_player_page={
                         if (year_match) {
                             extracted_year = parseInt(year_match[1]);
                             cleaned_name = cleaned_name.replace(/\s*\(\d{4}\)\s*/, '').trim();
-                            console.log('Step 2 - Found year:', extracted_year);
-                            console.log('Step 2 - Name after year removal:', cleaned_name);
                         } else {
-                            console.log('Step 2 - No year found in movie name');
                         }
                         
                         // Remove quality indicators that might interfere with matching
@@ -820,16 +785,12 @@ var vod_series_player_page={
                         var before_quality = cleaned_name;
                         cleaned_name = cleaned_name.replace(quality_patterns, ' ').trim();
                         cleaned_name = cleaned_name.replace(/\s+/g, ' ').trim();
-                        console.log('Step 3 - Before quality removal:', before_quality);
-                        console.log('Step 3 - After quality removal:', cleaned_name);
                         
                         // Remove brackets content (except years)
                         var before_brackets = cleaned_name;
                         cleaned_name = cleaned_name.replace(/\[.*?\]/g, '').trim();
                         cleaned_name = cleaned_name.replace(/\{.*?\}/g, '').trim();
                         cleaned_name = cleaned_name.replace(/\s+/g, ' ').trim();
-                        console.log('Step 4 - Before brackets removal:', before_brackets);
-                        console.log('Step 4 - After brackets removal:', cleaned_name);
                         
                         subtitle_request_data={
                             movie_name: cleaned_name,
@@ -839,40 +800,22 @@ var vod_series_player_page={
                         // Add TMDB ID if available (highest priority for matching)
                         if(this.current_movie.tmdb_id) {
                             subtitle_request_data.tmdb_id = this.current_movie.tmdb_id;
-                            console.log('✅ TMDB ID added (BEST matching method):', this.current_movie.tmdb_id);
                         } else {
-                            console.log('⚠️ NO TMDB ID available - using movie name matching only');
                         }
                         
                         // Add extracted or existing year for better matching
                         if(extracted_year) {
                             subtitle_request_data.year = extracted_year;
-                            console.log('✅ Year added from name:', extracted_year);
                         } else if(this.current_movie.year) {
                             subtitle_request_data.year = this.current_movie.year;
-                            console.log('✅ Year added from metadata:', this.current_movie.year);
                         } else {
-                            console.log('⚠️ NO YEAR available for matching');
                         }
                         
-                        console.log('=== FINAL MOVIE REQUEST DATA ===');
-                        console.log('Request will search OpenSubtitles for:', subtitle_request_data);
-                        console.log('Original IPTV name vs Clean name:', {
-                            original: original_name,
-                            cleaned: cleaned_name,
-                            difference: original_name !== cleaned_name ? 'CHANGED' : 'SAME'
-                        });
                     } else {
                         // SERIES EPISODES: Enhanced logic with episode name parsing fallback
-                        console.log('=== DETAILED SERIES EPISODE ANALYSIS FOR SUBTITLE MATCHING ===');
-                        console.log('Current episode object (FULL):', this.current_movie);
-                        console.log('Episode object keys:', Object.keys(this.current_movie || {}));
                         
                         // Fix: Extract episode name from correct property
                         var episode_name = this.current_movie.title || this.current_movie.name || this.current_movie.episode_name || '';
-                        console.log('Episode name (RAW from IPTV):', episode_name);
-                        console.log('Episode title property:', this.current_movie.title);
-                        console.log('Episode name property:', this.current_movie.name);
                         
                         subtitle_request_data = {
                             movie_type: 'episode'
@@ -881,9 +824,7 @@ var vod_series_player_page={
                         // Primary: Use episode TMDB ID from this.current_movie.info.tmdb_id
                         if(this.current_movie && this.current_movie.info && this.current_movie.info.tmdb_id) {
                             subtitle_request_data.tmdb_id = String(this.current_movie.info.tmdb_id);
-                            console.log('✅ Episode TMDB ID found (BEST matching method):', this.current_movie.info.tmdb_id);
                         } else {
-                            console.log('⚠️ NO Episode TMDB ID - attempting episode name parsing fallback...');
                             
                             // FALLBACK: Parse episode name for series info
                             var parsed_episode = this.parseEpisodeName(episode_name);
@@ -899,23 +840,17 @@ var vod_series_player_page={
                                 }
                                 
                                 subtitle_request_data.movie_name = formatted_name;
-                                console.log('✅ Formatted episode name for subtitle search:', formatted_name);
                                 
                                 // Use series TMDB ID if available from series info
                                 if(this.current_movie.info && this.current_movie.info.tmdb_id) {
                                     subtitle_request_data.id = String(this.current_movie.info.tmdb_id);
-                                    console.log('✅ Series TMDB ID added as episode ID:', this.current_movie.info.tmdb_id);
                                 }
                                 
-                                console.log('✅ Episode name parsing successful - enhanced subtitle matching enabled');
                             } else {
-                                console.log('❌ Episode name parsing failed - using basic fallback');
                                 subtitle_request_data.movie_type = 'auto';
                             }
                         }
                         
-                        console.log('=== FINAL SERIES EPISODE REQUEST DATA ===');
-                        console.log('Request data for subtitle matching:', subtitle_request_data);
                     }
                     
                     
@@ -941,7 +876,6 @@ var vod_series_player_page={
                                     if(media_player && typeof media_player.getSubtitleOrAudioTrack === 'function') {
                                         nativeSubtitles = this.safeGetTracks('TEXT');
                                     } else {
-                                        console.log('⚠️ media_player.getSubtitleOrAudioTrack not available');
                                     }
                                     if (nativeSubtitles && nativeSubtitles.length > 0) {
                                         // Render native subtitles as fallback
@@ -977,9 +911,9 @@ var vod_series_player_page={
                         },
                         timeout: 10000, // 10 second timeout for non-Samsung API call
                         error:function (xhr, status, error){
-                            console.log('=== NON-SAMSUNG API SUBTITLE FETCH FAILED ===');
-                            console.log('Error status:', status);
-                            console.log('Error details:', error);
+                            
+                            
+                            
                             
                             that.subtitle_loading=false;
                             $('#subtitle-loader-container').hide();
@@ -1029,7 +963,7 @@ var vod_series_player_page={
                 
                 // For Samsung with TEXT subtitles, also fetch API subtitles
                 if(platform==='samsung' && kind==='TEXT'){
-                    console.log('Native subtitles found:', subtitles.length);
+                    
                     
                     // Check if we should also fetch API subtitles
                     if(!(this.current_movie_type==='movies' || (this.current_movie_type==='series' && settings.playlist_type==='xtreme'))) {
@@ -1095,8 +1029,7 @@ var vod_series_player_page={
                                 subtitle_request_data.year = this.current_movie.year;
                             }
                             
-                            console.log('Samsung API request data:', subtitle_request_data);
-                        } else {
+                                                    } else {
                             // Series episodes
                             subtitle_request_data = {
                                 movie_type: 'auto'
@@ -1119,24 +1052,19 @@ var vod_series_player_page={
                                 that.subtitle_loaded=true;
                                 $('#subtitle-loader-container').hide();
                                 
-                                console.log('=== SAMSUNG API SUBTITLES RESPONSE ===');
-                                console.log('API result:', result);
-                                
+                                                                                                
                                 var apiSubtitles = [];
                                 if(result.status==='success' && result.subtitles && result.subtitles.length>0){
                                     apiSubtitles = result.subtitles;
                                     media_player.subtitles = result.subtitles;
-                                    console.log('API subtitles loaded:', apiSubtitles.length);
-                                } else {
+                                                                    } else {
                                     media_player.subtitles = [];
-                                    console.log('No API subtitles found');
+                                    
                                 }
                                 
                                 // Combine native and API subtitles
                                 var combinedSubtitles = that.combineSubtitlesForSamsung(nativeSubtitles, apiSubtitles);
-                                console.log('=== SAMSUNG COMBINED SUBTITLES ===');
-                                console.log('Native:', nativeSubtitles.length, 'API:', apiSubtitles.length, 'Combined:', combinedSubtitles.length);
-                                
+                                                                                                
                                 if(combinedSubtitles.length > 0) {
                                     that.renderSubtitles(kind, combinedSubtitles);
                                     that.subtitle_loaded=true;
@@ -1148,8 +1076,7 @@ var vod_series_player_page={
                                 } else {
                                     // **CRITICAL FIX**: Check for native subtitles before showing empty message
                                     if(nativeSubtitles.length > 0) {
-                                        console.log('Samsung API returned no subtitles, falling back to native only');
-                                        that.renderSubtitles(kind, nativeSubtitles);
+                                                                                that.renderSubtitles(kind, nativeSubtitles);
                                         that.subtitle_loaded=true;
                                         that.showSubtitleFallbackNotification('Enhanced subtitles unavailable. Using native subtitles.');
                                     } else {
@@ -1158,11 +1085,9 @@ var vod_series_player_page={
                                 }
                             },
                             error:function (xhr, status, error){
-                                console.log('=== SAMSUNG API SUBTITLE FETCH FAILED ===');
-                                console.log('Error status:', status);
-                                console.log('Error details:', error);
-                                console.log('XHR status:', xhr.status);
+                                                                
                                 
+                                                                
                                 // Properly manage loading flags
                                 that.subtitle_loading=false;
                                 that.subtitle_loaded=true;
@@ -1182,8 +1107,7 @@ var vod_series_player_page={
                                 
                                 // Always fall back to native subtitles with proper user notification
                                 if(nativeSubtitles.length > 0) {
-                                    console.log('Falling back to native subtitles only. Count:', nativeSubtitles.length);
-                                    
+                                                                        
                                     // Clear API subtitles to prevent confusion
                                     media_player.subtitles = [];
                                     
@@ -1204,7 +1128,7 @@ var vod_series_player_page={
                                     that.showSubtitleFallbackNotification(message);
                                 } else {
                                     // No native subtitles available either
-                                    console.log('No native or API subtitles available');
+                                    
                                     that.showEmptySubtitleMessage(kind);
                                 }
                             }
@@ -1221,8 +1145,7 @@ var vod_series_player_page={
                             // Re-check for native subtitles before showing empty message
                             var currentNativeSubtitles = this.safeGetTracks(kind);
                             if(currentNativeSubtitles && currentNativeSubtitles.length > 0) {
-                                console.log('=== SAMSUNG FALLBACK: Found native subtitles after combine failure ===');
-                                this.renderSubtitles(kind, currentNativeSubtitles);
+                                                                this.renderSubtitles(kind, currentNativeSubtitles);
                                 this.subtitle_loaded=true;
                                 this.showSubtitleFallbackNotification('Enhanced subtitles unavailable. Using native subtitles.');
                             } else {
@@ -1234,8 +1157,7 @@ var vod_series_player_page={
                     // Non-TEXT kind or non-Samsung platform
                     if(kind === "TEXT" && platform !== 'samsung') {
                         // **CRITICAL FIX**: Non-Samsung TEXT subtitles - implement proper fallback
-                        console.log('=== NON-SAMSUNG SUBTITLE LOADING WITH FALLBACK ===');
-                        console.log('Native subtitles found:', subtitles.length);
+                                                
                         
                         var that = this;
                         var nativeSubtitles = subtitles; // Store native subtitles for fallback
@@ -1308,10 +1230,9 @@ var vod_series_player_page={
                                         if(result.status==='success' && result.subtitles && result.subtitles.length>0){
                                             apiSubtitles = result.subtitles;
                                             media_player.subtitles = result.subtitles;
-                                            console.log('Non-Samsung API subtitles loaded:', apiSubtitles.length);
-                                        } else {
+                                                                                    } else {
                                             media_player.subtitles = [];
-                                            console.log('No API subtitles found');
+                                            
                                         }
                                         
                                         // Combine native and API subtitles for non-Samsung
@@ -1350,8 +1271,7 @@ var vod_series_player_page={
                                             // But add fallback check as extra safety
                                             var fallbackNativeSubtitles = this.safeGetTracks('TEXT');
                                             if (fallbackNativeSubtitles && fallbackNativeSubtitles.length > 0) {
-                                                console.log('Emergency fallback to native subtitles');
-                                                var htmlContent = that.renderSubtitles('TEXT', fallbackNativeSubtitles);
+                                                                                                var htmlContent = that.renderSubtitles('TEXT', fallbackNativeSubtitles);
                                                 $("#subtitle-selection-container").html(htmlContent);
                                                 $("#subtitle-modal-title").text("Subtitles (Native Only)");
                                                 that.subtitle_loaded = true; // Only after rendering
@@ -1363,17 +1283,16 @@ var vod_series_player_page={
                                         }
                                     },
                                     error:function (xhr, status, error){
-                                        console.log('=== NON-SAMSUNG API SUBTITLE FETCH FAILED ===');
-                                        console.log('Error status:', status);
-                                        console.log('Error details:', error);
+                                        
+                                        
+                                        
                                         
                                         that.subtitle_loading=false;
                                         $('#subtitle-loader-container').hide();
                                         
                                         // **CRITICAL FIX**: Fall back to native subtitles on API error
                                         if(nativeSubtitles && nativeSubtitles.length > 0) {
-                                            console.log('Falling back to native subtitles after API error. Count:', nativeSubtitles.length);
-                                            
+                                                                                        
                                             // Clear API subtitles
                                             media_player.subtitles = [];
                                             
@@ -1402,7 +1321,7 @@ var vod_series_player_page={
                                             that.showSubtitleFallbackNotification(message);
                                         } else {
                                             // No native subtitles available either
-                                            console.log('No native or API subtitles available');
+                                            
                                             that.showEmptySubtitleMessage(kind);
                                         }
                                     }
@@ -1439,8 +1358,7 @@ var vod_series_player_page={
                                     // But add fallback check as extra safety
                                     var fallbackNativeSubtitles = this.safeGetTracks('TEXT');
                                     if (fallbackNativeSubtitles && fallbackNativeSubtitles.length > 0) {
-                                        console.log('Emergency fallback to native subtitles in loaded subtitle case');
-                                        var htmlContent = this.renderSubtitles('TEXT', fallbackNativeSubtitles);
+                                                                                var htmlContent = this.renderSubtitles('TEXT', fallbackNativeSubtitles);
                                         $("#subtitle-selection-container").html(htmlContent);
                                         $("#subtitle-modal-title").text("Subtitles (Native Only)");
                                         this.subtitle_loaded = true; // Only after rendering
@@ -1493,7 +1411,7 @@ var vod_series_player_page={
             try{
                 stream_summary = media_player.videoObj.videoWidth + '*' + media_player.videoObj.videoHeight;
             }catch (e) {
-                console.log(e);
+    
             }
         }else{
             try{
@@ -1580,9 +1498,6 @@ var vod_series_player_page={
         },10000)
     },
     renderSubtitles:function (kind, subtitles) {
-        console.log('Kind:', kind);
-        console.log('Subtitles array:', subtitles);
-        console.log('Subtitles count:', subtitles ? subtitles.length : 'undefined');
         
         // Store subtitles globally for Samsung hybrid access in confirmSubtitle
         if(platform === 'samsung' && kind === 'TEXT') {
@@ -1591,12 +1506,6 @@ var vod_series_player_page={
         
         if(subtitles && subtitles.length > 0) {
             subtitles.forEach((subtitle, index) => {
-                console.log(`Subtitle ${index}:`, subtitle);
-                if(subtitle.label) console.log(`  - label: "${subtitle.label}"`);
-                if(subtitle.file) console.log(`  - file: "${subtitle.file}"`);
-                if(subtitle.lang) console.log(`  - lang: "${subtitle.lang}"`);
-                if(subtitle.extra_info) console.log(`  - extra_info:`, subtitle.extra_info);
-                if(subtitle.isNative !== undefined) console.log(`  - isNative: ${subtitle.isNative}`);
             });
         }
         
@@ -1611,8 +1520,6 @@ var vod_series_player_page={
         $('#subtitle-selection-modal').find('.modal-operation-menu-type-2').removeClass('active');
         
         var htmlContent=this.makeMediaTrackElement(subtitles, kind);
-        console.log('HTML length:', htmlContent ? htmlContent.length : 'undefined');
-        console.log('HTML content:', htmlContent);
         
         $("#subtitle-selection-container").html(htmlContent);
         $('#subtitle-selection-modal').modal('show');
@@ -1625,10 +1532,7 @@ var vod_series_player_page={
         var selectionFound = false;
         
         if(typeof env !== 'undefined' && env === 'develop') {
-            console.log('=== SUBTITLE MODAL DEBUG: Selection Logic ===');
-            console.log('Current selected index:', current_selected_index);
-            console.log('Available subtitles:', subtitles);
-            console.log('Platform:', platform);
+            
         }
         
         // First try to match using combinedIndex or value from checkboxes
@@ -1637,7 +1541,6 @@ var vod_series_player_page={
             var checkboxValue = parseInt(checkbox.val());
             
             if(typeof env !== 'undefined' && env === 'develop') {
-                console.log(`Menu ${menuIndex}: checkbox value = ${checkboxValue}, current = ${current_selected_index}`);
             }
             
             if(checkboxValue === current_selected_index) {
@@ -1646,7 +1549,6 @@ var vod_series_player_page={
                 that.hoverSubtitle(menuIndex);
                 selectionFound = true;
                 if(typeof env !== 'undefined' && env === 'develop') {
-                    console.log(`Found match at menu index ${menuIndex}`);
                 }
                 return false; // break out of each loop
             }
@@ -1657,7 +1559,6 @@ var vod_series_player_page={
             $(subtitle_menus[0]).find('input').prop('checked',true);
             this.hoverSubtitle(0);
             if(typeof env !== 'undefined' && env === 'develop') {
-                console.log('No selection found, defaulting to Turn Off Subtitles');
             }
         }
     },
@@ -1673,8 +1574,6 @@ var vod_series_player_page={
     },
     showSubtitleFallbackNotification: function(message) {
         // Show a non-intrusive notification that enhanced subtitles failed but native are available
-        console.log('=== SUBTITLE FALLBACK NOTIFICATION ===');
-        console.log('Message:', message);
         
         // Use a less intrusive notification style for fallback scenarios
         // This informs users about the situation without being alarming
@@ -1701,9 +1600,6 @@ var vod_series_player_page={
         }
     },
     combineSubtitlesForSamsung: function(nativeSubtitles, apiSubtitles) {
-        console.log('=== COMBINING SUBTITLES FOR SAMSUNG ===');
-        console.log('Native subtitles:', nativeSubtitles);
-        console.log('API subtitles:', apiSubtitles);
         
         // **EDGE CASE HANDLING**: Ensure arrays are valid
         nativeSubtitles = nativeSubtitles || [];
@@ -1815,8 +1711,8 @@ var vod_series_player_page={
             var selectedCombinedIndex = parseInt($('#subtitle-selection-modal').find('input[type=checkbox]:checked').val());
             
             if(typeof env !== 'undefined' && env === 'develop') {
-                console.log('Selected combined index:', selectedCombinedIndex);
-                console.log('Platform:', platform);
+                
+                
             }
             
             try{
@@ -1860,9 +1756,9 @@ var vod_series_player_page={
                         console.log('window.subtitleMapping exists:', !!window.subtitleMapping);
                         console.log('window.subtitleMapping.combined exists:', !!(window.subtitleMapping && window.subtitleMapping.combined));
                         console.log('window.subtitleMapping.combined.length:', window.subtitleMapping && window.subtitleMapping.combined ? window.subtitleMapping.combined.length : 'undefined');
-                        console.log('selectedCombinedIndex:', selectedCombinedIndex);
+                        
                         console.log('selectedSubtitle from mapping:', selectedSubtitle);
-                        console.log('subtitleSource detected:', subtitleSource);
+                        
                     }
                 } else {
                     // **LG/Other Platforms**: Use traditional API subtitle system
@@ -1872,22 +1768,16 @@ var vod_series_player_page={
                     }
                     
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== NON-SAMSUNG SUBTITLE SELECTION DEBUG ===');
-                        console.log('media_player.subtitles exists:', !!media_player.subtitles);
-                        console.log('media_player.subtitles.length:', media_player.subtitles ? media_player.subtitles.length : 'undefined');
-                        console.log('selectedCombinedIndex:', selectedCombinedIndex);
-                        console.log('selectedSubtitle from media_player:', selectedSubtitle);
-                        console.log('subtitleSource detected:', subtitleSource);
+                                                                        console.log('media_player.subtitles.length:', media_player.subtitles ? media_player.subtitles.length : 'undefined');
+                        
+                                                
                     }
                 }
                 
                 if(typeof env !== 'undefined' && env === 'develop') {
-                    console.log('Platform:', platform);
-                    console.log('Selected combined index:', selectedCombinedIndex);
-                    console.log('Selected subtitle:', selectedSubtitle);
-                    console.log('Detected source:', subtitleSource);
-                    console.log('Available subtitles:', media_player.subtitles);
-                }
+                    
+                    
+                                                                            }
                 
                 if(!selectedSubtitle || !subtitleSource) {
                     if(typeof env !== 'undefined' && env === 'develop') {
@@ -1980,7 +1870,6 @@ var vod_series_player_page={
                                 that.subtitle_loaded = true; // Set loaded state
                                 
                                 if(typeof env !== 'undefined' && env === 'develop') {
-                                    console.log('Content length:', subtitleContent.length);
                                 }
                                 
                                 // Get current time for initialization
