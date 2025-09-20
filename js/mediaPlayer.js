@@ -647,6 +647,23 @@ function initPlayer() {
         }
     } else if(platform === 'lg') {
         // Initialize LG player using lg_player object
-        media_player = lg_player;
+        console.log('Attempting LG player initialization...');
+        console.log('lg_player availability:', typeof lg_player, lg_player);
+        
+        if(typeof lg_player !== 'undefined' && lg_player !== null) {
+            media_player = lg_player;
+            console.log('✅ LG player successfully assigned to media_player');
+        } else {
+            console.log('❌ lg_player not available, creating fallback');
+            // Create a simple fallback that extends the existing media_player
+            if(typeof media_player === 'undefined') {
+                media_player = {};
+            }
+            // Add the missing function as a safe fallback
+            media_player.getSubtitleOrAudioTrack = function(kind) {
+                console.log('⚠️ Using fallback getSubtitleOrAudioTrack for', kind);
+                return [];
+            };
+        }
     }
 }

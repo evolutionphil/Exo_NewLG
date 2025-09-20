@@ -44,6 +44,16 @@ var vod_series_player_page={
     subtitle_loaded:false,
     fw_timer:null,
 
+    // Safe wrapper for media player track access
+    safeGetTracks: function(kind) {
+        if(media_player && typeof media_player.getSubtitleOrAudioTrack === 'function') {
+            return media_player.getSubtitleOrAudioTrack(kind);
+        } else {
+            console.log('⚠️ media_player.getSubtitleOrAudioTrack not available for', kind);
+            return [];
+        }
+    },
+
     // Enhanced episode name parsing for subtitle fallback matching
     parseEpisodeName: function(episodeName) {
         console.log('=== EPISODE NAME PARSING ===');
@@ -753,7 +763,7 @@ var vod_series_player_page={
                     if(!(this.current_movie_type==='movies' || (this.current_movie_type==='series' && settings.playlist_type==='xtreme')))
                     {
                         // **CRITICAL FIX**: Check for native subtitle fallback before showing empty message
-                        var nativeSubtitles = media_player.getSubtitleOrAudioTrack('TEXT');
+                        var nativeSubtitles = this.safeGetTracks('TEXT');
                         if (nativeSubtitles && nativeSubtitles.length > 0) {
                             // Render native subtitles
                             var htmlContent = this.renderSubtitles('TEXT', nativeSubtitles);
@@ -927,7 +937,12 @@ var vod_series_player_page={
                                 else{
                                     media_player.subtitles=[];
                                     // Check if native subtitles are available for fallback
-                                    var nativeSubtitles = media_player.getSubtitleOrAudioTrack('TEXT');
+                                    var nativeSubtitles = [];
+                                    if(media_player && typeof media_player.getSubtitleOrAudioTrack === 'function') {
+                                        nativeSubtitles = this.safeGetTracks('TEXT');
+                                    } else {
+                                        console.log('⚠️ media_player.getSubtitleOrAudioTrack not available');
+                                    }
                                     if (nativeSubtitles && nativeSubtitles.length > 0) {
                                         // Render native subtitles as fallback
                                         var htmlContent = that.renderSubtitles('TEXT', nativeSubtitles);
@@ -944,7 +959,7 @@ var vod_series_player_page={
                                 }
                             } else {
                                 // Check if native subtitles are available for fallback
-                                var nativeSubtitles = media_player.getSubtitleOrAudioTrack('TEXT');
+                                var nativeSubtitles = this.safeGetTracks('TEXT');
                                 if (nativeSubtitles && nativeSubtitles.length > 0) {
                                     // Render native subtitles as fallback
                                     var htmlContent = that.renderSubtitles('TEXT', nativeSubtitles);
@@ -970,7 +985,7 @@ var vod_series_player_page={
                             $('#subtitle-loader-container').hide();
                             
                             // Check if native subtitles are available for fallback
-                            var nativeSubtitles = media_player.getSubtitleOrAudioTrack('TEXT');
+                            var nativeSubtitles = this.safeGetTracks('TEXT');
                             if (nativeSubtitles && nativeSubtitles.length > 0) {
                                 // Render native subtitles as fallback
                                 var htmlContent = that.renderSubtitles('TEXT', nativeSubtitles);
@@ -992,7 +1007,7 @@ var vod_series_player_page={
                         this.renderSubtitles(kind, media_player.subtitles);
                     }else {
                         // **CRITICAL FIX**: Check for native subtitle fallback before showing empty message
-                        var nativeSubtitles = media_player.getSubtitleOrAudioTrack('TEXT');
+                        var nativeSubtitles = this.safeGetTracks('TEXT');
                         if (nativeSubtitles && nativeSubtitles.length > 0) {
                             // Render native subtitles
                             var htmlContent = this.renderSubtitles('TEXT', nativeSubtitles);
@@ -1009,7 +1024,7 @@ var vod_series_player_page={
             }else {
                 // Get native tracks first (existing logic)
                 
-                subtitles=media_player.getSubtitleOrAudioTrack(kind);
+                subtitles=this.safeGetTracks(kind);
                 
                 
                 // For Samsung with TEXT subtitles, also fetch API subtitles
@@ -1204,7 +1219,7 @@ var vod_series_player_page={
                             this.subtitle_loaded=true;
                         } else {
                             // Re-check for native subtitles before showing empty message
-                            var currentNativeSubtitles = media_player.getSubtitleOrAudioTrack(kind);
+                            var currentNativeSubtitles = this.safeGetTracks(kind);
                             if(currentNativeSubtitles && currentNativeSubtitles.length > 0) {
                                 console.log('=== SAMSUNG FALLBACK: Found native subtitles after combine failure ===');
                                 this.renderSubtitles(kind, currentNativeSubtitles);
@@ -1333,7 +1348,7 @@ var vod_series_player_page={
                                         } else {
                                             // **CRITICAL FIX**: This should never happen since nativeSubtitles are included in allSubtitles
                                             // But add fallback check as extra safety
-                                            var fallbackNativeSubtitles = media_player.getSubtitleOrAudioTrack('TEXT');
+                                            var fallbackNativeSubtitles = this.safeGetTracks('TEXT');
                                             if (fallbackNativeSubtitles && fallbackNativeSubtitles.length > 0) {
                                                 console.log('Emergency fallback to native subtitles');
                                                 var htmlContent = that.renderSubtitles('TEXT', fallbackNativeSubtitles);
@@ -1422,7 +1437,7 @@ var vod_series_player_page={
                                 } else {
                                     // **CRITICAL FIX**: This should never happen since nativeSubtitles are included in allSubtitles
                                     // But add fallback check as extra safety
-                                    var fallbackNativeSubtitles = media_player.getSubtitleOrAudioTrack('TEXT');
+                                    var fallbackNativeSubtitles = this.safeGetTracks('TEXT');
                                     if (fallbackNativeSubtitles && fallbackNativeSubtitles.length > 0) {
                                         console.log('Emergency fallback to native subtitles in loaded subtitle case');
                                         var htmlContent = this.renderSubtitles('TEXT', fallbackNativeSubtitles);
@@ -1992,7 +2007,7 @@ var vod_series_player_page={
                                 }
                                 
                                 // **CRITICAL FIX**: Check for native subtitle fallback
-                                var nativeSubtitles = media_player.getSubtitleOrAudioTrack('TEXT');
+                                var nativeSubtitles = this.safeGetTracks('TEXT');
                                 if (nativeSubtitles && nativeSubtitles.length > 0) {
                                     console.log('Falling back to native subtitles after API subtitle file load error');
                                     
