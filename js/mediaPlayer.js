@@ -594,39 +594,7 @@ function initPlayer() {
             seekTo:function(seekTime){
 
             },
-            getSubtitleOrAudioTrack:function(kind){
-                var totalTrackInfo=[],temps
-                if(kind=="TEXT"){
-                    temps=this.videoObj.textTracks;
-                }else
-                    temps=this.videoObj.audioTracks;
-                console.log("LG Audio tracks detected:", temps ? temps.length : 0);
-                if(temps && Object.keys(temps).length>0){
-                    Object.keys(temps).map(function (key,index) {
-                        if(typeof temps[key]=='object' && temps[key]!=null)
-                            totalTrackInfo.push(temps[key]);
-                    })
-                }
-                return totalTrackInfo;
-            },
-            setSubtitleOrAudioTrack:function(kind, index){
-                if(kind==='TEXT'){
-                    if(this.subtitles[index])
-                        SrtOperation.init(this.subtitles[index],media_player.videoObj.currentTime);
-                }else{
-                    // Original working audio track logic for LG
-                    if (this.videoObj.audioTracks && typeof this.videoObj.audioTracks.length === 'number') {
-                        // Disable all audio tracks first
-                        for (var i = 0; i < this.videoObj.audioTracks.length; i++) {
-                            this.videoObj.audioTracks[i].enabled = false;
-                        }
-                        // Enable the selected track
-                        if (this.videoObj.audioTracks[index]) {
-                            this.videoObj.audioTracks[index].enabled = true;
-                        }
-                    }
-                }
-            },
+            // REMOVED BROKEN CODE - Samsung uses webapis.avplay, not HTML5
             toggleScreenRatio:function(){
                 // Cycle through aspect ratio modes: 16:9 -> contain -> fill -> cover -> 16:9
                 this.aspect_ratio_mode = (this.aspect_ratio_mode + 1) % 4;

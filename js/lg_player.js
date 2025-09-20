@@ -139,8 +139,17 @@ var lg_player={
         var totalTrackInfo
         if(kind=="TEXT"){
             totalTrackInfo=this.videoObj.textTracks;
-        }else
+        }else{
             totalTrackInfo=this.videoObj.audioTracks;
+            console.log('=== ORIGINAL LG AUDIO TRACK DEBUG ===');
+            console.log('videoObj exists:', !!this.videoObj);
+            console.log('audioTracks object:', totalTrackInfo);
+            console.log('audioTracks type:', typeof totalTrackInfo);
+            console.log('audioTracks length:', totalTrackInfo ? totalTrackInfo.length : 'undefined');
+            console.log('Video ready state:', this.videoObj ? this.videoObj.readyState : 'no video');
+            console.log('Video current time:', this.videoObj ? this.videoObj.currentTime : 'no video');
+            console.log('=== END ORIGINAL LG DEBUG ===');
+        }
         return totalTrackInfo;
     },
     setSubtitleOrAudioTrack:function(kind, index){
