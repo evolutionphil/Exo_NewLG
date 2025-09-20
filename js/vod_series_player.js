@@ -856,7 +856,13 @@ var vod_series_player_page={
                         // SERIES EPISODES: Enhanced logic with episode name parsing fallback
                         console.log('=== DETAILED SERIES EPISODE ANALYSIS FOR SUBTITLE MATCHING ===');
                         console.log('Current episode object (FULL):', this.current_movie);
-                        console.log('Episode name (RAW from IPTV):', this.current_movie.name);
+                        console.log('Episode object keys:', Object.keys(this.current_movie || {}));
+                        
+                        // Fix: Extract episode name from correct property
+                        var episode_name = this.current_movie.title || this.current_movie.name || this.current_movie.episode_name || '';
+                        console.log('Episode name (RAW from IPTV):', episode_name);
+                        console.log('Episode title property:', this.current_movie.title);
+                        console.log('Episode name property:', this.current_movie.name);
                         
                         subtitle_request_data = {
                             movie_type: 'episode'
@@ -870,27 +876,20 @@ var vod_series_player_page={
                             console.log('⚠️ NO Episode TMDB ID - attempting episode name parsing fallback...');
                             
                             // FALLBACK: Parse episode name for series info
-                            var episode_name = this.current_movie.name;
                             var parsed_episode = this.parseEpisodeName(episode_name);
                             
                             if(parsed_episode.series_name) {
-                                subtitle_request_data.movie_name = parsed_episode.series_name;
-                                console.log('✅ Parsed series name:', parsed_episode.series_name);
+                                // Format as single string: "the witcher s01 e01"
+                                var formatted_name = parsed_episode.series_name.toLowerCase();
                                 
-                                if(parsed_episode.season_number) {
-                                    subtitle_request_data.season_number = parsed_episode.season_number;
-                                    console.log('✅ Parsed season number:', parsed_episode.season_number);
+                                if(parsed_episode.season_number && parsed_episode.episode_number) {
+                                    var season_str = 's' + String(parsed_episode.season_number).padStart(2, '0');
+                                    var episode_str = 'e' + String(parsed_episode.episode_number).padStart(2, '0');
+                                    formatted_name = formatted_name + ' ' + season_str + ' ' + episode_str;
                                 }
                                 
-                                if(parsed_episode.episode_number) {
-                                    subtitle_request_data.episode_number = parsed_episode.episode_number;
-                                    console.log('✅ Parsed episode number:', parsed_episode.episode_number);
-                                }
-                                
-                                if(parsed_episode.episode_title) {
-                                    subtitle_request_data.episode_title = parsed_episode.episode_title;
-                                    console.log('✅ Parsed episode title:', parsed_episode.episode_title);
-                                }
+                                subtitle_request_data.movie_name = formatted_name;
+                                console.log('✅ Formatted episode name for subtitle search:', formatted_name);
                                 
                                 // Use series TMDB ID if available from series info
                                 if(this.current_movie.info && this.current_movie.info.tmdb_id) {
