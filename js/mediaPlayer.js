@@ -595,26 +595,19 @@ function initPlayer() {
 
             },
             getSubtitleOrAudioTrack:function(kind){
-                var totalTrackInfo = [];
-                var list = kind === 'TEXT' ? this.videoObj.textTracks : this.videoObj.audioTracks;
-                
-                if (!list) return totalTrackInfo;
-                
-                // Handle AudioTrackList/TextTrackList (has length property) or generic objects
-                if (typeof list.length === 'number') {
-                    // AudioTrackList/TextTrackList - use length-based iteration
-                    for (var i = 0; i < list.length; i++) {
-                        if (list[i]) totalTrackInfo.push(list[i]);
-                    }
-                } else {
-                    // Fallback for object-like collections - use keys
-                    Object.keys(list).forEach(function(key) {
-                        if (list[key] && typeof list[key] === 'object') {
-                            totalTrackInfo.push(list[key]);
-                        }
-                    });
+                var totalTrackInfo=[],temps
+                if(kind=="TEXT"){
+                    temps=this.videoObj.textTracks;
+                }else
+                    temps=this.videoObj.audioTracks;
+                console.log(temps);
+                if(Object.keys(temps).length>0){
+                    Object.keys(temps).map(function (key,index) {
+                        if(typeof temps[key]=='object' && temps[key]!=null)
+                            totalTrackInfo.push(temps[key]);
+                    })
                 }
-                
+                console.log(totalTrackInfo);
                 return totalTrackInfo;
             },
             setSubtitleOrAudioTrack:function(kind, index){
