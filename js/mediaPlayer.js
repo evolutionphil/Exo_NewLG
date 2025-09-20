@@ -48,7 +48,6 @@ function initPlayer() {
                     return 0;
                 }
                 try{
-                    console.log(url);
                     webapis.avplay.open(url);
                     this.setupEventListeners();
                     this.setDisplayArea();
@@ -114,7 +113,6 @@ function initPlayer() {
                     webapis.avplay.play();
                 }catch(e){
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== SAMSUNG PLAY FALLBACK ===');
                     }
                     this.current_time = 0;
                 }
@@ -135,7 +133,6 @@ function initPlayer() {
                     webapis.avplay.stop();
                 } catch(e) {
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('webapis.avplay.stop() failed:', e.message);
                     }
                 }
                 // Clean up fallback timer
@@ -143,7 +140,6 @@ function initPlayer() {
                     clearInterval(this.fallbackTimer);
                     this.fallbackTimer = null;
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('Fallback timer stopped and cleaned up');
                     }
                 }
             },
@@ -153,7 +149,6 @@ function initPlayer() {
                     webapis.avplay.close();
                 } catch(e) {
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('webapis.avplay.close() failed:', e.message);
                     }
                 }
                 // Clean up fallback timer
@@ -161,7 +156,6 @@ function initPlayer() {
                     clearInterval(this.fallbackTimer);
                     this.fallbackTimer = null;
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('Fallback timer closed and cleaned up');
                     }
                 }
             },
@@ -181,7 +175,6 @@ function initPlayer() {
                         webapis.avplay.setDisplayMethod('PLAYER_DISPLAY_MODE_FULL_SCREEN');
                     }
                 }catch (e) {
-                    console.log('Samsung display method error:', e);
                 }
                 
                 // Save Samsung aspect ratio preference
@@ -195,9 +188,6 @@ function initPlayer() {
                 }
                 
                 if(typeof env !== 'undefined' && env === 'develop') {
-                    console.log('=== SAMSUNG DISPLAY MODE CHANGED ===');
-                    console.log('New mode:', current_mode);
-                    console.log('Mode index:', this.full_screen_state);
                 }
             },
             setDisplayArea:function() {
@@ -223,15 +213,12 @@ function initPlayer() {
                         $('#'+that.parent_id).find('.video-resolution').hide();
                     },
                     onbufferingprogress: function(percent) {
-                        // console.log("Buffering progress: "+percent);
                     },
                     onbufferingcomplete: function() {
-                        // console.log('Buffering Complete, Can play now!');
                         $('#'+that.parent_id).find('.video-loader').hide();
                         $('#'+that.parent_id).find('.video-resolution').show();
                     },
                     onstreamcompleted: function() {
-                        // console.log('video has ended.');
                         $('#'+that.parent_id).find('.video-error').hide();
                         webapis.avplay.stop();
                         that.state = that.STATES.STOPPED;
@@ -257,9 +244,6 @@ function initPlayer() {
                             if(typeof env !== 'undefined' && env === 'develop') {
                                 // Only log every 5 seconds to avoid spam
                                 if(Math.floor(currentTime/1000) % 5 === 0 && Math.floor(currentTime) % 1000 < 50) {
-                                    console.log('Current time (seconds):', currentTime/1000);
-                                    console.log('SrtOperation exists:', typeof SrtOperation !== 'undefined');
-                                    console.log('SrtOperation.stopped:', typeof SrtOperation !== 'undefined' ? SrtOperation.stopped : 'undefined');
                                 }
                             }
                             
@@ -273,15 +257,12 @@ function initPlayer() {
                         }
                     },
                     ondrmevent: function(drmEvent, drmData) {
-                        // console.log("DRM callback: " + drmEvent + ", data: " + drmData);
                     },
                     onerror : function(type, data) {
                         $('#'+that.parent_id).find('.video-error').show();
-                        // console.log("OnError: " + data);
                     },
                     onsubtitlechange: function(duration, text, data3, data4) {
                         $('#'+that.parent_id).find('.subtitle-container').html(text);
-                        // console.log("subtitleText: ",text,data3,data4);
                     }
                 }
                 
@@ -289,12 +270,9 @@ function initPlayer() {
                 try {
                     webapis.avplay.setListener(listener);
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('Samsung webapis.avplay.setListener successfully set');
                     }
                 } catch (e) {
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== SAMSUNG WEBAPIS NOT AVAILABLE ===');
-                        console.log('Error:', e.message);
                     }
                     
                     // Create fallback timer for subtitle timing when webapis aren't available
@@ -305,7 +283,6 @@ function initPlayer() {
                             var currentTimeSeconds = that.current_time / 1000;
                             
                             if(typeof env !== 'undefined' && env === 'develop') {
-                                console.log('Simulated time (seconds):', currentTimeSeconds);
                             }
                             
                             // Update UI progress
@@ -317,7 +294,6 @@ function initPlayer() {
                             if (typeof SrtOperation !== 'undefined' && !SrtOperation.stopped) {
                                 SrtOperation.timeChange(currentTimeSeconds);
                                 if(typeof env !== 'undefined' && env === 'develop') {
-                                    console.log('SrtOperation.timeChange called with (seconds):', currentTimeSeconds);
                                 }
                             }
                         }
@@ -379,10 +355,8 @@ function initPlayer() {
                                 }
                             }
                         }catch (e) {
-                            console.log(kind, e);
                         }
                     }
-                    // console.log(kind, result);
                 }catch (e) {
 
                 }
@@ -454,7 +428,6 @@ function initPlayer() {
                 $('#'+this.parent_id).find('.video-error').hide();
                 var  that=this;
                 this.videoObj.addEventListener("error", function(e) {
-                    console.log("Error");
                     $('#'+that.parent_id).find('.video-error').show();
                     $('#'+that.parent_id).find('.video-loader').hide();
                 });
@@ -503,27 +476,22 @@ function initPlayer() {
                         if(video_width && video_height)
                             resolution=video_width+' x '+video_height+'px'
                     }catch (e){
-                        console.log(e);
                     }
-                    console.log(resolution);
                     $('.video-resolution').text(resolution);
                 });
                 this.videoObj.addEventListener('waiting', function(event){
-                    // console.log('Video is waiting for more data.',event);
                 });
                 this.videoObj.addEventListener('suspend', function(event){
                     // $('#'+that.parent_id).find('.video-error').show();
                 });
                 this.videoObj.addEventListener('stalled', function(event){
                     // $('#'+that.parent_id).find('.video-error').show();
-                    console.log('Failed to fetch data, but trying.');
                 });
                 this.videoObj.addEventListener('ended', function(event){
                     if(current_route==='vod-series-player-video')
                         vod_series_player_page.showNextVideo(1);
                 });
                 this.videoObj.addEventListener('emptied', function(event){
-                    // console.log("Empty");
                     // $('#'+that.parent_id).find('.video-error').show();
                 });
             },
@@ -532,7 +500,6 @@ function initPlayer() {
                     this.videoObj.pause();
                 }catch (e) {
                 }
-                console.log(url);
                 var  that=this;
                 $('#'+that.parent_id).find('.video-loader').show();
                 $('#'+this.parent_id).find('.video-error').hide();
@@ -550,7 +517,6 @@ function initPlayer() {
                     $('#'+that.parent_id).find('.video-loader').hide();
                 });
                 source.addEventListener('emptied', function(event){
-                    console.log("Empty");
                     $('#'+that.parent_id).find('.video-loader').hide();
                     $('#'+that.parent_id).find('.video-error').show();
                 });
@@ -611,9 +577,6 @@ function initPlayer() {
                 }
                 
                 if(typeof env !== 'undefined' && env === 'develop') {
-                    console.log('=== LG ASPECT RATIO CHANGED ===');
-                    console.log('New mode:', current_mode);
-                    console.log('Mode index:', this.aspect_ratio_mode);
                 }
             },
             setVideoAspectRatio:function(){
@@ -639,29 +602,21 @@ function initPlayer() {
                 }
                 
                 if(typeof env !== 'undefined' && env === 'develop') {
-                    console.log('=== LG VIDEO ASPECT RATIO SET ===');
-                    console.log('Mode index:', this.aspect_ratio_mode);
-                    console.log('Applied styling for mode');
                 }
             }
         }
     } else if(platform === 'lg') {
         // Initialize LG player using lg_player object
-        console.log('Attempting LG player initialization...');
-        console.log('lg_player availability:', typeof lg_player, lg_player);
         
         if(typeof lg_player !== 'undefined' && lg_player !== null) {
             media_player = lg_player;
-            console.log('✅ LG player successfully assigned to media_player');
         } else {
-            console.log('❌ lg_player not available, creating fallback');
             // Create a simple fallback that extends the existing media_player
             if(typeof media_player === 'undefined') {
                 media_player = {};
             }
             // Add the missing function as a safe fallback
             media_player.getSubtitleOrAudioTrack = function(kind) {
-                console.log('⚠️ Using fallback getSubtitleOrAudioTrack for', kind);
                 return [];
             };
         }

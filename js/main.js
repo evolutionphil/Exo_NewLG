@@ -13,8 +13,6 @@ $(document).ready(function () {
 
     initKeys();
     initPlayer();
-    console.log('Media player initialized:', typeof media_player, media_player);
-    console.log('Media player has getSubtitleOrAudioTrack:', typeof media_player?.getSubtitleOrAudioTrack);
     settings.initFromLocal();
     var saved_parent_password=localStorage.getItem(storage_id+'parent_account_password');
     parent_account_password=saved_parent_password!=null ? saved_parent_password : parent_account_password;

@@ -1606,12 +1606,8 @@ var vod_series_player_page={
         apiSubtitles = apiSubtitles || [];
         
         if(typeof env !== 'undefined' && env === 'develop') {
-            console.log('=== SUBTITLE AVAILABILITY DEBUG ===');
-            console.log('Native subtitles available:', nativeSubtitles.length);
-            console.log('API subtitles available:', apiSubtitles.length);
             
             if(nativeSubtitles.length === 0) {
-                console.log('=== NO NATIVE SUBTITLES - API ONLY MODE ===');
             }
         }
         
@@ -1668,10 +1664,6 @@ var vod_series_player_page={
             }
             
             if(typeof env !== 'undefined' && env === 'develop') {
-                console.log('=== NATIVE SUBTITLE AT END DEBUG ===');
-                console.log('Native subtitle placed at combinedIndex:', enhancedNative.combinedIndex);
-                console.log('Samsung originalIndex:', nativeIndex);
-                console.log('Enhanced label:', enhancedNative.extra_info.track_lang);
             }
             
             combined.push(enhancedNative);
@@ -1687,12 +1679,9 @@ var vod_series_player_page={
             apiOnlyMode: nativeSubtitles.length === 0 && apiSubtitles.length > 0
         };
         
-        console.log('Combined subtitles result:', combined);
-        console.log('Subtitle mapping created:', window.subtitleMapping);
         
         // **USER FEEDBACK**: Inform when only API subtitles are available
         if(window.subtitleMapping.apiOnlyMode && typeof env !== 'undefined' && env === 'develop') {
-            console.log('=== API ONLY MODE: No native subtitles found, using exoapp.tv subtitles only ===');
         }
         
         return combined;
@@ -1752,12 +1741,7 @@ var vod_series_player_page={
                     }
                     
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== SAMSUNG SUBTITLE SELECTION DEBUG ===');
-                        console.log('window.subtitleMapping exists:', !!window.subtitleMapping);
-                        console.log('window.subtitleMapping.combined exists:', !!(window.subtitleMapping && window.subtitleMapping.combined));
-                        console.log('window.subtitleMapping.combined.length:', window.subtitleMapping && window.subtitleMapping.combined ? window.subtitleMapping.combined.length : 'undefined');
                         
-                        console.log('selectedSubtitle from mapping:', selectedSubtitle);
                         
                     }
                 } else {
@@ -1768,7 +1752,6 @@ var vod_series_player_page={
                     }
                     
                     if(typeof env !== 'undefined' && env === 'develop') {
-                                                                        console.log('media_player.subtitles.length:', media_player.subtitles ? media_player.subtitles.length : 'undefined');
                         
                                                 
                     }
@@ -1781,8 +1764,6 @@ var vod_series_player_page={
                 
                 if(!selectedSubtitle || !subtitleSource) {
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('Subtitle mapping exists:', !!window.subtitleMapping);
-                        console.log('API subtitles exist:', !!(media_player.subtitles && media_player.subtitles.length > 0));
                     }
                     showToast("Error", "Invalid subtitle selection");
                     return;
@@ -1792,7 +1773,6 @@ var vod_series_player_page={
                 if(subtitleSource === 'native') {
                     // **NATIVE SUBTITLE**: Use setSelectTrack() and stop any SrtOperation
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('Original native index:', selectedSubtitle.originalIndex);
                     }
                     
                     // Stop any running API subtitle operations
@@ -1802,12 +1782,6 @@ var vod_series_player_page={
                     var nativeIndex = selectedSubtitle.originalIndex || selectedSubtitle.index;
                     
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== NATIVE SUBTITLE INDEX DEBUG ===');
-                        console.log('selectedSubtitle:', selectedSubtitle);
-                        console.log('selectedSubtitle.originalIndex:', selectedSubtitle.originalIndex);
-                        console.log('selectedSubtitle.index:', selectedSubtitle.index);
-                        console.log('calculated nativeIndex:', nativeIndex);
-                        console.log('nativeIndex type:', typeof nativeIndex);
                     }
                     
                     // Validate the native index before using it
@@ -1816,13 +1790,9 @@ var vod_series_player_page={
                         this.current_subtitle_index = nativeIndex;
                         
                         if(typeof env !== 'undefined' && env === 'develop') {
-                            console.log('=== Native Samsung subtitle activated ===');
-                            console.log('Track index:', nativeIndex);
                         }
                     } else {
                         if(typeof env !== 'undefined' && env === 'develop') {
-                            console.log('=== NATIVE SUBTITLE ERROR ===');
-                            console.log('Invalid nativeIndex, cannot set Samsung native subtitle');
                         }
                         showToast("Error", "Invalid native subtitle index");
                     }
@@ -1830,7 +1800,6 @@ var vod_series_player_page={
                 } else if(subtitleSource === 'api') {
                     // **API SUBTITLE**: Stop native tracks and use SrtOperation
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('API subtitle data:', selectedSubtitle.apiData || selectedSubtitle);
                     }
                     
                     // Stop native subtitle track first (only if native subtitles exist)
@@ -1838,13 +1807,10 @@ var vod_series_player_page={
                         try {
                             // Only disable native subtitles if they exist and are currently active
                             if(typeof env !== 'undefined' && env === 'develop') {
-                                console.log('=== Disabling native Samsung subtitles for API subtitle ===');
                             }
                             media_player.setSubtitleOrAudioTrack("TEXT", -1);
                         } catch(e) {
                             if(typeof env !== 'undefined' && env === 'develop') {
-                                console.log('=== Note: Could not disable native subtitles (may not be active) ===');
-                                console.log('Error:', e.message);
                             }
                         }
                     }
@@ -1892,13 +1858,11 @@ var vod_series_player_page={
                                 that.subtitle_loading = false; // Clear loading state on error
                                 
                                 if(typeof env !== 'undefined' && env === 'develop') {
-                                    console.log('Error:', error);
                                 }
                                 
                                 // **CRITICAL FIX**: Check for native subtitle fallback
                                 var nativeSubtitles = this.safeGetTracks('TEXT');
                                 if (nativeSubtitles && nativeSubtitles.length > 0) {
-                                    console.log('Falling back to native subtitles after API subtitle file load error');
                                     
                                     // Render native subtitles
                                     var htmlContent = that.renderSubtitles('TEXT', nativeSubtitles);
@@ -1931,7 +1895,6 @@ var vod_series_player_page={
                 this.subtitle_loading = false; // Clear loading state on error
                 this.subtitle_loaded = false;
                 if(typeof env !== 'undefined' && env === 'develop') {
-                    console.log('Error:', e);
                 }
                 showToast("Error", "Subtitle selection failed");
             }
@@ -1944,7 +1907,6 @@ var vod_series_player_page={
             }catch(e){
                 // Handle audio track setting errors silently
             }
-            console.log(this.current_audio_track_index);
         }
     },
     removeAllActiveClass:function(){
@@ -1955,8 +1917,6 @@ var vod_series_player_page={
         $('#vod-series-player-page .rangeslider').removeClass('active');
     },
     hoverSubtitle:function(index){
-        console.log('Index:', index);
-        console.log('Available subtitle menus:', this.subtitle_audio_menus.length);
         
         var keys=this.keys;
         keys.focused_part="subtitle_audio_selection_modal";
@@ -1964,13 +1924,10 @@ var vod_series_player_page={
         $(this.subtitle_btn_doms).removeClass('active');
         keys.subtitle_audio_selection_modal=index;
         
-        console.log('Focused index:', keys.subtitle_audio_selection_modal);
-        console.log('Focused part:', keys.focused_part);
         
         moveScrollPosition($('#subtitle-selection-container'),this.subtitle_audio_menus[keys.subtitle_audio_selection_modal],'vertical',false);
         $(this.subtitle_audio_menus[keys.subtitle_audio_selection_modal]).addClass('active');
         
-        console.log('Active subtitle element:', this.subtitle_audio_menus[keys.subtitle_audio_selection_modal]);
     },
     hoverSubtitleBtn: function (index){
         var keys=this.keys;

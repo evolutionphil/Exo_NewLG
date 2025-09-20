@@ -21,7 +21,6 @@ var lg_player={
         var  videoObj=this.videoObj;
         var  that=this;
         this.videoObj.addEventListener("error", function(e) {
-            console.log("Error");
             $('#'+that.parent_id).find('.video-error').show();
         });
         this.videoObj.addEventListener("canplay", function(e) {
@@ -60,21 +59,18 @@ var lg_player={
             //     $('#'+that.parent_id).find('.video-total-time').text(that.formatTime(duration));
         });
         this.videoObj.addEventListener('waiting', function(event){
-            // console.log('Video is waiting for more data.',event);
         });
         this.videoObj.addEventListener('suspend', function(event){
             // $('#'+that.parent_id).find('.video-error').show();
         });
         this.videoObj.addEventListener('stalled', function(event){
             // $('#'+that.parent_id).find('.video-error').show();
-            console.log('Failed to fetch data, but trying.');
         });
         this.videoObj.addEventListener('ended', function(event){
             if(current_route==='vod-series-player-video')
                 vod_series_player_page.showNextVideo(1);
         });
         this.videoObj.addEventListener('emptied', function(event){
-            // console.log("Empty");
             // $('#'+that.parent_id).find('.video-error').show();
         });
     },
@@ -83,7 +79,6 @@ var lg_player={
             this.videoObj.pause();
         }catch (e) {
         }
-        console.log(url);
         var  that=this;
         $('#'+this.parent_id).find('.video-error').hide();
         while (this.videoObj.firstChild)
@@ -99,7 +94,6 @@ var lg_player={
             $('#'+that.parent_id).find('.video-error').show();
         });
         source.addEventListener('emptied', function(event){
-            console.log("Empty");
             $('#'+that.parent_id).find('.video-error').show();
         });
         this.state=this.STATES.PLAYING;
@@ -141,7 +135,6 @@ var lg_player={
             totalTrackInfo=this.videoObj.textTracks;
         }else{
             totalTrackInfo=this.videoObj.audioTracks;
-            console.log("LG Audio tracks detected:", totalTrackInfo ? totalTrackInfo.length : 0);
         }
         return totalTrackInfo;
     },

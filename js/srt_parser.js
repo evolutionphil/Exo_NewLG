@@ -120,7 +120,6 @@ var SrtParser={
             items.push(new_line);
         }
         var end_time=new Date().getTime();
-        console.log(end_time-start_time,"ms take to parse")
         return items;
     }
 }
