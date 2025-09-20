@@ -1569,8 +1569,24 @@ var vod_series_player_page={
             var enhancedNative = Object.assign({}, nativeSub);
             enhancedNative.source = 'native'; // Explicit source identification
             enhancedNative.isNative = true; // Backward compatibility
-            enhancedNative.originalIndex = nativeSub.index; // Preserve original index
+            
+            // **CRITICAL FIX**: Get index from extra_info.index, not nativeSub.index
+            var nativeIndex = nativeSub.extra_info && nativeSub.extra_info.index !== undefined 
+                ? nativeSub.extra_info.index 
+                : nativeSub.index;
+            
+            enhancedNative.originalIndex = nativeIndex; // Preserve original index from correct location
+            enhancedNative.index = nativeIndex; // Also set top-level index for compatibility
             enhancedNative.combinedIndex = index; // Sequential index in combined list
+            
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== NATIVE SUBTITLE ENHANCEMENT DEBUG ===');
+                console.log('nativeSub.index:', nativeSub.index);
+                console.log('nativeSub.extra_info.index:', nativeSub.extra_info ? nativeSub.extra_info.index : 'no extra_info');
+                console.log('calculated nativeIndex:', nativeIndex);
+                console.log('enhancedNative.originalIndex:', enhancedNative.originalIndex);
+            }
+            
             combined.push(enhancedNative);
         });
         

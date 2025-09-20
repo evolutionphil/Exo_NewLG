@@ -1,0 +1,131 @@
+﻿
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:1859 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1860 Index: 1
+vod_series_player.js:1861 Available subtitle menus: 17
+vod_series_player.js:1869 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1870 Focused index: 1
+vod_series_player.js:1871 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1876 Active subtitle element: 
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 33478
+mediaPlayer.js:254 Current time (seconds): 33.478
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 33979
+mediaPlayer.js:254 Current time (seconds): 33.979
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 34479
+mediaPlayer.js:254 Current time (seconds): 34.479
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:1626 === SUBTITLE DEBUG: confirmSubtitle called ===
+vod_series_player.js:1627 Selected combined index: 0
+vod_series_player.js:1628 Platform: samsung
+vod_series_player.js:1676 === SUBTITLE DEBUG: Selected subtitle object ===
+vod_series_player.js:1677 Platform: samsung
+vod_series_player.js:1678 Selected combined index: 0
+vod_series_player.js:1679 Selected subtitle: 
+{extra_info: {…}, source: "native", isNative: true, originalIndex: undefined, combinedIndex: 0}
+vod_series_player.js:1680 Detected source: native
+vod_series_player.js:1681 Available subtitles: 
+(15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1698 === SUBTITLE DEBUG: Using NATIVE subtitle ===
+vod_series_player.js:1699 Original native index: undefined
+vod_series_player.js:1709 === NATIVE SUBTITLE INDEX DEBUG ===
+vod_series_player.js:1710 selectedSubtitle: 
+{extra_info: {…}, source: "native", isNative: true, originalIndex: undefined, combinedIndex: 0}
+vod_series_player.js:1711 selectedSubtitle.originalIndex: undefined
+vod_series_player.js:1712 selectedSubtitle.index: undefined
+vod_series_player.js:1713 calculated nativeIndex: undefined
+vod_series_player.js:1714 nativeIndex type: undefined
+vod_series_player.js:1728 === NATIVE SUBTITLE ERROR ===
+vod_series_player.js:1729 Invalid nativeIndex, cannot set Samsung native subtitle
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 34979
+mediaPlayer.js:254 Current time (seconds): 34.979
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 35480
+mediaPlayer.js:254 Current time (seconds): 35.48
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 35991
+mediaPlayer.js:254 Current time (seconds): 35.991
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 36492
+mediaPlayer.js:254 Current time (seconds): 36.492
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 36993
+mediaPlayer.js:254 Current time (seconds): 36.993
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 37509
+mediaPlayer.js:254 Current time (seconds): 37.509
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:882 === SUBTITLE DEBUG: Samsung hybrid subtitle loading ===
+vod_series_player.js:883 Native subtitles found: 1
+vod_series_player.js:1560 === COMBINING SUBTITLES FOR SAMSUNG ===
+vod_series_player.js:1561 Native subtitles: 
+[{…}]
+vod_series_player.js:1562 API subtitles: 
+(15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1608 Combined subtitles result: 
+(16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1609 Subtitle mapping created: 
+{combined: Array(16), nativeCount: 1, apiCount: 15}
+vod_series_player.js:1435 === SUBTITLE DEBUG: renderSubtitles called ===
+vod_series_player.js:1436 Kind: TEXT
+vod_series_player.js:1437 Subtitles array: 
+(16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1438 Subtitles count: 16
+vod_series_player.js:1443 === SUBTITLE DEBUG: Stored Samsung subtitles globally ===
+vod_series_player.js:1447 === SUBTITLE DEBUG: Individual subtitle items ===
+vod_series_player.js:1449 Subtitle 0: 
+{extra_info: {…}, source: "native", isNative: true, originalIndex: undefined, combinedIndex: 0}
+vod_series_player.js:1453   - extra_info: 
+{fourCC: "un", subtitle_type: "0", track_lang: "un", index: 3, type: "TEXT"}
+vod_series_player.js:1454   - isNative: true
+vod_series_player.js:1449 Subtitle 1: 
+{source: "api", combinedIndex: 1, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: 
+{track_lang: "Turkish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 2: 
+{source: "api", combinedIndex: 2, originalIndex: 1, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: 
+{track_lang: "English", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+﻿
