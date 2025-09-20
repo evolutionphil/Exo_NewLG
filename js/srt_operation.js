@@ -138,13 +138,13 @@ var SrtOperation={
                     console.log('Container display before:', $('#'+media_player.parent_id).find('.subtitle-container').css('display'));
                 }
                 
-                // Try multiple container selectors as fallback
+                // Use EXACTLY the same container as Samsung native subtitles
                 var $container = $('#'+media_player.parent_id).find('.subtitle-container');
-                if($container.length === 0) {
-                    $container = $('.subtitle-container'); // Fallback to any subtitle container
-                    if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== SRT DISPLAY: Using fallback container selector ===');
-                    }
+                
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== SRT DISPLAY: Using native subtitle container selector ===');
+                    console.log('Container selector:', '#'+media_player.parent_id+' .subtitle-container');
+                    console.log('Same as Samsung native onsubtitlechange');
                 }
                 
                 $container.html(srt_item.text);
