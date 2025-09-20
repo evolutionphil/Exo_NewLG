@@ -618,7 +618,6 @@ var vod_series_player_page={
                 
                 // Handle custom API subtitles (have 'label' property)
                 if(item.label && item.lang) {
-                    console.log('=== SUBTITLE DEBUG: Processing custom API subtitle ===');
                     console.log('Item:', item);
                     language = item.label;
                 } 
@@ -632,7 +631,6 @@ var vod_series_player_page={
                     }
                 }
                 
-                console.log('=== SUBTITLE DEBUG: Final language label ===');
                 console.log('Language for index', index+':', language);
                 
                 htmlContent+=
@@ -657,7 +655,6 @@ var vod_series_player_page={
         var subtitles
         try{
             if(platform!=='samsung' && kind==='TEXT'){  // we will use our own made subtitles
-                console.log('=== SUBTITLE DEBUG: Non-Samsung text subtitle request ===');
                 if(!this.subtitle_loaded) {
                     $("#subtitle-selection-container").html('');
                     if(!(this.current_movie_type==='movies' || (this.current_movie_type==='series' && settings.playlist_type==='xtreme')))
@@ -684,7 +681,6 @@ var vod_series_player_page={
                     $('#subtitle-loader-container').show();
                     var subtitle_request_data;
                     if(this.current_movie_type==='movies'){
-                        console.log('=== SUBTITLE DEBUG: Building movie request data ===');
                         console.log('=== DETAILED MOVIE ANALYSIS FOR SUBTITLE MATCHING ===');
                         console.log('Current movie object (FULL):', this.current_movie);
                         console.log('Movie name (RAW from IPTV):', this.current_movie.name);
@@ -901,7 +897,6 @@ var vod_series_player_page={
                 
                 // For Samsung with TEXT subtitles, also fetch API subtitles
                 if(platform==='samsung' && kind==='TEXT'){
-                    console.log('=== SUBTITLE DEBUG: Samsung hybrid subtitle loading ===');
                     console.log('Native subtitles found:', subtitles.length);
                     
                     // Check if we should also fetch API subtitles
@@ -930,7 +925,6 @@ var vod_series_player_page={
                         // Build API request data (same as non-Samsung logic)
                         var subtitle_request_data;
                         if(this.current_movie_type==='movies'){
-                            console.log('=== SUBTITLE DEBUG: Samsung - Building movie request data ===');
                             var original_name = this.current_movie.name;
                             var cleaned_name = original_name;
                             
@@ -1454,7 +1448,6 @@ var vod_series_player_page={
         },10000)
     },
     renderSubtitles:function (kind, subtitles) {
-        console.log('=== SUBTITLE DEBUG: renderSubtitles called ===');
         console.log('Kind:', kind);
         console.log('Subtitles array:', subtitles);
         console.log('Subtitles count:', subtitles ? subtitles.length : 'undefined');
@@ -1462,11 +1455,9 @@ var vod_series_player_page={
         // Store subtitles globally for Samsung hybrid access in confirmSubtitle
         if(platform === 'samsung' && kind === 'TEXT') {
             window.lastRenderedSubtitles = subtitles;
-            console.log('=== SUBTITLE DEBUG: Stored Samsung subtitles globally ===');
         }
         
         if(subtitles && subtitles.length > 0) {
-            console.log('=== SUBTITLE DEBUG: Individual subtitle items ===');
             subtitles.forEach((subtitle, index) => {
                 console.log(`Subtitle ${index}:`, subtitle);
                 if(subtitle.label) console.log(`  - label: "${subtitle.label}"`);
@@ -1491,9 +1482,7 @@ var vod_series_player_page={
         this.keys.focused_part="subtitle_audio_selection_modal";
         $('#subtitle-selection-modal').find('.modal-operation-menu-type-2').removeClass('active');
         
-        console.log('=== SUBTITLE DEBUG: About to create HTML content ===');
         var htmlContent=this.makeMediaTrackElement(subtitles, kind);
-        console.log('=== SUBTITLE DEBUG: Generated HTML content ===');
         console.log('HTML length:', htmlContent ? htmlContent.length : 'undefined');
         console.log('HTML content:', htmlContent);
         
@@ -1698,7 +1687,6 @@ var vod_series_player_page={
             var selectedCombinedIndex = parseInt($('#subtitle-selection-modal').find('input[type=checkbox]:checked').val());
             
             if(typeof env !== 'undefined' && env === 'develop') {
-                console.log('=== SUBTITLE DEBUG: confirmSubtitle called ===');
                 console.log('Selected combined index:', selectedCombinedIndex);
                 console.log('Platform:', platform);
             }
@@ -1707,7 +1695,6 @@ var vod_series_player_page={
                 // Handle "No Subtitles" selection
                 if(selectedCombinedIndex === -1){
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== SUBTITLE DEBUG: Disabling subtitles ===');
                     }
                     this.show_subtitle=false;
                     $("#vod-series-player-page").find('.subtitle-container').css({visibility:'hidden'});
@@ -1767,7 +1754,6 @@ var vod_series_player_page={
                 }
                 
                 if(typeof env !== 'undefined' && env === 'develop') {
-                    console.log('=== SUBTITLE DEBUG: Selected subtitle object ===');
                     console.log('Platform:', platform);
                     console.log('Selected combined index:', selectedCombinedIndex);
                     console.log('Selected subtitle:', selectedSubtitle);
@@ -1777,7 +1763,6 @@ var vod_series_player_page={
                 
                 if(!selectedSubtitle || !subtitleSource) {
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== SUBTITLE DEBUG: Could not find selected subtitle or determine source ===');
                         console.log('Subtitle mapping exists:', !!window.subtitleMapping);
                         console.log('API subtitles exist:', !!(media_player.subtitles && media_player.subtitles.length > 0));
                     }
@@ -1789,7 +1774,6 @@ var vod_series_player_page={
                 if(subtitleSource === 'native') {
                     // **NATIVE SUBTITLE**: Use setSelectTrack() and stop any SrtOperation
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== SUBTITLE DEBUG: Using NATIVE subtitle ===');
                         console.log('Original native index:', selectedSubtitle.originalIndex);
                     }
                     
@@ -1828,7 +1812,6 @@ var vod_series_player_page={
                 } else if(subtitleSource === 'api') {
                     // **API SUBTITLE**: Stop native tracks and use SrtOperation
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== SUBTITLE DEBUG: Using API subtitle ===');
                         console.log('API subtitle data:', selectedSubtitle.apiData || selectedSubtitle);
                     }
                     
@@ -1869,7 +1852,6 @@ var vod_series_player_page={
                                 that.subtitle_loaded = true; // Set loaded state
                                 
                                 if(typeof env !== 'undefined' && env === 'develop') {
-                                    console.log('=== SUBTITLE DEBUG: API subtitle loaded successfully ===');
                                     console.log('Content length:', subtitleContent.length);
                                 }
                                 
@@ -1893,7 +1875,6 @@ var vod_series_player_page={
                                 that.subtitle_loading = false; // Clear loading state on error
                                 
                                 if(typeof env !== 'undefined' && env === 'develop') {
-                                    console.log('=== SUBTITLE DEBUG: Failed to load API subtitle ===');
                                     console.log('Error:', error);
                                 }
                                 
@@ -1919,14 +1900,12 @@ var vod_series_player_page={
                         this.subtitle_loading = false;
                         this.subtitle_loaded = false;
                         if(typeof env !== 'undefined' && env === 'develop') {
-                            console.log('=== SUBTITLE DEBUG: No API subtitle file URL found ===');
                         }
                         showToast("Error", "No subtitle file available");
                     }
                 } else {
                     // Unknown source - should not happen with explicit metadata
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== SUBTITLE DEBUG: Unknown subtitle source ===');
                     }
                     showToast("Error", "Unknown subtitle source");
                 }
@@ -1935,7 +1914,6 @@ var vod_series_player_page={
                 this.subtitle_loading = false; // Clear loading state on error
                 this.subtitle_loaded = false;
                 if(typeof env !== 'undefined' && env === 'develop') {
-                    console.log('=== SUBTITLE DEBUG: Error in confirmSubtitle ===');
                     console.log('Error:', e);
                 }
                 showToast("Error", "Subtitle selection failed");
@@ -1982,7 +1960,6 @@ var vod_series_player_page={
         $('#vod-series-player-page .rangeslider').removeClass('active');
     },
     hoverSubtitle:function(index){
-        console.log('=== SUBTITLE DEBUG: hoverSubtitle called ===');
         console.log('Index:', index);
         console.log('Available subtitle menus:', this.subtitle_audio_menus.length);
         
@@ -1992,7 +1969,6 @@ var vod_series_player_page={
         $(this.subtitle_btn_doms).removeClass('active');
         keys.subtitle_audio_selection_modal=index;
         
-        console.log('=== SUBTITLE DEBUG: Setting focus to subtitle ===');
         console.log('Focused index:', keys.subtitle_audio_selection_modal);
         console.log('Focused part:', keys.focused_part);
         

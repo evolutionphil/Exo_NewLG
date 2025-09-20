@@ -115,9 +115,7 @@ function initPlayer() {
                 }catch(e){
                     if(typeof env !== 'undefined' && env === 'develop') {
                         console.log('=== SAMSUNG PLAY FALLBACK ===');
-                        console.log('webapis.avplay.play() failed, using fallback timing');
                     }
-                    // When webapis aren't available, initialize timing for fallback system
                     this.current_time = 0;
                 }
             },
@@ -259,7 +257,6 @@ function initPlayer() {
                             if(typeof env !== 'undefined' && env === 'develop') {
                                 // Only log every 5 seconds to avoid spam
                                 if(Math.floor(currentTime/1000) % 5 === 0 && Math.floor(currentTime) % 1000 < 50) {
-                                    console.log('=== SAMSUNG TIMING CALLBACK DEBUG ===');
                                     console.log('Current time (seconds):', currentTime/1000);
                                     console.log('SrtOperation exists:', typeof SrtOperation !== 'undefined');
                                     console.log('SrtOperation.stopped:', typeof SrtOperation !== 'undefined' ? SrtOperation.stopped : 'undefined');
@@ -271,7 +268,6 @@ function initPlayer() {
                             } else if(typeof env !== 'undefined' && env === 'develop') {
                                 // Only log every 5 seconds to avoid spam
                                 if(Math.floor(currentTime/1000) % 5 === 0 && Math.floor(currentTime) % 1000 < 50) {
-                                    console.log('=== SRT NOT CALLED: SrtOperation unavailable or stopped ===');
                                 }
                             }
                         }
@@ -298,7 +294,6 @@ function initPlayer() {
                 } catch (e) {
                     if(typeof env !== 'undefined' && env === 'develop') {
                         console.log('=== SAMSUNG WEBAPIS NOT AVAILABLE ===');
-                        console.log('Starting fallback timing system for subtitle support');
                         console.log('Error:', e.message);
                     }
                     
@@ -310,7 +305,6 @@ function initPlayer() {
                             var currentTimeSeconds = that.current_time / 1000;
                             
                             if(typeof env !== 'undefined' && env === 'develop') {
-                                console.log('=== FALLBACK TIMING DEBUG ===');
                                 console.log('Simulated time (seconds):', currentTimeSeconds);
                             }
                             
@@ -323,7 +317,6 @@ function initPlayer() {
                             if (typeof SrtOperation !== 'undefined' && !SrtOperation.stopped) {
                                 SrtOperation.timeChange(currentTimeSeconds);
                                 if(typeof env !== 'undefined' && env === 'develop') {
-                                    console.log('=== FALLBACK SRT TIMING UPDATE ===');
                                     console.log('SrtOperation.timeChange called with (seconds):', currentTimeSeconds);
                                 }
                             }

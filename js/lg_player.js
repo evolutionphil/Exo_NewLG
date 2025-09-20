@@ -42,11 +42,6 @@ var lg_player={
             // $('#'+that.parent_id).find('.video-error').hide();
             var duration = that.videoObj.duration;
             var  currentTime=that.videoObj.currentTime;
-            console.log('=== LG TIMING DEBUG ===');
-            console.log('Current time:', currentTime);
-            console.log('Duration:', duration);
-            console.log('SrtOperation exists:', typeof SrtOperation !== 'undefined');
-            console.log('SrtOperation stopped:', SrtOperation.stopped);
             
             if (duration > 0) {
                 $('#'+that.parent_id).find('.video-progress-bar-slider').val(currentTime).change();
@@ -54,15 +49,11 @@ var lg_player={
                 $('#'+that.parent_id).find('.progress-amount').css({width:currentTime/duration*100+'%'});
                 
                 // **CRITICAL FIX: Connect subtitle timing updates**
-                console.log('=== CALLING SrtOperation.timeChange ===');
                 if (typeof SrtOperation !== 'undefined' && !SrtOperation.stopped) {
                     SrtOperation.timeChange(currentTime);
-                    console.log('SrtOperation.timeChange called with:', currentTime);
                 } else {
-                    console.log('SrtOperation not available or stopped');
                 }
             }
-            console.log('=== END LG TIMING DEBUG ===');
         };
         this.videoObj.addEventListener('loadedmetadata', function() {
             //     var  duration=parseInt(videoObj.duration);
