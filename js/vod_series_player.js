@@ -1786,11 +1786,20 @@ var vod_series_player_page={
                         console.log('API subtitle data:', selectedSubtitle.apiData || selectedSubtitle);
                     }
                     
-                    // Stop native subtitle track first
-                    if(platform === 'samsung') {
+                    // Stop native subtitle track first (only if native subtitles exist)
+                    if(platform === 'samsung' && window.subtitleMapping && window.subtitleMapping.hasNativeSubtitles) {
                         try {
+                            // Only disable native subtitles if they exist and are currently active
+                            if(typeof env !== 'undefined' && env === 'develop') {
+                                console.log('=== Disabling native Samsung subtitles for API subtitle ===');
+                            }
                             media_player.setSubtitleOrAudioTrack("TEXT", -1);
-                        } catch(e) {}
+                        } catch(e) {
+                            if(typeof env !== 'undefined' && env === 'develop') {
+                                console.log('=== Note: Could not disable native subtitles (may not be active) ===');
+                                console.log('Error:', e.message);
+                            }
+                        }
                     }
                     
                     // Load and initialize API subtitle using SrtOperation
