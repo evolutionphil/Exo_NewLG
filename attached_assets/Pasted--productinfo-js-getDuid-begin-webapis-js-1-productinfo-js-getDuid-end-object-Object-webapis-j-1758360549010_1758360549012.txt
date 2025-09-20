@@ -1,0 +1,194 @@
+[productinfo.js] getDuid  begin
+webapis.js:1 [productinfo.js] getDuid  end [object Object]
+webapis.js:1 [productinfo.js] getDuid  error code 18
+login_operation.js:265 DUID not available, trying Tizen ID fallback
+login_operation.js:66 === DEBUG fetchPlaylistInformation ===
+login_operation.js:101 Panel URL: https://exoapp.tv/9dlE9XWmiwmAn2j
+login_operation.js:102 Device ID: VkxKZnZ5OGg5c0lzazM5K1B3RHVXUUNIeGdBPQ==
+login_operation.js:103 Platform: samsung
+login_operation.js:104 Data to send: Object
+login_operation.js:117 === DEBUG API Success ===
+login_operation.js:118 Raw response: {data: "==Qfd1nIsFmcl5WZnJiOiUGc5RnIsIyc0dWZw1WP0VHc0V3bmU…xmIs01W6IycsJXdiwSZ1JHd6ICZlJXZ0NXanVmcfNWYtJyeuY"}
+login_operation.js:122 Decrypted data: {mac_registered: true, urls: Array(0), lock: 0, pin_code: "0000", logo: "https://exoapp.tv//images/upload/355437.jpg", …}
+login_operation.js:136 MAC Address received: b9:b7:3f:39:ce:8b
+login_operation.js:206 b9:b7:3f:39:ce:8b
+login_operation.js:218 exoapp.tv
+login_operation.js:220 {mac_registered: true, urls: Array(0), lock: 0, pin_code: "0000", logo: "https://exoapp.tv//images/upload/355437.jpg", …}
+login_operation.js:307 === DEBUG login() called ===
+login_operation.js:308 === DEBUG playlist_urls === [{…}]
+login_operation.js:309 === DEBUG has_playlist === true
+login_operation.js:326 === DEBUG: User has uploaded playlists - using user playlist ===
+login_operation.js:327 Using playlist: {id: "68bdda2cc6834055fe8df328", name: "a", url: "http://galaiptv.shop:2095/get.php?username=dogubeyyeni&password=xLUFy7q6zM&type=m3u&output=mpegts", type: "general"}
+login_operation.js:331 Parsed M3U URL - API Host: http://galaiptv.shop:2095
+login_operation.js:996 === DEBUG proceed_login ===
+login_operation.js:997 Playlist type: xtreme
+login_operation.js:998 API host URL: http://galaiptv.shop:2095
+login_operation.js:999 Username: dogubeyyeni
+login_operation.js:1000 Password: xLUFy7q6zM
+home_operation.js:22 हिन्दी
+home_operation.js:22 Shqiptare
+home_operation.js:22 Ελληνικά
+home_operation.js:22 Український
+home_operation.js:22 Српски
+vod_summary.js:75 === XTREME API get_vod_info RESPONSE ANALYSIS ===
+vod_summary.js:76 Full API response: {info: {…}, movie_data: {…}}
+vod_summary.js:77 Response keys: (2) ["info", "movie_data"]
+vod_summary.js:78 Info object: {kinopoisk_url: "https://www.themoviedb.org/movie/1061474", tmdb_id: 1061474, name: "Superman", o_name: "Superman", cover_big: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/fJKSDmkXDLZ0qDmAZ5lXEaToN3L.jpg", …}
+vod_summary.js:80 Info object keys: (26) ["kinopoisk_url", "tmdb_id", "name", "o_name", "cover_big", "movie_image", "releasedate", "episode_run_time", "youtube_trailer", "director", "actors", "cast", "description", "plot", "age", "mpaa_rating", "rating_count_kinopoisk", "country", "genre", "backdrop_path", "duration_secs", "duration", "video", "audio", "bitrate", "rating"]
+vod_summary.js:81 TMDB ID check: 1061474
+vod_summary.js:82 TMDB ID type: number
+vod_summary.js:106 ✅ TMDB ID extracted and stored: 1061474
+VM84:1 in getErrorObjectLocal code:11,name:InvalidStateError NaNmessage:PLAYER_ERROR_INVALID_STATE
+VM84:1 Entering setDisplayRect
+mediaPlayer.js:51 http://galaiptv.shop:2095/movie/dogubeyyeni/xLUFy7q6zM/344750.mkv
+VM84:1 adding listener
+mediaPlayer.js:281 Samsung webapis.avplay.setListener successfully set
+VM84:1 Entering setDisplayRect
+VM84:1 Entered AVPlayManager.prepareAsync()
+vod_series_player.js:882 === SUBTITLE DEBUG: Samsung hybrid subtitle loading ===
+vod_series_player.js:883 Native subtitles found: 1
+vod_series_player.js:911 === SUBTITLE DEBUG: Samsung - Building movie request data ===
+vod_series_player.js:950 Samsung API request data: {movie_name: "Superman", movie_type: "movie", tmdb_id: 1061474, year: 2025}
+vod_series_player.js:974 === SAMSUNG API SUBTITLES RESPONSE ===
+vod_series_player.js:975 API result: {status: "success", subtitles: Array(15)}
+vod_series_player.js:981 API subtitles loaded: 15
+vod_series_player.js:1560 === COMBINING SUBTITLES FOR SAMSUNG ===
+vod_series_player.js:1561 Native subtitles: [{…}]
+vod_series_player.js:1562 API subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1569 === SUBTITLE AVAILABILITY DEBUG ===
+vod_series_player.js:1570 Native subtitles available: 1
+vod_series_player.js:1571 API subtitles available: 15
+vod_series_player.js:1631 === NATIVE SUBTITLE AT END DEBUG ===
+vod_series_player.js:1632 Native subtitle placed at combinedIndex: 15
+vod_series_player.js:1633 Samsung originalIndex: 3
+vod_series_player.js:1634 Enhanced label: Native Subtitle 1
+vod_series_player.js:1650 Combined subtitles result: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1651 Subtitle mapping created: {combined: Array(16), nativeCount: 1, apiCount: 15, hasNativeSubtitles: true, hasApiSubtitles: true, …}
+vod_series_player.js:989 === SAMSUNG COMBINED SUBTITLES ===
+vod_series_player.js:990 Native: 1 API: 15 Combined: 16
+vod_series_player.js:1435 === SUBTITLE DEBUG: renderSubtitles called ===
+vod_series_player.js:1436 Kind: TEXT
+vod_series_player.js:1437 Subtitles array: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1438 Subtitles count: 16
+vod_series_player.js:1443 === SUBTITLE DEBUG: Stored Samsung subtitles globally ===
+vod_series_player.js:1447 === SUBTITLE DEBUG: Individual subtitle items ===
+vod_series_player.js:1449 Subtitle 0: {source: "api", combinedIndex: 0, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Turkish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 1: {source: "api", combinedIndex: 1, originalIndex: 1, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "English", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 2: {source: "api", combinedIndex: 2, originalIndex: 2, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Spanish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 3: {source: "api", combinedIndex: 3, originalIndex: 3, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "French", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 4: {source: "api", combinedIndex: 4, originalIndex: 4, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "German", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 5: {source: "api", combinedIndex: 5, originalIndex: 5, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Russian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 6: {source: "api", combinedIndex: 6, originalIndex: 6, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Arabic", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 7: {source: "api", combinedIndex: 7, originalIndex: 7, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Korean", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 8: {source: "api", combinedIndex: 8, originalIndex: 8, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Japanese", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 9: {source: "api", combinedIndex: 9, originalIndex: 9, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Dutch", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 10: {source: "api", combinedIndex: 10, originalIndex: 10, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Polish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 11: {source: "api", combinedIndex: 11, originalIndex: 11, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Finnish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 12: {source: "api", combinedIndex: 12, originalIndex: 12, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Italian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 13: {source: "api", combinedIndex: 13, originalIndex: 13, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Swedish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 14: {source: "api", combinedIndex: 14, originalIndex: 14, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Hebrew", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 15: {extra_info: {…}, source: "native", isNative: true, originalIndex: 3, index: 3, …}
+vod_series_player.js:1453   - extra_info: {fourCC: "un", subtitle_type: "0", track_lang: "Native Subtitle 1", index: 3, type: "TEXT"}
+vod_series_player.js:1454   - isNative: true
+vod_series_player.js:1467 === SUBTITLE DEBUG: About to create HTML content ===
+vod_series_player.js:1469 === SUBTITLE DEBUG: Generated HTML content ===
+vod_series_player.js:1470 HTML length: 8617
+vod_series_player.js:1471 HTML content: <div class="setting-modal-option subtitle-item bg-focus"                    onmouseenter="vod_series_player_page.hoverSubtitle(0)"                     onclick="vod_series_player_page.handleMenuClick()"                 >                   <input class="setting-modal-checkbox" type="checkbox" name="subtitle" id="disable-subtitle" value="-1">                   <label for="disable-subtitle">Turn Off Subtitles</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(1)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="0"                        >                        <label for="disable-subtitle">Turkish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(2)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="1"                        >                        <label for="disable-subtitle">English (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(3)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="2"                        >                        <label for="disable-subtitle">Spanish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(4)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="3"                        >                        <label for="disable-subtitle">French (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(5)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="4"                        >                        <label for="disable-subtitle">German (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(6)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="5"                        >                        <label for="disable-subtitle">Russian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(7)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="6"                        >                        <label for="disable-subtitle">Arabic (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(8)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="7"                        >                        <label for="disable-subtitle">Korean (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(9)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="8"                        >                        <label for="disable-subtitle">Japanese (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(10)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="9"                        >                        <label for="disable-subtitle">Dutch (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(11)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="10"                        >                        <label for="disable-subtitle">Polish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(12)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="11"                        >                        <label for="disable-subtitle">Finnish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(13)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="12"                        >                        <label for="disable-subtitle">Italian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(14)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="13"                        >                        <label for="disable-subtitle">Swedish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(15)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="14"                        >                        <label for="disable-subtitle">Hebrew (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(16)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="15"                        >                        <label for="disable-subtitle">Native Subtitle 1 (Stream)</label>                    </div>
+vod_series_player.js:1484 === SUBTITLE MODAL DEBUG: Selection Logic ===
+vod_series_player.js:1485 Current selected index: -1
+vod_series_player.js:1486 Available subtitles: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1487 Platform: samsung
+vod_series_player.js:1496 Menu 0: checkbox value = -1, current = -1
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 0
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 0
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(0)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1505 Found match at menu index 0
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 1
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 1
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(1)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1674 === SUBTITLE DEBUG: confirmSubtitle called ===
+vod_series_player.js:1675 Selected combined index: 0
+vod_series_player.js:1676 Platform: samsung
+vod_series_player.js:1724 === SUBTITLE DEBUG: Selected subtitle object ===
+vod_series_player.js:1725 Platform: samsung
+vod_series_player.js:1726 Selected combined index: 0
+vod_series_player.js:1727 Selected subtitle: {source: "api", combinedIndex: 0, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1728 Detected source: api
+vod_series_player.js:1729 Available subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1785 === SUBTITLE DEBUG: Using API subtitle ===
+vod_series_player.js:1786 API subtitle data: {file: "/api/subtitle-file?lang=tr&id=11466385", label: "Turkish", lang: "tr", id: undefined}
+vod_series_player.js:1794 === Disabling native Samsung subtitles for API subtitle ===
+mediaPlayer.js:385 === SAMSUNG setSubtitleOrAudioTrack DEBUG ===
+mediaPlayer.js:386 kind: TEXT
+mediaPlayer.js:387 index: -1
+mediaPlayer.js:388 index type: number
+mediaPlayer.js:405 === CALLING webapis.avplay.setSelectTrack ===
+mediaPlayer.js:406 Arguments: kind="TEXT", index=-1
+VM84:1 in getErrorObjectLocal code:26,name:InvalidValuesError NaNmessage:PLAYER_ERROR_INVALID_PARAMETER
+mediaPlayer.js:416 === SAMSUNG setSelectTrack ERROR ===
+mediaPlayer.js:417 Error: WebAPIExceptionLocal {code: 26, name: "InvalidValuesError", message: "PLAYER_ERROR_INVALID_PARAMETER", stack: "InvalidValuesError: PLAYER_ERROR_INVALID_PARAMETER…ger (file:///js/libs/jquery.3.4.1.min.js:2:71198)"}
+vod_series_player.js:1826 === SUBTITLE DEBUG: API subtitle loaded successfully ===
+vod_series_player.js:1827 Content length: 104677
+srt_operation.js:10 === SRT OPERATION INIT DEBUG ===
+srt_operation.js:11 subtitle parameter: {content: "1↵00:00:26,735 --> 00:00:29,321↵300 YIL ÖNCE↵↵2↵00…-> 02:09:02,492↵Alt yazı çevirmeni: Orhan Cevher↵"}
+srt_operation.js:12 current_time: 6.311
+srt_operation.js:13 subtitle.content exists: true
+srt_operation.js:15 subtitle.content length: 104677
+srt_operation.js:16 subtitle.content preview: 1
+00:00:26,735 --> 00:00:29,321
+300 YIL ÖNCE
+
+2
+00:00:29,404 --> 00:00:32,658
+ÜSTÜN-İNSANLAR olarak bilinen
+süper güçlü varlıklar
+
+3
+00:00:32,741 --> 00:00:36,078
+Dünya'da ortaya çıkarak
+TANRILAR VE C
+srt_parser.js:123 71 "ms take to parse"
+srt_operation.js:29 === SRT PARSING SUCCESS ===
+srt_operation.js:30 Parsed SRT items count: 1582
+srt_operation.js:32 First SRT item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:51 === SRT OPERATION STARTED ===
+srt_operation.js:52 SrtOperation.stopped set to FALSE
+srt_operation.js:64 here found srt index -1 6.311 (1582) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, …]

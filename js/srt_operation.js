@@ -92,35 +92,83 @@ var SrtOperation={
             return this.findIndex(time, mid+1, end);
     },
     timeChange:function (current_time) {
-        if(this.stopped)
-            return;
+        if(typeof env !== 'undefined' && env === 'develop') {
+            console.log('=== SRT TIMECHANGE DEBUG ===');
+            console.log('Current time:', current_time);
+            console.log('SrtOperation.stopped:', this.stopped);
+            console.log('SRT array length:', this.srt ? this.srt.length : 'undefined');
+        }
         
-        if(!this.srt || this.srt.length === 0)
+        if(this.stopped) {
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== SRT TIMECHANGE: STOPPED ===');
+            }
             return;
+        }
+        
+        if(!this.srt || this.srt.length === 0) {
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== SRT TIMECHANGE: NO SRT DATA ===');
+            }
+            return;
+        }
         
         var srt_index=this.current_srt_index;
         var srt_item=this.srt[srt_index];
         
+        if(typeof env !== 'undefined' && env === 'develop') {
+            console.log('=== SRT TIMECHANGE: CHECKING SUBTITLE ===');
+            console.log('Current srt_index:', srt_index);
+            console.log('Current srt_item:', srt_item);
+            console.log('Start time:', srt_item ? srt_item.startSeconds : 'undefined');
+            console.log('End time:', srt_item ? srt_item.endSeconds : 'undefined');
+            console.log('Should show subtitle:', current_time >= srt_item.startSeconds && current_time < srt_item.endSeconds);
+        }
+        
         if(current_time>=srt_item.startSeconds && current_time<srt_item.endSeconds){
             if(!this.subtitle_shown) {
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== SRT DISPLAY: SHOWING SUBTITLE ===');
+                    console.log('Subtitle text:', srt_item.text);
+                    console.log('Target container:', '#'+media_player.parent_id+' .subtitle-container');
+                    console.log('Container exists:', $('#'+media_player.parent_id).find('.subtitle-container').length > 0);
+                }
                 $('#'+media_player.parent_id).find('.subtitle-container').html(srt_item.text);
                 this.subtitle_shown = true;
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== SRT DISPLAY: SUBTITLE DISPLAYED ===');
+                    console.log('Container content after update:', $('#'+media_player.parent_id).find('.subtitle-container').html());
+                }
             }
         }
         else if(current_time>srt_item.endSeconds) {
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== SRT TIMECHANGE: PAST END TIME ===');
+                console.log('Moving to next subtitle...');
+            }
             var next_srt_item=this.srt[srt_index+1];
             try{
                 if(current_time<next_srt_item.startSeconds){
                     if(this.subtitle_shown){
+                        if(typeof env !== 'undefined' && env === 'develop') {
+                            console.log('=== SRT DISPLAY: HIDING SUBTITLE (gap between subtitles) ===');
+                        }
                         $('#'+media_player.parent_id).find('.subtitle-container').html('');
                         this.subtitle_shown=false;
                     }
                 }else if(next_srt_item.endSeconds>current_time){
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== SRT DISPLAY: SHOWING NEXT SUBTITLE ===');
+                        console.log('Next subtitle text:', next_srt_item.text);
+                    }
                     $('#'+media_player.parent_id).find('.subtitle-container').html(next_srt_item.text);
                     this.subtitle_shown=true;
                     this.current_srt_index+=1;
                 }else   // in this case, have to find the next index;
                 {
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== SRT TIMECHANGE: FINDING NEW INDEX ===');
+                    }
                     this.current_srt_index=this.findIndex(current_time,0,this.srt.length-1);
                     if(this.current_srt_index<0)
                         this.current_srt_index=0;
@@ -130,6 +178,10 @@ var SrtOperation={
             }
         }
         else if(current_time<srt_item.startSeconds) {
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== SRT TIMECHANGE: BEFORE START TIME ===');
+                console.log('Current time is before subtitle start, finding correct index...');
+            }
             try{
                 this.current_srt_index=this.findIndex(current_time,0,this.srt.length-1);
                 if(this.current_srt_index<0)
