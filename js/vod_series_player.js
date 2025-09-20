@@ -1577,39 +1577,12 @@ var vod_series_player_page={
         
         var combined = [];
         
-        // Add native subtitles first (keep their original format and indices)
-        nativeSubtitles.forEach(function(nativeSub, index) {
-            // Enhance native subtitle with explicit source metadata
-            var enhancedNative = Object.assign({}, nativeSub);
-            enhancedNative.source = 'native'; // Explicit source identification
-            enhancedNative.isNative = true; // Backward compatibility
-            
-            // **CRITICAL FIX**: Get index from extra_info.index, not nativeSub.index
-            var nativeIndex = nativeSub.extra_info && nativeSub.extra_info.index !== undefined 
-                ? nativeSub.extra_info.index 
-                : nativeSub.index;
-            
-            enhancedNative.originalIndex = nativeIndex; // Preserve original index from correct location
-            enhancedNative.index = nativeIndex; // Also set top-level index for compatibility
-            enhancedNative.combinedIndex = index; // Sequential index in combined list
-            
-            if(typeof env !== 'undefined' && env === 'develop') {
-                console.log('=== NATIVE SUBTITLE ENHANCEMENT DEBUG ===');
-                console.log('nativeSub.index:', nativeSub.index);
-                console.log('nativeSub.extra_info.index:', nativeSub.extra_info ? nativeSub.extra_info.index : 'no extra_info');
-                console.log('calculated nativeIndex:', nativeIndex);
-                console.log('enhancedNative.originalIndex:', enhancedNative.originalIndex);
-            }
-            
-            combined.push(enhancedNative);
-        });
-        
-        // Convert API subtitles to Samsung format and add them
+        // **NEW APPROACH**: Add API subtitles FIRST with clean sequential indices
         apiSubtitles.forEach(function(apiSub, index) {
             // Create a Samsung-compatible subtitle object with explicit source metadata
             var samsungApiSub = {
                 source: 'api', // Explicit source identification
-                combinedIndex: nativeSubtitles.length + index, // Sequential index in combined list
+                combinedIndex: index, // Clean sequential index starting from 0
                 originalIndex: index, // Original API subtitle index
                 type: "TEXT",
                 extra_info: {
@@ -1626,6 +1599,42 @@ var vod_series_player_page={
                 }
             };
             combined.push(samsungApiSub);
+        });
+        
+        // **NEW APPROACH**: Add native subtitles at the END for clear separation
+        nativeSubtitles.forEach(function(nativeSub, index) {
+            // Enhance native subtitle with explicit source metadata
+            var enhancedNative = Object.assign({}, nativeSub);
+            enhancedNative.source = 'native'; // Explicit source identification
+            enhancedNative.isNative = true; // Backward compatibility
+            
+            // **CRITICAL FIX**: Get index from extra_info.index, not nativeSub.index
+            var nativeIndex = nativeSub.extra_info && nativeSub.extra_info.index !== undefined 
+                ? nativeSub.extra_info.index 
+                : nativeSub.index;
+            
+            enhancedNative.originalIndex = nativeIndex; // Preserve original Samsung index
+            enhancedNative.index = nativeIndex; // Also set top-level index for compatibility
+            enhancedNative.combinedIndex = apiSubtitles.length + index; // Place AFTER all API subtitles
+            
+            // Enhance native subtitle label for better user experience
+            if(enhancedNative.extra_info && enhancedNative.extra_info.track_lang) {
+                var currentLabel = enhancedNative.extra_info.track_lang;
+                if(currentLabel === 'un' || currentLabel === '' || !currentLabel) {
+                    enhancedNative.extra_info.track_lang = 'Native Subtitle ' + (index + 1);
+                } else {
+                    enhancedNative.extra_info.track_lang = currentLabel + ' (Native)';
+                }
+            }
+            
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== NATIVE SUBTITLE AT END DEBUG ===');
+                console.log('Native subtitle placed at combinedIndex:', enhancedNative.combinedIndex);
+                console.log('Samsung originalIndex:', nativeIndex);
+                console.log('Enhanced label:', enhancedNative.extra_info.track_lang);
+            }
+            
+            combined.push(enhancedNative);
         });
         
         // Store the combined subtitles mapping for later use
