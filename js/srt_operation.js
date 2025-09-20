@@ -131,13 +131,31 @@ var SrtOperation={
                     console.log('=== SRT DISPLAY: SHOWING SUBTITLE ===');
                     console.log('Subtitle text:', srt_item.text);
                     console.log('Target container:', '#'+media_player.parent_id+' .subtitle-container');
+                    console.log('media_player.parent_id:', media_player.parent_id);
                     console.log('Container exists:', $('#'+media_player.parent_id).find('.subtitle-container').length > 0);
+                    console.log('All subtitle containers on page:', $('.subtitle-container').length);
+                    console.log('Container visibility before:', $('#'+media_player.parent_id).find('.subtitle-container').css('visibility'));
+                    console.log('Container display before:', $('#'+media_player.parent_id).find('.subtitle-container').css('display'));
                 }
-                $('#'+media_player.parent_id).find('.subtitle-container').html(srt_item.text);
+                
+                // Try multiple container selectors as fallback
+                var $container = $('#'+media_player.parent_id).find('.subtitle-container');
+                if($container.length === 0) {
+                    $container = $('.subtitle-container'); // Fallback to any subtitle container
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== SRT DISPLAY: Using fallback container selector ===');
+                    }
+                }
+                
+                $container.html(srt_item.text);
+                $container.css({visibility: 'visible', display: 'block'});
                 this.subtitle_shown = true;
+                
                 if(typeof env !== 'undefined' && env === 'develop') {
                     console.log('=== SRT DISPLAY: SUBTITLE DISPLAYED ===');
-                    console.log('Container content after update:', $('#'+media_player.parent_id).find('.subtitle-container').html());
+                    console.log('Container content after update:', $container.html());
+                    console.log('Container visibility after:', $container.css('visibility'));
+                    console.log('Container display after:', $container.css('display'));
                 }
             }
         }
