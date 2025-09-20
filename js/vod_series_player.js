@@ -1704,8 +1704,32 @@ var vod_series_player_page={
                     
                     // Use native Samsung subtitle with original index
                     var nativeIndex = selectedSubtitle.originalIndex || selectedSubtitle.index;
-                    media_player.setSubtitleOrAudioTrack("TEXT", nativeIndex);
-                    this.current_subtitle_index = nativeIndex;
+                    
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== NATIVE SUBTITLE INDEX DEBUG ===');
+                        console.log('selectedSubtitle:', selectedSubtitle);
+                        console.log('selectedSubtitle.originalIndex:', selectedSubtitle.originalIndex);
+                        console.log('selectedSubtitle.index:', selectedSubtitle.index);
+                        console.log('calculated nativeIndex:', nativeIndex);
+                        console.log('nativeIndex type:', typeof nativeIndex);
+                    }
+                    
+                    // Validate the native index before using it
+                    if (typeof nativeIndex !== 'undefined' && nativeIndex !== null && !isNaN(nativeIndex)) {
+                        media_player.setSubtitleOrAudioTrack("TEXT", nativeIndex);
+                        this.current_subtitle_index = nativeIndex;
+                        
+                        if(typeof env !== 'undefined' && env === 'develop') {
+                            console.log('=== Native Samsung subtitle activated ===');
+                            console.log('Track index:', nativeIndex);
+                        }
+                    } else {
+                        if(typeof env !== 'undefined' && env === 'develop') {
+                            console.log('=== NATIVE SUBTITLE ERROR ===');
+                            console.log('Invalid nativeIndex, cannot set Samsung native subtitle');
+                        }
+                        showToast("Error", "Invalid native subtitle index");
+                    }
                     
                 } else if(subtitleSource === 'api') {
                     // **API SUBTITLE**: Stop native tracks and use SrtOperation

@@ -1,0 +1,72 @@
+﻿
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 52060
+mediaPlayer.js:254 Current time (seconds): 52.06
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 52560
+mediaPlayer.js:254 Current time (seconds): 52.56
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 53061
+mediaPlayer.js:254 Current time (seconds): 53.061
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 53561
+mediaPlayer.js:254 Current time (seconds): 53.561
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 54559
+mediaPlayer.js:254 Current time (seconds): 54.559
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 55059
+mediaPlayer.js:254 Current time (seconds): 55.059
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 55560
+mediaPlayer.js:254 Current time (seconds): 55.56
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 56061
+mediaPlayer.js:254 Current time (seconds): 56.061
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 56561
+mediaPlayer.js:254 Current time (seconds): 56.561
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 57062
+mediaPlayer.js:254 Current time (seconds): 57.062
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===

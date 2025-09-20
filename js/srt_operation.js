@@ -6,6 +6,17 @@ var SrtOperation={
     stopped:false,
     subtitle_shown:false,
     init: function (subtitle, current_time) {  // will set initial time and initial index from parsed subtitle text array
+        if(typeof env !== 'undefined' && env === 'develop') {
+            console.log('=== SRT OPERATION INIT DEBUG ===');
+            console.log('subtitle parameter:', subtitle);
+            console.log('current_time:', current_time);
+            console.log('subtitle.content exists:', subtitle && subtitle.content ? true : false);
+            if(subtitle && subtitle.content) {
+                console.log('subtitle.content length:', subtitle.content.length);
+                console.log('subtitle.content preview:', subtitle.content.substring(0, 200));
+            }
+        }
+        
         // we will save always the index and time for current time subtitle text
         $('#'+media_player.parent_id).find('.subtitle-container').html('');
         this.subtitle_shown=false;
@@ -13,15 +24,39 @@ var SrtOperation={
         if(subtitle.content) {
             try{
                 SrtParser.init();
-                srt=SrtParser.fromSrt(subtitle.content)
+                srt=SrtParser.fromSrt(subtitle.content);
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== SRT PARSING SUCCESS ===');
+                    console.log('Parsed SRT items count:', srt.length);
+                    if(srt.length > 0) {
+                        console.log('First SRT item:', srt[0]);
+                    }
+                }
             }catch (e) {
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== SRT PARSING ERROR ===');
+                    console.log('Error:', e);
+                }
+            }
+        } else {
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== SRT INIT ERROR: No subtitle.content ===');
             }
         }
+        
         this.srt=srt;
-        if(srt.length>0)
+        if(srt.length>0) {
             this.stopped=false;
-        else{
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== SRT OPERATION STARTED ===');
+                console.log('SrtOperation.stopped set to FALSE');
+            }
+        } else {
             this.stopped=true;
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== SRT OPERATION STOPPED ===');
+                console.log('SrtOperation.stopped set to TRUE (no srt items)');
+            }
             return;
         }
 

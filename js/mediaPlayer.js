@@ -399,11 +399,41 @@ function initPlayer() {
                 return result;
             },
             setSubtitleOrAudioTrack:function(kind, index){
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== SAMSUNG setSubtitleOrAudioTrack DEBUG ===');
+                    console.log('kind:', kind);
+                    console.log('index:', index);
+                    console.log('index type:', typeof index);
+                }
+                
+                // Validate index parameter to prevent TypeMismatchError
+                if (typeof index === 'undefined' || index === null) {
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== SAMSUNG SUBTITLE ERROR ===');
+                        console.log('Invalid index (undefined/null), aborting setSelectTrack');
+                    }
+                    return;
+                }
+                
                 try{
                     // Ensure subtitle container is visible for Samsung platform
                     $('#'+this.parent_id).find('.subtitle-container').show();
-                    webapis.avplay.setSelectTrack(kind,index);
+                    
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== CALLING webapis.avplay.setSelectTrack ===');
+                        console.log('Arguments: kind="' + kind + '", index=' + index);
+                    }
+                    
+                    webapis.avplay.setSelectTrack(kind, index);
+                    
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== Samsung native subtitle track set successfully ===');
+                    }
                 }catch (e) {
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== SAMSUNG setSelectTrack ERROR ===');
+                        console.log('Error:', e);
+                    }
                 }
                 if(kind==='TEXT' && index==-1)
                     $('#'+this.parent_id+' .subtitle-container').hide();
