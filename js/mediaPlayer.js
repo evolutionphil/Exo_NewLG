@@ -247,15 +247,6 @@ function initPlayer() {
                         that.current_time=currentTime;
                         $('#'+that.parent_id).find('.video-error').hide();
                         
-                        // Gate heavy debug logging behind development environment check
-                        if(typeof env !== 'undefined' && env === 'develop') {
-                            console.log('=== SAMSUNG TIMING DEBUG ===');
-                            console.log('Current time (ms):', currentTime);
-                            console.log('Current time (seconds):', currentTime/1000);
-                            console.log('SrtOperation exists:', typeof SrtOperation !== 'undefined');
-                            console.log('SrtOperation stopped:', SrtOperation.stopped);
-                        }
-                        
                         if(current_route==='vod-series-player-video')
                             vod_series_player_page.current_time=currentTime/1000;
                         var duration =  webapis.avplay.getDuration();
@@ -267,16 +258,7 @@ function initPlayer() {
                             // Connect subtitle timing updates for Samsung
                             if (typeof SrtOperation !== 'undefined' && !SrtOperation.stopped) {
                                 SrtOperation.timeChange(currentTime/1000); // Convert ms to seconds
-                                if(typeof env !== 'undefined' && env === 'develop') {
-                                    console.log('SrtOperation.timeChange called with (seconds):', currentTime/1000);
-                                }
-                            } else if(typeof env !== 'undefined' && env === 'develop') {
-                                console.log('SrtOperation not available or stopped');
                             }
-                        }
-                        
-                        if(typeof env !== 'undefined' && env === 'develop') {
-                            console.log('=== END SAMSUNG TIMING DEBUG ===');
                         }
                     },
                     ondrmevent: function(drmEvent, drmData) {
