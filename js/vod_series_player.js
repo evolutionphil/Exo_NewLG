@@ -1561,6 +1561,20 @@ var vod_series_player_page={
         console.log('Native subtitles:', nativeSubtitles);
         console.log('API subtitles:', apiSubtitles);
         
+        // **EDGE CASE HANDLING**: Ensure arrays are valid
+        nativeSubtitles = nativeSubtitles || [];
+        apiSubtitles = apiSubtitles || [];
+        
+        if(typeof env !== 'undefined' && env === 'develop') {
+            console.log('=== SUBTITLE AVAILABILITY DEBUG ===');
+            console.log('Native subtitles available:', nativeSubtitles.length);
+            console.log('API subtitles available:', apiSubtitles.length);
+            
+            if(nativeSubtitles.length === 0) {
+                console.log('=== NO NATIVE SUBTITLES - API ONLY MODE ===');
+            }
+        }
+        
         var combined = [];
         
         // Add native subtitles first (keep their original format and indices)
@@ -1618,11 +1632,20 @@ var vod_series_player_page={
         window.subtitleMapping = {
             combined: combined,
             nativeCount: nativeSubtitles.length,
-            apiCount: apiSubtitles.length
+            apiCount: apiSubtitles.length,
+            hasNativeSubtitles: nativeSubtitles.length > 0,
+            hasApiSubtitles: apiSubtitles.length > 0,
+            apiOnlyMode: nativeSubtitles.length === 0 && apiSubtitles.length > 0
         };
         
         console.log('Combined subtitles result:', combined);
         console.log('Subtitle mapping created:', window.subtitleMapping);
+        
+        // **USER FEEDBACK**: Inform when only API subtitles are available
+        if(window.subtitleMapping.apiOnlyMode && typeof env !== 'undefined' && env === 'develop') {
+            console.log('=== API ONLY MODE: No native subtitles found, using exoapp.tv subtitles only ===');
+        }
+        
         return combined;
     },
     cancelSubtitle:function(){

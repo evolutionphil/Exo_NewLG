@@ -1,0 +1,1041 @@
+home_operation.js:22 हिन्दी
+home_operation.js:22 Shqiptare
+home_operation.js:22 Ελληνικά
+home_operation.js:22 Український
+home_operation.js:22 Српски
+vod_summary.js:75 === XTREME API get_vod_info RESPONSE ANALYSIS ===
+vod_summary.js:76 Full API response: {info: {…}, movie_data: {…}}
+vod_summary.js:77 Response keys: (2) ["info", "movie_data"]
+vod_summary.js:78 Info object: {kinopoisk_url: "https://www.themoviedb.org/movie/1061474", tmdb_id: 1061474, name: "Superman", o_name: "Superman", cover_big: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/fJKSDmkXDLZ0qDmAZ5lXEaToN3L.jpg", …}
+vod_summary.js:80 Info object keys: (26) ["kinopoisk_url", "tmdb_id", "name", "o_name", "cover_big", "movie_image", "releasedate", "episode_run_time", "youtube_trailer", "director", "actors", "cast", "description", "plot", "age", "mpaa_rating", "rating_count_kinopoisk", "country", "genre", "backdrop_path", "duration_secs", "duration", "video", "audio", "bitrate", "rating"]
+vod_summary.js:81 TMDB ID check: 1061474
+vod_summary.js:82 TMDB ID type: number
+vod_summary.js:106 ✅ TMDB ID extracted and stored: 1061474
+VM64:1 in getErrorObjectLocal code:11,name:InvalidStateError NaNmessage:PLAYER_ERROR_INVALID_STATE
+VM64:1 Entering setDisplayRect
+mediaPlayer.js:51 http://galaiptv.shop:2095/movie/dogubeyyeni/xLUFy7q6zM/344750.mkv
+VM64:1 adding listener
+mediaPlayer.js:299 Samsung webapis.avplay.setListener successfully set
+VM64:1 Entering setDisplayRect
+VM64:1 Entered AVPlayManager.prepareAsync()
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 508
+mediaPlayer.js:254 Current time (seconds): 0.508
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 0.508
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:882 === SUBTITLE DEBUG: Samsung hybrid subtitle loading ===
+vod_series_player.js:883 Native subtitles found: 1
+vod_series_player.js:911 === SUBTITLE DEBUG: Samsung - Building movie request data ===
+vod_series_player.js:950 Samsung API request data: {movie_name: "Superman", movie_type: "movie", tmdb_id: 1061474, year: 2025}
+vod_series_player.js:974 === SAMSUNG API SUBTITLES RESPONSE ===
+vod_series_player.js:975 API result: {status: "success", subtitles: Array(15)}
+vod_series_player.js:981 API subtitles loaded: 15
+vod_series_player.js:1560 === COMBINING SUBTITLES FOR SAMSUNG ===
+vod_series_player.js:1561 Native subtitles: [{…}]
+vod_series_player.js:1562 API subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1583 === NATIVE SUBTITLE ENHANCEMENT DEBUG ===
+vod_series_player.js:1584 nativeSub.index: undefined
+vod_series_player.js:1585 nativeSub.extra_info.index: 3
+vod_series_player.js:1586 calculated nativeIndex: 3
+vod_series_player.js:1587 enhancedNative.originalIndex: 3
+vod_series_player.js:1624 Combined subtitles result: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1625 Subtitle mapping created: {combined: Array(16), nativeCount: 1, apiCount: 15}
+vod_series_player.js:989 === SAMSUNG COMBINED SUBTITLES ===
+vod_series_player.js:990 Native: 1 API: 15 Combined: 16
+vod_series_player.js:1435 === SUBTITLE DEBUG: renderSubtitles called ===
+vod_series_player.js:1436 Kind: TEXT
+vod_series_player.js:1437 Subtitles array: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1438 Subtitles count: 16
+vod_series_player.js:1443 === SUBTITLE DEBUG: Stored Samsung subtitles globally ===
+vod_series_player.js:1447 === SUBTITLE DEBUG: Individual subtitle items ===
+vod_series_player.js:1449 Subtitle 0: {extra_info: {…}, source: "native", isNative: true, originalIndex: 3, index: 3, …}
+vod_series_player.js:1453   - extra_info: {fourCC: "un", subtitle_type: "0", track_lang: "un", index: 3, type: "TEXT"}
+vod_series_player.js:1454   - isNative: true
+vod_series_player.js:1449 Subtitle 1: {source: "api", combinedIndex: 1, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Turkish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 2: {source: "api", combinedIndex: 2, originalIndex: 1, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "English", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 3: {source: "api", combinedIndex: 3, originalIndex: 2, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Spanish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 4: {source: "api", combinedIndex: 4, originalIndex: 3, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "French", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 5: {source: "api", combinedIndex: 5, originalIndex: 4, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "German", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 6: {source: "api", combinedIndex: 6, originalIndex: 5, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Russian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 7: {source: "api", combinedIndex: 7, originalIndex: 6, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Arabic", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 8: {source: "api", combinedIndex: 8, originalIndex: 7, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Korean", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 9: {source: "api", combinedIndex: 9, originalIndex: 8, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Japanese", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 10: {source: "api", combinedIndex: 10, originalIndex: 9, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Dutch", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 11: {source: "api", combinedIndex: 11, originalIndex: 10, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Polish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 12: {source: "api", combinedIndex: 12, originalIndex: 11, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Finnish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 13: {source: "api", combinedIndex: 13, originalIndex: 12, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Italian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 14: {source: "api", combinedIndex: 14, originalIndex: 13, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Swedish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 15: {source: "api", combinedIndex: 15, originalIndex: 14, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Hebrew", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1467 === SUBTITLE DEBUG: About to create HTML content ===
+vod_series_player.js:1469 === SUBTITLE DEBUG: Generated HTML content ===
+vod_series_player.js:1470 HTML length: 8602
+vod_series_player.js:1471 HTML content: <div class="setting-modal-option subtitle-item bg-focus"                    onmouseenter="vod_series_player_page.hoverSubtitle(0)"                     onclick="vod_series_player_page.handleMenuClick()"                 >                   <input class="setting-modal-checkbox" type="checkbox" name="subtitle" id="disable-subtitle" value="-1">                   <label for="disable-subtitle">Turn Off Subtitles</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(1)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="0"                        >                        <label for="disable-subtitle">un (Stream)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(2)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="1"                        >                        <label for="disable-subtitle">Turkish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(3)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="2"                        >                        <label for="disable-subtitle">English (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(4)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="3"                        >                        <label for="disable-subtitle">Spanish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(5)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="4"                        >                        <label for="disable-subtitle">French (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(6)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="5"                        >                        <label for="disable-subtitle">German (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(7)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="6"                        >                        <label for="disable-subtitle">Russian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(8)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="7"                        >                        <label for="disable-subtitle">Arabic (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(9)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="8"                        >                        <label for="disable-subtitle">Korean (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(10)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="9"                        >                        <label for="disable-subtitle">Japanese (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(11)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="10"                        >                        <label for="disable-subtitle">Dutch (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(12)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="11"                        >                        <label for="disable-subtitle">Polish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(13)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="12"                        >                        <label for="disable-subtitle">Finnish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(14)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="13"                        >                        <label for="disable-subtitle">Italian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(15)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="14"                        >                        <label for="disable-subtitle">Swedish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(16)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="15"                        >                        <label for="disable-subtitle">Hebrew (API)</label>                    </div>
+vod_series_player.js:1484 === SUBTITLE MODAL DEBUG: Selection Logic ===
+vod_series_player.js:1485 Current selected index: -1
+vod_series_player.js:1486 Available subtitles: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1487 Platform: samsung
+vod_series_player.js:1496 Menu 0: checkbox value = -1, current = -1
+vod_series_player.js:1875 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1876 Index: 0
+vod_series_player.js:1877 Available subtitle menus: 17
+vod_series_player.js:1885 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1886 Focused index: 0
+vod_series_player.js:1887 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1892 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(0)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1505 Found match at menu index 0
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 1011
+mediaPlayer.js:254 Current time (seconds): 1.011
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 1.011
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 1510
+mediaPlayer.js:254 Current time (seconds): 1.51
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 1.51
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 2011
+mediaPlayer.js:254 Current time (seconds): 2.011
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 2.011
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:1875 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1876 Index: 1
+vod_series_player.js:1877 Available subtitle menus: 17
+vod_series_player.js:1885 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1886 Focused index: 1
+vod_series_player.js:1887 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1892 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(1)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 2511
+mediaPlayer.js:254 Current time (seconds): 2.511
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 2.511
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 3012
+mediaPlayer.js:254 Current time (seconds): 3.012
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 3.012
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 3512
+mediaPlayer.js:254 Current time (seconds): 3.512
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 3.512
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 4022
+mediaPlayer.js:254 Current time (seconds): 4.022
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 4.022
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:1642 === SUBTITLE DEBUG: confirmSubtitle called ===
+vod_series_player.js:1643 Selected combined index: 0
+vod_series_player.js:1644 Platform: samsung
+vod_series_player.js:1692 === SUBTITLE DEBUG: Selected subtitle object ===
+vod_series_player.js:1693 Platform: samsung
+vod_series_player.js:1694 Selected combined index: 0
+vod_series_player.js:1695 Selected subtitle: {extra_info: {…}, source: "native", isNative: true, originalIndex: 3, index: 3, …}
+vod_series_player.js:1696 Detected source: native
+vod_series_player.js:1697 Available subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1714 === SUBTITLE DEBUG: Using NATIVE subtitle ===
+vod_series_player.js:1715 Original native index: 3
+vod_series_player.js:1725 === NATIVE SUBTITLE INDEX DEBUG ===
+vod_series_player.js:1726 selectedSubtitle: {extra_info: {…}, source: "native", isNative: true, originalIndex: 3, index: 3, …}
+vod_series_player.js:1727 selectedSubtitle.originalIndex: 3
+vod_series_player.js:1728 selectedSubtitle.index: 3
+vod_series_player.js:1729 calculated nativeIndex: 3
+vod_series_player.js:1730 nativeIndex type: number
+mediaPlayer.js:403 === SAMSUNG setSubtitleOrAudioTrack DEBUG ===
+mediaPlayer.js:404 kind: TEXT
+mediaPlayer.js:405 index: 3
+mediaPlayer.js:406 index type: number
+mediaPlayer.js:423 === CALLING webapis.avplay.setSelectTrack ===
+mediaPlayer.js:424 Arguments: kind="TEXT", index=3
+VM64:1 in getErrorObjectLocal code:15,name:InvalidAccessError NaNmessage:PLAYER_ERROR_INVALID_OPERATION
+mediaPlayer.js:434 === SAMSUNG setSelectTrack ERROR ===
+mediaPlayer.js:435 Error: WebAPIExceptionLocal {code: 15, name: "InvalidAccessError", message: "PLAYER_ERROR_INVALID_OPERATION", stack: "InvalidAccessError: PLAYER_ERROR_INVALID_OPERATION…ger (file:///js/libs/jquery.3.4.1.min.js:2:71198)"}
+vod_series_player.js:1739 === Native Samsung subtitle activated ===
+vod_series_player.js:1740 Track index: 3
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 4513
+mediaPlayer.js:254 Current time (seconds): 4.513
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 5014
+mediaPlayer.js:254 Current time (seconds): 5.014
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 5515
+mediaPlayer.js:254 Current time (seconds): 5.515
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 6015
+mediaPlayer.js:254 Current time (seconds): 6.015
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 6516
+mediaPlayer.js:254 Current time (seconds): 6.516
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 70575
+mediaPlayer.js:254 Current time (seconds): 70.575
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 71077
+mediaPlayer.js:254 Current time (seconds): 71.077
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 71584
+mediaPlayer.js:254 Current time (seconds): 71.584
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 72085
+mediaPlayer.js:254 Current time (seconds): 72.085
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 72590
+mediaPlayer.js:254 Current time (seconds): 72.59
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 73093
+mediaPlayer.js:254 Current time (seconds): 73.093
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 73591
+mediaPlayer.js:254 Current time (seconds): 73.591
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:882 === SUBTITLE DEBUG: Samsung hybrid subtitle loading ===
+vod_series_player.js:883 Native subtitles found: 1
+vod_series_player.js:1560 === COMBINING SUBTITLES FOR SAMSUNG ===
+vod_series_player.js:1561 Native subtitles: [{…}]
+vod_series_player.js:1562 API subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1583 === NATIVE SUBTITLE ENHANCEMENT DEBUG ===
+vod_series_player.js:1584 nativeSub.index: undefined
+vod_series_player.js:1585 nativeSub.extra_info.index: 3
+vod_series_player.js:1586 calculated nativeIndex: 3
+vod_series_player.js:1587 enhancedNative.originalIndex: 3
+vod_series_player.js:1624 Combined subtitles result: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1625 Subtitle mapping created: {combined: Array(16), nativeCount: 1, apiCount: 15}
+vod_series_player.js:1435 === SUBTITLE DEBUG: renderSubtitles called ===
+vod_series_player.js:1436 Kind: TEXT
+vod_series_player.js:1437 Subtitles array: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1438 Subtitles count: 16
+vod_series_player.js:1443 === SUBTITLE DEBUG: Stored Samsung subtitles globally ===
+vod_series_player.js:1447 === SUBTITLE DEBUG: Individual subtitle items ===
+vod_series_player.js:1449 Subtitle 0: {extra_info: {…}, source: "native", isNative: true, originalIndex: 3, index: 3, …}
+vod_series_player.js:1453   - extra_info: {fourCC: "un", subtitle_type: "0", track_lang: "un", index: 3, type: "TEXT"}
+vod_series_player.js:1454   - isNative: true
+vod_series_player.js:1449 Subtitle 1: {source: "api", combinedIndex: 1, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Turkish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 2: {source: "api", combinedIndex: 2, originalIndex: 1, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "English", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 3: {source: "api", combinedIndex: 3, originalIndex: 2, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Spanish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 4: {source: "api", combinedIndex: 4, originalIndex: 3, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "French", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 5: {source: "api", combinedIndex: 5, originalIndex: 4, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "German", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 6: {source: "api", combinedIndex: 6, originalIndex: 5, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Russian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 7: {source: "api", combinedIndex: 7, originalIndex: 6, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Arabic", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 8: {source: "api", combinedIndex: 8, originalIndex: 7, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Korean", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 9: {source: "api", combinedIndex: 9, originalIndex: 8, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Japanese", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 10: {source: "api", combinedIndex: 10, originalIndex: 9, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Dutch", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 11: {source: "api", combinedIndex: 11, originalIndex: 10, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Polish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 12: {source: "api", combinedIndex: 12, originalIndex: 11, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Finnish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 13: {source: "api", combinedIndex: 13, originalIndex: 12, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Italian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 14: {source: "api", combinedIndex: 14, originalIndex: 13, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Swedish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 15: {source: "api", combinedIndex: 15, originalIndex: 14, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Hebrew", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1467 === SUBTITLE DEBUG: About to create HTML content ===
+vod_series_player.js:1469 === SUBTITLE DEBUG: Generated HTML content ===
+vod_series_player.js:1470 HTML length: 8602
+vod_series_player.js:1471 HTML content: <div class="setting-modal-option subtitle-item bg-focus"                    onmouseenter="vod_series_player_page.hoverSubtitle(0)"                     onclick="vod_series_player_page.handleMenuClick()"                 >                   <input class="setting-modal-checkbox" type="checkbox" name="subtitle" id="disable-subtitle" value="-1">                   <label for="disable-subtitle">Turn Off Subtitles</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(1)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="0"                        >                        <label for="disable-subtitle">un (Stream)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(2)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="1"                        >                        <label for="disable-subtitle">Turkish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(3)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="2"                        >                        <label for="disable-subtitle">English (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(4)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="3"                        >                        <label for="disable-subtitle">Spanish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(5)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="4"                        >                        <label for="disable-subtitle">French (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(6)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="5"                        >                        <label for="disable-subtitle">German (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(7)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="6"                        >                        <label for="disable-subtitle">Russian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(8)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="7"                        >                        <label for="disable-subtitle">Arabic (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(9)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="8"                        >                        <label for="disable-subtitle">Korean (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(10)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="9"                        >                        <label for="disable-subtitle">Japanese (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(11)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="10"                        >                        <label for="disable-subtitle">Dutch (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(12)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="11"                        >                        <label for="disable-subtitle">Polish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(13)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="12"                        >                        <label for="disable-subtitle">Finnish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(14)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="13"                        >                        <label for="disable-subtitle">Italian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(15)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="14"                        >                        <label for="disable-subtitle">Swedish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(16)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="15"                        >                        <label for="disable-subtitle">Hebrew (API)</label>                    </div>
+vod_series_player.js:1484 === SUBTITLE MODAL DEBUG: Selection Logic ===
+vod_series_player.js:1485 Current selected index: 3
+vod_series_player.js:1486 Available subtitles: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1487 Platform: samsung
+vod_series_player.js:1496 Menu 0: checkbox value = -1, current = 3
+vod_series_player.js:1496 Menu 1: checkbox value = 0, current = 3
+vod_series_player.js:1496 Menu 2: checkbox value = 1, current = 3
+vod_series_player.js:1496 Menu 3: checkbox value = 2, current = 3
+vod_series_player.js:1496 Menu 4: checkbox value = 3, current = 3
+vod_series_player.js:1875 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1876 Index: 4
+vod_series_player.js:1877 Available subtitle menus: 17
+vod_series_player.js:1885 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1886 Focused index: 4
+vod_series_player.js:1887 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1892 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(4)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1505 Found match at menu index 4
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 74092
+mediaPlayer.js:254 Current time (seconds): 74.092
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 74592
+mediaPlayer.js:254 Current time (seconds): 74.592
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:1875 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1876 Index: 5
+vod_series_player.js:1877 Available subtitle menus: 17
+vod_series_player.js:1885 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1886 Focused index: 5
+vod_series_player.js:1887 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1892 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(5)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 75093
+mediaPlayer.js:254 Current time (seconds): 75.093
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:1875 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1876 Index: 4
+vod_series_player.js:1877 Available subtitle menus: 17
+vod_series_player.js:1885 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1886 Focused index: 4
+vod_series_player.js:1887 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1892 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(4)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 75593
+mediaPlayer.js:254 Current time (seconds): 75.593
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:1875 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1876 Index: 3
+vod_series_player.js:1877 Available subtitle menus: 17
+vod_series_player.js:1885 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1886 Focused index: 3
+vod_series_player.js:1887 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1892 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus" onmouseenter=​"vod_series_player_page.hoverSubtitle(3)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1875 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1876 Index: 2
+vod_series_player.js:1877 Available subtitle menus: 17
+vod_series_player.js:1885 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1886 Focused index: 2
+vod_series_player.js:1887 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1892 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(2)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 76094
+mediaPlayer.js:254 Current time (seconds): 76.094
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:1875 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1876 Index: 1
+vod_series_player.js:1877 Available subtitle menus: 17
+vod_series_player.js:1885 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1886 Focused index: 1
+vod_series_player.js:1887 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1892 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(1)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1875 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1876 Index: 2
+vod_series_player.js:1877 Available subtitle menus: 17
+vod_series_player.js:1885 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1886 Focused index: 2
+vod_series_player.js:1887 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1892 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(2)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 76594
+mediaPlayer.js:254 Current time (seconds): 76.594
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 77094
+mediaPlayer.js:254 Current time (seconds): 77.094
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 77595
+mediaPlayer.js:254 Current time (seconds): 77.595
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 78095
+mediaPlayer.js:254 Current time (seconds): 78.095
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: true
+mediaPlayer.js:274 SrtOperation not available or stopped
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:1642 === SUBTITLE DEBUG: confirmSubtitle called ===
+vod_series_player.js:1643 Selected combined index: 1
+vod_series_player.js:1644 Platform: samsung
+vod_series_player.js:1692 === SUBTITLE DEBUG: Selected subtitle object ===
+vod_series_player.js:1693 Platform: samsung
+vod_series_player.js:1694 Selected combined index: 1
+vod_series_player.js:1695 Selected subtitle: {source: "api", combinedIndex: 1, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1696 Detected source: api
+vod_series_player.js:1697 Available subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1753 === SUBTITLE DEBUG: Using API subtitle ===
+vod_series_player.js:1754 API subtitle data: {file: "/api/subtitle-file?lang=tr&id=11466385", label: "Turkish", lang: "tr", id: undefined}
+mediaPlayer.js:403 === SAMSUNG setSubtitleOrAudioTrack DEBUG ===
+mediaPlayer.js:404 kind: TEXT
+mediaPlayer.js:405 index: -1
+mediaPlayer.js:406 index type: number
+mediaPlayer.js:423 === CALLING webapis.avplay.setSelectTrack ===
+mediaPlayer.js:424 Arguments: kind="TEXT", index=-1
+VM64:1 in getErrorObjectLocal code:26,name:InvalidValuesError NaNmessage:PLAYER_ERROR_INVALID_PARAMETER
+mediaPlayer.js:434 === SAMSUNG setSelectTrack ERROR ===
+mediaPlayer.js:435 Error: WebAPIExceptionLocal {code: 26, name: "InvalidValuesError", message: "PLAYER_ERROR_INVALID_PARAMETER", stack: "InvalidValuesError: PLAYER_ERROR_INVALID_PARAMETER…ger (file:///js/libs/jquery.3.4.1.min.js:2:71198)"}
+vod_series_player.js:1785 === SUBTITLE DEBUG: API subtitle loaded successfully ===
+vod_series_player.js:1786 Content length: 104677
+srt_operation.js:10 === SRT OPERATION INIT DEBUG ===
+srt_operation.js:11 subtitle parameter: {content: "1↵00:00:26,735 --> 00:00:29,321↵300 YIL ÖNCE↵↵2↵00…-> 02:09:02,492↵Alt yazı çevirmeni: Orhan Cevher↵"}
+srt_operation.js:12 current_time: 78.575
+srt_operation.js:13 subtitle.content exists: true
+srt_operation.js:15 subtitle.content length: 104677
+srt_operation.js:16 subtitle.content preview: 1
+00:00:26,735 --> 00:00:29,321
+300 YIL ÖNCE
+
+2
+00:00:29,404 --> 00:00:32,658
+ÜSTÜN-İNSANLAR olarak bilinen
+süper güçlü varlıklar
+
+3
+00:00:32,741 --> 00:00:36,078
+Dünya'da ortaya çıkarak
+TANRILAR VE C
+srt_parser.js:123 92 "ms take to parse"
+srt_operation.js:29 === SRT PARSING SUCCESS ===
+srt_operation.js:30 Parsed SRT items count: 1582
+srt_operation.js:32 First SRT item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:51 === SRT OPERATION STARTED ===
+srt_operation.js:52 SrtOperation.stopped set to FALSE
+srt_operation.js:64 here found srt index 16 78.575 (1582) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, …]
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 78598
+mediaPlayer.js:254 Current time (seconds): 78.598
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 78.598
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 79098
+mediaPlayer.js:254 Current time (seconds): 79.098
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 79.098
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 79599
+mediaPlayer.js:254 Current time (seconds): 79.599
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 79.599
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 80100
+mediaPlayer.js:254 Current time (seconds): 80.1
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 80.1
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 80600
+mediaPlayer.js:254 Current time (seconds): 80.6
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 80.6
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 115618
+mediaPlayer.js:254 Current time (seconds): 115.618
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 115.618
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 116137
+mediaPlayer.js:254 Current time (seconds): 116.137
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 116.137
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 116634
+mediaPlayer.js:254 Current time (seconds): 116.634
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 116.634
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 117134
+mediaPlayer.js:254 Current time (seconds): 117.134
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 117.134
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 117634
+mediaPlayer.js:254 Current time (seconds): 117.634
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 117.634
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 118135
+mediaPlayer.js:254 Current time (seconds): 118.135
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 118.135
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:882 === SUBTITLE DEBUG: Samsung hybrid subtitle loading ===
+vod_series_player.js:883 Native subtitles found: 1
+vod_series_player.js:1560 === COMBINING SUBTITLES FOR SAMSUNG ===
+vod_series_player.js:1561 Native subtitles: [{…}]
+vod_series_player.js:1562 API subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1583 === NATIVE SUBTITLE ENHANCEMENT DEBUG ===
+vod_series_player.js:1584 nativeSub.index: undefined
+vod_series_player.js:1585 nativeSub.extra_info.index: 3
+vod_series_player.js:1586 calculated nativeIndex: 3
+vod_series_player.js:1587 enhancedNative.originalIndex: 3
+vod_series_player.js:1624 Combined subtitles result: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1625 Subtitle mapping created: {combined: Array(16), nativeCount: 1, apiCount: 15}
+vod_series_player.js:1435 === SUBTITLE DEBUG: renderSubtitles called ===
+vod_series_player.js:1436 Kind: TEXT
+vod_series_player.js:1437 Subtitles array: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1438 Subtitles count: 16
+vod_series_player.js:1443 === SUBTITLE DEBUG: Stored Samsung subtitles globally ===
+vod_series_player.js:1447 === SUBTITLE DEBUG: Individual subtitle items ===
+vod_series_player.js:1449 Subtitle 0: {extra_info: {…}, source: "native", isNative: true, originalIndex: 3, index: 3, …}
+vod_series_player.js:1453   - extra_info: {fourCC: "un", subtitle_type: "0", track_lang: "un", index: 3, type: "TEXT"}
+vod_series_player.js:1454   - isNative: true
+vod_series_player.js:1449 Subtitle 1: {source: "api", combinedIndex: 1, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Turkish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 2: {source: "api", combinedIndex: 2, originalIndex: 1, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "English", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 3: {source: "api", combinedIndex: 3, originalIndex: 2, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Spanish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 4: {source: "api", combinedIndex: 4, originalIndex: 3, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "French", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 5: {source: "api", combinedIndex: 5, originalIndex: 4, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "German", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 6: {source: "api", combinedIndex: 6, originalIndex: 5, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Russian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 7: {source: "api", combinedIndex: 7, originalIndex: 6, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Arabic", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 8: {source: "api", combinedIndex: 8, originalIndex: 7, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Korean", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 9: {source: "api", combinedIndex: 9, originalIndex: 8, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Japanese", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 10: {source: "api", combinedIndex: 10, originalIndex: 9, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Dutch", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 11: {source: "api", combinedIndex: 11, originalIndex: 10, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Polish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 12: {source: "api", combinedIndex: 12, originalIndex: 11, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Finnish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 13: {source: "api", combinedIndex: 13, originalIndex: 12, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Italian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 14: {source: "api", combinedIndex: 14, originalIndex: 13, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Swedish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 15: {source: "api", combinedIndex: 15, originalIndex: 14, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Hebrew", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1467 === SUBTITLE DEBUG: About to create HTML content ===
+vod_series_player.js:1469 === SUBTITLE DEBUG: Generated HTML content ===
+vod_series_player.js:1470 HTML length: 8602
+vod_series_player.js:1471 HTML content: <div class="setting-modal-option subtitle-item bg-focus"                    onmouseenter="vod_series_player_page.hoverSubtitle(0)"                     onclick="vod_series_player_page.handleMenuClick()"                 >                   <input class="setting-modal-checkbox" type="checkbox" name="subtitle" id="disable-subtitle" value="-1">                   <label for="disable-subtitle">Turn Off Subtitles</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(1)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="0"                        >                        <label for="disable-subtitle">un (Stream)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(2)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="1"                        >                        <label for="disable-subtitle">Turkish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(3)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="2"                        >                        <label for="disable-subtitle">English (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(4)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="3"                        >                        <label for="disable-subtitle">Spanish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(5)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="4"                        >                        <label for="disable-subtitle">French (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(6)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="5"                        >                        <label for="disable-subtitle">German (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(7)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="6"                        >                        <label for="disable-subtitle">Russian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(8)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="7"                        >                        <label for="disable-subtitle">Arabic (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(9)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="8"                        >                        <label for="disable-subtitle">Korean (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(10)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="9"                        >                        <label for="disable-subtitle">Japanese (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(11)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="10"                        >                        <label for="disable-subtitle">Dutch (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(12)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="11"                        >                        <label for="disable-subtitle">Polish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(13)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="12"                        >                        <label for="disable-subtitle">Finnish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(14)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="13"                        >                        <label for="disable-subtitle">Italian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(15)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="14"                        >                        <label for="disable-subtitle">Swedish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(16)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="15"                        >                        <label for="disable-subtitle">Hebrew (API)</label>                    </div>
+vod_series_player.js:1484 === SUBTITLE MODAL DEBUG: Selection Logic ===
+vod_series_player.js:1485 Current selected index: 1
+vod_series_player.js:1486 Available subtitles: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1487 Platform: samsung
+vod_series_player.js:1496 Menu 0: checkbox value = -1, current = 1
+vod_series_player.js:1496 Menu 1: checkbox value = 0, current = 1
+vod_series_player.js:1496 Menu 2: checkbox value = 1, current = 1
+vod_series_player.js:1875 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1876 Index: 2
+vod_series_player.js:1877 Available subtitle menus: 17
+vod_series_player.js:1885 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1886 Focused index: 2
+vod_series_player.js:1887 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1892 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(2)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1505 Found match at menu index 2
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 118636
+mediaPlayer.js:254 Current time (seconds): 118.636
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 118.636
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 119136
+mediaPlayer.js:254 Current time (seconds): 119.136
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 119.136
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 119637
+mediaPlayer.js:254 Current time (seconds): 119.637
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 119.637
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 120138
+mediaPlayer.js:254 Current time (seconds): 120.138
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 120.138
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 120640
+mediaPlayer.js:254 Current time (seconds): 120.64
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 120.64
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+vod_series_player.js:1642 === SUBTITLE DEBUG: confirmSubtitle called ===
+vod_series_player.js:1643 Selected combined index: 1
+vod_series_player.js:1644 Platform: samsung
+vod_series_player.js:1692 === SUBTITLE DEBUG: Selected subtitle object ===
+vod_series_player.js:1693 Platform: samsung
+vod_series_player.js:1694 Selected combined index: 1
+vod_series_player.js:1695 Selected subtitle: {source: "api", combinedIndex: 1, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1696 Detected source: api
+vod_series_player.js:1697 Available subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1753 === SUBTITLE DEBUG: Using API subtitle ===
+vod_series_player.js:1754 API subtitle data: {file: "/api/subtitle-file?lang=tr&id=11466385", label: "Turkish", lang: "tr", id: undefined}
+mediaPlayer.js:403 === SAMSUNG setSubtitleOrAudioTrack DEBUG ===
+mediaPlayer.js:404 kind: TEXT
+mediaPlayer.js:405 index: -1
+mediaPlayer.js:406 index type: number
+mediaPlayer.js:423 === CALLING webapis.avplay.setSelectTrack ===
+mediaPlayer.js:424 Arguments: kind="TEXT", index=-1
+VM64:1 in getErrorObjectLocal code:26,name:InvalidValuesError NaNmessage:PLAYER_ERROR_INVALID_PARAMETER
+mediaPlayer.js:434 === SAMSUNG setSelectTrack ERROR ===
+mediaPlayer.js:435 Error: WebAPIExceptionLocal {code: 26, name: "InvalidValuesError", message: "PLAYER_ERROR_INVALID_PARAMETER", stack: "InvalidValuesError: PLAYER_ERROR_INVALID_PARAMETER…ger (file:///js/libs/jquery.3.4.1.min.js:2:71198)"}
+vod_series_player.js:1785 === SUBTITLE DEBUG: API subtitle loaded successfully ===
+vod_series_player.js:1786 Content length: 104677
+srt_operation.js:10 === SRT OPERATION INIT DEBUG ===
+srt_operation.js:11 subtitle parameter: {content: "1↵00:00:26,735 --> 00:00:29,321↵300 YIL ÖNCE↵↵2↵00…-> 02:09:02,492↵Alt yazı çevirmeni: Orhan Cevher↵"}
+srt_operation.js:12 current_time: 120.927
+srt_operation.js:13 subtitle.content exists: true
+srt_operation.js:15 subtitle.content length: 104677
+srt_operation.js:16 subtitle.content preview: 1
+00:00:26,735 --> 00:00:29,321
+300 YIL ÖNCE
+
+2
+00:00:29,404 --> 00:00:32,658
+ÜSTÜN-İNSANLAR olarak bilinen
+süper güçlü varlıklar
+
+3
+00:00:32,741 --> 00:00:36,078
+Dünya'da ortaya çıkarak
+TANRILAR VE C
+srt_parser.js:123 61 "ms take to parse"
+srt_operation.js:29 === SRT PARSING SUCCESS ===
+srt_operation.js:30 Parsed SRT items count: 1582
+srt_operation.js:32 First SRT item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:51 === SRT OPERATION STARTED ===
+srt_operation.js:52 SrtOperation.stopped set to FALSE
+srt_operation.js:64 here found srt index 16 120.927 (1582) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, …]
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 121140
+mediaPlayer.js:254 Current time (seconds): 121.14
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 121.14
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 121641
+mediaPlayer.js:254 Current time (seconds): 121.641
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 121.641
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 155657
+mediaPlayer.js:254 Current time (seconds): 155.657
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 155.657
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 190694
+mediaPlayer.js:254 Current time (seconds): 190.694
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 190.694
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 220723
+mediaPlayer.js:254 Current time (seconds): 220.723
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 220.723
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 280723
+mediaPlayer.js:254 Current time (seconds): 280.723
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 280.723
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 280723
+mediaPlayer.js:254 Current time (seconds): 280.723
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 280.723
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 285328
+mediaPlayer.js:254 Current time (seconds): 285.328
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 285.328
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 285828
+mediaPlayer.js:254 Current time (seconds): 285.828
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 285.828
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 286329
+mediaPlayer.js:254 Current time (seconds): 286.329
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 286.329
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 286830
+mediaPlayer.js:254 Current time (seconds): 286.83
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 286.83
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 287330
+mediaPlayer.js:254 Current time (seconds): 287.33
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 287.33
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 287831
+mediaPlayer.js:254 Current time (seconds): 287.831
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 287.831
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 288332
+mediaPlayer.js:254 Current time (seconds): 288.332
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 288.332
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 288833
+mediaPlayer.js:254 Current time (seconds): 288.833
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 288.833
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 289334
+mediaPlayer.js:254 Current time (seconds): 289.334
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 289.334
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 289835
+mediaPlayer.js:254 Current time (seconds): 289.835
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 289.835
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 290336
+mediaPlayer.js:254 Current time (seconds): 290.336
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 290.336
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 290836
+mediaPlayer.js:254 Current time (seconds): 290.836
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 290.836
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 291337
+mediaPlayer.js:254 Current time (seconds): 291.337
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 291.337
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 291839
+mediaPlayer.js:254 Current time (seconds): 291.839
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 291.839
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 292340
+mediaPlayer.js:254 Current time (seconds): 292.34
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 292.34
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 292842
+mediaPlayer.js:254 Current time (seconds): 292.842
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 292.842
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 293343
+mediaPlayer.js:254 Current time (seconds): 293.343
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 293.343
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 293844
+mediaPlayer.js:254 Current time (seconds): 293.844
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 293.844
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 294344
+mediaPlayer.js:254 Current time (seconds): 294.344
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 294.344
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 294846
+mediaPlayer.js:254 Current time (seconds): 294.846
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 294.846
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 295346
+mediaPlayer.js:254 Current time (seconds): 295.346
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 295.346
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 295847
+mediaPlayer.js:254 Current time (seconds): 295.847
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 295.847
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 296348
+mediaPlayer.js:254 Current time (seconds): 296.348
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 296.348
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 296849
+mediaPlayer.js:254 Current time (seconds): 296.849
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 296.849
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 297350
+mediaPlayer.js:254 Current time (seconds): 297.35
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 297.35
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 297850
+mediaPlayer.js:254 Current time (seconds): 297.85
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 297.85
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 298351
+mediaPlayer.js:254 Current time (seconds): 298.351
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 298.351
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 298851
+mediaPlayer.js:254 Current time (seconds): 298.851
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 298.851
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 299352
+mediaPlayer.js:254 Current time (seconds): 299.352
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 299.352
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 299853
+mediaPlayer.js:254 Current time (seconds): 299.853
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 299.853
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 300353
+mediaPlayer.js:254 Current time (seconds): 300.353
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 300.353
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:252 === SAMSUNG TIMING DEBUG ===
+mediaPlayer.js:253 Current time (ms): 300854
+mediaPlayer.js:254 Current time (seconds): 300.854
+mediaPlayer.js:255 SrtOperation exists: true
+mediaPlayer.js:256 SrtOperation stopped: false
+mediaPlayer.js:271 SrtOperation.timeChange called with (seconds): 300.854
+mediaPlayer.js:279 === END SAMSUNG TIMING DEBUG ===
