@@ -256,8 +256,23 @@ function initPlayer() {
                             $('#'+that.parent_id).find('.video-progress-bar-slider').val(currentTime/1000).change();
                             
                             // Connect subtitle timing updates for Samsung
+                            if(typeof env !== 'undefined' && env === 'develop') {
+                                // Only log every 5 seconds to avoid spam
+                                if(Math.floor(currentTime/1000) % 5 === 0 && Math.floor(currentTime) % 1000 < 50) {
+                                    console.log('=== SAMSUNG TIMING CALLBACK DEBUG ===');
+                                    console.log('Current time (seconds):', currentTime/1000);
+                                    console.log('SrtOperation exists:', typeof SrtOperation !== 'undefined');
+                                    console.log('SrtOperation.stopped:', typeof SrtOperation !== 'undefined' ? SrtOperation.stopped : 'undefined');
+                                }
+                            }
+                            
                             if (typeof SrtOperation !== 'undefined' && !SrtOperation.stopped) {
                                 SrtOperation.timeChange(currentTime/1000); // Convert ms to seconds
+                            } else if(typeof env !== 'undefined' && env === 'develop') {
+                                // Only log every 5 seconds to avoid spam
+                                if(Math.floor(currentTime/1000) % 5 === 0 && Math.floor(currentTime) % 1000 < 50) {
+                                    console.log('=== SRT NOT CALLED: SrtOperation unavailable or stopped ===');
+                                }
                             }
                         }
                     },
