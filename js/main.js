@@ -6,6 +6,9 @@ $(document).ready(function () {
             platform='lg'
     }catch (e) {
     }
+    
+    // FORCE LG MODE FOR TESTING AUDIO TRACKS
+    platform='lg';
     $('#app').addClass(platform);
 
     initKeys();
