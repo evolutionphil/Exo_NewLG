@@ -874,7 +874,7 @@ var vod_series_player_page={
                                     // Check if native subtitles are available for fallback
                                     var nativeSubtitles = [];
                                     if(media_player && typeof media_player.getSubtitleOrAudioTrack === 'function') {
-                                        nativeSubtitles = this.safeGetTracks('TEXT');
+                                        nativeSubtitles = that.safeGetTracks('TEXT');
                                     } else {
                                     }
                                     if (nativeSubtitles && nativeSubtitles.length > 0) {
@@ -893,7 +893,7 @@ var vod_series_player_page={
                                 }
                             } else {
                                 // Check if native subtitles are available for fallback
-                                var nativeSubtitles = this.safeGetTracks('TEXT');
+                                var nativeSubtitles = that.safeGetTracks('TEXT');
                                 if (nativeSubtitles && nativeSubtitles.length > 0) {
                                     // Render native subtitles as fallback
                                     var htmlContent = that.renderSubtitles('TEXT', nativeSubtitles);
@@ -1269,7 +1269,7 @@ var vod_series_player_page={
                                         } else {
                                             // **CRITICAL FIX**: This should never happen since nativeSubtitles are included in allSubtitles
                                             // But add fallback check as extra safety
-                                            var fallbackNativeSubtitles = this.safeGetTracks('TEXT');
+                                            var fallbackNativeSubtitles = that.safeGetTracks('TEXT');
                                             if (fallbackNativeSubtitles && fallbackNativeSubtitles.length > 0) {
                                                                                                 var htmlContent = that.renderSubtitles('TEXT', fallbackNativeSubtitles);
                                                 $("#subtitle-selection-container").html(htmlContent);
@@ -1861,7 +1861,7 @@ var vod_series_player_page={
                                 }
                                 
                                 // **CRITICAL FIX**: Check for native subtitle fallback
-                                var nativeSubtitles = this.safeGetTracks('TEXT');
+                                var nativeSubtitles = that.safeGetTracks('TEXT');
                                 if (nativeSubtitles && nativeSubtitles.length > 0) {
                                     
                                     // Render native subtitles
