@@ -44,6 +44,99 @@ var vod_series_player_page={
     subtitle_loaded:false,
     fw_timer:null,
 
+    // Enhanced episode name parsing for subtitle fallback matching
+    parseEpisodeName: function(episodeName) {
+        console.log('=== EPISODE NAME PARSING ===');
+        console.log('Input episode name:', episodeName);
+        
+        var result = {
+            series_name: null,
+            season_number: null,
+            episode_number: null,
+            episode_title: null
+        };
+        
+        if (!episodeName || typeof episodeName !== 'string') {
+            console.log('❌ Invalid episode name provided');
+            return result;
+        }
+        
+        var cleaned_name = episodeName.trim();
+        
+        // Step 1: Remove country/language codes (TR:, ES:, EN:, etc.)
+        cleaned_name = cleaned_name.replace(/^[A-Z]{2}:\s*/i, '');
+        console.log('After country code removal:', cleaned_name);
+        
+        // Step 2: Try to match various season/episode patterns
+        var season_episode_patterns = [
+            // "Series Name S01 E01" or "Series Name S01E01"
+            /^(.+?)\s+S(\d{1,2})\s*E(\d{1,2})(?:\s*-\s*(.+))?$/i,
+            // "Series Name Season 1 Episode 1"
+            /^(.+?)\s+Season\s+(\d{1,2})\s+Episode\s+(\d{1,2})(?:\s*-\s*(.+))?$/i,
+            // "Series Name 1x01" or "Series Name 1x1"
+            /^(.+?)\s+(\d{1,2})x(\d{1,2})(?:\s*-\s*(.+))?$/i,
+            // "Series Name (2023) S01E01"
+            /^(.+?)\s*\(\d{4}\)\s*S(\d{1,2})E(\d{1,2})(?:\s*-\s*(.+))?$/i
+        ];
+        
+        for (var i = 0; i < season_episode_patterns.length; i++) {
+            var match = cleaned_name.match(season_episode_patterns[i]);
+            if (match) {
+                result.series_name = match[1].trim();
+                result.season_number = parseInt(match[2]);
+                result.episode_number = parseInt(match[3]);
+                if (match[4]) {
+                    result.episode_title = match[4].trim();
+                }
+                
+                console.log('✅ Pattern', (i + 1), 'matched successfully');
+                break;
+            }
+        }
+        
+        // Step 3: If no season/episode pattern found, try to extract just series name
+        if (!result.series_name) {
+            console.log('No season/episode pattern found, extracting series name only...');
+            
+            // Remove common episode indicators and clean up
+            var series_only = cleaned_name
+                .replace(/\s*\(.*?\)/g, '') // Remove parentheses content
+                .replace(/\s*\[.*?\]/g, '') // Remove brackets content  
+                .replace(/\s*\{.*?\}/g, '') // Remove curly braces content
+                .replace(/\s*-\s*Episode.*$/i, '') // Remove "- Episode X" suffix
+                .replace(/\s*Ep\s*\d+.*$/i, '') // Remove "Ep 1" suffix
+                .replace(/\s+/g, ' ') // Normalize spaces
+                .trim();
+                
+            if (series_only && series_only.length > 2) {
+                result.series_name = series_only;
+                console.log('✅ Extracted series name only:', series_only);
+            }
+        }
+        
+        // Step 4: Clean and normalize the series name
+        if (result.series_name) {
+            result.series_name = result.series_name
+                .replace(/\s*\(.*?\)/g, '') // Remove remaining parentheses
+                .replace(/\s*\[.*?\]/g, '') // Remove remaining brackets
+                .replace(/\s*\{.*?\}/g, '') // Remove remaining braces
+                .replace(/[^\w\s&'-]/g, ' ') // Keep only letters, numbers, spaces, &, apostrophes, hyphens
+                .replace(/\s+/g, ' ') // Normalize multiple spaces
+                .trim();
+                
+            console.log('Final cleaned series name:', result.series_name);
+        }
+        
+        console.log('=== PARSING RESULT ===');
+        console.log('Series:', result.series_name);
+        console.log('Season:', result.season_number);
+        console.log('Episode:', result.episode_number);
+        console.log('Episode Title:', result.episode_title);
+        console.log('=== END PARSING ===');
+        
+        return result;
+    },
+
     init:function(movie,movie_type,back_url,movie_url){
         this.resume_videos_updated=false;
         this.current_movie=movie;
@@ -760,15 +853,60 @@ var vod_series_player_page={
                             difference: original_name !== cleaned_name ? 'CHANGED' : 'SAME'
                         });
                     } else {
-                        // SERIES EPISODES: Use episode TMDB ID directly
+                        // SERIES EPISODES: Enhanced logic with episode name parsing fallback
+                        console.log('=== DETAILED SERIES EPISODE ANALYSIS FOR SUBTITLE MATCHING ===');
+                        console.log('Current episode object (FULL):', this.current_movie);
+                        console.log('Episode name (RAW from IPTV):', this.current_movie.name);
+                        
                         subtitle_request_data = {
-                            movie_type: 'auto'
+                            movie_type: 'episode'
                         }
                         
-                        // Use episode TMDB ID from this.current_movie.info.tmdb_id
+                        // Primary: Use episode TMDB ID from this.current_movie.info.tmdb_id
                         if(this.current_movie && this.current_movie.info && this.current_movie.info.tmdb_id) {
                             subtitle_request_data.tmdb_id = String(this.current_movie.info.tmdb_id);
+                            console.log('✅ Episode TMDB ID found (BEST matching method):', this.current_movie.info.tmdb_id);
+                        } else {
+                            console.log('⚠️ NO Episode TMDB ID - attempting episode name parsing fallback...');
+                            
+                            // FALLBACK: Parse episode name for series info
+                            var episode_name = this.current_movie.name;
+                            var parsed_episode = this.parseEpisodeName(episode_name);
+                            
+                            if(parsed_episode.series_name) {
+                                subtitle_request_data.movie_name = parsed_episode.series_name;
+                                console.log('✅ Parsed series name:', parsed_episode.series_name);
+                                
+                                if(parsed_episode.season_number) {
+                                    subtitle_request_data.season_number = parsed_episode.season_number;
+                                    console.log('✅ Parsed season number:', parsed_episode.season_number);
+                                }
+                                
+                                if(parsed_episode.episode_number) {
+                                    subtitle_request_data.episode_number = parsed_episode.episode_number;
+                                    console.log('✅ Parsed episode number:', parsed_episode.episode_number);
+                                }
+                                
+                                if(parsed_episode.episode_title) {
+                                    subtitle_request_data.episode_title = parsed_episode.episode_title;
+                                    console.log('✅ Parsed episode title:', parsed_episode.episode_title);
+                                }
+                                
+                                // Use series TMDB ID if available from series info
+                                if(this.current_movie.info && this.current_movie.info.tmdb_id) {
+                                    subtitle_request_data.id = String(this.current_movie.info.tmdb_id);
+                                    console.log('✅ Series TMDB ID added as episode ID:', this.current_movie.info.tmdb_id);
+                                }
+                                
+                                console.log('✅ Episode name parsing successful - enhanced subtitle matching enabled');
+                            } else {
+                                console.log('❌ Episode name parsing failed - using basic fallback');
+                                subtitle_request_data.movie_type = 'auto';
+                            }
                         }
+                        
+                        console.log('=== FINAL SERIES EPISODE REQUEST DATA ===');
+                        console.log('Request data for subtitle matching:', subtitle_request_data);
                     }
                     
                     
