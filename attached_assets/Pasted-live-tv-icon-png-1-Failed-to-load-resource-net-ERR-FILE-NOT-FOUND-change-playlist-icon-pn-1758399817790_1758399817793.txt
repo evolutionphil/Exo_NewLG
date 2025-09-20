@@ -1,0 +1,57 @@
+live-tv-icon.png:1          Failed to load resource: net::ERR_FILE_NOT_FOUND
+change-playlist-icon.png:1          Failed to load resource: net::ERR_FILE_NOT_FOUND
+webapis.js:1          Failed to load resource: net::ERR_FILE_NOT_FOUND
+login_operation.js:66 === DEBUG fetchPlaylistInformation ===
+login_operation.js:101 Panel URL: https://exoapp.tv/9dlE9XWmiwmAn2j
+login_operation.js:102 Device ID: 10f536f1-178f-b94e-9db3-8f2a20b44c3a
+login_operation.js:103 Platform: lg
+login_operation.js:104 Data to send: Object
+login_operation.js:117 === DEBUG API Success ===
+login_operation.js:118 Raw response: Object
+login_operation.js:122 Decrypted data: Object
+login_operation.js:136 MAC Address received: 77:e3:5b:08:5d:e0
+login_operation.js:206 77:e3:5b:08:5d:e0
+login_operation.js:218 exoapp.tv
+login_operation.js:220 Object
+login_operation.js:307 === DEBUG login() called ===
+login_operation.js:308 === DEBUG playlist_urls === Array(1)
+login_operation.js:309 === DEBUG has_playlist === true
+login_operation.js:326 === DEBUG: User has uploaded playlists - using user playlist ===
+login_operation.js:327 Using playlist: Object
+login_operation.js:331 Parsed M3U URL - API Host: http://galaiptv.shop:4512
+login_operation.js:996 === DEBUG proceed_login ===
+login_operation.js:997 Playlist type: xtreme
+login_operation.js:998 API host URL: http://galaiptv.shop:4512
+login_operation.js:999 Username: yenideneme1
+login_operation.js:1000 Password: mWT6HVdjMZ
+login_operation.js:1015 === DEBUG proceed_login initial success ===
+login_operation.js:1016 Response data: Objectserver_info: https_port: "15003"port: "2095"rtmp_port: "15002"server_protocol: "http"time_now: "2025-09-20 21:23:11"timestamp_now: 1758399791timezone: "Europe/London"url: "galaiptv.shop"[[Prototype]]: Objectuser_info: active_cons: "0"allowed_output_formats: ['ts']auth: 1created_at: "1747665095"exp_date: "1779201095"is_trial: "0"max_connections: "1"message: "Welcome to Xtream Codes Reborn"password: "mWT6HVdjMZ"status: "Active"username: "yenideneme1"[[Prototype]]: Object[[Prototype]]: Object
+login_operation.js:1020 === DEBUG user_info found ===
+login_operation.js:1021 User auth: 1
+login_operation.js:1022 User status: Active
+login_operation.js:1029 === DEBUG AUTH SUCCESS - Starting content loading ===
+login_operation.js:1080 === DEBUG get_vod_categories SUCCESS ===
+login_operation.js:1081 VOD categories count: 0
+login_operation.js:1106 === DEBUG get_series_categories SUCCESS ===
+login_operation.js:1107 Series categories count: 40
+login_operation.js:1054 === DEBUG get_live_categories SUCCESS ===
+login_operation.js:1055 Live categories count: 0
+DevTools failed to load source map: Could not parse content for file:///C:/Users/mumiix/Documents/GitHub/Snakegame/js/libs/popper.min.js.map: Unexpected end of JSON input
+DevTools failed to load source map: Could not parse content for file:///C:/Users/mumiix/Documents/GitHub/Snakegame/js/libs/bootstrap.min.js.map: Unexpected end of JSON input
+DevTools failed to load source map: Could not parse content for file:///C:/Users/mumiix/Documents/GitHub/Snakegame/css/libs/rangeslider.min.css.map: Unexpected end of JSON input
+DevTools failed to load source map: Could not parse content for file:///C:/Users/mumiix/Documents/GitHub/Snakegame/css/libs/bootstrap.min.css.map: Unexpected end of JSON input
+login_operation.js:1041 === DEBUG get_live_streams SUCCESS ===
+login_operation.js:1042 Live streams count: 11807
+login_operation.js:1067 === DEBUG get_vod_streams SUCCESS ===
+login_operation.js:1068 VOD streams count: 40878
+login_operation.js:1093 === DEBUG get_series SUCCESS ===
+login_operation.js:1094 Series count: 4104
+login_operation.js:1117 === DEBUG All Ajax requests completed successfully ===
+login_operation.js:1119 === DEBUG Inserting content into categories ===
+login_operation.js:1125 === DEBUG Calling home_page.init() ===
+home_operation.js:22 हिन्दी
+home_operation.js:22 Shqiptare
+home_operation.js:22 Ελληνικά
+home_operation.js:22 Український
+home_operation.js:22 Српски
+login_operation.js:1127 === DEBUG home_page.init() completed ===

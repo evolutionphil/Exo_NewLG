@@ -1012,21 +1012,14 @@ var login_page={
                 method:'get',
                 url:login_url,
                 success:function (data) {
-                    console.log('=== DEBUG proceed_login initial success ===');
-                    console.log('Response data:', data);
                     if(typeof  data.server_info!="undefined")
                         calculateTimeDifference(data.server_info.time_now,data.server_info.timestamp_now)
                     if(typeof  data.user_info!="undefined"){
-                        console.log('=== DEBUG user_info found ===');
-                        console.log('User auth:', data.user_info.auth);
-                        console.log('User status:', data.user_info.status);
                         if(data.user_info.auth==0 || (typeof data.user_info.status!='undefined' && (data.user_info.status==='Expired' || data.user_info.status==='Banned'))){
-                            console.log('=== DEBUG AUTH FAILED ===');
                             that.is_loading=false;
                             that.goToPlaylistPageWithError();
                         }
                         else{
-                            console.log('=== DEBUG AUTH SUCCESS - Starting content loading ===');
                             // if(data.user_info.exp_date==null)
                             //     $('.expire-date').text('Unlimited');
                             // else{
@@ -1038,40 +1031,22 @@ var login_page={
                                     method:'get',
                                     url:prefix_url+'get_live_streams',
                                     success:function (data) {
-                                        console.log('=== DEBUG get_live_streams SUCCESS ===');
-                                        console.log('Live streams count:', data ? data.length : 'undefined');
                                         LiveModel.setMovies(data);
                                     },
-                                    error:function (error) {
-                                        console.log('=== DEBUG get_live_streams ERROR ===');
-                                        console.log('Error:', error);
-                                    }
                                 }),
                                 $.ajax({
                                     method:'get',
                                     url:prefix_url+'get_live_categories',
                                     success:function (data) {
-                                        console.log('=== DEBUG get_live_categories SUCCESS ===');
-                                        console.log('Live categories count:', data ? data.length : 'undefined');
                                         LiveModel.setCategories(data);
                                     },
-                                    error:function (error) {
-                                        console.log('=== DEBUG get_live_categories ERROR ===');
-                                        console.log('Error:', error);
-                                    }
                                 }),
                                 $.ajax({
                                     method:'get',
                                     url:prefix_url+'get_vod_streams',
                                     success:function (data) {
-                                        console.log('=== DEBUG get_vod_streams SUCCESS ===');
-                                        console.log('VOD streams count:', data ? data.length : 'undefined');
                                         VodModel.setMovies(data);
                                     },
-                                    error:function (error) {
-                                        console.log('=== DEBUG get_vod_streams ERROR ===');
-                                        console.log('Error:', error);
-                                    }
                                 }),
                                 $.ajax({
                                     method:'get',
