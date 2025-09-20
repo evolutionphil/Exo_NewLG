@@ -595,19 +595,41 @@ function initPlayer() {
 
             },
             getSubtitleOrAudioTrack:function(kind){
-                var totalTrackInfo=[],temps
+                console.log('=== DETAILED AUDIO TRACK DEBUG ===');
+                console.log('Kind requested:', kind);
+                console.log('Video object exists:', !!this.videoObj);
+                
+                var totalTrackInfo=[],temps;
+                
                 if(kind=="TEXT"){
                     temps=this.videoObj.textTracks;
-                }else
+                }else{
                     temps=this.videoObj.audioTracks;
-                console.log(temps);
-                if(Object.keys(temps).length>0){
+                }
+                
+                console.log('Raw tracks object:', temps);
+                console.log('Type of tracks object:', typeof temps);
+                console.log('Is null/undefined:', temps === null || temps === undefined);
+                
+                if (temps) {
+                    console.log('Has length property:', 'length' in temps);
+                    console.log('Length value:', temps.length);
+                    console.log('Object keys:', Object.keys(temps));
+                    console.log('Object keys length:', Object.keys(temps).length);
+                }
+                
+                if(temps && Object.keys(temps).length>0){
                     Object.keys(temps).map(function (key,index) {
+                        console.log('Processing key:', key, 'Value:', temps[key], 'Type:', typeof temps[key]);
                         if(typeof temps[key]=='object' && temps[key]!=null)
                             totalTrackInfo.push(temps[key]);
                     })
                 }
-                console.log(totalTrackInfo);
+                
+                console.log('Final totalTrackInfo:', totalTrackInfo);
+                console.log('Final count:', totalTrackInfo.length);
+                console.log('=== END AUDIO TRACK DEBUG ===');
+                
                 return totalTrackInfo;
             },
             setSubtitleOrAudioTrack:function(kind, index){
