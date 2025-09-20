@@ -25,6 +25,15 @@
     height: 100%;
 }
 
+/* IMPORTANT: Override positioning for subtitle container to appear at bottom */
+#vod-series-player-page .subtitle-container.position-absolute {
+    top: auto !important;     /* Cancel the top: 0 */
+    bottom: 0 !important;     /* Force to bottom */
+    left: 20% !important;     /* Center horizontally */
+    width: 60% !important;    /* Proper width */
+    height: auto !important;  /* Cancel full height */
+}
+
 /* Responsive video container improvements for different TV screen sizes */
 @media screen and (max-width: 1920px) {
     #vod-series-player-page .player-container {
