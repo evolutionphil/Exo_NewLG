@@ -1,0 +1,1267 @@
+हिन्दी
+home_operation.js:22 Shqiptare
+home_operation.js:22 Ελληνικά
+home_operation.js:22 Український
+home_operation.js:22 Српски
+vod_summary.js:75 === XTREME API get_vod_info RESPONSE ANALYSIS ===
+vod_summary.js:76 Full API response: {info: {…}, movie_data: {…}}
+vod_summary.js:77 Response keys: (2) ["info", "movie_data"]
+vod_summary.js:78 Info object: {kinopoisk_url: "https://www.themoviedb.org/movie/1061474", tmdb_id: 1061474, name: "Superman", o_name: "Superman", cover_big: "https://image.tmdb.org/t/p/w600_and_h900_bestv2/fJKSDmkXDLZ0qDmAZ5lXEaToN3L.jpg", …}
+vod_summary.js:80 Info object keys: (26) ["kinopoisk_url", "tmdb_id", "name", "o_name", "cover_big", "movie_image", "releasedate", "episode_run_time", "youtube_trailer", "director", "actors", "cast", "description", "plot", "age", "mpaa_rating", "rating_count_kinopoisk", "country", "genre", "backdrop_path", "duration_secs", "duration", "video", "audio", "bitrate", "rating"]
+vod_summary.js:81 TMDB ID check: 1061474
+vod_summary.js:82 TMDB ID type: number
+vod_summary.js:106 ✅ TMDB ID extracted and stored: 1061474
+VM94:1 in getErrorObjectLocal code:11,name:InvalidStateError NaNmessage:PLAYER_ERROR_INVALID_STATE
+VM94:1 Entering setDisplayRect
+mediaPlayer.js:51 http://galaiptv.shop:2095/movie/dogubeyyeni/xLUFy7q6zM/344750.mkv
+VM94:1 adding listener
+mediaPlayer.js:296 Samsung webapis.avplay.setListener successfully set
+VM94:1 Entering setDisplayRect
+VM94:1 Entered AVPlayManager.prepareAsync()
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 0.359
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 0
+srt_operation.js:111 === SRT TIMECHANGE: NO SRT DATA ===
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 0.856
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 0
+srt_operation.js:111 === SRT TIMECHANGE: NO SRT DATA ===
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 1.356
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 0
+srt_operation.js:111 === SRT TIMECHANGE: NO SRT DATA ===
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 1.857
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 0
+srt_operation.js:111 === SRT TIMECHANGE: NO SRT DATA ===
+vod_series_player.js:882 === SUBTITLE DEBUG: Samsung hybrid subtitle loading ===
+vod_series_player.js:883 Native subtitles found: 1
+vod_series_player.js:911 === SUBTITLE DEBUG: Samsung - Building movie request data ===
+vod_series_player.js:950 Samsung API request data: {movie_name: "Superman", movie_type: "movie", tmdb_id: 1061474, year: 2025}
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 2.36
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 0
+srt_operation.js:111 === SRT TIMECHANGE: NO SRT DATA ===
+vod_series_player.js:974 === SAMSUNG API SUBTITLES RESPONSE ===
+vod_series_player.js:975 API result: {status: "success", subtitles: Array(15)}
+vod_series_player.js:981 API subtitles loaded: 15
+vod_series_player.js:1560 === COMBINING SUBTITLES FOR SAMSUNG ===
+vod_series_player.js:1561 Native subtitles: [{…}]
+vod_series_player.js:1562 API subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1569 === SUBTITLE AVAILABILITY DEBUG ===
+vod_series_player.js:1570 Native subtitles available: 1
+vod_series_player.js:1571 API subtitles available: 15
+vod_series_player.js:1631 === NATIVE SUBTITLE AT END DEBUG ===
+vod_series_player.js:1632 Native subtitle placed at combinedIndex: 15
+vod_series_player.js:1633 Samsung originalIndex: 3
+vod_series_player.js:1634 Enhanced label: Native Subtitle 1
+vod_series_player.js:1650 Combined subtitles result: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1651 Subtitle mapping created: {combined: Array(16), nativeCount: 1, apiCount: 15, hasNativeSubtitles: true, hasApiSubtitles: true, …}
+vod_series_player.js:989 === SAMSUNG COMBINED SUBTITLES ===
+vod_series_player.js:990 Native: 1 API: 15 Combined: 16
+vod_series_player.js:1435 === SUBTITLE DEBUG: renderSubtitles called ===
+vod_series_player.js:1436 Kind: TEXT
+vod_series_player.js:1437 Subtitles array: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1438 Subtitles count: 16
+vod_series_player.js:1443 === SUBTITLE DEBUG: Stored Samsung subtitles globally ===
+vod_series_player.js:1447 === SUBTITLE DEBUG: Individual subtitle items ===
+vod_series_player.js:1449 Subtitle 0: {source: "api", combinedIndex: 0, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Turkish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 1: {source: "api", combinedIndex: 1, originalIndex: 1, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "English", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 2: {source: "api", combinedIndex: 2, originalIndex: 2, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Spanish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 3: {source: "api", combinedIndex: 3, originalIndex: 3, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "French", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 4: {source: "api", combinedIndex: 4, originalIndex: 4, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "German", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 5: {source: "api", combinedIndex: 5, originalIndex: 5, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Russian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 6: {source: "api", combinedIndex: 6, originalIndex: 6, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Arabic", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 7: {source: "api", combinedIndex: 7, originalIndex: 7, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Korean", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 8: {source: "api", combinedIndex: 8, originalIndex: 8, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Japanese", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 9: {source: "api", combinedIndex: 9, originalIndex: 9, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Dutch", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 10: {source: "api", combinedIndex: 10, originalIndex: 10, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Polish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 11: {source: "api", combinedIndex: 11, originalIndex: 11, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Finnish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 12: {source: "api", combinedIndex: 12, originalIndex: 12, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Italian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 13: {source: "api", combinedIndex: 13, originalIndex: 13, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Swedish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 14: {source: "api", combinedIndex: 14, originalIndex: 14, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Hebrew", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 15: {extra_info: {…}, source: "native", isNative: true, originalIndex: 3, index: 3, …}
+vod_series_player.js:1453   - extra_info: {fourCC: "un", subtitle_type: "0", track_lang: "Native Subtitle 1", index: 3, type: "TEXT"}
+vod_series_player.js:1454   - isNative: true
+vod_series_player.js:1467 === SUBTITLE DEBUG: About to create HTML content ===
+vod_series_player.js:1469 === SUBTITLE DEBUG: Generated HTML content ===
+vod_series_player.js:1470 HTML length: 8617
+vod_series_player.js:1471 HTML content: <div class="setting-modal-option subtitle-item bg-focus"                    onmouseenter="vod_series_player_page.hoverSubtitle(0)"                     onclick="vod_series_player_page.handleMenuClick()"                 >                   <input class="setting-modal-checkbox" type="checkbox" name="subtitle" id="disable-subtitle" value="-1">                   <label for="disable-subtitle">Turn Off Subtitles</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(1)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="0"                        >                        <label for="disable-subtitle">Turkish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(2)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="1"                        >                        <label for="disable-subtitle">English (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(3)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="2"                        >                        <label for="disable-subtitle">Spanish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(4)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="3"                        >                        <label for="disable-subtitle">French (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(5)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="4"                        >                        <label for="disable-subtitle">German (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(6)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="5"                        >                        <label for="disable-subtitle">Russian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(7)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="6"                        >                        <label for="disable-subtitle">Arabic (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(8)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="7"                        >                        <label for="disable-subtitle">Korean (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(9)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="8"                        >                        <label for="disable-subtitle">Japanese (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(10)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="9"                        >                        <label for="disable-subtitle">Dutch (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(11)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="10"                        >                        <label for="disable-subtitle">Polish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(12)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="11"                        >                        <label for="disable-subtitle">Finnish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(13)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="12"                        >                        <label for="disable-subtitle">Italian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(14)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="13"                        >                        <label for="disable-subtitle">Swedish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(15)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="14"                        >                        <label for="disable-subtitle">Hebrew (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(16)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="15"                        >                        <label for="disable-subtitle">Native Subtitle 1 (Stream)</label>                    </div>
+vod_series_player.js:1484 === SUBTITLE MODAL DEBUG: Selection Logic ===
+vod_series_player.js:1485 Current selected index: -1
+vod_series_player.js:1486 Available subtitles: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1487 Platform: samsung
+vod_series_player.js:1496 Menu 0: checkbox value = -1, current = -1
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 0
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 0
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(0)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1505 Found match at menu index 0
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 2.859
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 0
+srt_operation.js:111 === SRT TIMECHANGE: NO SRT DATA ===
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 1
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 1
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(1)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 3.359
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 0
+srt_operation.js:111 === SRT TIMECHANGE: NO SRT DATA ===
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 3.86
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 0
+srt_operation.js:111 === SRT TIMECHANGE: NO SRT DATA ===
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 4.361
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 0
+srt_operation.js:111 === SRT TIMECHANGE: NO SRT DATA ===
+vod_series_player.js:1674 === SUBTITLE DEBUG: confirmSubtitle called ===
+vod_series_player.js:1675 Selected combined index: 0
+vod_series_player.js:1676 Platform: samsung
+vod_series_player.js:1724 === SUBTITLE DEBUG: Selected subtitle object ===
+vod_series_player.js:1725 Platform: samsung
+vod_series_player.js:1726 Selected combined index: 0
+vod_series_player.js:1727 Selected subtitle: {source: "api", combinedIndex: 0, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1728 Detected source: api
+vod_series_player.js:1729 Available subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1785 === SUBTITLE DEBUG: Using API subtitle ===
+vod_series_player.js:1786 API subtitle data: {file: "/api/subtitle-file?lang=tr&id=11466385", label: "Turkish", lang: "tr", id: undefined}
+vod_series_player.js:1794 === Disabling native Samsung subtitles for API subtitle ===
+mediaPlayer.js:400 === SAMSUNG setSubtitleOrAudioTrack DEBUG ===
+mediaPlayer.js:401 kind: TEXT
+mediaPlayer.js:402 index: -1
+mediaPlayer.js:403 index type: number
+mediaPlayer.js:420 === CALLING webapis.avplay.setSelectTrack ===
+mediaPlayer.js:421 Arguments: kind="TEXT", index=-1
+VM94:1 in getErrorObjectLocal code:26,name:InvalidValuesError NaNmessage:PLAYER_ERROR_INVALID_PARAMETER
+mediaPlayer.js:431 === SAMSUNG setSelectTrack ERROR ===
+mediaPlayer.js:432 Error: WebAPIExceptionLocal {code: 26, name: "InvalidValuesError", message: "PLAYER_ERROR_INVALID_PARAMETER", stack: "InvalidValuesError: PLAYER_ERROR_INVALID_PARAMETER…ger (file:///js/libs/jquery.3.4.1.min.js:2:71198)"}
+vod_series_player.js:1826 === SUBTITLE DEBUG: API subtitle loaded successfully ===
+vod_series_player.js:1827 Content length: 104677
+srt_operation.js:10 === SRT OPERATION INIT DEBUG ===
+srt_operation.js:11 subtitle parameter: {content: "1↵00:00:26,735 --> 00:00:29,321↵300 YIL ÖNCE↵↵2↵00…-> 02:09:02,492↵Alt yazı çevirmeni: Orhan Cevher↵"}
+srt_operation.js:12 current_time: 4.771
+srt_operation.js:13 subtitle.content exists: true
+srt_operation.js:15 subtitle.content length: 104677
+srt_operation.js:16 subtitle.content preview: 1
+00:00:26,735 --> 00:00:29,321
+300 YIL ÖNCE
+
+2
+00:00:29,404 --> 00:00:32,658
+ÜSTÜN-İNSANLAR olarak bilinen
+süper güçlü varlıklar
+
+3
+00:00:32,741 --> 00:00:36,078
+Dünya'da ortaya çıkarak
+TANRILAR VE C
+srt_parser.js:123 66 "ms take to parse"
+srt_operation.js:29 === SRT PARSING SUCCESS ===
+srt_operation.js:30 Parsed SRT items count: 1582
+srt_operation.js:32 First SRT item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:51 === SRT OPERATION STARTED ===
+srt_operation.js:52 SrtOperation.stopped set to FALSE
+srt_operation.js:64 here found srt index -1 4.771 (1582) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, …]
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 4.861
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 5.361
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 5.862
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 6.362
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 6.863
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 7.364
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 7.865
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 8.366
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 8.867
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 9.368
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 9.869
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 10.37
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 10.871
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 11.373
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 11.873
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 12.375
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 12.875
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 13.377
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 13.878
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 14.378
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 14.88
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 15.381
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 15.882
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 16.383
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 16.883
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 17.384
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 17.886
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 18.387
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 18.888
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 19.389
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 19.89
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 20.391
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 20.892
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 21.393
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 21.894
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 22.395
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 22.896
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 23.396
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 23.896
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 24.397
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 24.897
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 25.398
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 25.899
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 26.4
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:182 === SRT TIMECHANGE: BEFORE START TIME ===
+srt_operation.js:183 Current time is before subtitle start, finding correct index...
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 26.901
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:131 === SRT DISPLAY: SHOWING SUBTITLE ===
+srt_operation.js:132 Subtitle text: 300 YIL ÖNCE
+srt_operation.js:133 Target container: #vod-series-player-page .subtitle-container
+srt_operation.js:134 Container exists: true
+srt_operation.js:139 === SRT DISPLAY: SUBTITLE DISPLAYED ===
+srt_operation.js:140 Container content after update: 300 YIL ÖNCE
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 27.401
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 27.902
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 28.403
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 28.904
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 29.405
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 0
+srt_operation.js:122 Current srt_item: {id: "1", startTime: "00:00:26,735", startSeconds: 26.735, endTime: "00:00:29,321", endSeconds: 29.321, …}
+srt_operation.js:123 Start time: 26.735
+srt_operation.js:124 End time: 29.321
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:146 === SRT TIMECHANGE: PAST END TIME ===
+srt_operation.js:147 Moving to next subtitle...
+srt_operation.js:161 === SRT DISPLAY: SHOWING NEXT SUBTITLE ===
+srt_operation.js:162 Next subtitle text: ÜSTÜN-İNSANLAR olarak bilinen
+süper güçlü varlıklar
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 29.906
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 1
+srt_operation.js:122 Current srt_item: {id: "2", startTime: "00:00:29,404", startSeconds: 29.404, endTime: "00:00:32,658", endSeconds: 32.658, …}
+srt_operation.js:123 Start time: 29.404
+srt_operation.js:124 End time: 32.658
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 30.407
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 1
+srt_operation.js:122 Current srt_item: {id: "2", startTime: "00:00:29,404", startSeconds: 29.404, endTime: "00:00:32,658", endSeconds: 32.658, …}
+srt_operation.js:123 Start time: 29.404
+srt_operation.js:124 End time: 32.658
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 30.907
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 1
+srt_operation.js:122 Current srt_item: {id: "2", startTime: "00:00:29,404", startSeconds: 29.404, endTime: "00:00:32,658", endSeconds: 32.658, …}endSeconds: 32.658endTime: "00:00:32,658"id: "2"startSeconds: 29.404startTime: "00:00:29,404"text: "ÜSTÜN-İNSANLAR olarak bilinen↵süper güçlü varlıklar"__proto__: Object
+srt_operation.js:123 Start time: 29.404
+srt_operation.js:124 End time: 32.658
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 31.409
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 1
+srt_operation.js:122 Current srt_item: {id: "2", startTime: "00:00:29,404", startSeconds: 29.404, endTime: "00:00:32,658", endSeconds: 32.658, …}
+srt_operation.js:123 Start time: 29.404
+srt_operation.js:124 End time: 32.658
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 31.909
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 1
+srt_operation.js:122 Current srt_item: {id: "2", startTime: "00:00:29,404", startSeconds: 29.404, endTime: "00:00:32,658", endSeconds: 32.658, …}
+srt_operation.js:123 Start time: 29.404
+srt_operation.js:124 End time: 32.658
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 32.41
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 1
+srt_operation.js:122 Current srt_item: {id: "2", startTime: "00:00:29,404", startSeconds: 29.404, endTime: "00:00:32,658", endSeconds: 32.658, …}
+srt_operation.js:123 Start time: 29.404
+srt_operation.js:124 End time: 32.658
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 32.911
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 1
+srt_operation.js:122 Current srt_item: {id: "2", startTime: "00:00:29,404", startSeconds: 29.404, endTime: "00:00:32,658", endSeconds: 32.658, …}
+srt_operation.js:123 Start time: 29.404
+srt_operation.js:124 End time: 32.658
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:146 === SRT TIMECHANGE: PAST END TIME ===
+srt_operation.js:147 Moving to next subtitle...
+srt_operation.js:161 === SRT DISPLAY: SHOWING NEXT SUBTITLE ===
+srt_operation.js:162 Next subtitle text: Dünya'da ortaya çıkarak
+TANRILAR VE CANAVARLAR çağını başlattı.
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 33.413
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 2
+srt_operation.js:122 Current srt_item: {id: "3", startTime: "00:00:32,741", startSeconds: 32.741, endTime: "00:00:36,078", endSeconds: 36.078, …}
+srt_operation.js:123 Start time: 32.741
+srt_operation.js:124 End time: 36.078
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 33.916
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 2
+srt_operation.js:122 Current srt_item: {id: "3", startTime: "00:00:32,741", startSeconds: 32.741, endTime: "00:00:36,078", endSeconds: 36.078, …}
+srt_operation.js:123 Start time: 32.741
+srt_operation.js:124 End time: 36.078
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 34.416
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 2
+srt_operation.js:122 Current srt_item: {id: "3", startTime: "00:00:32,741", startSeconds: 32.741, endTime: "00:00:36,078", endSeconds: 36.078, …}
+srt_operation.js:123 Start time: 32.741
+srt_operation.js:124 End time: 36.078
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 34.916
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 2
+srt_operation.js:122 Current srt_item: {id: "3", startTime: "00:00:32,741", startSeconds: 32.741, endTime: "00:00:36,078", endSeconds: 36.078, …}
+srt_operation.js:123 Start time: 32.741
+srt_operation.js:124 End time: 36.078
+srt_operation.js:125 Should show subtitle: true
+vod_series_player.js:882 === SUBTITLE DEBUG: Samsung hybrid subtitle loading ===
+vod_series_player.js:883 Native subtitles found: 1
+vod_series_player.js:1560 === COMBINING SUBTITLES FOR SAMSUNG ===
+vod_series_player.js:1561 Native subtitles: [{…}]
+vod_series_player.js:1562 API subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1569 === SUBTITLE AVAILABILITY DEBUG ===
+vod_series_player.js:1570 Native subtitles available: 1
+vod_series_player.js:1571 API subtitles available: 15
+vod_series_player.js:1631 === NATIVE SUBTITLE AT END DEBUG ===
+vod_series_player.js:1632 Native subtitle placed at combinedIndex: 15
+vod_series_player.js:1633 Samsung originalIndex: 3
+vod_series_player.js:1634 Enhanced label: Native Subtitle 1
+vod_series_player.js:1650 Combined subtitles result: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1651 Subtitle mapping created: {combined: Array(16), nativeCount: 1, apiCount: 15, hasNativeSubtitles: true, hasApiSubtitles: true, …}
+vod_series_player.js:1435 === SUBTITLE DEBUG: renderSubtitles called ===
+vod_series_player.js:1436 Kind: TEXT
+vod_series_player.js:1437 Subtitles array: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1438 Subtitles count: 16
+vod_series_player.js:1443 === SUBTITLE DEBUG: Stored Samsung subtitles globally ===
+vod_series_player.js:1447 === SUBTITLE DEBUG: Individual subtitle items ===
+vod_series_player.js:1449 Subtitle 0: {source: "api", combinedIndex: 0, originalIndex: 0, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Turkish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 1: {source: "api", combinedIndex: 1, originalIndex: 1, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "English", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 2: {source: "api", combinedIndex: 2, originalIndex: 2, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Spanish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 3: {source: "api", combinedIndex: 3, originalIndex: 3, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "French", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 4: {source: "api", combinedIndex: 4, originalIndex: 4, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "German", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 5: {source: "api", combinedIndex: 5, originalIndex: 5, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Russian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 6: {source: "api", combinedIndex: 6, originalIndex: 6, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Arabic", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 7: {source: "api", combinedIndex: 7, originalIndex: 7, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Korean", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 8: {source: "api", combinedIndex: 8, originalIndex: 8, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Japanese", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 9: {source: "api", combinedIndex: 9, originalIndex: 9, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Dutch", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 10: {source: "api", combinedIndex: 10, originalIndex: 10, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Polish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 11: {source: "api", combinedIndex: 11, originalIndex: 11, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Finnish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 12: {source: "api", combinedIndex: 12, originalIndex: 12, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Italian", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 13: {source: "api", combinedIndex: 13, originalIndex: 13, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Swedish", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 14: {source: "api", combinedIndex: 14, originalIndex: 14, type: "TEXT", extra_info: {…}, …}
+vod_series_player.js:1453   - extra_info: {track_lang: "Hebrew", subtitle_type: "0", fourCC: "un"}
+vod_series_player.js:1454   - isNative: false
+vod_series_player.js:1449 Subtitle 15: {extra_info: {…}, source: "native", isNative: true, originalIndex: 3, index: 3, …}
+vod_series_player.js:1453   - extra_info: {fourCC: "un", subtitle_type: "0", track_lang: "Native Subtitle 1", index: 3, type: "TEXT"}
+vod_series_player.js:1454   - isNative: true
+vod_series_player.js:1467 === SUBTITLE DEBUG: About to create HTML content ===
+vod_series_player.js:1469 === SUBTITLE DEBUG: Generated HTML content ===
+vod_series_player.js:1470 HTML length: 8617
+vod_series_player.js:1471 HTML content: <div class="setting-modal-option subtitle-item bg-focus"                    onmouseenter="vod_series_player_page.hoverSubtitle(0)"                     onclick="vod_series_player_page.handleMenuClick()"                 >                   <input class="setting-modal-checkbox" type="checkbox" name="subtitle" id="disable-subtitle" value="-1">                   <label for="disable-subtitle">Turn Off Subtitles</label>                </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(1)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="0"                        >                        <label for="disable-subtitle">Turkish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(2)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="1"                        >                        <label for="disable-subtitle">English (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(3)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="2"                        >                        <label for="disable-subtitle">Spanish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(4)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="3"                        >                        <label for="disable-subtitle">French (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(5)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="4"                        >                        <label for="disable-subtitle">German (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(6)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="5"                        >                        <label for="disable-subtitle">Russian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(7)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="6"                        >                        <label for="disable-subtitle">Arabic (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(8)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="7"                        >                        <label for="disable-subtitle">Korean (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(9)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="8"                        >                        <label for="disable-subtitle">Japanese (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(10)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="9"                        >                        <label for="disable-subtitle">Dutch (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(11)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="10"                        >                        <label for="disable-subtitle">Polish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(12)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="11"                        >                        <label for="disable-subtitle">Finnish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(13)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="12"                        >                        <label for="disable-subtitle">Italian (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(14)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="13"                        >                        <label for="disable-subtitle">Swedish (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(15)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="14"                        >                        <label for="disable-subtitle">Hebrew (API)</label>                    </div><div class="setting-modal-option subtitle-item bg-focus"                        onmouseenter="vod_series_player_page.hoverSubtitle(16)"                         onclick="vod_series_player_page.handleMenuClick()"                     >                        <input class="setting-modal-checkbox" type="checkbox" name="subtitle"  id="disable-subtitle"                            value="15"                        >                        <label for="disable-subtitle">Native Subtitle 1 (Stream)</label>                    </div>
+vod_series_player.js:1484 === SUBTITLE MODAL DEBUG: Selection Logic ===
+vod_series_player.js:1485 Current selected index: 0
+vod_series_player.js:1486 Available subtitles: (16) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1487 Platform: samsung
+vod_series_player.js:1496 Menu 0: checkbox value = -1, current = 0
+vod_series_player.js:1496 Menu 1: checkbox value = 0, current = 0
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 1
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 1
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(1)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1505 Found match at menu index 1
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 35.417
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 2
+srt_operation.js:122 Current srt_item: {id: "3", startTime: "00:00:32,741", startSeconds: 32.741, endTime: "00:00:36,078", endSeconds: 36.078, …}
+srt_operation.js:123 Start time: 32.741
+srt_operation.js:124 End time: 36.078
+srt_operation.js:125 Should show subtitle: true
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 2
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 2
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(2)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 35.918
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 2
+srt_operation.js:122 Current srt_item: {id: "3", startTime: "00:00:32,741", startSeconds: 32.741, endTime: "00:00:36,078", endSeconds: 36.078, …}
+srt_operation.js:123 Start time: 32.741
+srt_operation.js:124 End time: 36.078
+srt_operation.js:125 Should show subtitle: true
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 3
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 3
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus" onmouseenter=​"vod_series_player_page.hoverSubtitle(3)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 4
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 4
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(4)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 36.418
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 2
+srt_operation.js:122 Current srt_item: {id: "3", startTime: "00:00:32,741", startSeconds: 32.741, endTime: "00:00:36,078", endSeconds: 36.078, …}
+srt_operation.js:123 Start time: 32.741
+srt_operation.js:124 End time: 36.078
+srt_operation.js:125 Should show subtitle: false
+srt_operation.js:146 === SRT TIMECHANGE: PAST END TIME ===
+srt_operation.js:147 Moving to next subtitle...
+srt_operation.js:161 === SRT DISPLAY: SHOWING NEXT SUBTITLE ===
+srt_operation.js:162 Next subtitle text: 30 YIL ÖNCE
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 5
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 5
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus" onmouseenter=​"vod_series_player_page.hoverSubtitle(5)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 6
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 6
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(6)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 7
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 7
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(7)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 8
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 8
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(8)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 9
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 9
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus" onmouseenter=​"vod_series_player_page.hoverSubtitle(9)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 36.919
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 3
+srt_operation.js:122 Current srt_item: {id: "4", startTime: "00:00:36,161", startSeconds: 36.161, endTime: "00:00:40,457", endSeconds: 40.457, …}
+srt_operation.js:123 Start time: 36.161
+srt_operation.js:124 End time: 40.457
+srt_operation.js:125 Should show subtitle: true
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 10
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 10
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus" onmouseenter=​"vod_series_player_page.hoverSubtitle(10)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 11
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 11
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus" onmouseenter=​"vod_series_player_page.hoverSubtitle(11)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 12
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 12
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(12)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 13
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 13
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(13)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 14
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 14
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(14)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 37.421
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 3
+srt_operation.js:122 Current srt_item: {id: "4", startTime: "00:00:36,161", startSeconds: 36.161, endTime: "00:00:40,457", endSeconds: 40.457, …}
+srt_operation.js:123 Start time: 36.161
+srt_operation.js:124 End time: 40.457
+srt_operation.js:125 Should show subtitle: true
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 15
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 15
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus" onmouseenter=​"vod_series_player_page.hoverSubtitle(15)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 16
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 16
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(16)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 16
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 16
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(16)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 16
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 16
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(16)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 37.921
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 3
+srt_operation.js:122 Current srt_item: {id: "4", startTime: "00:00:36,161", startSeconds: 36.161, endTime: "00:00:40,457", endSeconds: 40.457, …}
+srt_operation.js:123 Start time: 36.161
+srt_operation.js:124 End time: 40.457
+srt_operation.js:125 Should show subtitle: true
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 16
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 16
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(16)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+vod_series_player.js:1916 === SUBTITLE DEBUG: hoverSubtitle called ===
+vod_series_player.js:1917 Index: 16
+vod_series_player.js:1918 Available subtitle menus: 17
+vod_series_player.js:1926 === SUBTITLE DEBUG: Setting focus to subtitle ===
+vod_series_player.js:1927 Focused index: 16
+vod_series_player.js:1928 Focused part: subtitle_audio_selection_modal
+vod_series_player.js:1933 Active subtitle element: <div class=​"setting-modal-option subtitle-item bg-focus active" onmouseenter=​"vod_series_player_page.hoverSubtitle(16)​" onclick=​"vod_series_player_page.handleMenuClick()​">​…​</div>​
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 38.423
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 3
+srt_operation.js:122 Current srt_item: {id: "4", startTime: "00:00:36,161", startSeconds: 36.161, endTime: "00:00:40,457", endSeconds: 40.457, …}
+srt_operation.js:123 Start time: 36.161
+srt_operation.js:124 End time: 40.457
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 38.921
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 3
+srt_operation.js:122 Current srt_item: {id: "4", startTime: "00:00:36,161", startSeconds: 36.161, endTime: "00:00:40,457", endSeconds: 40.457, …}
+srt_operation.js:123 Start time: 36.161
+srt_operation.js:124 End time: 40.457
+srt_operation.js:125 Should show subtitle: true
+srt_operation.js:96 === SRT TIMECHANGE DEBUG ===
+srt_operation.js:97 Current time: 39.422
+srt_operation.js:98 SrtOperation.stopped: false
+srt_operation.js:99 SRT array length: 1582
+srt_operation.js:120 === SRT TIMECHANGE: CHECKING SUBTITLE ===
+srt_operation.js:121 Current srt_index: 3
+srt_operation.js:122 Current srt_item: {id: "4", startTime: "00:00:36,161", startSeconds: 36.161, endTime: "00:00:40,457", endSeconds: 40.457, …}
+srt_operation.js:123 Start time: 36.161
+srt_operation.js:124 End time: 40.457
+srt_operation.js:125 Should show subtitle: true
+vod_series_player.js:1674 === SUBTITLE DEBUG: confirmSubtitle called ===
+vod_series_player.js:1675 Selected combined index: 15
+vod_series_player.js:1676 Platform: samsung
+vod_series_player.js:1724 === SUBTITLE DEBUG: Selected subtitle object ===
+vod_series_player.js:1725 Platform: samsung
+vod_series_player.js:1726 Selected combined index: 15
+vod_series_player.js:1727 Selected subtitle: {extra_info: {…}, source: "native", isNative: true, originalIndex: 3, index: 3, …}
+vod_series_player.js:1728 Detected source: native
+vod_series_player.js:1729 Available subtitles: (15) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+vod_series_player.js:1746 === SUBTITLE DEBUG: Using NATIVE subtitle ===
+vod_series_player.js:1747 Original native index: 3
+vod_series_player.js:1757 === NATIVE SUBTITLE INDEX DEBUG ===
+vod_series_player.js:1758 selectedSubtitle: {extra_info: {…}, source: "native", isNative: true, originalIndex: 3, index: 3, …}
+vod_series_player.js:1759 selectedSubtitle.originalIndex: 3
+vod_series_player.js:1760 selectedSubtitle.index: 3
+vod_series_player.js:1761 calculated nativeIndex: 3
+vod_series_player.js:1762 nativeIndex type: number
+mediaPlayer.js:400 === SAMSUNG setSubtitleOrAudioTrack DEBUG ===
+mediaPlayer.js:401 kind: TEXT
+mediaPlayer.js:402 index: 3
+mediaPlayer.js:403 index type: number
+mediaPlayer.js:420 === CALLING webapis.avplay.setSelectTrack ===
+mediaPlayer.js:421 Arguments: kind="TEXT", index=3
+VM94:1 in getErrorObjectLocal code:15,name:InvalidAccessError NaNmessage:PLAYER_ERROR_INVALID_OPERATION
+mediaPlayer.js:431 === SAMSUNG setSelectTrack ERROR ===
+mediaPlayer.js:432 Error: WebAPIExceptionLocal {code: 15, name: "InvalidAccessError", message: "PLAYER_ERROR_INVALID_OPERATION", stack: "InvalidAccessError: PLAYER_ERROR_INVALID_OPERATION…ger (file:///js/libs/jquery.3.4.1.min.js:2:71198)"}
+vod_series_player.js:1771 === Native Samsung subtitle activated ===
+vod_series_player.js:1772 Track index: 3

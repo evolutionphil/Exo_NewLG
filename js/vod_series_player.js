@@ -1712,11 +1712,30 @@ var vod_series_player_page={
                     if(selectedSubtitle) {
                         subtitleSource = selectedSubtitle.source; // Explicit source metadata
                     }
+                    
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== SAMSUNG SUBTITLE SELECTION DEBUG ===');
+                        console.log('window.subtitleMapping exists:', !!window.subtitleMapping);
+                        console.log('window.subtitleMapping.combined exists:', !!(window.subtitleMapping && window.subtitleMapping.combined));
+                        console.log('window.subtitleMapping.combined.length:', window.subtitleMapping && window.subtitleMapping.combined ? window.subtitleMapping.combined.length : 'undefined');
+                        console.log('selectedCombinedIndex:', selectedCombinedIndex);
+                        console.log('selectedSubtitle from mapping:', selectedSubtitle);
+                        console.log('subtitleSource detected:', subtitleSource);
+                    }
                 } else {
                     // **LG/Other Platforms**: Use traditional API subtitle system
                     if(media_player.subtitles && selectedCombinedIndex >= 0 && selectedCombinedIndex < media_player.subtitles.length) {
                         selectedSubtitle = media_player.subtitles[selectedCombinedIndex];
                         subtitleSource = 'api'; // LG only uses API subtitles
+                    }
+                    
+                    if(typeof env !== 'undefined' && env === 'develop') {
+                        console.log('=== NON-SAMSUNG SUBTITLE SELECTION DEBUG ===');
+                        console.log('media_player.subtitles exists:', !!media_player.subtitles);
+                        console.log('media_player.subtitles.length:', media_player.subtitles ? media_player.subtitles.length : 'undefined');
+                        console.log('selectedCombinedIndex:', selectedCombinedIndex);
+                        console.log('selectedSubtitle from media_player:', selectedSubtitle);
+                        console.log('subtitleSource detected:', subtitleSource);
                     }
                 }
                 
