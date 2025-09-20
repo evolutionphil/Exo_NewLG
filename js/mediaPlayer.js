@@ -401,20 +401,32 @@ function initPlayer() {
                     console.log('kind:', kind);
                     console.log('index:', index);
                     console.log('index type:', typeof index);
+                    
+                    if(kind === 'AUDIO') {
+                        console.log('=== SAMSUNG AUDIO TRACK DEBUG ===');
+                        console.log('Setting audio track to index:', index);
+                        var availableTracks = this.getSubtitleOrAudioTrack('AUDIO');
+                        console.log('Available audio tracks:', availableTracks);
+                        if(availableTracks && availableTracks[index]) {
+                            console.log('Selected audio track details:', availableTracks[index]);
+                        }
+                    }
                 }
                 
                 // Validate index parameter to prevent TypeMismatchError
                 if (typeof index === 'undefined' || index === null) {
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== SAMSUNG SUBTITLE ERROR ===');
+                        console.log('=== SAMSUNG TRACK ERROR ===');
                         console.log('Invalid index (undefined/null), aborting setSelectTrack');
                     }
                     return;
                 }
                 
                 try{
-                    // Ensure subtitle container is visible for Samsung platform
-                    $('#'+this.parent_id).find('.subtitle-container').show();
+                    // Ensure subtitle container is visible for Samsung platform (subtitle only)
+                    if(kind === 'TEXT') {
+                        $('#'+this.parent_id).find('.subtitle-container').show();
+                    }
                     
                     if(typeof env !== 'undefined' && env === 'develop') {
                         console.log('=== CALLING webapis.avplay.setSelectTrack ===');
@@ -424,12 +436,20 @@ function initPlayer() {
                     webapis.avplay.setSelectTrack(kind, index);
                     
                     if(typeof env !== 'undefined' && env === 'develop') {
-                        console.log('=== Samsung native subtitle track set successfully ===');
+                        if(kind === 'AUDIO') {
+                            console.log('=== SAMSUNG AUDIO TRACK SET SUCCESSFULLY ===');
+                        } else {
+                            console.log('=== Samsung native subtitle track set successfully ===');
+                        }
                     }
                 }catch (e) {
                     if(typeof env !== 'undefined' && env === 'develop') {
                         console.log('=== SAMSUNG setSelectTrack ERROR ===');
                         console.log('Error:', e);
+                        if(kind === 'AUDIO') {
+                            console.log('=== SAMSUNG AUDIO TRACK ERROR ===');
+                            console.log('Failed to set audio track');
+                        }
                     }
                 }
                 if(kind==='TEXT' && index==-1)

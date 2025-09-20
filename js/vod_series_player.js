@@ -875,7 +875,29 @@ var vod_series_player_page={
                 }
             }else {
                 // Get native tracks first (existing logic)
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== TRACK DEBUG: Getting native tracks ===');
+                    console.log('Track kind requested:', kind);
+                    console.log('Platform:', platform);
+                    
+                    if(kind === 'AUDIO') {
+                        console.log('=== AUDIO DEBUG: Loading audio tracks ===');
+                    }
+                }
+                
                 subtitles=media_player.getSubtitleOrAudioTrack(kind);
+                
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== TRACK DEBUG: Native tracks loaded ===');
+                    console.log('Track count for', kind, ':', subtitles ? subtitles.length : 0);
+                    if(kind === 'AUDIO') {
+                        console.log('=== AUDIO DEBUG: Audio tracks found ===');
+                        console.log('Audio tracks:', subtitles);
+                        if(subtitles && subtitles.length > 0) {
+                            console.log('First audio track:', subtitles[0]);
+                        }
+                    }
+                }
                 
                 // For Samsung with TEXT subtitles, also fetch API subtitles
                 if(platform==='samsung' && kind==='TEXT'){
@@ -1459,8 +1481,13 @@ var vod_series_player_page={
         this.hideControlBar();
         if(kind=="TEXT")
             $("#subtitle-modal-title").text("Subtitle");
-        else
+        else {
             $("#subtitle-modal-title").text("Audio Track");
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== AUDIO DEBUG: Setting up audio track modal ===');
+                console.log('Audio tracks to render:', subtitles.length);
+            }
+        }
         this.keys.focused_part="subtitle_audio_selection_modal";
         $('#subtitle-selection-modal').find('.modal-operation-menu-type-2').removeClass('active');
         
@@ -1915,11 +1942,34 @@ var vod_series_player_page={
             }
         }
         else{
+            // **AUDIO TRACK CONFIRMATION**
             this.current_audio_track_index=$('#subtitle-selection-modal').find('input[type=checkbox]:checked').val();
+            
+            if(typeof env !== 'undefined' && env === 'develop') {
+                console.log('=== AUDIO DEBUG: confirmAudio called ===');
+                console.log('Selected audio track index:', this.current_audio_track_index);
+                console.log('Platform:', platform);
+                console.log('Available audio tracks:', media_player.getSubtitleOrAudioTrack('AUDIO'));
+            }
+            
             try{
-                media_player.setSubtitleOrAudioTrack("AUDIO",parseInt(this.current_audio_track_index))
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== AUDIO DEBUG: Setting audio track ===');
+                    console.log('Calling setSubtitleOrAudioTrack with AUDIO and index:', parseInt(this.current_audio_track_index));
+                }
+                
+                media_player.setSubtitleOrAudioTrack("AUDIO",parseInt(this.current_audio_track_index));
+                
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== AUDIO DEBUG: Audio track set successfully ===');
+                    console.log('Current audio track index:', this.current_audio_track_index);
+                }
             }catch(e){
-
+                if(typeof env !== 'undefined' && env === 'develop') {
+                    console.log('=== AUDIO DEBUG: Error setting audio track ===');
+                    console.log('Error:', e.message);
+                    console.log('Error stack:', e.stack);
+                }
             }
             console.log(this.current_audio_track_index);
         }
