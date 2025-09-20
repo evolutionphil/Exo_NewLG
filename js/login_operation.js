@@ -63,7 +63,6 @@ var login_page={
         activation_page.init('login-page');
     },
     fetchPlaylistInformation:function(){
-        console.log('=== DEBUG fetchPlaylistInformation ===');
 
         if(this.is_loading)
             return;
@@ -75,16 +74,15 @@ var login_page={
         
         // Check if all panel URLs have been exhausted
         if(!url || url_index === undefined) {
-            console.log('=== DEBUG: All panel URLs exhausted, using cached data ===');
             var api_data=localStorage.getItem(storage_id+'api_data');
             if(api_data){
-                console.log('Using cached API data');
+
                 api_data=JSON.parse(api_data);
                 this.is_loading=false;
                 this.loadApp(api_data);
                 return;
             } else {
-                console.log('No cached data available, showing network error');
+
                 this.is_loading=false;
                 this.showNetworkErrorModal();
                 return;
@@ -98,10 +96,6 @@ var login_page={
         }
 
         // Debug logging
-        console.log('Panel URL:', url);
-        console.log('Device ID:', device_id);
-        console.log('Platform:', platform);
-        console.log('Data to send:', data);
 
         var encrypted_data=encryptRequest(data);
 
@@ -114,12 +108,9 @@ var login_page={
             timeout: 15000, // 15 second timeout
             crossDomain: true, // Explicitly allow cross-domain
             success: function (data1) {
-                console.log('=== DEBUG API Success ===');
-                console.log('Raw response:', data1);
 
                 try {
                     var data=decryptResponse(data1);
-                    console.log('Decrypted data:', data);
 
                     // Check if response is valid
                     if(!data || typeof data !== 'object') {
@@ -133,14 +124,12 @@ var login_page={
                         throw new Error('No MAC address in response');
                     }
 
-                    console.log('MAC Address received:', data.mac_address);
 
                     that.tried_panel_indexes=[];
                     localStorage.setItem(storage_id+'api_data',JSON.stringify(data));
                     that.loadApp(data);
 
                 } catch(decryptError) {
-                    console.error('=== DEBUG Decryption/Processing Error ===');
                     console.error('Error:', decryptError);
                     console.error('Raw response that failed:', data1);
 
@@ -158,7 +147,6 @@ var login_page={
                 }
             },
             error: function (xhr, textStatus, errorThrown) {
-                console.log('=== DEBUG API Request Error ===');
                 console.log('XHR Status:', xhr.status);
                 console.log('XHR StatusText:', xhr.statusText);
                 console.log('Text Status:', textStatus);
@@ -187,11 +175,11 @@ var login_page={
                     console.log('All panel URLs failed, checking localStorage for cached data');
                     var api_data=localStorage.getItem(storage_id+'api_data');
                     if(api_data){
-                        console.log('Using cached API data');
+        
                         api_data=JSON.parse(api_data);
                         that.loadApp(api_data);
                     }else{
-                        console.log('No cached data available, showing network error');
+        
                         that.is_loading=false;
                         that.showNetworkErrorModal();
                     }
@@ -304,9 +292,6 @@ var login_page={
         }
     },
     login:function(){
-        console.log('=== DEBUG login() called ===');
-        console.log('=== DEBUG playlist_urls ===', playlist_urls);
-        console.log('=== DEBUG has_playlist ===', has_playlist);
         this.showLoadImage();
 
         // Check if user has uploaded playlists (non-empty playlist_urls)
@@ -323,17 +308,13 @@ var login_page={
             }
 
             var user_playlist = playlist_urls[playlist_index];
-            console.log('=== DEBUG: User has uploaded playlists - using user playlist ===');
-            console.log('Using playlist:', user_playlist);
             settings.saveSettings('playlist', user_playlist, 'array');
             settings.saveSettings('playlist_id', user_playlist.id, '');
             parseM3uUrl();
-            console.log('Parsed M3U URL - API Host:', api_host_url);
+
             this.proceed_login();
         } else {
             // No uploaded playlists (empty playlist_urls) - use demo content
-            console.log('=== DEBUG: No uploaded playlists found ===');
-            console.log('=== DEBUG: Checking demo_url ===', demo_url);
 
             this.tryDemoContent();
         }
@@ -376,7 +357,7 @@ var login_page={
             settings.saveSettings('playlist', backend_demo_playlist, 'array');
             settings.saveSettings('playlist_id', backend_demo_playlist.id, '');
             parseM3uUrl();
-            console.log('Parsed M3U URL - API Host:', api_host_url);
+
 
             // Try to load backend demo content
             this.proceed_login();
@@ -993,11 +974,6 @@ var login_page={
     proceed_login:function(){
         if(this.is_loading)
             return;
-        console.log('=== DEBUG proceed_login ===');
-        console.log('Playlist type:', settings.playlist_type);
-        console.log('API host URL:', api_host_url);
-        console.log('Username:', user_name);
-        console.log('Password:', password);
         $('#playlist-error').hide();
         LiveModel.init();
         VodModel.init();
@@ -1052,7 +1028,6 @@ var login_page={
                                     method:'get',
                                     url:prefix_url+'get_vod_categories',
                                     success:function (data) {
-                                        console.log('=== DEBUG get_vod_categories SUCCESS ===');
                                         console.log('VOD categories count:', data ? data.length : 'undefined');
                                         VodModel.setCategories(data);
                                     },
@@ -1065,7 +1040,6 @@ var login_page={
                                     method:'get',
                                     url:prefix_url+'get_series',
                                     success:function (data) {
-                                        console.log('=== DEBUG get_series SUCCESS ===');
                                         console.log('Series count:', data ? data.length : 'undefined');
                                         SeriesModel.setMovies(data);
                                     },
@@ -1078,7 +1052,6 @@ var login_page={
                                     method:'get',
                                     url:prefix_url+'get_series_categories',
                                     success:function (data) {
-                                        console.log('=== DEBUG get_series_categories SUCCESS ===');
                                         console.log('Series categories count:', data ? data.length : 'undefined');
                                         SeriesModel.setCategories(data);
                                     },
@@ -1089,17 +1062,13 @@ var login_page={
                                 })
                             ).
                             then(function(){
-                                console.log('=== DEBUG All Ajax requests completed successfully ===');
                                 try{
-                                    console.log('=== DEBUG Inserting content into categories ===');
                                     LiveModel.insertMoviesToCategories();
                                     VodModel.insertMoviesToCategories();
                                     SeriesModel.insertMoviesToCategories();
                                     that.is_loading=false;
                                     that.retry_count = 0; // Reset retry count on success
-                                    console.log('=== DEBUG Calling home_page.init() ===');
                                     home_page.init();
-                                    console.log('=== DEBUG home_page.init() completed ===');
                                 }catch (e) {
                                     console.log('=== DEBUG Error during content insertion ===');
                                     console.log(e);
