@@ -8,7 +8,7 @@ $(document).ready(function () {
     }
     
     // FORCE LG MODE FOR TESTING AUDIO TRACKS
-    platform='lg';
+    // platform='lg';  // DISABLED - was causing Samsung TVs to use LG device logic
     $('#app').addClass(platform);
 
     initKeys();
